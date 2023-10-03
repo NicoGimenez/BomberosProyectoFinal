@@ -14,28 +14,36 @@ import java.util.List;
  */
 public class Brigada {
     
-    private String clave;
+    private String nombre_br;
     private int codBrigada;
     private String especialidad;
     private List <Bombero> bomberos;
+    private boolean libre;
 
     public Brigada() {
     }
 
-    
-    public Brigada(String clave, int codBrigada, String especialidad, List<Bombero> bomberos) {
-        this.clave = clave;
+    public Brigada(String nombre_br, int codBrigada, String especialidad, List<Bombero> bomberos, boolean libre) {
+        this.nombre_br = nombre_br;
         this.codBrigada = codBrigada;
         this.especialidad = especialidad;
         this.bomberos = bomberos;
+        this.libre = libre;
     }
 
-    public String getClave() {
-        return clave;
+    public Brigada(String nombre_br, String especialidad, List<Bombero> bomberos, boolean libre) {
+        this.nombre_br = nombre_br;
+        this.especialidad = especialidad;
+        this.bomberos = bomberos;
+        this.libre = libre;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public String getNombre_br() {
+        return nombre_br;
+    }
+
+    public void setNombre_br(String nombre_br) {
+        this.nombre_br = nombre_br;
     }
 
     public int getCodBrigada() {
@@ -61,6 +69,14 @@ public class Brigada {
     public void setBomberos(List<Bombero> bomberos) {
         this.bomberos = bomberos;
     }
- 
+
+    public boolean isLibre() {
+        return libre;
+    }
+
+    public void setLibre(boolean libre) {
+        this.libre = libre;
+    }
+
     
 }
