@@ -19,6 +19,10 @@ public class Brigada {
     private String especialidad;
     private List <Bombero> bomberos;
 
+    public Brigada() {
+    }
+
+    
     public Brigada(String clave, int codBrigada, String especialidad, List<Bombero> bomberos) {
         this.clave = clave;
         this.codBrigada = codBrigada;
