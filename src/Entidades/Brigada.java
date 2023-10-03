@@ -9,6 +9,10 @@ package Entidades;
  *
  * @author niqog
  */
-public class brigada {
+public class Brigada {
+    
+    private String clave;
+    private  String brigada;
+    private String especialidad;
     
 }
