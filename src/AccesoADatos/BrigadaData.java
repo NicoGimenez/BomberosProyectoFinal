@@ -5,7 +5,6 @@
  */
 package AccesoADatos;
 
-
 import Entidades.Brigada;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,31 +27,25 @@ public class BrigadaData {
         con = Conexion.getConexion();
     }
 
-     public List<Brigada> listarBrigadasBomberos() {
+    public List<Brigada> listarBrigadasLibres() {
 
-        ArrayList<Brigada> brigadas  = new ArrayList<>();
-        
+        ArrayList<Brigada> brigadas = new ArrayList<>();
+
         try {
-            String sql = "SELECT  * FROM brigada WHERE  estado=1";
+            String sql = "SELECT  * FROM brigada WHERE  libre=1";
             PreparedStatement ps = con.prepareStatement(sql);
-
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()) {                
-                
+            while (rs.next()) {
+
                 Brigada brigada = new Brigada();
-                brigada.setCodBrigada(0);
-                brigada.setEspecialidad(sql);
-                
-               
-
-            } 
-
+                brigada.setCodBrigada(rs.getInt("codBrigada"));
+                brigada.setEspecialidad(rs.getString("especialidad"));
+            }
             ps.close();
-
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. "+ ex.getMessage() );
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. " + ex.getMessage());
         }
         return brigadas;
-}
+    }
 }
