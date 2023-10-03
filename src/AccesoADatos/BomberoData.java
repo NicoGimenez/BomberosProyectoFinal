@@ -19,14 +19,14 @@ import javax.swing.JOptionPane;
 public class BomberoData {
     private Connection connection;
 
-    public BomberoData(Connection connection) {
-        this.connection = connection;
+    public BomberoData() {
+        this.connection = Conexion.getConexion();
     }
 
     
     public void agregarBombero(Bombero bombero) {
          try {
-            String sql = "INSERT INTO bombero  (dni, nombre, grupo_sanguineo, fecha_nacimiento, celular) " +
+            String sql = "INSERT INTO bombero (dni, nombre_ape, grupo_sanguineo, fecha_nac, celular) " +
                          "VALUES (?, ?, ?, ?, ?)";
             
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -53,7 +53,7 @@ public class BomberoData {
     public Bombero obtenerBomberoPorCodigo(int codigo) {
      Bombero bombero = null;
         try {
-            String sql = "SELECT * FROM bombero WHERE codigo = ?";
+            String sql = "SELECT * FROM bombero WHERE idBombero = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, codigo);
             
@@ -61,12 +61,12 @@ public class BomberoData {
 
             if (rs.next()) {
                 bombero = new Bombero();
-                bombero.setCod_bombero(rs.getInt("codigo"));
+                bombero.setCod_bombero(rs.getInt("idBombero"));
                 bombero.setDni(rs.getInt("dni"));
-                bombero.setNombre(rs.getString("nombre"));
+                bombero.setNombre(rs.getString("nombre_ape"));
                 bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
-                bombero.setFechaNac(rs.getDate("fechaDeNacimiento").toLocalDate());
-                bombero.setNro(rs.getInt("nro"));
+                bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
+                bombero.setNro(rs.getInt("celular"));
             }else {
                 JOptionPane.showMessageDialog(null, "No existe bombero con ese código. ");
             }
@@ -89,12 +89,12 @@ public class BomberoData {
 
             while (rs.next()) {
                 Bombero bombero = new Bombero();
-                bombero.setCod_bombero(rs.getInt("codigo"));
+                bombero.setCod_bombero(rs.getInt("idBombero"));
                 bombero.setDni(rs.getInt("dni"));
-                bombero.setNombre(rs.getString("nombre"));
+                bombero.setNombre(rs.getString("nombre_ape"));
                 bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
-                bombero.setFechaNac(rs.getDate("fechaDeNacimiento").toLocalDate());
-                bombero.setNro(rs.getInt("nro"));
+                bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
+                bombero.setNro(rs.getInt("celular"));
                 bomberos.add(bombero);
             }
 
@@ -109,8 +109,8 @@ public class BomberoData {
 
     public void actualizarBombero(Bombero bombero) {
         try {
-            String sql = "UPDATE bombero SET dni = ?, nombre = ?, grupo_sanguineo = ?, " +
-                         "fecha_nacimiento = ?, celular = ? WHERE codigo = ?";
+            String sql = "UPDATE bombero SET dni = ?, nombre_ape = ?, grupo_sanguineo = ?, " +
+                         "fecha_nac = ?, celular = ? WHERE idBombero = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, bombero.getDni());
             st.setString(2, bombero.getNombre());
@@ -129,21 +129,21 @@ public class BomberoData {
 
     public void darDeBajaBombero(int cod_bombero) {
         try {
-            String sql = "UPTADE bombero set activo = 0 WHERE idBombero= ?";
+            String sql = "UPDATE bombero set activo = 0 WHERE idBombero= ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, cod_bombero);
             int exito = st.executeUpdate();
             
             if (exito == 1) {
 
-              JOptionPane.showMessageDialog(null, "Alumno Eliminado");
+              JOptionPane.showMessageDialog(null, "Bomero eliminado.");
 
             }
             
             st.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos");
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. ");
         }
     }
 }
