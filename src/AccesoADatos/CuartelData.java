@@ -35,6 +35,9 @@ public class CuartelData {
             while (rs.next()) {
                 Brigada brigada = new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
+                brigada.setCodCuartel(nro_cuartel);
+                brigada.setEspecialidad(rs.getString("especialidad"));
+                brigada.setNombre_br(rs.getString("nombre_br"));
             }
 
         } catch (SQLException ex) {
