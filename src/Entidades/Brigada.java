@@ -19,23 +19,26 @@ public class Brigada {
     private String especialidad;
     private List <Bombero> bomberos;
     private boolean libre;
-
+    private int codCuartel;
+    
     public Brigada() {
     }
 
-    public Brigada(String nombre_br, int codBrigada, String especialidad, List<Bombero> bomberos, boolean libre) {
+    public Brigada(String nombre_br, String especialidad, List<Bombero> bomberos, boolean libre, int codCuartel) {
+        this.nombre_br = nombre_br;
+        this.especialidad = especialidad;
+        this.bomberos = bomberos;
+        this.libre = libre;
+        this.codCuartel = codCuartel;
+    }
+
+    public Brigada(String nombre_br, int codBrigada, String especialidad, List<Bombero> bomberos, boolean libre, int codCuartel) {
         this.nombre_br = nombre_br;
         this.codBrigada = codBrigada;
         this.especialidad = especialidad;
         this.bomberos = bomberos;
         this.libre = libre;
-    }
-
-    public Brigada(String nombre_br, String especialidad, List<Bombero> bomberos, boolean libre) {
-        this.nombre_br = nombre_br;
-        this.especialidad = especialidad;
-        this.bomberos = bomberos;
-        this.libre = libre;
+        this.codCuartel = codCuartel;
     }
 
     public String getNombre_br() {
@@ -78,5 +81,14 @@ public class Brigada {
         this.libre = libre;
     }
 
+    public int getCodCuartel() {
+        return codCuartel;
+    }
+
+    public void setCodCuartel(int codCuartel) {
+        this.codCuartel = codCuartel;
+    }
     
+    
+
 }
