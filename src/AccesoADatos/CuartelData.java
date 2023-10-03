@@ -33,16 +33,23 @@ public class CuartelData {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
+                //Creamos objetos Brigada
                 Brigada brigada = new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
                 brigada.setCodCuartel(nro_cuartel);
                 brigada.setEspecialidad(rs.getString("especialidad"));
                 brigada.setNombre_br(rs.getString("nombre_br"));
+                brigada.setLibre(rs.getBoolean("libre"));
+               
+                //Lo agregamos al arreglo 
+                brigadas.add(brigada);
+           
             }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse con la tabla Brigada");
         }
+        
         return brigadas;
     }
 
