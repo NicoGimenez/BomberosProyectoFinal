@@ -16,4 +16,99 @@ public class Cuartel {
     private String telefono;
     private  String correo;
     private ArrayList<Brigada> brigadas;
+
+    public Cuartel(int codigoCuartel, String nombreDeCuartel, String direccion, int coordenadaEnX, int coordenadaEnY, String telefono, String correo, ArrayList<Brigada> brigadas) {
+        this.codigoCuartel = codigoCuartel;
+        this.nombreDeCuartel = nombreDeCuartel;
+        this.direccion = direccion;
+        this.coordenadaEnX = coordenadaEnX;
+        this.coordenadaEnY = coordenadaEnY;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.brigadas = brigadas;
+    }
+
+    public Cuartel(String nombreDeCuartel, String direccion, int coordenadaEnX, int coordenadaEnY, String telefono, String correo, ArrayList<Brigada> brigadas) {
+        this.nombreDeCuartel = nombreDeCuartel;
+        this.direccion = direccion;
+        this.coordenadaEnX = coordenadaEnX;
+        this.coordenadaEnY = coordenadaEnY;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.brigadas = brigadas;
+    }
+
+    public Cuartel() {
+    }
+
+    public int getCodigoCuartel() {
+        return codigoCuartel;
+    }
+
+    public void setCodigoCuartel(int codigoCuartel) {
+        this.codigoCuartel = codigoCuartel;
+    }
+
+    public String getNombreDeCuartel() {
+        return nombreDeCuartel;
+    }
+
+    public void setNombreDeCuartel(String nombreDeCuartel) {
+        this.nombreDeCuartel = nombreDeCuartel;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public int getCoordenadaEnX() {
+        return coordenadaEnX;
+    }
+
+    public void setCoordenadaEnX(int coordenadaEnX) {
+        this.coordenadaEnX = coordenadaEnX;
+    }
+
+    public int getCoordenadaEnY() {
+        return coordenadaEnY;
+    }
+
+    public void setCoordenadaEnY(int coordenadaEnY) {
+        this.coordenadaEnY = coordenadaEnY;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public ArrayList<Brigada> getBrigadas() {
+        return brigadas;
+    }
+
+    public void setBrigadas(ArrayList<Brigada> brigadas) {
+        this.brigadas = brigadas;
+    }
+
+    @Override
+    public String toString() {
+        return "Cuartel"+ "codigoCuartel=" + codigoCuartel + ", nombreDeCuartel=" + nombreDeCuartel + '}';
+    }
+    
+    
 }
