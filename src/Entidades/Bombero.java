@@ -1,6 +1,8 @@
 
 package Entidades;
 
+import java.time.LocalDate;
+
 /*
  * @author Lucas E. Sayago
  */
@@ -10,7 +12,8 @@ public class Bombero{
     private int dni;
     private String nombre;
     private String grupo_sanguineo;
-      
+    private LocalDate fechaNac;
+    
 
 
 }
