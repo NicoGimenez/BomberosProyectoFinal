@@ -127,12 +127,19 @@ public class BomberoData {
         }
     }
 
-    public void darDeBajaBombero(int codigo) {
+    public void darDeBajaBombero(int cod_bombero) {
         try {
-            String sql = "UPTADE bombero se";
+            String sql = "UPTADE bombero set activo = 0 WHERE idBombero= ?";
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, codigo);
-            st.executeUpdate();
+            st.setInt(1, cod_bombero);
+            int exito = st.executeUpdate();
+            
+            if (exito == 1) {
+
+              JOptionPane.showMessageDialog(null, "Alumno Eliminado");
+
+            }
+            
             st.close();
             
         } catch (SQLException ex) {
