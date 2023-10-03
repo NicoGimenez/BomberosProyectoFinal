@@ -88,7 +88,6 @@ public class Bombero{
     
     
     public void actualizarDatos(int dni, String nombre, String cod_bombero, LocalDate fechaNac, int nro) {
-    
     this.dni = dni;
     this.nombre = nombre;
     this.grupo_sanguineo = cod_bombero;
