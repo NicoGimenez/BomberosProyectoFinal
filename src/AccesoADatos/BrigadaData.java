@@ -153,6 +153,7 @@ public class BrigadaData {
             }else{
             JOptionPane.showMessageDialog(null,"No se pudo eliminar la briagada");
             }
+            ps.close();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al intentar eliminar cuartel");
