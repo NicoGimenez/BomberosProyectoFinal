@@ -1,5 +1,6 @@
 package AccesoADatos;
 
+import Entidades.Especialidad;
 import Entidades.Siniestro;
 import java.sql.Connection;
 import java.sql.Date;
@@ -7,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class SiniestroData {
@@ -92,6 +95,54 @@ public class SiniestroData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error! " + ex.getMessage());
         }
+    }
+
+    public List<Siniestro> listarSiniestros() {
+
+        ArrayList<Siniestro> siniestros = new ArrayList<>();
+
+        try {
+            String sql = "SELECT  * FROM siniestro";
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Siniestro siniestro = new Siniestro();
+                siniestro.setCodigo(rs.getInt("codigo"));
+                String tipoSiniestroStr = rs.getString("tipo");
+                Especialidad tipoSiniestro = obtenerEspecialidadDesdeString(tipoSiniestroStr);
+                siniestro.setTipo(tipoSiniestro);
+                siniestro.setFecha_siniestro(rs.getDate("fecha_siniestro").toLocalDate());
+                siniestro.setCoord_x(rs.getInt("coord_X"));
+                siniestro.setCoord_Y(rs.getInt("coord_y"));
+                siniestro.setDetalles(rs.getString("Detalle"));
+                siniestro.setFecha_resol(rs.getDate("fecha_resol").toLocalDate());
+                siniestro.setPuntuacion(rs.getInt("puntuacion"));
+                siniestro.setCodBrigada(rs.getInt("codBrigada"));
+
+                siniestros.add(siniestro);
+
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. " + ex.getMessage());
+        }
+        return siniestros;
+
+    }
+
+    public Especialidad obtenerEspecialidadDesdeString(String especialidadStr) {
+        for (Especialidad especialidad : Especialidad.values()) {
+            if (especialidad.getDescripcion().equalsIgnoreCase(especialidadStr)) {
+                return especialidad;
+            }
+        }
+        // En caso de no encontrar una coincidencia, puedes devolver un valor predeterminado o lanzar una excepción, según tus necesidades.
+        throw new IllegalArgumentException("Especialidad no encontrada para: " + especialidadStr);
     }
 
 }
