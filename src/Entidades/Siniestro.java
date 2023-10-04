@@ -6,7 +6,7 @@ import java.time.LocalDate;
 /*
  * @author Lucas E. Sayago
  */
-public class siniestro {
+public class Siniestro {
     private int codigo;
     private Especialidad tipo;
     private LocalDate fecha_siniestro;
@@ -17,10 +17,10 @@ public class siniestro {
     private int puntuacion;
     private int codBrigada;
 
-    public siniestro() {
+    public Siniestro() {
     }
 
-    public siniestro(Especialidad tipo, LocalDate fecha_siniestro, int coord_x, int coord_Y, String detalles, LocalDate fecha_resol, int puntuacion, int codBrigada) {
+    public Siniestro(Especialidad tipo, LocalDate fecha_siniestro, int coord_x, int coord_Y, String detalles, LocalDate fecha_resol, int puntuacion, int codBrigada) {
         this.tipo = tipo;
         this.fecha_siniestro = fecha_siniestro;
         this.coord_x = coord_x;
@@ -32,7 +32,7 @@ public class siniestro {
     }
     
 
-    public siniestro(int codigo, Especialidad tipo, LocalDate fecha_siniestro, int coord_x, int coord_Y, String detalles, LocalDate fecha_resol, int puntuacion, int codBrigada) {
+    public Siniestro(int codigo, Especialidad tipo, LocalDate fecha_siniestro, int coord_x, int coord_Y, String detalles, LocalDate fecha_resol, int puntuacion, int codBrigada) {
         this.codigo = codigo;
         this.tipo = tipo;
         this.fecha_siniestro = fecha_siniestro;
