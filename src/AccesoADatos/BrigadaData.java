@@ -150,6 +150,8 @@ public class BrigadaData {
             if (exito > 0) {
                 JOptionPane.showMessageDialog(null, "Brigada eliminado");
 
+            }else{
+            JOptionPane.showMessageDialog(null,"No se pudo eliminar la briagada");
             }
 
         } catch (SQLException ex) {
