@@ -1,11 +1,14 @@
 package AccesoADatos;
 
 import Entidades.Brigada;
+import Entidades.Cuartel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -49,5 +52,44 @@ public class CuartelData {
         
         return brigadas;
     }
+    
+    
+    public ArrayList<Cuartel> listarCuarteles (){
+        
+        ArrayList<Cuartel> cuarteles= new ArrayList<>();
+       
+        String sql = "SELECT * FROM cuartel WHERE 1";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                
+               Cuartel cuartel = new Cuartel();
+               
+                cuartel.setCodigoCuartel(rs.getInt("codCuartel "));
+                cuartel.setCoordenadaEnX(rs.getInt("coord_X"));
+                cuartel.setCoordenadaEnY(rs.getInt("coord_Y"));
+                cuartel.setCorreo(rs.getString("correo"));
+                cuartel.setDireccion(rs.getString("direccion"));
+                cuartel.setNombreDeCuartel(rs.getString("nombre_cuartel"));
+                cuartel.setTelefono(rs.getString("telefono"));
+                
+                cuarteles.add(cuartel);
+                
+            }
+            
+            
+            
+        } catch (SQLException ex) {
+      JOptionPane.showMessageDialog(null, "Error al listar cuarteles");
+        }
+        
+        
+        return cuarteles;
+    }
+    
+    
 
 }

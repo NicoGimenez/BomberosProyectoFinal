@@ -146,4 +146,33 @@ public class BomberoData {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. ");
         }
     }
+    public List<Bombero> listBomberosPorBrigada (int codBrigada)  {        
+        List<Bombero> bomberos = new ArrayList<>();
+        try {
+            
+            String sql = "SELECT * FROM bombero WHERE codBrigada=?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            
+            st.setInt(1, codBrigada);
+            
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                Bombero bombero = new Bombero();
+                bombero.setCod_bombero(rs.getInt("idBombero"));
+                bombero.setDni(rs.getInt("dni"));
+                bombero.setNombre(rs.getString("nombre_ape"));
+                bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
+                bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
+                bombero.setNro(rs.getInt("celular"));
+                bomberos.add(bombero);
+            }
+
+            st.close();
+            
+       } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. "+ ex.getMessage() );
+        }
+        return bomberos;
+    }
 }
