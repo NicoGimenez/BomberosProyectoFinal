@@ -2,13 +2,13 @@ package AccesoADatos;
 
 import Entidades.Brigada;
 import Entidades.Cuartel;
+import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -22,6 +22,39 @@ public class CuartelData {
         con = Conexion.getConexion();
     }
 
+    
+    public void agregarCuartel(Cuartel cuartel){
+    
+        String sql= "INSERT INTO cuartel( nombre_cuartel, direccion, coord_X, coord_Y, telefono, correo, activo) "
+                + "VALUES (? ,? ,? ,? ,? ,? ,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            
+            ps.setString(1, cuartel.getNombreDeCuartel());
+            ps.setString(2, cuartel.getDireccion());
+            ps.setInt(3, cuartel.getCoordenadaEnX());
+            ps.setInt(4, cuartel.getCoordenadaEnY());
+            ps.setString(5, cuartel.getTelefono());
+            ps.setString(6, cuartel.getCorreo());
+            ps.setBoolean(7, cuartel.isActivo());
+            
+            ps.executeUpdate();
+              ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                cuartel.setCodigoCuartel(rs.getInt("codCuartel"));
+                
+                JOptionPane.showMessageDialog(null, "Cuarte generado con exito.");
+            }
+            ps.close();
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al agregar Cuartel "+ex.getMessage());
+        }
+        
+    }
+    
+    
     public ArrayList<Brigada> obtenerBrigadasDelCuartel(int nro_cuartel) {
 
         ArrayList<Brigada> brigadas = new ArrayList<>();
@@ -40,34 +73,33 @@ public class CuartelData {
                 brigada.setEspecialidad(rs.getString("especialidad"));
                 brigada.setNombre_br(rs.getString("nombre_br"));
                 brigada.setLibre(rs.getBoolean("libre"));
-               
+
                 //Lo agregamos al arreglo 
                 brigadas.add(brigada);
-           
+
             }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse con la tabla Brigada");
         }
-        
+
         return brigadas;
     }
-    
-    
-    public ArrayList<Cuartel> listarCuarteles (){
-        
-        ArrayList<Cuartel> cuarteles= new ArrayList<>();
-       
+
+    public ArrayList<Cuartel> listarCuarteles() {
+
+        ArrayList<Cuartel> cuarteles = new ArrayList<>();
+
         String sql = "SELECT * FROM cuartel WHERE 1";
-        
+
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
-                
-               Cuartel cuartel = new Cuartel();
-               
+
+                Cuartel cuartel = new Cuartel();
+
                 cuartel.setCodigoCuartel(rs.getInt("codCuartel "));
                 cuartel.setCoordenadaEnX(rs.getInt("coord_X"));
                 cuartel.setCoordenadaEnY(rs.getInt("coord_Y"));
@@ -75,21 +107,16 @@ public class CuartelData {
                 cuartel.setDireccion(rs.getString("direccion"));
                 cuartel.setNombreDeCuartel(rs.getString("nombre_cuartel"));
                 cuartel.setTelefono(rs.getString("telefono"));
-                
+
                 cuarteles.add(cuartel);
-                
+
             }
-            
-            
-            
+
         } catch (SQLException ex) {
-      JOptionPane.showMessageDialog(null, "Error al listar cuarteles");
+            JOptionPane.showMessageDialog(null, "Error al listar cuarteles");
         }
-        
-        
+
         return cuarteles;
     }
-    
-    
 
 }

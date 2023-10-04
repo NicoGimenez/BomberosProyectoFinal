@@ -1,7 +1,5 @@
 package Entidades;
 
-import java.util.ArrayList;
-
 /*
  * @author Lucas E. Sayago
  */
@@ -14,9 +12,12 @@ public class Cuartel {
     private int coordenadaEnY;
     private String telefono;
     private String correo;
-    private ArrayList<Brigada> brigadas;
+    private boolean activo;
 
-    public Cuartel(int codigoCuartel, String nombreDeCuartel, String direccion, int coordenadaEnX, int coordenadaEnY, String telefono, String correo, ArrayList<Brigada> brigadas) {
+    public Cuartel() {
+    }
+
+    public Cuartel(int codigoCuartel, String nombreDeCuartel, String direccion, int coordenadaEnX, int coordenadaEnY, String telefono, String correo, boolean activo) {
         this.codigoCuartel = codigoCuartel;
         this.nombreDeCuartel = nombreDeCuartel;
         this.direccion = direccion;
@@ -24,20 +25,17 @@ public class Cuartel {
         this.coordenadaEnY = coordenadaEnY;
         this.telefono = telefono;
         this.correo = correo;
-        this.brigadas = brigadas;
+        this.activo = activo;
     }
 
-    public Cuartel(String nombreDeCuartel, String direccion, int coordenadaEnX, int coordenadaEnY, String telefono, String correo, ArrayList<Brigada> brigadas) {
+    public Cuartel(String nombreDeCuartel, String direccion, int coordenadaEnX, int coordenadaEnY, String telefono, String correo, boolean activo) {
         this.nombreDeCuartel = nombreDeCuartel;
         this.direccion = direccion;
         this.coordenadaEnX = coordenadaEnX;
         this.coordenadaEnY = coordenadaEnY;
         this.telefono = telefono;
         this.correo = correo;
-        this.brigadas = brigadas;
-    }
-
-    public Cuartel() {
+        this.activo = activo;
     }
 
     public int getCodigoCuartel() {
@@ -96,14 +94,15 @@ public class Cuartel {
         this.correo = correo;
     }
 
-    public ArrayList<Brigada> getBrigadas() {
-        return brigadas;
+    public boolean isActivo() {
+        return activo;
     }
 
-    public void setBrigadas(ArrayList<Brigada> brigadas) {
-        this.brigadas = brigadas;
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
-
+    
+    
     public double distanciaAlSiniestro(Siniestro siniestro) {
         
         //usamos el teorema de pitagoras para sacar la distancias entre dos puntos en el plano
