@@ -66,7 +66,11 @@ public class CuartelData {
             
             while (rs.next()) {
                 
-              //  Cuartel 
+               Cuartel cuartel = new Cuartel();
+               
+                cuartel.setCodigoCuartel(rs.getInt("codCuartel "));
+                cuartel.setCoordenadaEnX(rs.getInt("coord_X"));
+                cuartel.setCoordenadaEnY(rs.getInt("coord_Y"));
                 
             }
             
