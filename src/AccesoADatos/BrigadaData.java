@@ -1,56 +1,51 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package AccesoADatos;
 
 import Entidades.Brigada;
-import Entidades.Cuartel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 import javax.swing.JOptionPane;
 
-/*
- * @author Lucas E. Sayago
+/**
+ *
+ * @author niqog
  */
-public class CuartelData {
+public class BrigadaData {
 
     private Connection con = null;
 
-    public CuartelData() {
+    public BrigadaData() {
+
         con = Conexion.getConexion();
     }
 
-    public ArrayList<Brigada> obtenerBrigadasDelCuartel(int nro_cuartel) {
+    public List<Brigada> listarBrigadasLibres() {
 
         ArrayList<Brigada> brigadas = new ArrayList<>();
 
-        String sql = "SELECT * FROM brigada WHERE nro_cuartel=?";
         try {
+            String sql = "SELECT  * FROM brigada WHERE  libre=1";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, nro_cuartel);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                //Creamos objetos Brigada
+
                 Brigada brigada = new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
-                brigada.setCodCuartel(nro_cuartel);
                 brigada.setEspecialidad(rs.getString("especialidad"));
-                brigada.setNombre_br(rs.getString("nombre_br"));
-                brigada.setLibre(rs.getBoolean("libre"));
-               
-                //Lo agregamos al arreglo 
-                brigadas.add(brigada);
-           
             }
-
+            ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectarse con la tabla Brigada");
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. " + ex.getMessage());
         }
-        
         return brigadas;
     }
-
 }
