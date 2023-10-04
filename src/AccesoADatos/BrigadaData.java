@@ -52,8 +52,8 @@ public class BrigadaData {
       
     public void agregarBrigada(Brigada brigada) {
          try {
-            
-            // I added a constraint for especialidad and nro_cuartel in the database to be unique -> UC_especialidad_nro_cuartel
+            /*
+           // Agregué una restricción para que especialidad y nro_cuartel en la base de datos sean únicos -> UC_especialidad_nro_cuartel
             String sqlEspecialidad = "SELECT COUNT(*) AS count from brigada WHERE especialidad = ? AND nro_cuartel = ?"; 
             PreparedStatement psEspecialidad = con.prepareStatement(sqlEspecialidad);
             
@@ -70,7 +70,7 @@ public class BrigadaData {
             }
             
            
-            // I added a constraint for nombre in the database to be unique -> UC_nombre_br
+            // Agregué una restricción para que nombre en la base de datos sea único -> UC_nombre_br
             String sqlNombre = "SELECT COUNT(*) AS count from brigada WHERE nombre_br = ?"; 
             PreparedStatement psNombre = con.prepareStatement(sqlNombre);
            
@@ -84,7 +84,7 @@ public class BrigadaData {
                psNombre.close();
                throw new Exception("nombre must be unique");
             }
-            
+            */
              
             String sql = "INSERT INTO brigada (nombre_br, especialidad, libre, nro_cuartel ) " +
                          "VALUES (?, ?, ?, ?)";
