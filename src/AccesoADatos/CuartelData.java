@@ -54,7 +54,7 @@ public class CuartelData {
 
     }
 
-    public void eliminarCuartelPorCodifo(int codigoCuartel) {
+    public void eliminarCuartelPorCodigo(int codigoCuartel) {
         String sql = "UPDATE cuartel SET activo=0 WHERE codCuartel=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
