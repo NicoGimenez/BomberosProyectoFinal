@@ -110,7 +110,7 @@ public class Cuartel {
         double distancia = Math.sqrt(Math.pow(siniestro.getCoord_x() - coordenadaEnX, 2) + Math.pow(siniestro.getCoord_Y() - coordenadaEnY, 2));
 
         return distancia;
-
+        
     }
 
     @Override
