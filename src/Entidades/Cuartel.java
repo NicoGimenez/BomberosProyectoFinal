@@ -1,4 +1,3 @@
-
 package Entidades;
 
 import java.util.ArrayList;
@@ -7,14 +6,14 @@ import java.util.ArrayList;
  * @author Lucas E. Sayago
  */
 public class Cuartel {
-    
+
     private int codigoCuartel;
     private String nombreDeCuartel;
     private String direccion;
     private int coordenadaEnX;
     private int coordenadaEnY;
     private String telefono;
-    private  String correo;
+    private String correo;
     private ArrayList<Brigada> brigadas;
 
     public Cuartel(int codigoCuartel, String nombreDeCuartel, String direccion, int coordenadaEnX, int coordenadaEnY, String telefono, String correo, ArrayList<Brigada> brigadas) {
@@ -105,10 +104,18 @@ public class Cuartel {
         this.brigadas = brigadas;
     }
 
+    public double distanciaAlSiniestro(Siniestro siniestro) {
+        
+        //usamos el teorema de pitagoras para sacar la distancias entre dos puntos en el plano
+        double distancia = Math.sqrt(Math.pow(siniestro.getCoord_x() - coordenadaEnX, 2) + Math.pow(siniestro.getCoord_Y() - coordenadaEnY, 2));
+
+        return distancia;
+
+    }
+
     @Override
     public String toString() {
-        return "Cuartel"+ "codigoCuartel=" + codigoCuartel + ", nombreDeCuartel=" + nombreDeCuartel + '}';
+        return "Cuartel" + "codigoCuartel=" + codigoCuartel + ", nombreDeCuartel=" + nombreDeCuartel + '}';
     }
-    
-    
+
 }
