@@ -49,11 +49,12 @@ public class SiniestroData {
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
         }
     }
-     public void modificarSiniestro(Siniestro siniestro) {
-    String sql = "UPDATE siniestro SET tipo=?, fecha_siniestro=?, coord_X=?, coord_Y=?, detalle=?, fecha_resol=?, puntuacion=?, codBrigada=? WHERE codigo=?";
 
-    try (PreparedStatement ps = con.prepareStatement(sql)) {
-        ps.setString(1, siniestro.getTipo().getDescripcion());
+    public void modificarSiniestro(Siniestro siniestro) {
+        String sql = "UPDATE siniestro SET tipo=?, fecha_siniestro=?, coord_X=?, coord_Y=?, detalle=?, fecha_resol=?, puntuacion=?, codBrigada=? WHERE codigo=?";
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, siniestro.getTipo().getDescripcion());
             ps.setDate(2, Date.valueOf(siniestro.getFecha_siniestro()));
             ps.setInt(3, siniestro.getCoord_x());
             ps.setInt(4, siniestro.getCoord_Y());
@@ -62,16 +63,35 @@ public class SiniestroData {
             ps.setInt(7, siniestro.getPuntuacion());
             ps.setInt(8, siniestro.getCodBrigada());
 
-        int exito = ps.executeUpdate();
+            int exito = ps.executeUpdate();
 
-        if (exito > 0) {
-            JOptionPane.showMessageDialog(null, "Siniestro modificado correctamente");
-        } else {
-            JOptionPane.showMessageDialog(null, "No se pudo modificar el siniestro");
+            if (exito > 0) {
+                JOptionPane.showMessageDialog(null, "Siniestro modificado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo modificar el siniestro");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
         }
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
     }
-}
+
+    public void eliminarSiniestro(int codigoSiniestro) {
+
+        String sql = "DELETE FROM siniestro WHERE codigo= ? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, codigoSiniestro);
+
+            int exito = ps.executeUpdate();
+
+            if (exito > 0) {
+
+                JOptionPane.showMessageDialog(null, " Siniestro borrado");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error! " + ex.getMessage());
+        }
+    }
 
 }
