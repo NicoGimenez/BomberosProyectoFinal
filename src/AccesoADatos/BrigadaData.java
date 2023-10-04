@@ -49,9 +49,9 @@ public class BrigadaData {
         }
         return brigadas;
     }
-      
+
     public void agregarBrigada(Brigada brigada) {
-         try {
+        try {
             /*
            // Agregué una restricción para que especialidad y nro_cuartel en la base de datos sean únicos -> UC_especialidad_nro_cuartel
             String sqlEspecialidad = "SELECT COUNT(*) AS count from brigada WHERE especialidad = ? AND nro_cuartel = ?"; 
@@ -84,44 +84,42 @@ public class BrigadaData {
                psNombre.close();
                throw new Exception("nombre must be unique");
             }
-            */
-             
-            String sql = "INSERT INTO brigada (nombre_br, especialidad, libre, nro_cuartel ) " +
-                         "VALUES (?, ?, ?, ?)";
-            
+             */
+
+            String sql = "INSERT INTO brigada (nombre_br, especialidad, libre, nro_cuartel ) "
+                    + "VALUES (?, ?, ?, ?)";
+
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, brigada.getNombre_br());
             ps.setString(2, brigada.getEspecialidad());
             ps.setBoolean(3, brigada.isLibre());
             ps.setInt(4, brigada.getCodCuartel());
             ps.executeUpdate();
-      
+
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 brigada.setCodBrigada(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Brigada guardado.");
             }
             ps.close();
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al agregar una brigada." + ex.getMessage());
-        }
-        
-         catch (Exception ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        
+
     }
 
-    public List<Brigada> listBrigadasPorCuartel(int nroCuartel){
+    public List<Brigada> listBrigadasPorCuartel(int nroCuartel) {
         ArrayList<Brigada> brigadas = new ArrayList<>();
 
         try {
             String sql = "SELECT * FROM brigada WHERE nro_cuartel=?";
             PreparedStatement ps = con.prepareStatement(sql);
-            
+
             ps.setInt(1, nroCuartel);
-            
+
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -130,20 +128,33 @@ public class BrigadaData {
                 brigada.setEspecialidad(rs.getString("especialidad"));
                 brigadas.add(brigada);
             }
-            
+
             ps.close();
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. " + ex.getMessage());
         }
         return brigadas;
     }
-    
-}
-     
-    
-    
-    
-    
-    
 
+    public void eliminarBrigada(int codBrigada) {
+
+        try {
+            String sql = "UPDATE cuartel SET activo=0 WHERE codCuartel=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, codBrigada);
+
+            int exito = ps.executeUpdate();
+
+            if (exito > 0) {
+                JOptionPane.showMessageDialog(null, "Brigada eliminado");
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al intentar eliminar cuartel");
+        }
+    }
+
+}
