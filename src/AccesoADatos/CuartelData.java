@@ -59,7 +59,15 @@ public class CuartelData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, codigoCuartel);
-        
+            
+            int exito=ps.executeUpdate();
+           
+            if (exito>0) {
+                JOptionPane.showMessageDialog(null, "Cuartel eliminado con exito");
+                
+            }
+            
+            
         } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, "Error al intentar eliminar cuartel");
         }
