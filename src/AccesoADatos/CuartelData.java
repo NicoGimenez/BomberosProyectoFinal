@@ -53,27 +53,29 @@ public class CuartelData {
         }
 
     }
-    
-    public void eliminarCuartelPorCodifo(int codigoCuartel){
-        String sql="DELETE FROM cuartel WHERE codCuartel=?";
+
+    public void eliminarCuartelPorCodifo(int codigoCuartel) {
+        String sql = "UPDATE cuartel SET activo=0 WHERE codCuartel=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, codigoCuartel);
-            
-            int exito=ps.executeUpdate();
-           
-            if (exito>0) {
+
+            int exito = ps.executeUpdate();
+
+            if (exito > 0) {
+
                 JOptionPane.showMessageDialog(null, "Cuartel eliminado con exito");
-                
+
+            } else {
+
+                JOptionPane.showMessageDialog(null, "No se encontro cuartel con ese codigo");
+
             }
-            
-            
+             ps.close();
         } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null, "Error al intentar eliminar cuartel");
+            JOptionPane.showMessageDialog(null, "Error al intentar eliminar cuartel");
         }
-        
-       
-        
+    
     }
 
     public ArrayList<Brigada> obtenerBrigadasDelCuartel(int nro_cuartel) {
