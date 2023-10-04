@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -22,14 +24,13 @@ public class CuartelData {
         con = Conexion.getConexion();
     }
 
-    
-    public void agregarCuartel(Cuartel cuartel){
-    
-        String sql= "INSERT INTO cuartel( nombre_cuartel, direccion, coord_X, coord_Y, telefono, correo, activo) "
+    public void agregarCuartel(Cuartel cuartel) {
+
+        String sql = "INSERT INTO cuartel( nombre_cuartel, direccion, coord_X, coord_Y, telefono, correo, activo) "
                 + "VALUES (? ,? ,? ,? ,? ,? ,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            
+
             ps.setString(1, cuartel.getNombreDeCuartel());
             ps.setString(2, cuartel.getDireccion());
             ps.setInt(3, cuartel.getCoordenadaEnX());
@@ -37,24 +38,44 @@ public class CuartelData {
             ps.setString(5, cuartel.getTelefono());
             ps.setString(6, cuartel.getCorreo());
             ps.setBoolean(7, cuartel.isActivo());
-            
+
             ps.executeUpdate();
-              ResultSet rs = ps.getGeneratedKeys();
+            ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 cuartel.setCodigoCuartel(rs.getInt("codCuartel"));
-                
+
                 JOptionPane.showMessageDialog(null, "Cuarte generado con exito.");
             }
             ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al agregar Cuartel " + ex.getMessage());
+        }
+
+    }
+    
+    public void eliminarCuartelPorCodifo(int codigoCuartel){
+        String sql="DELETE FROM cuartel WHERE codCuartel=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, codigoCuartel);
+            
+            int exito=ps.executeUpdate();
+           
+            if (exito>0) {
+                JOptionPane.showMessageDialog(null, "Cuartel eliminado con exito");
+                
+            }
             
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al agregar Cuartel "+ex.getMessage());
+             JOptionPane.showMessageDialog(null, "Error al intentar eliminar cuartel");
         }
         
+       
+        
     }
-    
-    
+
     public ArrayList<Brigada> obtenerBrigadasDelCuartel(int nro_cuartel) {
 
         ArrayList<Brigada> brigadas = new ArrayList<>();
