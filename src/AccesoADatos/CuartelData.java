@@ -71,6 +71,12 @@ public class CuartelData {
                 cuartel.setCodigoCuartel(rs.getInt("codCuartel "));
                 cuartel.setCoordenadaEnX(rs.getInt("coord_X"));
                 cuartel.setCoordenadaEnY(rs.getInt("coord_Y"));
+                cuartel.setCorreo(rs.getString("correo"));
+                cuartel.setDireccion(rs.getString("direccion"));
+                cuartel.setNombreDeCuartel(rs.getString("nombre_cuartel"));
+                cuartel.setTelefono(rs.getString("telefono"));
+                
+                cuarteles.add(cuartel);
                 
             }
             
@@ -81,7 +87,7 @@ public class CuartelData {
         }
         
         
-        return null;
+        return cuarteles;
     }
     
     
