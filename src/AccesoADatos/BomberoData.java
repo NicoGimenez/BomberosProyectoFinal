@@ -85,6 +85,7 @@ public class BomberoData {
         return bombero;
     }
 
+    //OK
     public List<Bombero> obtenerTodosLosBomberos() {
         List<Bombero> bomberos = new ArrayList<>();
         try {
@@ -113,6 +114,7 @@ public class BomberoData {
         return bomberos;
     }
 
+    
     public void actualizarBombero(Bombero bombero) {
         try {
             String sql = "UPDATE bombero SET dni = ?, nombre_ape = ?, grupo_sanguineo = ?, "
