@@ -23,6 +23,7 @@ public class BomberoData {
         this.connection = Conexion.getConexion();
     }
 
+    // ok
     public void agregarBombero(Bombero bombero) {
 
         String sql = "INSERT INTO bombero (dni, nombre_ape, grupo_sanguineo, fecha_nac, celular, codBrigada, activo ) "
@@ -50,7 +51,8 @@ public class BomberoData {
             JOptionPane.showMessageDialog(null, "Error al agregar un bombero.");
         }
     }
-
+    
+    //ok
     public Bombero obtenerBomberoPorCodigo(int codigo) {
         Bombero bombero = null;
         try {
