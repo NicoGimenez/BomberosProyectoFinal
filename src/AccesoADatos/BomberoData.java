@@ -26,15 +26,17 @@ public class BomberoData {
     
     public void agregarBombero(Bombero bombero) {
          try {
-            String sql = "INSERT INTO bombero (dni, nombre_ape, grupo_sanguineo, fecha_nac, celular) " +
-                         "VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO bombero (dni, nombre_ape, grupo_sanguineo, fecha_nac, codBrigada, celular) " +
+                         "VALUES (?, ?, ?, ?, ?, ?)";
             
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+           
             ps.setInt(1, bombero.getDni());
             ps.setString(2, bombero.getNombre());
             ps.setString(3, bombero.getGrupo_sanguineo());
             ps.setDate(4, Date.valueOf(bombero.getFechaNac()));
-            ps.setInt(5, bombero.getNro());
+            ps.setInt(5, bombero.getCodigoDeBrigada());
+            ps.setString(6, bombero.getCelular()+"");
             ps.executeUpdate();
             ps.close();
             
@@ -66,7 +68,9 @@ public class BomberoData {
                 bombero.setNombre(rs.getString("nombre_ape"));
                 bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
                 bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
-                bombero.setNro(rs.getInt("celular"));
+                bombero.setCelular(rs.getInt("celular"));
+                bombero.setCodigoDeBrigada(rs.getInt("codBrigada"));
+                
             }else {
                 JOptionPane.showMessageDialog(null, "No existe bombero con ese código. ");
             }
@@ -94,7 +98,8 @@ public class BomberoData {
                 bombero.setNombre(rs.getString("nombre_ape"));
                 bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
                 bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
-                bombero.setNro(rs.getInt("celular"));
+                bombero.setCelular(rs.getInt("celular"));
+                bombero.setCodigoDeBrigada(rs.getInt("codBrigada"));
                 bomberos.add(bombero);
             }
 
@@ -116,7 +121,7 @@ public class BomberoData {
             st.setString(2, bombero.getNombre());
             st.setString(3, bombero.getGrupo_sanguineo());
             st.setDate(4, Date.valueOf(bombero.getFechaNac()));
-            st.setInt(5, bombero.getNro());
+            st.setInt(5, bombero.getCelular());
             st.setInt(6, bombero.getCod_bombero());
             st.executeUpdate();
             st.close();
@@ -146,6 +151,7 @@ public class BomberoData {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. ");
         }
     }
+    
     public List<Bombero> listBomberosPorBrigada (int codBrigada)  {        
         List<Bombero> bomberos = new ArrayList<>();
         try {
@@ -164,7 +170,7 @@ public class BomberoData {
                 bombero.setNombre(rs.getString("nombre_ape"));
                 bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
                 bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
-                bombero.setNro(rs.getInt("celular"));
+                bombero.setCelular(rs.getInt("celular"));
                 bomberos.add(bombero);
             }
 
