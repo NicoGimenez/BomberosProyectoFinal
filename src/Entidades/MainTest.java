@@ -31,11 +31,14 @@ public class MainTest {
          */
          
          //3++++++++++++++++++++++++++++++ listar bomberos
-         /*
+         
          ArrayList<Bombero> bomberos = new  ArrayList<>();
                  bomberos=(ArrayList<Bombero>) bData.obtenerTodosLosBomberos();
          
-         */
+                 for (Bombero bombero1 : bomberos) {
+                     System.out.println(bombero1.toString());
+        }
+         
     }
 
 }
