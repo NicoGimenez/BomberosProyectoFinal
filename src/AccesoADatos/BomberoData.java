@@ -31,11 +31,11 @@ public class BomberoData {
         try {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            ps.setString(1, bombero.getDni() + "");
+            ps.setString(1, bombero.getDni());
             ps.setString(2, bombero.getNombre());
             ps.setString(3, bombero.getGrupo_sanguineo());
             ps.setDate(4, Date.valueOf(bombero.getFechaNac()));
-            ps.setString(5, bombero.getCelular() + "");
+            ps.setString(5, bombero.getCelular());
             ps.setInt(6, bombero.getCodigoDeBrigada());
             ps.setBoolean(7, bombero.isActivo());
             ps.executeUpdate();
@@ -65,11 +65,11 @@ public class BomberoData {
             if (rs.next()) {
                 bombero = new Bombero();
                 bombero.setCod_bombero(rs.getInt("idBombero"));
-                bombero.setDni(rs.getInt("dni"));
+                bombero.setDni(rs.getString("dni"));
                 bombero.setNombre(rs.getString("nombre_ape"));
                 bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
                 bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
-                bombero.setCelular(rs.getInt("celular"));
+                bombero.setCelular(rs.getString("celular"));
                 bombero.setCodigoDeBrigada(rs.getInt("codBrigada"));
 
             } else {
@@ -95,11 +95,11 @@ public class BomberoData {
             while (rs.next()) {
                 Bombero bombero = new Bombero();
                 bombero.setCod_bombero(rs.getInt("idBombero"));
-                bombero.setDni(Integer.parseInt(rs.getString("dni")));
+                bombero.setDni(rs.getString("dni"));
                 bombero.setNombre(rs.getString("nombre_ape"));
                 bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
                 bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
-                bombero.setCelular(Integer.parseInt(rs.getString("celular")));
+                bombero.setCelular(rs.getString("celular"));
                 bombero.setCodigoDeBrigada(rs.getInt("codBrigada"));
                 bomberos.add(bombero);
             }
@@ -118,11 +118,11 @@ public class BomberoData {
             String sql = "UPDATE bombero SET dni = ?, nombre_ape = ?, grupo_sanguineo = ?, "
                     + "fecha_nac = ?, celular = ? WHERE idBombero = ?";
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, bombero.getDni());
+            st.setString(1, bombero.getDni());
             st.setString(2, bombero.getNombre());
             st.setString(3, bombero.getGrupo_sanguineo());
             st.setDate(4, Date.valueOf(bombero.getFechaNac()));
-            st.setInt(5, bombero.getCelular());
+            st.setString(5, bombero.getCelular());
             st.setInt(6, bombero.getCod_bombero());
             st.executeUpdate();
             st.close();
@@ -166,11 +166,11 @@ public class BomberoData {
             while (rs.next()) {
                 Bombero bombero = new Bombero();
                 bombero.setCod_bombero(rs.getInt("idBombero"));
-                bombero.setDni(rs.getInt("dni"));
+                bombero.setDni(rs.getString("dni"));
                 bombero.setNombre(rs.getString("nombre_ape"));
                 bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
                 bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
-                bombero.setCelular(rs.getInt("celular"));
+                bombero.setCelular(rs.getString("celular"));
                 bomberos.add(bombero);
             }
 

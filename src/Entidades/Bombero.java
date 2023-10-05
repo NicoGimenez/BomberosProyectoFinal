@@ -9,19 +9,19 @@ import java.time.LocalDate;
 public class Bombero{
     
     private int cod_bombero;
-    private int dni;
+    private String dni;
     private String nombre;
     private String grupo_sanguineo;
     private LocalDate fechaNac;
     private int codigoDeBrigada;
-    private int celular;
+    private String celular;
     private boolean activo;
     
     
     public Bombero(){    
     }
 
-    public Bombero(int dni, String nombre, String grupo_sanguineo, LocalDate fechaNac, int codigoDeBrigada, int celular, boolean activo) {
+    public Bombero(String dni, String nombre, String grupo_sanguineo, LocalDate fechaNac, int codigoDeBrigada, String celular, boolean activo) {
         this.dni = dni;
         this.nombre = nombre;
         this.grupo_sanguineo = grupo_sanguineo;
@@ -41,11 +41,11 @@ public class Bombero{
         this.cod_bombero = cod_bombero;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -81,11 +81,11 @@ public class Bombero{
         this.codigoDeBrigada = codigoDeBrigada;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
@@ -104,7 +104,7 @@ public class Bombero{
     
 
     
-    public Bombero(int cod_bombero, int dni, String nombre, String grupo_sanguineo, LocalDate fechaNac, int codigoDeBrigada, int celular, boolean activo) {
+    public Bombero(int cod_bombero, String dni, String nombre, String grupo_sanguineo, LocalDate fechaNac, int codigoDeBrigada, String celular, boolean activo) {
         this.cod_bombero = cod_bombero;
         this.dni = dni;
         this.nombre = nombre;
@@ -117,12 +117,12 @@ public class Bombero{
 
     
     
-    public void actualizarDatos(int dni, String nombre, String cod_bombero, LocalDate fechaNac, int nro) {
+    public void actualizarDatos(String dni, String nombre, String cod_bombero, LocalDate fechaNac, String celular) {
     this.dni = dni;
     this.nombre = nombre;
     this.grupo_sanguineo = cod_bombero;
     this.fechaNac = fechaNac;
-    this.celular = nro;
+    this.celular = celular;
 }
 
     public void BajaPorInactividad() {
