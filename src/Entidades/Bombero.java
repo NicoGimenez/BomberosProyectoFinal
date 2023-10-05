@@ -30,6 +30,8 @@ public class Bombero{
         this.celular = celular;
         this.activo = activo;
     }
+    
+    
 
     public int getCod_bombero() {
         return cod_bombero;
