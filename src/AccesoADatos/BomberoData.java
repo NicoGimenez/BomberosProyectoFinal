@@ -38,8 +38,7 @@ public class BomberoData {
             ps.setInt(6, bombero.getCodigoDeBrigada());
             ps.setBoolean(7, bombero.isActivo());
             ps.executeUpdate();
-            ps.close();
-
+         
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 bombero.setCod_bombero(rs.getInt(1));
