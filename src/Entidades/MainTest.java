@@ -13,6 +13,7 @@ public class MainTest {
         
         Bombero bombero = new Bombero(37000000, "Bombita Explo", "A+", LocalDate.of(1990, Month.MARCH, 23),21    ,01114565, true);
         
+        //1 ++++++++++++++++++++++++++++++ Agregar Bombero (_No funciona)
         
         /*System.out.println(bombero.toString());
         // se Agrega el bombero a la base de datos.
@@ -21,11 +22,13 @@ public class MainTest {
         bData.agregarBombero(bombero);
         */
         
+        //2++++++++++++++++++++++++++++++Buscar Bombero por ID (Funciona)
+        /*
         Bombero bombero2= new Bombero();
         
         bombero2= bData.obtenerBomberoPorCodigo(1);
-        JOptionPane.showMessageDialog(null, args);
-
+        JOptionPane.showMessageDialog(null, bombero2.toString());
+         */
     }
 
 }

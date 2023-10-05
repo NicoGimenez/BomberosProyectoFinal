@@ -1,4 +1,3 @@
-
 package AccesoADatos;
 
 /**
@@ -17,48 +16,48 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class BomberoData {
+
     private Connection connection;
 
     public BomberoData() {
         this.connection = Conexion.getConexion();
     }
 
-    
     public void agregarBombero(Bombero bombero) {
-         try {
-            String sql = "INSERT INTO bombero (dni, nombre_ape, grupo_sanguineo, fecha_nac, codBrigada, celular) " +
-                         "VALUES (?, ?, ?, ?, ?, ?)";
-            
+
+        String sql = "INSERT INTO bombero (dni, nombre_ape, grupo_sanguineo, fecha_nac, codBrigada, celular) "
+                + "VALUES (?, ?, ?, ?, ?, ?)";
+        try {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-           
-            ps.setString(1, bombero.getDni()+"");
+
+            ps.setString(1, bombero.getDni() + "");
             ps.setString(2, bombero.getNombre());
             ps.setString(3, bombero.getGrupo_sanguineo());
             ps.setDate(4, Date.valueOf(bombero.getFechaNac()));
             ps.setInt(5, bombero.getCodigoDeBrigada());
-            ps.setString(6, bombero.getCelular()+"");
+            ps.setString(6, bombero.getCelular() + "");
             ps.executeUpdate();
             ps.close();
-            
+
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 bombero.setCod_bombero(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Bombero guardado.");
             }
             ps.close();
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al agregar un bombero.");
         }
     }
 
     public Bombero obtenerBomberoPorCodigo(int codigo) {
-     Bombero bombero = null;
+        Bombero bombero = null;
         try {
             String sql = "SELECT * FROM bombero WHERE idBombero = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, codigo);
-            
+
             ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
@@ -70,22 +69,22 @@ public class BomberoData {
                 bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
                 bombero.setCelular(rs.getInt("celular"));
                 bombero.setCodigoDeBrigada(rs.getInt("codBrigada"));
-                
-            }else {
+
+            } else {
                 JOptionPane.showMessageDialog(null, "No existe bombero con ese código. ");
             }
 
             rs.close();
             st.close();
-            
-          } catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos");
         }
         return bombero;
     }
 
     public List<Bombero> obtenerTodosLosBomberos() {
-     List<Bombero> bomberos = new ArrayList<>();
+        List<Bombero> bomberos = new ArrayList<>();
         try {
             String sql = "SELECT * FROM bombero";
             PreparedStatement st = connection.prepareStatement(sql);
@@ -105,17 +104,17 @@ public class BomberoData {
 
             rs.close();
             st.close();
-            
-       } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. "+ ex.getMessage() );
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. " + ex.getMessage());
         }
         return bomberos;
     }
 
     public void actualizarBombero(Bombero bombero) {
         try {
-            String sql = "UPDATE bombero SET dni = ?, nombre_ape = ?, grupo_sanguineo = ?, " +
-                         "fecha_nac = ?, celular = ? WHERE idBombero = ?";
+            String sql = "UPDATE bombero SET dni = ?, nombre_ape = ?, grupo_sanguineo = ?, "
+                    + "fecha_nac = ?, celular = ? WHERE idBombero = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, bombero.getDni());
             st.setString(2, bombero.getNombre());
@@ -125,8 +124,7 @@ public class BomberoData {
             st.setInt(6, bombero.getCod_bombero());
             st.executeUpdate();
             st.close();
-            
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos");
         }
@@ -138,29 +136,29 @@ public class BomberoData {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, cod_bombero);
             int exito = st.executeUpdate();
-            
+
             if (exito == 1) {
 
-              JOptionPane.showMessageDialog(null, "Bomero eliminado.");
+                JOptionPane.showMessageDialog(null, "Bomero eliminado.");
 
             }
-            
+
             st.close();
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. ");
         }
     }
-    
-    public List<Bombero> listBomberosPorBrigada (int codBrigada)  {        
+
+    public List<Bombero> listBomberosPorBrigada(int codBrigada) {
         List<Bombero> bomberos = new ArrayList<>();
         try {
-            
+
             String sql = "SELECT * FROM bombero WHERE codBrigada=?";
             PreparedStatement st = connection.prepareStatement(sql);
-            
+
             st.setInt(1, codBrigada);
-            
+
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
@@ -175,9 +173,9 @@ public class BomberoData {
             }
 
             st.close();
-            
-       } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. "+ ex.getMessage() );
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. " + ex.getMessage());
         }
         return bomberos;
     }
