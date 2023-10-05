@@ -15,13 +15,13 @@ public class MainTest {
         Bombero bombero = new Bombero(37000000, "Bombita Explo", "A+", LocalDate.of(1990, Month.MARCH, 23),21    ,01114565, true);
         
         //1 ++++++++++++++++++++++++++++++ Agregar Bombero (funciona)
-
+        /*
         // se Agrega el bombero a la base de datos.
 
         bData.agregarBombero(bombero);
         JOptionPane.showMessageDialog(null, bombero.toString());
         
-        
+        */
         //2++++++++++++++++++++++++++++++Buscar Bombero por ID (Funciona)
         /*
         Bombero bombero2= new Bombero();
@@ -35,8 +35,8 @@ public class MainTest {
          ArrayList<Bombero> bomberos = new  ArrayList<>();
                  bomberos=(ArrayList<Bombero>) bData.obtenerTodosLosBomberos();
          
-                 for (Bombero bombero1 : bomberos) {
-                     System.out.println(bombero1.toString());
+                 for (Bombero btest : bomberos) {
+                     System.out.println(btest.toString());
         }
          */
     }
