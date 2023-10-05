@@ -25,8 +25,8 @@ public class BomberoData {
 
     public void agregarBombero(Bombero bombero) {
 
-        String sql = "INSERT INTO bombero (dni, nombre_ape, grupo_sanguineo, fecha_nac, codBrigada, celular) "
-                + "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO bombero (dni, nombre_ape, grupo_sanguineo, fecha_nac, celular, codBrigada, activo ) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -34,8 +34,9 @@ public class BomberoData {
             ps.setString(2, bombero.getNombre());
             ps.setString(3, bombero.getGrupo_sanguineo());
             ps.setDate(4, Date.valueOf(bombero.getFechaNac()));
-            ps.setInt(5, bombero.getCodigoDeBrigada());
-            ps.setString(6, bombero.getCelular() + "");
+            ps.setString(5, bombero.getCelular() + "");
+            ps.setInt(6, bombero.getCodigoDeBrigada());
+            ps.setBoolean(7, bombero.isActivo());
             ps.executeUpdate();
             ps.close();
 
