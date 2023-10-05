@@ -95,11 +95,11 @@ public class BomberoData {
             while (rs.next()) {
                 Bombero bombero = new Bombero();
                 bombero.setCod_bombero(rs.getInt("idBombero"));
-                bombero.setDni(rs.getInt("dni"));
+                bombero.setDni(Integer.parseInt(rs.getString("dni")));
                 bombero.setNombre(rs.getString("nombre_ape"));
                 bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
                 bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
-                bombero.setCelular(rs.getInt("celular"));
+                bombero.setCelular(Integer.parseInt(rs.getString("celular")));
                 bombero.setCodigoDeBrigada(rs.getInt("codBrigada"));
                 bomberos.add(bombero);
             }

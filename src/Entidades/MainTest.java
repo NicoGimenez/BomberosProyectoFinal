@@ -30,15 +30,15 @@ public class MainTest {
         JOptionPane.showMessageDialog(null, bombero2.toString());
          */
          
-         //3++++++++++++++++++++++++++++++ listar bomberos
-         
+         //3++++++++++++++++++++++++++++++ listar bomberos falta.
+         /*
          ArrayList<Bombero> bomberos = new  ArrayList<>();
                  bomberos=(ArrayList<Bombero>) bData.obtenerTodosLosBomberos();
          
                  for (Bombero btest : bomberos) {
                      System.out.println(btest.toString());
         }
-         
+      */   
     }
 
 }
