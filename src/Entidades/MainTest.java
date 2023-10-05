@@ -12,7 +12,7 @@ public class MainTest {
 
         BomberoData bData = new BomberoData();
         
-        Bombero bombero = new Bombero("37000002", "Bombita Explo 2", "A+", LocalDate.of(1990, Month.MARCH, 23),21    ,"01114568", true);
+        Bombero bombero = new Bombero("3703", "Bombita Explo 2", "A+", LocalDate.of(1990, Month.MARCH, 23),28  ,"01114568", true);
         
         //1 ++++++++++++++++++++++++++++++ Agregar Bombero (funciona)
         

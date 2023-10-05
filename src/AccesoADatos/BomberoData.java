@@ -49,10 +49,8 @@ public class BomberoData {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al agregar un bombero. "+ex.getMessage());
-        }catch(Error e){
-             JOptionPane.showMessageDialog(null, "Error al agregar un bombero. "+e.getMessage());
-        }
     }
+ }
     
     //ok
     public Bombero obtenerBomberoPorCodigo(int codigo) {
