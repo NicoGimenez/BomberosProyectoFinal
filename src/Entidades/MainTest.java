@@ -4,6 +4,7 @@ import AccesoADatos.BomberoData;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class MainTest {
@@ -48,6 +49,12 @@ public class MainTest {
      //Bombero bombero = new Bombero();
      //bombero=bData.obtenerBomberoPorCodigo(40);
      //bData.darDeBajaBombero(40);
+    
+    //6********************************listar bomberos 
+    List<Bombero> bomberos = bData.listBomberosPorBrigada(28);
+    System.out.println(bomberos.size());
+    
+    
     }
 
 }
