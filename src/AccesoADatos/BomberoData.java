@@ -31,7 +31,7 @@ public class BomberoData {
             
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
            
-            ps.setInt(1, bombero.getDni());
+            ps.setString(1, bombero.getDni()+"");
             ps.setString(2, bombero.getNombre());
             ps.setString(3, bombero.getGrupo_sanguineo());
             ps.setDate(4, Date.valueOf(bombero.getFechaNac()));

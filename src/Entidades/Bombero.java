@@ -95,6 +95,12 @@ public class Bombero{
         this.activo = activo;
     }
 
+    @Override
+    public String toString() {
+        return "cod_bombero=" + cod_bombero + ", nombre=" + nombre + ", fechaNac=" + fechaNac + ", codigoDeBrigada=" + codigoDeBrigada + ", activo=" + activo + '}';
+    }
+    
+
     
     public Bombero(int cod_bombero, int dni, String nombre, String grupo_sanguineo, LocalDate fechaNac, int codigoDeBrigada, int celular, boolean activo) {
         this.cod_bombero = cod_bombero;
@@ -120,6 +126,7 @@ public class Bombero{
     public void BajaPorInactividad() {
         activo = false;
     }
+    
 }
 
 

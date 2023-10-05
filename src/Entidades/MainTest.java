@@ -10,8 +10,8 @@ public class MainTest {
 
         BomberoData bData = new BomberoData();
         
-        Bombero bombero = new Bombero(37000000, "Bombita Explo", "A+", LocalDate.of(1990, Month.MARCH, 23),1 ,01115664565, true);
-        
+        Bombero bombero = new Bombero(37000000, "Bombita Explo", "A+", LocalDate.of(1990, Month.MARCH, 23),21 ,01114565, true);
+        System.out.println(bombero.toString());
         // se Agrega el bombero a la base de datos.
         bData.agregarBombero(bombero);
         
