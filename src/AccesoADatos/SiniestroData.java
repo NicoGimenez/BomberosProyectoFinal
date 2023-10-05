@@ -52,7 +52,7 @@ public class SiniestroData {
                 JOptionPane.showMessageDialog(null, "No se pudo ingresar el siniestro");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al intentar guardar siniestro: " + ex.getMessage());
         }
     }
 
@@ -77,7 +77,7 @@ public class SiniestroData {
                 JOptionPane.showMessageDialog(null, "No se pudo modificar el siniestro");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al intentar modificar : " + ex.getMessage());
         }
     }
 
@@ -96,7 +96,7 @@ public class SiniestroData {
                 JOptionPane.showMessageDialog(null, " Siniestro borrado");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error! " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, " Error al intentar eliminar sinietro  " + ex.getMessage());
         }
     }
 
@@ -306,6 +306,7 @@ public class SiniestroData {
         }
         return siniestros;
     }
+    
     public void asignarBrigada(){
         
     }
