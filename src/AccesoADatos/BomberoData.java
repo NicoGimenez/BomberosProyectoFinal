@@ -48,7 +48,9 @@ public class BomberoData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al agregar un bombero.");
+            JOptionPane.showMessageDialog(null, "Error al agregar un bombero. "+ex.getMessage());
+        }catch(Error e){
+             JOptionPane.showMessageDialog(null, "Error al agregar un bombero. "+e.getMessage());
         }
     }
     

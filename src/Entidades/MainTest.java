@@ -11,7 +11,7 @@ public class MainTest {
     public static void main(String[] args) {
 
         BomberoData bData = new BomberoData();
-        /*
+        
         Bombero bombero = new Bombero("37000002", "Bombita Explo 2", "A+", LocalDate.of(1990, Month.MARCH, 23),21    ,"01114568", true);
         
         //1 ++++++++++++++++++++++++++++++ Agregar Bombero (funciona)
@@ -20,7 +20,7 @@ public class MainTest {
 
         bData.agregarBombero(bombero);
         JOptionPane.showMessageDialog(null, bombero.toString());
-        */
+        
         
         //2++++++++++++++++++++++++++++++Buscar Bombero por ID (Funciona)
         /*
@@ -40,7 +40,8 @@ public class MainTest {
         }
      */
          
-         // 4 ++++++++++++++++++++++++++++++++++ ACTUALIZAR BOMBERO
+         // 4 ++++++++++++++++++++++++++++++++++ ACTUALIZAR BOMBERO 
+         
     }
 
 }
