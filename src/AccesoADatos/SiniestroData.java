@@ -261,7 +261,7 @@ public class SiniestroData {
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, " No se encontró el siniestro.");
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, " No se encontró el siniestro.");
+            JOptionPane.showMessageDialog(null, " Error!"+ex.getMessage());
         }
         return siniestros;
     }//SELECT * FROM siniestro WHERE fecha_resol IS NOT NULL

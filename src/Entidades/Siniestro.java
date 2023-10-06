@@ -20,6 +20,14 @@ public class Siniestro {
     public Siniestro() {
     }
 
+    public Siniestro(Especialidad tipo, LocalDate fecha_siniestro, int coord_x, int coord_Y, String detalles) {
+        this.tipo = tipo;
+        this.fecha_siniestro = fecha_siniestro;
+        this.coord_x = coord_x;
+        this.coord_Y = coord_Y;
+        this.detalles = detalles;
+    }
+
     public Siniestro(Especialidad tipo, LocalDate fecha_siniestro, int coord_x, int coord_Y, String detalles, LocalDate fecha_resol, int puntuacion, int codBrigada) {
         this.tipo = tipo;
         this.fecha_siniestro = fecha_siniestro;
