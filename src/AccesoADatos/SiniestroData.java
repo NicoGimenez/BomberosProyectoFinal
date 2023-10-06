@@ -24,6 +24,34 @@ public class SiniestroData {
         con = Conexion.getConexion();
 
     }
+    public void altaSiniestro(Siniestro siniestro){
+        String sql = "INSERT INTO siniestro(tipo, fecha_siniestro, coord_X, coord_Y, detalle)"
+                + "VALUES (?, ?, ?, ?, ?)";
+         try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, siniestro.getTipo().getDescripcion());
+            ps.setDate(2, Date.valueOf(siniestro.getFecha_siniestro()));
+            ps.setInt(3, siniestro.getCoord_x());
+            ps.setInt(4, siniestro.getCoord_Y());
+            ps.setString(5, siniestro.getDetalles());
+           
+
+            int exito = ps.executeUpdate();
+
+            if (exito > 0) {
+                ResultSet rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    siniestro.setCodigo(rs.getInt(1));
+                    JOptionPane.showMessageDialog(null, "Siniestro ingresado");
+                }
+                rs.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo ingresar el siniestro");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al intentar guardar siniestro: " + ex.getMessage());
+        }
+
+    }
 
     public void guardarSiniestro(Siniestro siniestro) {
         String sql = "INSERT INTO siniestro(tipo, fecha_siniestro, coord_X, coord_Y, detalle, fecha_resol, puntuacion, codBrigada)"
