@@ -109,12 +109,16 @@ public class MenuInicioView extends javax.swing.JFrame {
 
     private void jMBomberoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBomberoActionPerformed
         BomberoView bombero = new BomberoView();
-           
+     /*      
         jDEscritorio.removeAll();
         jDEscritorio.repaint();      
         bombero.setVisible(true);
         jDEscritorio.add(bombero);
         jDEscritorio.moveToFront(bombero);
+        */
+     bombero.setVisible(true);
+     bombero.moveToFront();
+        
     }//GEN-LAST:event_jMBomberoActionPerformed
 
     /**

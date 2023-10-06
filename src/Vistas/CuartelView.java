@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import Entidades.Cuartel;
 import java.awt.GridBagLayout;
 
 /**
@@ -80,7 +81,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
         jLabel8.setText("CORREO");
 
         jLabel9.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 34)); // NOI18N
-        jLabel9.setText("Cuartel");
+        jLabel9.setText("CUARTEL");
 
         jTCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,9 +138,6 @@ public class CuartelView extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(244, 244, 244)
-                        .addComponent(jLabel9))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -163,28 +161,30 @@ public class CuartelView extends javax.swing.JInternalFrame {
                                             .addComponent(jLabel8)
                                             .addGap(32, 32, 32)))
                                     .addGap(89, 89, 89)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTNombreCuartel)
-                                        .addComponent(jTDireccionCuartel)
-                                        .addComponent(jTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(2, 2, 2)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jTTelefonoCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jTCoordEnX, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                                                        .addComponent(jLabel6)
-                                                        .addGap(34, 34, 34)
-                                                        .addComponent(jTCoordEnY, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(jTCorreoCuartel, javax.swing.GroupLayout.Alignment.LEADING)))))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(jBagregar))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel9)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTNombreCuartel)
+                                            .addComponent(jTDireccionCuartel)
+                                            .addComponent(jTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(2, 2, 2)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jTTelefonoCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addComponent(jTCoordEnX, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                                            .addComponent(jLabel6)
+                                                            .addGap(34, 34, 34)
+                                                            .addComponent(jTCoordEnY, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(jTCorreoCuartel, javax.swing.GroupLayout.Alignment.LEADING))))))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(189, 189, 189)
-                        .addComponent(jBlimpiarCampo)))
+                        .addComponent(jBlimpiarCampo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(225, 225, 225)
+                        .addComponent(jBagregar)))
                 .addContainerGap(39, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -246,27 +246,27 @@ public class CuartelView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCodigoActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_jTCodigoActionPerformed
 
     private void jTDireccionCuartelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTDireccionCuartelActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTDireccionCuartelActionPerformed
 
     private void jTCoordEnXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCoordEnXActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jTCoordEnXActionPerformed
 
     private void jBagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBagregarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jBagregarActionPerformed
 
     private void jBlimpiarCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlimpiarCampoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jBlimpiarCampoActionPerformed
 
     private void jBModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jBModificar1ActionPerformed
 
 
@@ -294,4 +294,6 @@ public class CuartelView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTNombreCuartel;
     private javax.swing.JTextField jTTelefonoCuartel;
     // End of variables declaration//GEN-END:variables
+
+   // public Cuartel 
 }
