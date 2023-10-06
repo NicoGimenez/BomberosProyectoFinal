@@ -334,8 +334,4 @@ public class SiniestroData {
         }
         return siniestros;
     }
-    
-    public void asignarBrigada(){
-        
-    }
 }
