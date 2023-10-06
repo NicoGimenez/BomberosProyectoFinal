@@ -295,5 +295,17 @@ public class CuartelView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTTelefonoCuartel;
     // End of variables declaration//GEN-END:variables
 
-   // public Cuartel 
+   public Cuartel crearCuartel(){
+       
+       Cuartel cuartel = new Cuartel();
+       
+      
+       return cuartel;
+   }
+   
+   public void limpiarCampor(){
+       
+       jTCodigo.setText("");
+       
+   }
 }
