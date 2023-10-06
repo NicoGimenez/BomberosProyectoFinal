@@ -25,54 +25,56 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
+                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTCoordEnX" min="-2" pref="32" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTCoordEnY" min="-2" pref="42" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
+                              <Component id="jRBActivo" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jBnuevo" min="-2" pref="139" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jBModificar1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTNombreCuartel" max="32767" attributes="0"/>
-                                  <Component id="jTDireccionCuartel" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jTCodigo" min="-2" pref="153" max="-2" attributes="0"/>
-                                      <EmptySpace pref="93" max="32767" attributes="0"/>
-                                      <Component id="jBBuscar" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jRBActivo" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jTTelefonoCuartel" pref="315" max="32767" attributes="0"/>
-                                              <Component id="jTCorreoCuartel" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jTNombreCuartel" max="32767" attributes="0"/>
+                                      <Component id="jTDireccionCuartel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTCodigo" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="jTTelefonoCuartel" min="-2" pref="315" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jTCoordEnX" min="-2" pref="32" max="-2" attributes="0"/>
+                                                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                                      <Component id="jTCoordEnY" min="-2" pref="42" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="jTCorreoCuartel" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -81,11 +83,22 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
-                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="225" max="-2" attributes="0"/>
+                      <Component id="jBagregar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
+                      <Component id="jBlimpiarCampo" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="63" max="32767" attributes="0"/>
+              <EmptySpace pref="39" max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="461" max="32767" attributes="0"/>
+                  <Component id="jBBuscar1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -94,15 +107,14 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="jTCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="jTNombreCuartel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -117,22 +129,37 @@
                   <Component id="jTCoordEnY" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTCoordEnX" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTTelefonoCuartel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTCorreoCuartel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jRBActivo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="109" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jBagregar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBnuevo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBModificar1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jBlimpiarCampo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                  <Component id="jBBuscar1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="402" max="32767" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -143,7 +170,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Franklin Gothic Medium" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Codigo:"/>
+        <Property name="text" type="java.lang.String" value="CODIGO:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -151,7 +178,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Franklin Gothic Medium" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Activo:"/>
+        <Property name="text" type="java.lang.String" value="ACTIVO:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -159,7 +186,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Franklin Gothic Medium" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nombre:"/>
+        <Property name="text" type="java.lang.String" value="NOMBRE"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -167,7 +194,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Franklin Gothic Medium" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Direccion:"/>
+        <Property name="text" type="java.lang.String" value="DIRECCION"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
@@ -175,7 +202,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Franklin Gothic Medium" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Coordenada en X:"/>
+        <Property name="text" type="java.lang.String" value="COORDENADA X"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
@@ -183,7 +210,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Franklin Gothic Medium" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Coordenada en Y:"/>
+        <Property name="text" type="java.lang.String" value="COORDENADA Y"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
@@ -191,7 +218,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Franklin Gothic Medium" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Telefono:"/>
+        <Property name="text" type="java.lang.String" value="TELEFONO"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
@@ -199,7 +226,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Franklin Gothic Medium" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Correo:"/>
+        <Property name="text" type="java.lang.String" value="CORREO"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
@@ -229,13 +256,60 @@
     <Component class="javax.swing.JTextField" name="jTCoordEnY">
     </Component>
     <Component class="javax.swing.JTextField" name="jTCoordEnX">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCoordEnXActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRBActivo">
     </Component>
-    <Component class="javax.swing.JButton" name="jBBuscar">
+    <Component class="javax.swing.JButton" name="jBagregar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Franklin Gothic Medium" size="24" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="AGREGAR"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBagregarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jBBuscar1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Franklin Gothic Medium" size="24" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jBnuevo">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Franklin Gothic Medium" size="24" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="NUEVO"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jBlimpiarCampo">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Franklin Gothic Medium" size="24" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="LIMPIAR CAMPOS"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBlimpiarCampoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jBModificar1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Franklin Gothic Medium" size="24" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="MODIFICAR"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBModificar1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
