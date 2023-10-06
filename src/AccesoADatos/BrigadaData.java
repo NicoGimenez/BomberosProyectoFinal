@@ -66,8 +66,8 @@ public class BrigadaData {
             while (rs.next()) {
 
                 Brigada brigada = new Brigada();
-                brigada.setCodBrigada(rs.getInt("codBrigada"));
-                brigada.setEspecialidad(rs.getString("especialidad"));
+                
+                brigada= buscarBrigadaPorCodigo(rs.getInt("codBrigada"));
                 brigadas.add(brigada);
 
             }
