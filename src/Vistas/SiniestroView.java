@@ -35,6 +35,8 @@ public class SiniestroView extends javax.swing.JInternalFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
 
+        setClosable(true);
+
         jButton1.setText("INCENDIOS");
 
         jButton2.setText("RESCATE TRAFICO");
