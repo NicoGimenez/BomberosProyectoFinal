@@ -6,6 +6,7 @@
 package AccesoADatos;
 
 import Entidades.Brigada;
+import Entidades.Especialidad;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,6 +45,31 @@ public class BrigadaData {
                 Brigada brigada = new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
                 brigada.setEspecialidad(rs.getString("especialidad"));
+                brigadas.add(brigada);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. " + ex.getMessage());
+        }
+        return brigadas;
+    }
+
+    public List<Brigada> listarBrigadasLibresPorEspecialidad(Especialidad espc) {
+
+        ArrayList<Brigada> brigadas = new ArrayList<>();
+
+        try {
+            String sql = "SELECT  * FROM brigada WHERE  libre=1 AND especialidad=? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Brigada brigada = new Brigada();
+                brigada.setCodBrigada(rs.getInt("codBrigada"));
+                brigada.setEspecialidad(rs.getString("especialidad"));
+                brigadas.add(brigada);
+
             }
             ps.close();
         } catch (SQLException ex) {
@@ -156,8 +184,38 @@ public class BrigadaData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al intentar eliminar cuartel"+ex);
+            JOptionPane.showMessageDialog(null, "Error al intentar eliminar cuartel" + ex);
         }
     }
 
+    public Brigada buscarBrigadaPorCodigo(int codBrigada) {
+        Brigada brigada = new Brigada();
+        String sql = "SELECT codBrigada, nombre_br, especialidad, libre, nro_cuartel FROM brigada WHERE codBrigada=?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, codBrigada);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                brigada.setCodBrigada(rs.getInt("codBrigada"));
+                brigada.setNombre_br(rs.getString("nombre_br"));
+                brigada.setEspecialidad(rs.getString("especialidad"));
+                brigada.setLibre(rs.getBoolean("libre"));
+                brigada.setCodCuartel(rs.getInt("nro_cuartel"));
+
+            }else{
+                
+                 JOptionPane.showMessageDialog(null, "No existe brigada con ese codigo");
+                
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al buscar brigada por codigo: " + ex.getMessage());
+        }
+        return  brigada;
+        
+        
+    }
 }

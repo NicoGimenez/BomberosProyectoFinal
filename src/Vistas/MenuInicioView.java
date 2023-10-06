@@ -27,7 +27,41 @@ public class MenuInicioView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMBombero = new javax.swing.JMenuItem();
+        jMBrigada = new javax.swing.JMenuItem();
+        jMCuartel = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMConsultaSiniestros = new javax.swing.JMenu();
+        jMModificacionDeSiniestro = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenu1.setText("Administracion");
+
+        jMBombero.setText("Bombero");
+        jMenu1.add(jMBombero);
+
+        jMBrigada.setText("Brigada");
+        jMenu1.add(jMBrigada);
+
+        jMCuartel.setText("Cuartel");
+        jMenu1.add(jMCuartel);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Siniestro");
+
+        jMConsultaSiniestros.setText("Consulta Siniestros");
+        jMenu2.add(jMConsultaSiniestros);
+
+        jMModificacionDeSiniestro.setText("Modificar Siniestro");
+        jMenu2.add(jMModificacionDeSiniestro);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -37,7 +71,7 @@ public class MenuInicioView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 277, Short.MAX_VALUE)
         );
 
         pack();
@@ -79,5 +113,13 @@ public class MenuInicioView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jMBombero;
+    private javax.swing.JMenuItem jMBrigada;
+    private javax.swing.JMenu jMConsultaSiniestros;
+    private javax.swing.JMenu jMCuartel;
+    private javax.swing.JMenuItem jMModificacionDeSiniestro;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
