@@ -44,6 +44,11 @@ public class MenuInicioView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jBSiniestro.setText("Nuevo Siniestro");
+        jBSiniestro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSiniestroActionPerformed(evt);
+            }
+        });
 
         jDEscritorio.setLayer(jBSiniestro, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -115,6 +120,11 @@ public class MenuInicioView extends javax.swing.JFrame {
 
         mostrarVentanaNueva(bombero);
     }//GEN-LAST:event_jMBomberoActionPerformed
+
+    private void jBSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSiniestroActionPerformed
+      NuevoSiniestro ns = new NuevoSiniestro();
+        mostrarVentanaNueva(ns);
+    }//GEN-LAST:event_jBSiniestroActionPerformed
 
     /**
      * @param args the command line arguments
