@@ -315,7 +315,11 @@ public class CuartelView extends javax.swing.JInternalFrame {
        */
        //cuartel.setCodigoCuartel(Integer.parseInt(jTCodigo.getText()));
        cuartel.setNombreDeCuartel(jTNombreCuartel.getText());
-       cuartel.setDireccion();
+       cuartel.setDireccion(jTDireccionCuartel.getText());
+       cuartel.setCoordenadaEnX((Integer.parseInt(jTCoordEnX.getText())));
+       cuartel.setCoordenadaEnY((Integer.parseInt(jTCoordEnY.getText())));
+       cuartel.setTelefono(jTTelefonoCuartel.getText());
+       cuartel.setCorreo(jTCorreoCuartel.getText());
        
        
       
