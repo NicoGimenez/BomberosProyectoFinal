@@ -23,7 +23,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2147483648" pref="-2147483648" max="-2" attributes="0"/>
+              <EmptySpace min="-2147483648" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -42,12 +42,10 @@
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel12" min="-2" pref="114" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel13" min="-2" pref="130" max="-2" attributes="0"/>
-                                      <Component id="jLabel11" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel13" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                                  <Component id="jLabel11" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                                  <Component id="jLabel12" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
@@ -57,19 +55,19 @@
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jTCodigo1" min="-2" pref="82" max="-2" attributes="0"/>
+                                      <Component id="jTid" min="-2" pref="82" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="jBBuscar" min="-2" pref="111" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jTCodigo2" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
+                                  <Component id="jTnom" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jTCodigo6" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
-                          <Component id="jTCodigo3" min="-2" pref="235" max="-2" attributes="0"/>
-                          <Component id="jTCodigo5" min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="jTCodigo7" min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="jTCodigo4" min="-2" pref="190" max="-2" attributes="0"/>
-                          <Component id="jTCodigo" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
+                          <Component id="jTfecha" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
+                          <Component id="jTtelefono" min="-2" pref="235" max="-2" attributes="0"/>
+                          <Component id="jTsanguineo" min="-2" pref="80" max="-2" attributes="0"/>
+                          <Component id="jTcodBrigada" min="-2" pref="80" max="-2" attributes="0"/>
+                          <Component id="jTdni" min="-2" pref="190" max="-2" attributes="0"/>
+                          <Component id="jTape" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -112,7 +110,7 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTCodigo1" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                  <Component id="jTid" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                   <Component id="jBBuscar" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="jLabel14" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
@@ -121,20 +119,20 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jTCodigo5" alignment="1" min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="jTsanguineo" alignment="1" min="-2" pref="43" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel8" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Component id="jTCodigo2" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="jTnom" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTCodigo" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="jTape" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                                   <Component id="jLabel4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTCodigo4" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="jTdni" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -160,15 +158,15 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                              <Component id="jTCodigo6" min="-2" pref="43" max="-2" attributes="0"/>
+                              <Component id="jTfecha" min="-2" pref="43" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="26" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel13" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="jTCodigo3" alignment="1" min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="jTtelefono" alignment="1" min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
@@ -176,15 +174,19 @@
                       <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jTCodigo7" min="-2" pref="43" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="jTcodBrigada" min="-2" pref="43" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="jLabel11" min="-2" pref="28" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBNuevo" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
                   <Component id="jBModif" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
@@ -213,9 +215,9 @@
         <Property name="text" type="java.lang.String" value="BOMBERO"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTCodigo">
+    <Component class="javax.swing.JTextField" name="jTape">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCodigoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTapeActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -251,14 +253,14 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTCodigo1">
+    <Component class="javax.swing.JTextField" name="jTid">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCodigo1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTidActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTCodigo2">
+    <Component class="javax.swing.JTextField" name="jTnom">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCodigo2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTnomActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
@@ -327,9 +329,9 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTCodigo3">
+    <Component class="javax.swing.JTextField" name="jTtelefono">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCodigo3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTtelefonoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
@@ -354,24 +356,24 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTCodigo4">
+    <Component class="javax.swing.JTextField" name="jTdni">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCodigo4ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTdniActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTCodigo5">
+    <Component class="javax.swing.JTextField" name="jTsanguineo">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCodigo5ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTsanguineoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTCodigo6">
+    <Component class="javax.swing.JTextField" name="jTfecha">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCodigo6ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTfechaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTCodigo7">
+    <Component class="javax.swing.JTextField" name="jTcodBrigada">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCodigo7ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTcodBrigadaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBNuevo">
