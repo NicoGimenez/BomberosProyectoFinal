@@ -19,9 +19,8 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
       private ArrayList<Especialidad> especialidades = new ArrayList<>();
     public NuevoSiniestro() {
         initComponents();
-        
-        JCSiniestro.setSelectedIndex(0);
         JCSiniestro.addItem("-seleccione-");
+        JCSiniestro.setSelectedIndex(0);
       cargarEspecialidadesComboBox();
     }
 
@@ -251,8 +250,8 @@ private void cargarEspecialidadesComboBox() {
    Especialidad[] especialidadesArray = Especialidad.values();
     
     for (Especialidad especialidad : especialidadesArray) {
-        String especialidadString = especialidad.toString(); // Convierte el Enum en una cadena
-        JCSiniestro.addItem(especialidadString); // Agrega la cadena al ComboBox
+        String especialidadString = especialidad.toString();
+        JCSiniestro.addItem(especialidadString); 
     }
 }
 private void vaciarTextField(JTextField textField) {
