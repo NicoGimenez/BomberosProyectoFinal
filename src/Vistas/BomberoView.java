@@ -5,6 +5,11 @@
  */
 package Vistas;
 
+import Entidades.Bombero;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Lucas E. Sayago
@@ -46,7 +51,6 @@ public class BomberoView extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         jTdni = new javax.swing.JTextField();
         jTsanguineo = new javax.swing.JTextField();
-        jTfecha = new javax.swing.JTextField();
         jTcodBrigada = new javax.swing.JTextField();
         jBNuevo = new javax.swing.JButton();
         jBLista = new javax.swing.JButton();
@@ -54,7 +58,8 @@ public class BomberoView extends javax.swing.JInternalFrame {
         jBElim = new javax.swing.JButton();
         jBLimpiar = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jRBActivo = new javax.swing.JRadioButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
 
@@ -144,12 +149,6 @@ public class BomberoView extends javax.swing.JInternalFrame {
             }
         });
 
-        jTfecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTfechaActionPerformed(evt);
-            }
-        });
-
         jTcodBrigada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTcodBrigadaActionPerformed(evt);
@@ -159,6 +158,11 @@ public class BomberoView extends javax.swing.JInternalFrame {
         jBNuevo.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 28)); // NOI18N
         jBNuevo.setText("NUEVO");
         jBNuevo.setPreferredSize(new java.awt.Dimension(150, 70));
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNuevoActionPerformed(evt);
+            }
+        });
 
         jBLista.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 28)); // NOI18N
         jBLista.setText("LISTA");
@@ -180,8 +184,8 @@ public class BomberoView extends javax.swing.JInternalFrame {
         jLabel14.setText("ESTADO:");
         jLabel14.setPreferredSize(new java.awt.Dimension(40, 28));
 
-        jRadioButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
-        jRadioButton1.setText("ACTIVO");
+        jRBActivo.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        jRBActivo.setText("ACTIVO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,7 +223,6 @@ public class BomberoView extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jTnom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jTfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTsanguineo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTcodBrigada, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,12 +230,13 @@ public class BomberoView extends javax.swing.JInternalFrame {
                             .addComponent(jTape, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(147, 147, 147)
-                                .addComponent(jLabel1)))
+                                .addComponent(jLabel1))
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton1)
+                                    .addComponent(jRBActivo)
                                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(35, 35, 35))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -244,9 +248,9 @@ public class BomberoView extends javax.swing.JInternalFrame {
                         .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
                         .addComponent(jBModif, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(26, 26, 26)
                         .addComponent(jBElim, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jBLista, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -283,23 +287,23 @@ public class BomberoView extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jRBActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jTfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTtelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTtelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(6, 6, 6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -349,13 +353,32 @@ public class BomberoView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTsanguineoActionPerformed
 
-    private void jTfechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTfechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTfechaActionPerformed
-
     private void jTcodBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTcodBrigadaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTcodBrigadaActionPerformed
+
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+             try {
+            int codBombero = Integer.parseInt(jTid.getText());
+            String nom = jTnom.getText();
+            String ape = jTape.getText();
+            String dni = jTdni.getText();
+            String sanguineo = jTsanguineo.getText();
+            boolean estado = jRBActivo.isSelected();
+            LocalDate fdn = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+            Bombero bomb = new Bombero(codBombero, nom, ape, dni, sanguineo, fdn, estado);
+            BomberoData.agregarBombero(bomb);
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "El bombero no se agregó.  " + ex.getMessage());
+        }
+
+
+
+
+        
+    }//GEN-LAST:event_jBNuevoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -365,6 +388,7 @@ public class BomberoView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBLista;
     private javax.swing.JButton jBModif;
     private javax.swing.JButton jBNuevo;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -378,11 +402,10 @@ public class BomberoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRBActivo;
     private javax.swing.JTextField jTape;
     private javax.swing.JTextField jTcodBrigada;
     private javax.swing.JTextField jTdni;
-    private javax.swing.JTextField jTfecha;
     private javax.swing.JTextField jTid;
     private javax.swing.JTextField jTnom;
     private javax.swing.JTextField jTsanguineo;
