@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import AccesoADatos.BomberoData;
 import Entidades.Bombero;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class BomberoView extends javax.swing.JInternalFrame {
 
+    private BomberoData bdata;
     /**
      * Creates new form BomberoView
      */
@@ -367,8 +369,11 @@ public class BomberoView extends javax.swing.JInternalFrame {
             boolean estado = jRBActivo.isSelected();
             LocalDate fdn = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-            Bombero bomb = new Bombero(codBombero, nom, ape, dni, sanguineo, fdn, estado);
-            BomberoData.agregarBombero(bomb);
+           // Bombero bomb = new Bombero(codBombero, nom, ape, dni, sanguineo, fdn, estado);
+            Bombero bomb = new Bombero(dni, nom, sanguineo, fdn, codBombero, title, estado)
+          
+                    
+                    bdata.agregarBombero(bomb);
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "El bombero no se agregó.  " + ex.getMessage());
