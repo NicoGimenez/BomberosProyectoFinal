@@ -47,33 +47,50 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="JCSiniestro" min="-2" pref="167" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" alignment="0" min="-2" pref="417" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="234" max="-2" attributes="0"/>
+                          <EmptySpace min="72" pref="242" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="JCSiniestro" min="-2" pref="167" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jBNuevo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                      <Component id="jBGuardar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jBGuardar1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jScrollPane1" alignment="0" min="-2" pref="417" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="59" max="32767" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jTextField1" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField2" min="-2" pref="167" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="206" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jTextField2" min="-2" pref="167" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jBNuevo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                          <Component id="jBGuardar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jBGuardar1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel1" min="-2" pref="234" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
-                  <EmptySpace min="0" pref="59" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -83,28 +100,31 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="28" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="JCSiniestro" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="JCSiniestro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel3" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jDateChooser1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" pref="28" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jBNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jBGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jBGuardar1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="75" max="32767" attributes="0"/>
+                  <EmptySpace pref="119" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -142,6 +162,10 @@
             <Property name="text" type="java.lang.String" value="Coordenadas x"/>
             <Property name="toolTipText" type="java.lang.String" value="Coordenadas x"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField1FocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField1FocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -160,6 +184,8 @@
             <Property name="toolTipText" type="java.lang.String" value="Coordenadas Y"/>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField2FocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField2FocusLost"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
           </Events>
         </Component>
@@ -210,6 +236,14 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Franklin Gothic Medium Cond" size="24" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Tipo"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
