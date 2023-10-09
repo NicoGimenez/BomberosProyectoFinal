@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -68,11 +70,36 @@ public class CuartelData {
                 JOptionPane.showMessageDialog(null, "No se encontro cuartel con ese codigo");
 
             }
-             ps.close();
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al intentar eliminar cuartel");
         }
-    
+
+    }
+
+    public void modificarCuartelporCodigo(Cuartel cuartel) {
+
+        String sql = "UPDATE cuartel SET nombre_cuartel=? ,direccion=? ,coord_X=? ,coord_Y=? ,telefono=? ,correo=? ,activo=? WHERE codCuartel=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, cuartel.getNombreDeCuartel());
+            ps.setString(2, cuartel.getDireccion());
+            ps.setInt(3, cuartel.getCoordenadaEnX());
+            ps.setInt(4, cuartel.getCoordenadaEnY());
+            ps.setString(5, cuartel.getTelefono());
+            ps.setString(6, cuartel.getCorreo());
+            ps.setBoolean(7, cuartel.isActivo());
+            ps.setInt(8, cuartel.getCodigoCuartel());
+
+            int exito = ps.executeUpdate();
+
+            if (exito > 0) {
+                JOptionPane.showInternalMessageDialog(null, "Eror al intentar modificar Cuartel");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al intentar modificar cuartel");
+        }
     }
 
     public ArrayList<Brigada> obtenerBrigadasDelCuartel(int nro_cuartel) {
