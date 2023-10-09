@@ -6,6 +6,8 @@
 package Vistas;
 
 import Entidades.Especialidad;
+import java.sql.Array;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,12 +15,10 @@ import Entidades.Especialidad;
  */
 public class NuevoSiniestro extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Ingreso
-     */
+      private ArrayList<Especialidad> especialidades = new ArrayList<>();
     public NuevoSiniestro() {
         initComponents();
-     //   Especialidad espescialidad = new Especialidad()
+      cargarEspecialidadesComboBox();
     }
 
     /**
@@ -186,4 +186,15 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
+    
+private void cargarEspecialidadesComboBox() {
+   Especialidad[] especialidadesArray = Especialidad.values();
+    
+    for (Especialidad especialidad : especialidadesArray) {
+        String especialidadString = especialidad.toString(); // Convierte el Enum en una cadena
+        JCSiniestro.addItem(especialidadString); // Agrega la cadena al ComboBox
+    }
+}
+
 }
