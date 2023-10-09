@@ -5,6 +5,9 @@
  */
 package Vistas;
 
+import javax.swing.JInternalFrame;
+import javax.swing.event.InternalFrameAdapter;
+
 /**
  *
  * @author Lucas E. Sayago
@@ -109,16 +112,8 @@ public class MenuInicioView extends javax.swing.JFrame {
 
     private void jMBomberoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBomberoActionPerformed
         BomberoView bombero = new BomberoView();
-     /*      
-        jDEscritorio.removeAll();
-        jDEscritorio.repaint();      
-        bombero.setVisible(true);
-        jDEscritorio.add(bombero);
-        jDEscritorio.moveToFront(bombero);
-        */
-     bombero.setVisible(true);
-     bombero.moveToFront();
-        
+
+        mostrarVentanaNueva(bombero);
     }//GEN-LAST:event_jMBomberoActionPerformed
 
     /**
@@ -168,4 +163,16 @@ public class MenuInicioView extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
+
+    
+    public void mostrarVentanaNueva(JInternalFrame ventana){
+      
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();      
+        ventana.setVisible(true);
+        jDEscritorio.add(ventana);
+        jDEscritorio.moveToFront(ventana);
+    
+    }
+
 }
