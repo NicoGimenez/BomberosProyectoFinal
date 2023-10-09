@@ -26,53 +26,66 @@
               <EmptySpace min="-2147483648" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel8" min="-2" pref="130" max="-2" attributes="0"/>
-                                  <Component id="jLabel10" min="-2" pref="130" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                                  <Component id="jLabel6" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
-                                  <Component id="jLabel9" min="-2" pref="150" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jLabel13" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
-                                  <Component id="jLabel11" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
-                                  <Component id="jLabel12" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="jBNuevo" min="-2" pref="135" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="jBModif" min="-2" pref="187" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="jBElim" min="-2" pref="170" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jBLista" min="-2" pref="110" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jTid" min="-2" pref="82" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jBBuscar" min="-2" pref="111" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel8" min="-2" pref="130" max="-2" attributes="0"/>
+                                          <Component id="jLabel10" min="-2" pref="130" max="-2" attributes="0"/>
+                                          <Component id="jLabel4" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                                          <Component id="jLabel5" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
+                                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel7" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
+                                          <Component id="jLabel6" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                                          <Component id="jLabel9" min="-2" pref="150" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jTnom" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jLabel13" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                                          <Component id="jLabel11" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                                          <Component id="jLabel12" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jTid" min="-2" pref="82" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="jBBuscar" min="-2" pref="111" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jTnom" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jTtelefono" min="-2" pref="235" max="-2" attributes="0"/>
+                                  <Component id="jTsanguineo" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="jTcodBrigada" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="jTdni" min="-2" pref="190" max="-2" attributes="0"/>
+                                  <Component id="jTape" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
+                                  <Component id="jDateChooser1" alignment="0" min="-2" pref="269" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jTtelefono" min="-2" pref="235" max="-2" attributes="0"/>
-                          <Component id="jTsanguineo" min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="jTcodBrigada" min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="jTdni" min="-2" pref="190" max="-2" attributes="0"/>
-                          <Component id="jTape" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jDateChooser1" alignment="0" min="-2" pref="269" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
@@ -88,17 +101,6 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="jBNuevo" min="-2" pref="135" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="jBModif" min="-2" pref="187" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jBElim" min="-2" pref="170" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jBLista" min="-2" pref="110" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
