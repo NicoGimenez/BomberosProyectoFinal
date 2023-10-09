@@ -5,8 +5,8 @@
  */
 package Vistas;
 
+import AccesoADatos.CuartelData;
 import Entidades.Cuartel;
-import java.awt.GridBagLayout;
 
 /**
  *
@@ -14,10 +14,10 @@ import java.awt.GridBagLayout;
  */
 public class CuartelView extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form CuartelView
-     */
+    private final CuartelData cdata= new CuartelData();
+    
     public CuartelView() {
+        
         initComponents();    
         this.setTitle("Administracion Cuartel");
     }
@@ -114,6 +114,11 @@ public class CuartelView extends javax.swing.JInternalFrame {
 
         jBnuevo.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
         jBnuevo.setText("NUEVO");
+        jBnuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBnuevoActionPerformed(evt);
+            }
+        });
 
         jBlimpiarCampo.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
         jBlimpiarCampo.setText("LIMPIAR CAMPOS");
@@ -263,12 +268,16 @@ public class CuartelView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBagregarActionPerformed
 
     private void jBlimpiarCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlimpiarCampoActionPerformed
-
+      limpiarCampor();
     }//GEN-LAST:event_jBlimpiarCampoActionPerformed
 
     private void jBModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar1ActionPerformed
 
     }//GEN-LAST:event_jBModificar1ActionPerformed
+
+    private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
+       
+    }//GEN-LAST:event_jBnuevoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -296,9 +305,18 @@ public class CuartelView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTTelefonoCuartel;
     // End of variables declaration//GEN-END:variables
 
-   public Cuartel crearCuartel(){
+   public Cuartel crearCuartelSinID(){
        
        Cuartel cuartel = new Cuartel();
+       
+       
+       /*
+       codigo nombre direccion x y telefono correo activo
+       */
+       //cuartel.setCodigoCuartel(Integer.parseInt(jTCodigo.getText()));
+       cuartel.setNombreDeCuartel(jTNombreCuartel.getText());
+       cuartel.setDireccion();
+       
        
       
        return cuartel;
@@ -307,6 +325,14 @@ public class CuartelView extends javax.swing.JInternalFrame {
    public void limpiarCampor(){
        
        jTCodigo.setText("");
+       jTCoordEnX.setText("");
+       jTCoordEnY.setText("");
+       jTCorreoCuartel.setText("");
+       jTDireccionCuartel.setText("");
+       jTNombreCuartel.setText("");
+       jTTelefonoCuartel.setText("");
+       jRBActivo.setSelected(false);
        
    }
+
 }
