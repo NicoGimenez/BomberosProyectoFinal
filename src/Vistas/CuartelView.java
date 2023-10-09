@@ -170,10 +170,10 @@ public class CuartelView extends javax.swing.JInternalFrame {
                                                         .addComponent(jTCoordEnY, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addComponent(jTCorreoCuartel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addComponent(jTCoordEnX, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(41, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBlimpiarCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jBagregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBModificar1)
@@ -289,7 +289,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
     public Cuartel crearCuartel() {
 
         Cuartel cuartel = new Cuartel();
-
+        
         cuartel.setNombreDeCuartel(jTNombreCuartel.getText());
         cuartel.setDireccion(jTDireccionCuartel.getText());
         cuartel.setCoordenadaEnX((Integer.parseInt(jTCoordEnX.getText())));
