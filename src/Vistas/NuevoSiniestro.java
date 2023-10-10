@@ -253,11 +253,15 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
         } else if (jDateChooser1.getDate() == null) {
            JOptionPane.showMessageDialog(this, "Por favor, seleccione una fecha válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
             return;
-        }else if("".equals(jTextArea1.getText()) || "".equals(jTextField2.getText())||"Coordenadas x".equals(jTextArea1.getText()) || "Coordenadas Y".equals(jTextArea1.getText())){
+        }else if("".equals(jTextField1.getText()) || "".equals(jTextField2.getText())||"Coordenadas x".equals(jTextField1.getText()) || "Coordenadas Y".equals(jTextField2.getText())){
              JOptionPane.showMessageDialog(this, "Por favor, ingrese coordenadas válidas.", "Error de selección", JOptionPane.ERROR_MESSAGE);
             return;
         }else{
+            try{
              guardarSiniestro();
+            }catch (Exception ex){
+                JOptionPane.showMessageDialog(this, "Por favor, ingrese coordenadas válidas.", "Error de selección", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
@@ -296,11 +300,7 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
 
     private void guardarSiniestro() {
         String descripcionSeleccionada = (String) JCSiniestro.getSelectedItem();
-//        if ("".equals(descripcionSeleccionada)) {
-//            JOptionPane.showMessageDialog(this, "Por favor, seleccione una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
-//            return;
-//        }
-  
+ 
         Especialidad tipo = null;
         Especialidad[] especialidadesArray = Especialidad.values();
         for (Especialidad especialidad : especialidadesArray) {
@@ -310,8 +310,12 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
             }
         }
         LocalDate fecha_siniestro = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        int coord_x = Integer.parseInt(jTextField1.getText());
-        int coord_Y = Integer.parseInt(jTextField2.getText());
+        int coord_x= 0;
+        int coord_Y=0;
+        
+            coord_x = Integer.parseInt(jTextField1.getText());
+         coord_Y = Integer.parseInt(jTextField2.getText());
+       
         String detalles = jTextArea1.getText();
 
         Siniestro siniestro = new Siniestro(tipo, fecha_siniestro, coord_x, coord_Y, detalles);
