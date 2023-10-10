@@ -17,7 +17,8 @@ import javax.swing.JOptionPane;
  */
 public class BomberoView extends javax.swing.JInternalFrame {
 
-    private BomberoData bdata;
+    private BomberoData bData;
+
     /**
      * Creates new form BomberoView
      */
@@ -340,7 +341,7 @@ public class BomberoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTcodBrigadaActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-             try {
+        try {
             // int codBombero = Integer.parseInt(jTid.getText());   (CREO QUE ES INNECESARIO)
             String nom = jTnom.getText();
             String dni = jTdni.getText();
@@ -349,29 +350,30 @@ public class BomberoView extends javax.swing.JInternalFrame {
             String celular = jTtelefono.getText();
             int codBrigada = Integer.parseInt(jTcodBrigada.getText());
             boolean estado = jRBActivo.isSelected();
-            
-            
+
             Bombero bomb = new Bombero(dni, nom, sanguineo, fdn, codBrigada, celular, estado);
-          
-            bdata.agregarBombero(bomb);
+
+            bData.agregarBombero(bomb);
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "El bombero no se agregó.  " + ex.getMessage());
-        }   
+        }
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        
+
+      
         Bombero bo = new Bombero();
          try {
             if (!"".equals(jTid.getText())) {
-
-                int dni = Integer.parseInt(jTid.getText());
-                bo = bdata.obtenerBomberoPorCodigo(dni);
+                
+                
+                int id = Integer.parseInt(jTid.getText());
+                
+                bo = bData.obtenerBomberoPorCodigo(id);
+                
                 
                 jTnom.setText(bo.getNombre()); 
-                
-                
                 jTdni.setText(bo.getDni()); 
                 jTsanguineo.setText(bo.getGrupo_sanguineo()); 
                 LocalDate fechaNacimiento = bo.getFechaNac();
@@ -383,19 +385,20 @@ public class BomberoView extends javax.swing.JInternalFrame {
                 jTtelefono.setText(bo.getCelular()); 
                 
                 jRBActivo.setSelected(bo.isActivo());
-
+                System.out.println("Id: "+id);
+                System.out.println("bo: "+bo);
             }
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, " El bombero no existe: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, " El bombero no existe. " + ex.getMessage());
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Error, formato incorrecto: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error, formato incorrecto. " + ex.getMessage());
         }
-        
-        
-        
-        
+         
+         
     }//GEN-LAST:event_jBBuscarActionPerformed
 
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
