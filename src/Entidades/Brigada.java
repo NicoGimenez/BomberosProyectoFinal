@@ -88,6 +88,11 @@ public class Brigada {
     public void setCodCuartel(int codCuartel) {
         this.codCuartel = codCuartel;
     }
+
+    @Override
+    public String toString() {
+        return "Brigada{" + "nombre_br=" + nombre_br + ", codBrigada=" + codBrigada + ", especialidad=" + especialidad + ", bomberos=" + bomberos + ", libre=" + libre + ", codCuartel=" + codCuartel + '}';
+    }
     
     
 

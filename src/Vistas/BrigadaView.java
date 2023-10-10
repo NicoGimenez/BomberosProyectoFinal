@@ -5,17 +5,27 @@
  */
 package Vistas;
 
+import AccesoADatos.BrigadaData;
+import Entidades.Brigada;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Lucas E. Sayago
  */
 public class BrigadaView extends javax.swing.JInternalFrame {
+ private DefaultTableModel modelo;
+ private ArrayList<Brigada> brigadas = new ArrayList<>();
+ private final BrigadaData bData = new BrigadaData();
 
-    /**
-     * Creates new form BrigadaView
-     */
+ 
+ 
+ 
     public BrigadaView() {
         initComponents();
+        armarCombox();
     }
 
     /**
@@ -39,6 +49,12 @@ public class BrigadaView extends javax.swing.JInternalFrame {
         jLabel1.setText("Listar Brigadas");
 
         jBadministracionBrigadas.setText("Administacion Brigadas");
+
+        jCBrigadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBrigadasActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -89,6 +105,14 @@ public class BrigadaView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jCBrigadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBrigadasActionPerformed
+        limpiarTabla();
+        Brigada brigadas = (Brigada) jCBrigadas.getSelectedItem();
+        this.brigadas = (ArrayList<Brigada>) bData.listarBrigadasLibres();
+     
+        llenarTabla(this.brigadas);
+    }//GEN-LAST:event_jCBrigadasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBadministracionBrigadas;
@@ -97,4 +121,31 @@ public class BrigadaView extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void llenarTabla(ArrayList<Brigada> brig) {
+        limpiarTabla();
+
+        for (Brigada xbrig : brig) {
+            Object[] rowData = {xbrig.getCodBrigada(),xbrig.getEspecialidad(),xbrig.getNombre_br()};
+            modelo.addRow(rowData);
+
+        }
+
+    }
+
+    private void limpiarTabla() {
+
+        modelo.setRowCount(0);
+    }
+
+    private void armarCombox() {
+
+        ArrayList<Brigada> brigadas =  (ArrayList<Brigada>) bData.listarBrigadasLibres();
+
+        for (Brigada brig : brigadas) {
+            jCBrigadas.addItemListener((ItemListener) brig);
+
+        }
+    }
+
 }
