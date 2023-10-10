@@ -16,13 +16,11 @@ import javax.swing.table.DefaultTableModel;
  * @author Lucas E. Sayago
  */
 public class BrigadaView extends javax.swing.JInternalFrame {
- private DefaultTableModel modelo;
- private ArrayList<Brigada> brigadas = new ArrayList<>();
- private final BrigadaData bData = new BrigadaData();
 
- 
- 
- 
+    private DefaultTableModel modelo;
+    private ArrayList<Brigada> brigadas = new ArrayList<>();
+    private final BrigadaData bData = new BrigadaData();
+
     public BrigadaView() {
         initComponents();
         armarCombox();
@@ -109,7 +107,7 @@ public class BrigadaView extends javax.swing.JInternalFrame {
         limpiarTabla();
         Brigada brigadas = (Brigada) jCBrigadas.getSelectedItem();
         this.brigadas = (ArrayList<Brigada>) bData.listarBrigadasLibres();
-     
+
         llenarTabla(this.brigadas);
     }//GEN-LAST:event_jCBrigadasActionPerformed
 
@@ -126,7 +124,7 @@ public class BrigadaView extends javax.swing.JInternalFrame {
         limpiarTabla();
 
         for (Brigada xbrig : brig) {
-            Object[] rowData = {xbrig.getCodBrigada(),xbrig.getEspecialidad(),xbrig.getNombre_br()};
+            Object[] rowData = {xbrig.getCodBrigada(), xbrig.getEspecialidad(), xbrig.getNombre_br()};
             modelo.addRow(rowData);
 
         }
@@ -140,7 +138,7 @@ public class BrigadaView extends javax.swing.JInternalFrame {
 
     private void armarCombox() {
 
-        ArrayList<Brigada> brigadas =  (ArrayList<Brigada>) bData.listarBrigadasLibres();
+        ArrayList<Brigada> brigadas = (ArrayList<Brigada>) bData.listarBrigadasLibres();
 
         for (Brigada brig : brigadas) {
             jCBrigadas.addItemListener((ItemListener) brig);
