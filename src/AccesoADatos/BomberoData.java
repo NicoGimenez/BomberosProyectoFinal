@@ -53,17 +53,17 @@ public class BomberoData {
  }
     
     //ok
-    public Bombero obtenerBomberoPorCodigo(int codigo) {
-        Bombero bombero = null;
+    public Bombero obtenerBomberoPorCodigo(int cod_bombero) {
+        Bombero bombero = new Bombero();
         try {
-            String sql = "SELECT * FROM bombero WHERE idBombero = ?";
+            String sql = "SELECT nombre_ape, grupo_sanguineo, fecha_nac, celular, codBrigada, activo FROM bombero WHERE idBombero = ?";
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, codigo);
+            st.setInt(1, cod_bombero);
 
             ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
-                bombero = new Bombero();
+              //  bombero = new Bombero();
                 bombero.setCod_bombero(rs.getInt("idBombero"));
                 bombero.setDni(rs.getString("dni"));
                 bombero.setNombre(rs.getString("nombre_ape"));

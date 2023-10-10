@@ -111,6 +111,11 @@ public class CuartelView extends javax.swing.JInternalFrame {
 
         jBBuscar1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
         jBBuscar1.setText("Buscar");
+        jBBuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscar1ActionPerformed(evt);
+            }
+        });
 
         jBlimpiarCampo.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
         jBlimpiarCampo.setText("LIMPIAR CAMPOS");
@@ -259,7 +264,22 @@ public class CuartelView extends javax.swing.JInternalFrame {
 
     private void jBModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar1ActionPerformed
 
+        cdata.modificarCuartelporCodigo(crearCuartel());
     }//GEN-LAST:event_jBModificar1ActionPerformed
+
+    private void jBBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscar1ActionPerformed
+
+      Cuartel cuartel = cdata.buscarCuartelPorCodigo(Integer.parseInt(jTCodigo.getText()));
+      jTCodigo.setText(cuartel.getCodigoCuartel()+"");
+      jTNombreCuartel.setText(cuartel.getNombreDeCuartel());
+      jTDireccionCuartel.setText(cuartel.getDireccion());
+      jTCoordEnX.setText(cuartel.getCoordenadaEnX()+"");
+      jTCoordEnY.setText(cuartel.getCoordenadaEnY()+"");
+      jTTelefonoCuartel.setText(cuartel.getTelefono());
+      jTCorreoCuartel.setText(cuartel.getCorreo());
+      jRBActivo.setSelected(cuartel.isActivo());
+        
+    }//GEN-LAST:event_jBBuscar1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -316,11 +336,11 @@ public class CuartelView extends javax.swing.JInternalFrame {
 
     public boolean validarCampos() {
    
-        if (!jRBActivo.isSelected()) {
+     /*   if (!jRBActivo.isSelected()) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar 'Activo' para el cuartel.");
             return false;
         }
-
+*/
         try {
             int codigo = Integer.parseInt(jTCodigo.getText());
         } catch (NumberFormatException e) {

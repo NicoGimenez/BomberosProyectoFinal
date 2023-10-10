@@ -36,7 +36,7 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMBombero = new javax.swing.JMenuItem();
         jMBrigada = new javax.swing.JMenuItem();
-        jMCuartel = new javax.swing.JMenu();
+        jMCuartel = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMConsultaSiniestros = new javax.swing.JMenu();
         jMModificacionDeSiniestro = new javax.swing.JMenuItem();
@@ -83,6 +83,11 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenu1.add(jMBrigada);
 
         jMCuartel.setText("Cuartel");
+        jMCuartel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMCuartelActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMCuartel);
 
         jMenuBar1.add(jMenu1);
@@ -127,6 +132,11 @@ public class MenuInicioView extends javax.swing.JFrame {
         mostrarVentanaNueva(ns);
     }//GEN-LAST:event_jBSiniestroActionPerformed
 
+    private void jMCuartelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCuartelActionPerformed
+      CuartelView cuartel =new CuartelView();
+        mostrarVentanaNueva(cuartel);
+    }//GEN-LAST:event_jMCuartelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -168,7 +178,7 @@ public class MenuInicioView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMBombero;
     private javax.swing.JMenuItem jMBrigada;
     private javax.swing.JMenu jMConsultaSiniestros;
-    private javax.swing.JMenu jMCuartel;
+    private javax.swing.JMenuItem jMCuartel;
     private javax.swing.JMenuItem jMModificacionDeSiniestro;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

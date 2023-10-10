@@ -22,11 +22,14 @@
                 <Property name="text" type="java.lang.String" value="Brigada"/>
               </Properties>
             </MenuItem>
-            <Menu class="javax.swing.JMenu" name="jMCuartel">
+            <MenuItem class="javax.swing.JMenuItem" name="jMCuartel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cuartel"/>
               </Properties>
-            </Menu>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMCuartelActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
