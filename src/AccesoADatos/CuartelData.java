@@ -94,7 +94,7 @@ public class CuartelData {
             int exito = ps.executeUpdate();
 
             if (exito > 0) {
-                JOptionPane.showInternalMessageDialog(null, "Cuartel modificadol");
+                JOptionPane.showMessageDialog(null, "Cuartel modificadol");
             }
 
         } catch (SQLException ex) {

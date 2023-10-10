@@ -264,7 +264,11 @@ public class CuartelView extends javax.swing.JInternalFrame {
 
     private void jBModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar1ActionPerformed
 
-        cdata.modificarCuartelporCodigo(crearCuartel());
+        Cuartel cuartel = cdata.buscarCuartelPorCodigo(Integer.parseInt(jTCodigo.getText()));
+
+        if (cuartel != null) {
+            cdata.modificarCuartelporCodigo(cuartel);
+        }
     }//GEN-LAST:event_jBModificar1ActionPerformed
 
     private void jBBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscar1ActionPerformed
@@ -279,8 +283,8 @@ public class CuartelView extends javax.swing.JInternalFrame {
             jTTelefonoCuartel.setText(cuartel.getTelefono());
             jTCorreoCuartel.setText(cuartel.getCorreo());
             jRBActivo.setSelected(cuartel.isActivo());
-        }else{
-            JOptionPane.showMessageDialog(null,"Debe llenar los campos.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos.");
         }
 
     }//GEN-LAST:event_jBBuscar1ActionPerformed
