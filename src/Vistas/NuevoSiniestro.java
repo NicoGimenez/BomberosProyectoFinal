@@ -247,14 +247,15 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         String descripcionSeleccionada = (String) JCSiniestro.getSelectedItem();
-        if ("".equals(descripcionSeleccionada)) {
+        if ("".equals(descripcionSeleccionada)||JCSiniestro.getSelectedIndex()<1) {
             JOptionPane.showMessageDialog(this, "Por favor, seleccione una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
             return;
         } else if (jDateChooser1.getDate() == null) {
            JOptionPane.showMessageDialog(this, "Por favor, seleccione una fecha válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
             return;
-        }else if(jTextArea1.getText()=="" || jTextField2.getText()=="")||jTextArea1.getText()==""{
-            
+        }else if("".equals(jTextArea1.getText()) || "".equals(jTextField2.getText())||"Coordenadas x".equals(jTextArea1.getText()) || "Coordenadas Y".equals(jTextArea1.getText())){
+             JOptionPane.showMessageDialog(this, "Por favor, ingrese coordenadas válidas.", "Error de selección", JOptionPane.ERROR_MESSAGE);
+            return;
         }else{
              guardarSiniestro();
         }
@@ -295,11 +296,11 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
 
     private void guardarSiniestro() {
         String descripcionSeleccionada = (String) JCSiniestro.getSelectedItem();
-        if ("".equals(descripcionSeleccionada)) {
-            JOptionPane.showMessageDialog(this, "Por favor, seleccione una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
+//        if ("".equals(descripcionSeleccionada)) {
+//            JOptionPane.showMessageDialog(this, "Por favor, seleccione una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
+//            return;
+//        }
+  
         Especialidad tipo = null;
         Especialidad[] especialidadesArray = Especialidad.values();
         for (Especialidad especialidad : especialidadesArray) {
