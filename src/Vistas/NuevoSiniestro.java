@@ -1,9 +1,14 @@
 package Vistas;
 
+import AccesoADatos.SiniestroData;
 import Entidades.Especialidad;
+import Entidades.Siniestro;
 import java.sql.Array;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -14,6 +19,7 @@ import javax.swing.JTextField;
 public class NuevoSiniestro extends javax.swing.JInternalFrame {
 
     private ArrayList<Especialidad> especialidades = new ArrayList<>();
+    private SiniestroData sd = new SiniestroData();
 
     public NuevoSiniestro() {
         initComponents();
@@ -229,13 +235,13 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
 
     private void jTextArea1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusGained
         vaciarTextArea(jTextArea1);
-    
+
     }//GEN-LAST:event_jTextArea1FocusGained
 
     private void jTextArea1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextArea1FocusLost
-       if("".equals(jTextArea1.getText())){
-           jTextArea1.setText("Describa el siniestro..");
-       }
+        if ("".equals(jTextArea1.getText())) {
+            jTextArea1.setText("Describa el siniestro..");
+        }
     }//GEN-LAST:event_jTextArea1FocusLost
 
 
@@ -267,16 +273,26 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
     private void vaciarTextField(JTextField textField) {
         textField.setText("");
     }
+
     private void vaciarTextArea(JTextArea ta) {
         ta.setText("");
     }
-    private void guardarSiniestro(){
-        
-       String tipo;
-       Date fecha_siniestro;
-       int coord_x;
-       int coord_Y;
-       String detalles;
+
+    private void guardarSiniestro() {
+        try {
+            String tipo = JCSiniestro.getSelectedItem().toString();
+            LocalDate fecha_siniestro = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            int coord_x = Integer.parseInt(jTextField1.getText());
+            int coord_Y = Integer.parseInt(jTextField2.getText());
+            String detalles = jTextArea1.getText();
+
+            Siniestro siniestro = new Siniestro(, fecha_siniestro, coord_x, coord_Y, detalles);
+            sd.altaSiniestro(siniestro);
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "El alumno no se agregó.  " + ex.getMessage());
+        }
+
     }
 
 }
