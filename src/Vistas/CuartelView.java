@@ -315,12 +315,13 @@ public class CuartelView extends javax.swing.JInternalFrame {
     }
 
     public boolean validarCampos() {
-   
+        // Verifica si el radio button está seleccionado
         if (!jRBActivo.isSelected()) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar 'Activo' para el cuartel.");
             return false;
         }
 
+        // Verifica si el campo jTCodigo es un número entero
         try {
             int codigo = Integer.parseInt(jTCodigo.getText());
         } catch (NumberFormatException e) {
@@ -328,6 +329,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
             return false;
         }
 
+        // Verifica si jTCoordEnX es un número entero
         try {
             int coordX = Integer.parseInt(jTCoordEnX.getText());
         } catch (NumberFormatException e) {
@@ -335,6 +337,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
             return false;
         }
 
+        // Verifica si jTCoordEnY es un número entero
         try {
             int coordY = Integer.parseInt(jTCoordEnY.getText());
         } catch (NumberFormatException e) {
@@ -342,28 +345,32 @@ public class CuartelView extends javax.swing.JInternalFrame {
             return false;
         }
 
+        // Verifica si jTCorreoCuartel es una cadena no vacía
         if (jTCorreoCuartel.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo de correo no puede estar vacío.");
             return false;
         }
 
+        // Verifica si jTDireccionCuartel es una cadena no vacía
         if (jTDireccionCuartel.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo de dirección no puede estar vacío.");
             return false;
         }
 
+        // Verifica si jTNombreCuartel es una cadena no vacía
         if (jTNombreCuartel.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo de nombre no puede estar vacío.");
             return false;
         }
 
+        // Verifica si jTTelefonoCuartel contiene solo números
         String telefono = jTTelefonoCuartel.getText();
         if (!telefono.matches("\\d+")) {
             JOptionPane.showMessageDialog(this, "El campo de teléfono debe contener solo números.");
             return false;
         }
 
-        // si todos los campos son válidos
+        // Todos los campos son válidos
         return true;
     }
 
