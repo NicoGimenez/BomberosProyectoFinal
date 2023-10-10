@@ -254,7 +254,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBagregarActionPerformed
 
     private void jBlimpiarCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlimpiarCampoActionPerformed
-      limpiarCampor();
+        limpiarCampor();
     }//GEN-LAST:event_jBlimpiarCampoActionPerformed
 
     private void jBModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar1ActionPerformed
@@ -289,7 +289,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
     public Cuartel crearCuartel() {
 
         Cuartel cuartel = new Cuartel();
-        
+
         cuartel.setNombreDeCuartel(jTNombreCuartel.getText());
         cuartel.setDireccion(jTDireccionCuartel.getText());
         cuartel.setCoordenadaEnX((Integer.parseInt(jTCoordEnX.getText())));
@@ -313,12 +313,58 @@ public class CuartelView extends javax.swing.JInternalFrame {
         jRBActivo.setSelected(false);
 
     }
-    
-    public void verificarCampos(){
-        // a terminar el metodo
-        if (jTCoordEnX.getText().equals("") || jTCoordEnX.getText()==null ) {
-            JOptionPane.showMessageDialog(this, "verificar campos de Coordenadas en X");
+
+    public boolean validarCampos() {
+   
+        if (!jRBActivo.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar 'Activo' para el cuartel.");
+            return false;
         }
+
+        try {
+            int codigo = Integer.parseInt(jTCodigo.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El código debe ser un número entero.");
+            return false;
+        }
+
+        try {
+            int coordX = Integer.parseInt(jTCoordEnX.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "La coordenada en X debe ser un número entero.");
+            return false;
+        }
+
+        try {
+            int coordY = Integer.parseInt(jTCoordEnY.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "La coordenada en Y debe ser un número entero.");
+            return false;
+        }
+
+        if (jTCorreoCuartel.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo de correo no puede estar vacío.");
+            return false;
+        }
+
+        if (jTDireccionCuartel.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo de dirección no puede estar vacío.");
+            return false;
+        }
+
+        if (jTNombreCuartel.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo de nombre no puede estar vacío.");
+            return false;
+        }
+
+        String telefono = jTTelefonoCuartel.getText();
+        if (!telefono.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El campo de teléfono debe contener solo números.");
+            return false;
+        }
+
+        // si todos los campos son válidos
+        return true;
     }
 
 }
