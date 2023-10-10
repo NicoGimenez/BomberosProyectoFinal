@@ -286,9 +286,9 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
             int coord_Y = Integer.parseInt(jTextField2.getText());
             String detalles = jTextArea1.getText();
 
-            Siniestro siniestro = new Siniestro(, fecha_siniestro, coord_x, coord_Y, detalles);
+       /*     Siniestro siniestro = new Siniestro(, fecha_siniestro, coord_x, coord_Y, detalles);
             sd.altaSiniestro(siniestro);
-
+            */
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "El alumno no se agregó.  " + ex.getMessage());
         }
