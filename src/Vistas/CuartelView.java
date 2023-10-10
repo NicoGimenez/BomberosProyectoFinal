@@ -259,6 +259,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
 
     private void jBModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar1ActionPerformed
 
+        cdata.modificarCuartelporCodigo(crearCuartel());
     }//GEN-LAST:event_jBModificar1ActionPerformed
 
 

@@ -94,7 +94,7 @@ public class CuartelData {
             int exito = ps.executeUpdate();
 
             if (exito > 0) {
-                JOptionPane.showInternalMessageDialog(null, "Eror al intentar modificar Cuartel");
+                JOptionPane.showInternalMessageDialog(null, "Cuartel modificadol");
             }
 
         } catch (SQLException ex) {
@@ -164,6 +164,35 @@ public class CuartelData {
         }
 
         return cuarteles;
+    }
+
+    public Cuartel buscarCuartelPorCodigo(int codigo) {
+
+        Cuartel cuartel = new Cuartel();
+        String sql = "SELECT nombre_cuartel, direccion ,coord_X, coord_Y, telefono, correo,  activo FROM cuartel WHERE codCuartel = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, codigo);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                cuartel.setCodigoCuartel(codigo);
+                cuartel.setNombreDeCuartel(rs.getString("nombre_cuartel"));
+                cuartel.setDireccion(rs.getString("direccion"));
+                cuartel.setCoordenadaEnX(rs.getInt("coord_X"));
+                cuartel.setCoordenadaEnY(rs.getInt("coord_Y"));
+                cuartel.setTelefono(rs.getString("telefono"));
+                cuartel.setCorreo(rs.getString("correo"));
+                cuartel.setActivo(rs.getBoolean("activo"));
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al intentar buscar bombero por id");
+        }
+
+        return cuartel;
     }
 
 }
