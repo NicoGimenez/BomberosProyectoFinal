@@ -49,6 +49,8 @@ public class SiniestroData {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al intentar guardar siniestro: " + ex.getMessage());
+        } catch (NullPointerException ex) {
+             JOptionPane.showMessageDialog(null, "Error! las coordenadas deben ser números: " + ex.getMessage());
         }
 
     }
