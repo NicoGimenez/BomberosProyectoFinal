@@ -316,11 +316,11 @@ public class CuartelView extends javax.swing.JInternalFrame {
 
     public boolean validarCampos() {
    
-        if (!jRBActivo.isSelected()) {
+     /*   if (!jRBActivo.isSelected()) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar 'Activo' para el cuartel.");
             return false;
         }
-
+*/
         try {
             int codigo = Integer.parseInt(jTCodigo.getText());
         } catch (NumberFormatException e) {
