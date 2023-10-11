@@ -20,7 +20,7 @@ public class BomberoData {
     private Connection connection = null;
 
     public BomberoData() {
-        this.connection = Conexion.getConexion();
+        connection = Conexion.getConexion();
     }
 
     // ok
@@ -42,8 +42,8 @@ public class BomberoData {
 
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                bombero.setCod_bombero(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Bombero guardado.");
+                bombero.setCod_bombero(rs.getInt("idBombero"));
+                JOptionPane.showMessageDialog(null, "Bombero guardado con éxito.");
             }
             ps.close();
 

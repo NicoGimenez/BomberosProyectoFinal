@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Vistas;
 
 import AccesoADatos.BomberoData;
@@ -12,16 +8,12 @@ import java.time.ZoneId;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Lucas E. Sayago
+ * @author Enzo
  */
 public class BomberoView extends javax.swing.JInternalFrame {
 
-    private BomberoData bdata = new BomberoData();
-
-    /**
-     * Creates new form BomberoView
-     */
+    private final BomberoData bdata = new BomberoData();
+ 
     public BomberoView() {
         initComponents();
         this.setTitle("Bombero");
@@ -341,23 +333,7 @@ public class BomberoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTcodBrigadaActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-        try {
-            // int codBombero = Integer.parseInt(jTid.getText());   (CREO QUE ES INNECESARIO)
-            String nom = jTnom.getText();
-            String dni = jTdni.getText();
-            String sanguineo = jTsanguineo.getText();
-            LocalDate fdn = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            String celular = jTtelefono.getText();
-            int codBrigada = Integer.parseInt(jTcodBrigada.getText());
-            boolean estado = jRBActivo.isSelected();
-
-            Bombero bomb = new Bombero(dni, nom, sanguineo, fdn, codBrigada, celular, estado);
-
-            bdata.agregarBombero(bomb);
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "El bombero no se agregó.  " + ex.getMessage());
-        }
+       bdata.agregarBombero(crearBombero());
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     // NO ANDA
@@ -396,6 +372,7 @@ public class BomberoView extends javax.swing.JInternalFrame {
         jDateChooser1.setDateFormatString("");
         jTtelefono.setText("");
         jTcodBrigada.setText("");
+        jRBActivo.setSelected(false);
  
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
@@ -430,4 +407,23 @@ public class BomberoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTsanguineo;
     private javax.swing.JTextField jTtelefono;
     // End of variables declaration//GEN-END:variables
+
+
+public Bombero crearBombero() {
+
+        Bombero bombero = new Bombero();
+
+        bombero.setNombre(jTnom.getText());
+        bombero.setDni(jTdni.getText());
+        bombero.setGrupo_sanguineo(jTsanguineo.getText());
+        bombero.setCodigoDeBrigada(Integer.parseInt(jTcodBrigada.getText()));
+        bombero.setCelular(jTtelefono.getText());
+        bombero.setFechaNac((jDateChooser1.getDate()));
+        bombero.setActivo(jRBActivo.isSelected());
+
+        return bombero;
+    }
+
+
 }
+
