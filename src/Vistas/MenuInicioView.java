@@ -75,6 +75,11 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenu2.setText("Siniestro");
 
         jMModificacionDeSiniestro.setText("Modificar Siniestro");
+        jMModificacionDeSiniestro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMModificacionDeSiniestroActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMModificacionDeSiniestro);
 
         JMConsultaSiniestro.setText("Consulta Siniestro");
@@ -121,9 +126,14 @@ public class MenuInicioView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMCuartelActionPerformed
 
     private void JMConsultaSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMConsultaSiniestroActionPerformed
-        ConsultarSiniestroView csv = new ConsultarSiniestroView();
+        ConsultarSiniestro csv = new ConsultarSiniestro();
         mostrarVentanaNueva(csv);
     }//GEN-LAST:event_JMConsultaSiniestroActionPerformed
+
+    private void jMModificacionDeSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMModificacionDeSiniestroActionPerformed
+       ModificarSiniestroView csv = new ModificarSiniestroView();
+        mostrarVentanaNueva(csv);
+    }//GEN-LAST:event_jMModificacionDeSiniestroActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
