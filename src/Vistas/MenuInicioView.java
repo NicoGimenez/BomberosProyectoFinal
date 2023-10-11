@@ -95,6 +95,11 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenu2.setText("Siniestro");
 
         jMConsultaSiniestros.setText("Consulta Siniestros");
+        jMConsultaSiniestros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMConsultaSiniestrosActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMConsultaSiniestros);
 
         jMModificacionDeSiniestro.setText("Modificar Siniestro");
@@ -136,6 +141,10 @@ public class MenuInicioView extends javax.swing.JFrame {
       CuartelView cuartel =new CuartelView();
         mostrarVentanaNueva(cuartel);
     }//GEN-LAST:event_jMCuartelActionPerformed
+
+    private void jMConsultaSiniestrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMConsultaSiniestrosActionPerformed
+
+    }//GEN-LAST:event_jMConsultaSiniestrosActionPerformed
 
     /**
      * @param args the command line arguments

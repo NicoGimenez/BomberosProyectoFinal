@@ -41,6 +41,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consulta Siniestros"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMConsultaSiniestrosActionPerformed"/>
+              </Events>
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="jMModificacionDeSiniestro">
               <Properties>
