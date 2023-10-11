@@ -45,7 +45,7 @@ public class CuartelData {
             if (rs.next()) {
                 cuartel.setCodigoCuartel(rs.getInt(1));
 
-                JOptionPane.showMessageDialog(null, "Cuarte generado con exito.");
+                JOptionPane.showMessageDialog(null, "Cuartel generado con exito.");
             }
             }else{
                 JOptionPane.showMessageDialog(null, "Error al agregar Cuartel ");
@@ -175,7 +175,7 @@ return cuartel;
 
     public Cuartel buscarCuartelPorCodigo(int codigo) {
 
-        Cuartel cuartel = new Cuartel();
+          Cuartel cuartel = new Cuartel();
         String sql = "SELECT nombre_cuartel, direccion ,coord_X, coord_Y, telefono, correo,  activo FROM cuartel WHERE codCuartel = ?";
 
         try {
