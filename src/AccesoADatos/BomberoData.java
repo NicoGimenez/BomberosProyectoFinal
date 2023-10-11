@@ -53,7 +53,8 @@ public class BomberoData {
     }
 
     //ok
-    public Bombero obtenerBomberoPorCodigo(int cod_bombero) {
+    public Bombero buscarBomberoPorCodigo(int cod_bombero) {
+
         Bombero bombero = new Bombero();
         String sql = "SELECT nombre_ape, dni, grupo_sanguineo, fecha_nac, celular, codBrigada, activo FROM bombero WHERE idBombero = ?";
 
@@ -65,23 +66,21 @@ public class BomberoData {
 
             if (rs.next()) {
                 // bombero = new Bombero();
-                bombero.setCod_bombero(rs.getInt("idBombero"));
+                bombero.setCod_bombero(rs.getInt(cod_bombero));
                 bombero.setNombre(rs.getString("nombre_ape"));
                 bombero.setDni(rs.getString("dni"));
                 bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
                 bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
                 bombero.setCelular(rs.getString("celular"));
                 bombero.setCodigoDeBrigada(rs.getInt("codBrigada"));
+                bombero.setActivo(rs.getBoolean("activo"));
 
-            } else {
-                JOptionPane.showMessageDialog(null, "No existe bombero con ese código. ");
-            }
+            } 
 
-            rs.close();
-            st.close();
+
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos ACA ESTA EL ERROR");
+            JOptionPane.showMessageDialog(null, "\"Error al intentar buscar bombero por id\"");
         }
         return bombero;
     }

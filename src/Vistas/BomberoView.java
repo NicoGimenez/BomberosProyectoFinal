@@ -1,8 +1,8 @@
-
 package Vistas;
 
 import AccesoADatos.BomberoData;
 import Entidades.Bombero;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import javax.swing.JOptionPane;
@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class BomberoView extends javax.swing.JInternalFrame {
 
     private final BomberoData bdata = new BomberoData();
- 
+
     public BomberoView() {
         initComponents();
         this.setTitle("Bombero");
@@ -333,38 +333,45 @@ public class BomberoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTcodBrigadaActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-       bdata.agregarBombero(crearBombero());
+        bdata.agregarBombero(crearBombero());
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     // NO ANDA
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
 
-        Bombero bo = bdata.obtenerBomberoPorCodigo(Integer.parseInt(jTid.getText()));
-         try {
-            if (!"".equals(jTid.getText())) {
-                jTnom.setText(bo.getNombre()); 
-                jTdni.setText(bo.getDni()); 
-                jTsanguineo.setText(bo.getGrupo_sanguineo()); 
+        String idText = jTid.getText();
+
+        if (!idText.isEmpty()) {
+            int bomberoId = Integer.parseInt(idText);
+            Bombero bo = bdata.buscarBomberoPorCodigo(bomberoId);
+
+            if (bo != null) {
+                jTnom.setText(bo.getNombre());
+                jTdni.setText(bo.getDni());
+                jTsanguineo.setText(bo.getGrupo_sanguineo());
+
                 LocalDate fechaNacimiento = bo.getFechaNac();
-                java.util.Date fechaNacimientoAsDate = java.util.Date.from(fechaNacimiento.atStartOfDay(ZoneId.systemDefault()).toInstant());
-                jDateChooser1.setDate(fechaNacimientoAsDate);
-                jTcodBrigada.setText(bo.getCodigoDeBrigada()+"");
-                jTtelefono.setText(bo.getCelular()); 
+                if (fechaNacimiento != null) {
+                    java.util.Date fechaNacimientoAsDate = java.util.Date.from(fechaNacimiento.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                    jDateChooser1.setDate(fechaNacimientoAsDate);
+                } else {
+                    jDateChooser1.setDate(null); // Establecer la fecha a null en el JDateChooser
+                }
+
+                jTcodBrigada.setText(bo.getCodigoDeBrigada() + "");
+                jTtelefono.setText(bo.getCelular());
                 jRBActivo.setSelected(bo.isActivo());
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró un bombero con ese ID.");
             }
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, " El bombero no existe. " + ex.getMessage());
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Error, formato incorrecto. " + ex.getMessage());
+        } else {
+            JOptionPane.showMessageDialog(null, "El campo ID está vacío. Por favor, ingrese un ID válido.");
         }
-         
-         
     }//GEN-LAST:event_jBBuscarActionPerformed
 
-    
     // FUNCIONA PERFECTAMENTE
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
-        
+
         jTid.setText("");
         jTnom.setText("");
         jTdni.setText("");
@@ -373,11 +380,9 @@ public class BomberoView extends javax.swing.JInternalFrame {
         jTtelefono.setText("");
         jTcodBrigada.setText("");
         jRBActivo.setSelected(false);
- 
+
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
@@ -408,22 +413,24 @@ public class BomberoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTtelefono;
     // End of variables declaration//GEN-END:variables
 
-
-public Bombero crearBombero() {
+    public Bombero crearBombero() {
 
         Bombero bombero = new Bombero();
 
         bombero.setNombre(jTnom.getText());
         bombero.setDni(jTdni.getText());
         bombero.setGrupo_sanguineo(jTsanguineo.getText());
-        bombero.setCodigoDeBrigada(Integer.parseInt(jTcodBrigada.getText()));
+
+        java.util.Date fechaNacimientoAsDate = jDateChooser1.getDate();
+        LocalDate fechaNacimiento = fechaNacimientoAsDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        bombero.setFechaNac(fechaNacimiento);
+
         bombero.setCelular(jTtelefono.getText());
-        bombero.setFechaNac((jDateChooser1.getDate()));
+        bombero.setCodigoDeBrigada(Integer.parseInt(jTcodBrigada.getText()));
         bombero.setActivo(jRBActivo.isSelected());
 
         return bombero;
     }
 
-
 }
-
