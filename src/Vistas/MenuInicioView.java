@@ -95,6 +95,11 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenu2.setText("Siniestro");
 
         jMConsultaSiniestros.setText("Consulta Siniestros");
+        jMConsultaSiniestros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMConsultaSiniestrosActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMConsultaSiniestros);
 
         jMModificacionDeSiniestro.setText("Modificar Siniestro");
@@ -128,14 +133,20 @@ public class MenuInicioView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMBomberoActionPerformed
 
     private void jBSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSiniestroActionPerformed
-      NuevoSiniestro ns = new NuevoSiniestro();
+        NuevoSiniestro ns = new NuevoSiniestro();
         mostrarVentanaNueva(ns);
     }//GEN-LAST:event_jBSiniestroActionPerformed
 
     private void jMCuartelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCuartelActionPerformed
-      CuartelView cuartel =new CuartelView();
+        CuartelView cuartel = new CuartelView();
         mostrarVentanaNueva(cuartel);
     }//GEN-LAST:event_jMCuartelActionPerformed
+
+    private void jMConsultaSiniestrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMConsultaSiniestrosActionPerformed
+        ConsultarSiniestroView csv = new ConsultarSiniestroView();
+        mostrarVentanaNueva(csv);
+
+    }//GEN-LAST:event_jMConsultaSiniestrosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,15 +196,14 @@ public class MenuInicioView extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 
-    
-    public void mostrarVentanaNueva(JInternalFrame ventana){
-      
+    public void mostrarVentanaNueva(JInternalFrame ventana) {
+
         jDEscritorio.removeAll();
-        jDEscritorio.repaint();      
+        jDEscritorio.repaint();
         ventana.setVisible(true);
         jDEscritorio.add(ventana);
         jDEscritorio.moveToFront(ventana);
-    
+
     }
 
 }
