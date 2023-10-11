@@ -371,16 +371,7 @@ public class BomberoView extends javax.swing.JInternalFrame {
 
     // FUNCIONA PERFECTAMENTE
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
-
-        jTid.setText("");
-        jTnom.setText("");
-        jTdni.setText("");
-        jTsanguineo.setText("");
-        jDateChooser1.setDateFormatString("");
-        jTtelefono.setText("");
-        jTcodBrigada.setText("");
-        jRBActivo.setSelected(false);
-
+        limpiarCampos();
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
 
@@ -432,5 +423,19 @@ public class BomberoView extends javax.swing.JInternalFrame {
 
         return bombero;
     }
+
+    public void limpiarCampos() {
+
+        jTid.setText("");
+        jTnom.setText("");
+        jTdni.setText("");
+        jTsanguineo.setText("");
+        jDateChooser1.setDate(null);
+        jTtelefono.setText("");
+        jTcodBrigada.setText("");
+        jRBActivo.setSelected(false);
+
+    }
+
 
 }
