@@ -38,15 +38,20 @@ public class BomberoData {
             ps.setString(5, bombero.getCelular());
             ps.setInt(6, bombero.getCodigoDeBrigada());
             ps.setBoolean(7, bombero.isActivo());
-            ps.executeUpdate();
 
+            
+             int exito=ps.executeUpdate();
+            
+            if(exito>0){
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                bombero.setCod_bombero(rs.getInt("idBombero"));
+                bombero.setCod_bombero(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Bombero guardado con éxito.");
             }
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al agregar Bombero. ");
+            }
             ps.close();
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al agregar un bombero. " + ex.getMessage());
         }

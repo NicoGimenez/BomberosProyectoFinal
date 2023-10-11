@@ -13,11 +13,11 @@ public class MainTest {
 
         BomberoData bData = new BomberoData();
 
-        //Bombero bombero = new Bombero("3703", "Piro 2", "A+", LocalDate.of(1990, Month.MARCH, 23),28  ,"01114568", true);
-        //1 ++++++++++++++++++++++++++++++ Agregar Bombero (funciona)
-        // se Agrega el bombero a la base de datos.
-        // bData.agregarBombero(bombero);
-        // JOptionPane.showMessageDialog(null, bombero.toString());
+        //Bombero bombero = new Bombero("787", "Piro 9", "B+", LocalDate.of(1984, Month.MARCH, 23),8  ,"144155166", true);
+        //1 ++++++++++++++++++++++++++++++ Agregar Bombero (funciona DE VERDAD RECONTRA FUNCIONA JE :D)
+        //se Agrega el bombero a la base de datos.
+       //bData.agregarBombero(bombero);
+        //JOptionPane.showMessageDialog(null, bombero.toString());
         //2++++++++++++++++++++++++++++++Buscar Bombero por ID (Funciona)
         /*
         Bombero bombero2= new Bombero();
@@ -51,8 +51,9 @@ public class MainTest {
      //bData.darDeBajaBombero(40);
     
     //6********************************listar bomberos 
-    List<Bombero> bomberos = bData.listBomberosPorBrigada(28);
-    System.out.println(bomberos.size());
+    
+    //List<Bombero> bomberos = bData.listBomberosPorBrigada(28);
+    //System.out.println(bomberos.size());
     
     
     }
