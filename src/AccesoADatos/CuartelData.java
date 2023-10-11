@@ -153,7 +153,7 @@ return cuartel;
 
                 Cuartel cuartel = new Cuartel();
 
-                cuartel.setCodigoCuartel(rs.getInt("codCuartel "));
+                cuartel.setCodigoCuartel(rs.getInt("codCuartel"));
                 cuartel.setNombreDeCuartel(rs.getString("nombre_cuartel"));
                 cuartel.setDireccion(rs.getString("direccion"));
                 cuartel.setCoordenadaEnX(rs.getInt("coord_X"));
