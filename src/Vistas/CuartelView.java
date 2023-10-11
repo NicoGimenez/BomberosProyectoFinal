@@ -260,7 +260,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBagregarActionPerformed
 
     private void jBlimpiarCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlimpiarCampoActionPerformed
-        limpiarCampor();
+        limpiarCampos();
     }//GEN-LAST:event_jBlimpiarCampoActionPerformed
 
     private void jBModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar1ActionPerformed
@@ -333,7 +333,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
         return cuartel;
     }
 
-    public void limpiarCampor() {
+    public void limpiarCampos() {
 
         jTCodigo.setText("");
         jTCoordEnX.setText("");
