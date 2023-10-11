@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 
 public class BomberoData {
 
-    private Connection connection;
+    private Connection connection = null;
 
     public BomberoData() {
         this.connection = Conexion.getConexion();
@@ -39,7 +39,7 @@ public class BomberoData {
             ps.setInt(6, bombero.getCodigoDeBrigada());
             ps.setBoolean(7, bombero.isActivo());
             ps.executeUpdate();
-         
+
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 bombero.setCod_bombero(rs.getInt(1));
@@ -48,25 +48,26 @@ public class BomberoData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al agregar un bombero. "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al agregar un bombero. " + ex.getMessage());
+        }
     }
- }
-    
+
     //ok
     public Bombero obtenerBomberoPorCodigo(int cod_bombero) {
         Bombero bombero = new Bombero();
+        String sql = "SELECT nombre_ape, dni, grupo_sanguineo, fecha_nac, celular, codBrigada, activo FROM bombero WHERE idBombero = ?";
+
         try {
-            String sql = "SELECT nombre_ape, grupo_sanguineo, fecha_nac, celular, codBrigada, activo FROM bombero WHERE idBombero = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, cod_bombero);
 
             ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
-              //  bombero = new Bombero();
+                // bombero = new Bombero();
                 bombero.setCod_bombero(rs.getInt("idBombero"));
-                bombero.setDni(rs.getString("dni"));
                 bombero.setNombre(rs.getString("nombre_ape"));
+                bombero.setDni(rs.getString("dni"));
                 bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
                 bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
                 bombero.setCelular(rs.getString("celular"));
@@ -80,7 +81,7 @@ public class BomberoData {
             st.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos");
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos ACA ESTA EL ERROR");
         }
         return bombero;
     }
@@ -114,7 +115,6 @@ public class BomberoData {
         return bomberos;
     }
 
-    
     public void actualizarBombero(Bombero bombero) {
         try {
             String sql = "UPDATE bombero SET dni = ?, nombre_ape = ?, grupo_sanguineo = ?, "

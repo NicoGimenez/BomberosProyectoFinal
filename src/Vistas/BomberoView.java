@@ -17,13 +17,14 @@ import javax.swing.JOptionPane;
  */
 public class BomberoView extends javax.swing.JInternalFrame {
 
-    private BomberoData bData;
+    private BomberoData bdata = new BomberoData();
 
     /**
      * Creates new form BomberoView
      */
     public BomberoView() {
         initComponents();
+        this.setTitle("Bombero");
     }
 
     /**
@@ -352,7 +353,7 @@ public class BomberoView extends javax.swing.JInternalFrame {
 
             Bombero bomb = new Bombero(dni, nom, sanguineo, fdn, codBrigada, celular, estado);
 
-            bData.agregarBombero(bomb);
+            bdata.agregarBombero(bomb);
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "El bombero no se agregó.  " + ex.getMessage());
@@ -362,31 +363,18 @@ public class BomberoView extends javax.swing.JInternalFrame {
     // NO ANDA
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
 
-      
-        Bombero bo = new Bombero();
+        Bombero bo = bdata.obtenerBomberoPorCodigo(Integer.parseInt(jTid.getText()));
          try {
             if (!"".equals(jTid.getText())) {
-                
-                
-                int id = Integer.parseInt(jTid.getText());
-                
-                bo = bData.obtenerBomberoPorCodigo(id);
-                
-                
                 jTnom.setText(bo.getNombre()); 
                 jTdni.setText(bo.getDni()); 
                 jTsanguineo.setText(bo.getGrupo_sanguineo()); 
                 LocalDate fechaNacimiento = bo.getFechaNac();
                 java.util.Date fechaNacimientoAsDate = java.util.Date.from(fechaNacimiento.atStartOfDay(ZoneId.systemDefault()).toInstant());
                 jDateChooser1.setDate(fechaNacimientoAsDate);
-                
                 jTcodBrigada.setText(bo.getCodigoDeBrigada()+"");
-
                 jTtelefono.setText(bo.getCelular()); 
-                
                 jRBActivo.setSelected(bo.isActivo());
-                System.out.println("Id: "+id);
-                System.out.println("bo: "+bo);
             }
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, " El bombero no existe. " + ex.getMessage());
