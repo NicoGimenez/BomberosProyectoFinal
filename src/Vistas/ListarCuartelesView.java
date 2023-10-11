@@ -5,17 +5,27 @@
  */
 package Vistas;
 
+import AccesoADatos.CuartelData;
+import Entidades.Cuartel;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Lucas E. Sayago
  */
 public class ListarCuartelesView extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ListarCuartelesView
-     */
+    private final DefaultTableModel modelo = new DefaultTableModel();
+    private final CuartelData cData = new CuartelData();
+    private ArrayList<Cuartel> cuarteles = new ArrayList<>();
+
     public ListarCuartelesView() {
+        cuarteles = cData.listarCuarteles();
         initComponents();
+        this.setTitle("Listar Cuarteles");
+        armarCabecera();
+        llenarTabla(cuarteles);
     }
 
     /**
@@ -27,15 +37,50 @@ public class ListarCuartelesView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+
+        setClosable(true);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
+        jLabel1.setText("Busqueda Cuarteles");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -43,5 +88,40 @@ public class ListarCuartelesView extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public void armarCabecera() {
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Direccion");
+        modelo.addColumn("Coord X");
+        modelo.addColumn("Coord Y");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Correo");
+        modelo.addColumn("Activo");
+
+        jTable1.setModel(modelo);
+    }
+
+    public void llenarTabla(ArrayList<Cuartel> cuarteles) {
+        modelo.setRowCount(0);
+
+        for (Cuartel XCuartel : cuarteles) {
+            Object[] rowData = {
+                XCuartel.getCodigoCuartel(),
+                XCuartel.getNombreDeCuartel(),
+                XCuartel.getDireccion(),
+                XCuartel.getCoordenadaEnX(),
+                XCuartel.getCoordenadaEnY(),
+                XCuartel.getTelefono(),
+                XCuartel.getCorreo(),
+                XCuartel.isActivo()
+            };
+            modelo.addRow(rowData);
+        }
+
+    }
 }
