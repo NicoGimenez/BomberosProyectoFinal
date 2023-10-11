@@ -2,10 +2,13 @@ package Vistas;
 
 import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameAdapter;
+
 public class MenuInicioView extends javax.swing.JFrame {
+
     public MenuInicioView() {
         initComponents();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -20,6 +23,8 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMModificacionDeSiniestro = new javax.swing.JMenuItem();
         JMConsultaSiniestro = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMListarCuarteles = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +97,18 @@ public class MenuInicioView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("cuartel");
+
+        jMListarCuarteles.setText("Listar Cuarteles");
+        jMListarCuarteles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMListarCuartelesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMListarCuarteles);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -111,7 +128,7 @@ public class MenuInicioView extends javax.swing.JFrame {
 
     private void jMBomberoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBomberoActionPerformed
         BomberoView bombero = new BomberoView();
-
+        
         mostrarVentanaNueva(bombero);
     }//GEN-LAST:event_jMBomberoActionPerformed
 
@@ -131,10 +148,15 @@ public class MenuInicioView extends javax.swing.JFrame {
     }//GEN-LAST:event_JMConsultaSiniestroActionPerformed
 
     private void jMModificacionDeSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMModificacionDeSiniestroActionPerformed
-       ModificarSiniestroView csv = new ModificarSiniestroView();
+        ModificarSiniestroView csv = new ModificarSiniestroView();
         mostrarVentanaNueva(csv);
     }//GEN-LAST:event_jMModificacionDeSiniestroActionPerformed
 
+    private void jMListarCuartelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMListarCuartelesActionPerformed
+        ListarCuartelesView listarCuarteles = new ListarCuartelesView();
+        mostrarVentanaNueva(listarCuarteles);
+    }//GEN-LAST:event_jMListarCuartelesActionPerformed
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -174,20 +196,22 @@ public class MenuInicioView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMBombero;
     private javax.swing.JMenuItem jMBrigada;
     private javax.swing.JMenuItem jMCuartel;
+    private javax.swing.JMenuItem jMListarCuarteles;
     private javax.swing.JMenuItem jMModificacionDeSiniestro;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 
     public void mostrarVentanaNueva(JInternalFrame ventana) {
-
+        
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
         ventana.setVisible(true);
         jDEscritorio.add(ventana);
         jDEscritorio.moveToFront(ventana);
-
+        
     }
-
+    
 }

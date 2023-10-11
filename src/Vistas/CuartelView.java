@@ -264,11 +264,14 @@ public class CuartelView extends javax.swing.JInternalFrame {
 
     private void jBModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar1ActionPerformed
 
-        Cuartel cuartel = cdata.buscarCuartelPorCodigo(Integer.parseInt(jTCodigo.getText()));
+        Cuartel cuartel = crearCuartel();
+        cuartel.setCodigoCuartel(Integer.parseInt(jTCodigo.getText()));
 
         if (cuartel != null) {
             cdata.modificarCuartelporCodigo(cuartel);
-        }
+        }else{
+                JOptionPane.showMessageDialog(null,"no existe cuartel con ese codigo");
+            }
     }//GEN-LAST:event_jBModificar1ActionPerformed
 
     private void jBBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscar1ActionPerformed

@@ -79,7 +79,8 @@ public class CuartelData {
 
     public void modificarCuartelporCodigo(Cuartel cuartel) {
 
-        String sql = "UPDATE cuartel SET nombre_cuartel=? ,direccion=? ,coord_X=? ,coord_Y=? ,telefono=? ,correo=? ,activo=? WHERE codCuartel=?";
+        String sql = "UPDATE cuartel SET nombre_cuartel = ? , direccion = ?, coord_X = ?, coord_Y= ?, telefono = ?, correo= ? ,activo=? "
+                + "WHERE cuartel.codCuartel= ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, cuartel.getNombreDeCuartel());
@@ -89,7 +90,7 @@ public class CuartelData {
             ps.setString(5, cuartel.getTelefono());
             ps.setString(6, cuartel.getCorreo());
             ps.setBoolean(7, cuartel.isActivo());
-            ps.setInt(8, cuartel.getCodigoCuartel());
+            ps.setInt(8, cuartel.getCodigoCuartel());    
 
             int exito = ps.executeUpdate();
 
