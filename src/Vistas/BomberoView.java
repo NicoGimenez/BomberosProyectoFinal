@@ -2,7 +2,6 @@ package Vistas;
 
 import AccesoADatos.BomberoData;
 import Entidades.Bombero;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import javax.swing.JOptionPane;
@@ -337,6 +336,7 @@ public class BomberoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     // NO ANDA
+    
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
 
         String idText = jTid.getText();
@@ -369,6 +369,10 @@ public class BomberoView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
+    
+    
+    
+    
     // FUNCIONA PERFECTAMENTE
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
         limpiarCampos();
