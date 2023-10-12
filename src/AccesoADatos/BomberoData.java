@@ -202,8 +202,9 @@ public class BomberoData {
     public ArrayList<Bombero> listarBomberos() {
 
         ArrayList<Bombero> bomberos = new ArrayList<>();
-        String sql= "SELECT `idBombero`, `dni`, `nombre_ape`, `grupo_sanguineo`, `fecha_nac`, `celular`, `codBrigada`,  FROM `bombero` WHERE activo=true";
-        try {
+        
+        String sql= "SELECT `idBombero`, `dni`, `nombre_ape`, `grupo_sanguineo`, `fecha_nac`, `celular`, `codBrigada`, `activo` FROM `bombero` WHERE 1";
+        try { 
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
@@ -216,7 +217,8 @@ public class BomberoData {
                 bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));   
                 bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());               
                 bombero.setCelular(rs.getString("celular"));
-                bombero.setCodigoDeBrigada(rs.getInt("codBrigada"));               
+                bombero.setCodigoDeBrigada(rs.getInt("codBrigada"));             
+                bombero.setActivo(rs.getBoolean("activo"));
                 bomberos.add(bombero);
             }
 

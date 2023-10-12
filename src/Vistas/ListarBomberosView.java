@@ -2,6 +2,7 @@ package Vistas;
 
 import AccesoADatos.BomberoData;
 import Entidades.Bombero;
+import Entidades.Cuartel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -11,10 +12,10 @@ public class ListarBomberosView extends javax.swing.JInternalFrame {
 
     private final DefaultTableModel modelo = new DefaultTableModel();
     private final BomberoData bdata = new BomberoData();
-    private ArrayList<Bombero> bomberos = new ArrayList<>();
+    private java.util.ArrayList<Bombero> bomberos = new java.util.ArrayList<>();
 
     public ListarBomberosView() {
-  //      bomberos = bdata.listarBomberos();
+        bomberos = bdata.listarBomberos();
         initComponents();
         this.setTitle("Listar Cuarteles");
         armarCabecera();
@@ -74,33 +75,33 @@ public class ListarBomberosView extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public void armarCabecera() {
-        modelo.addColumn("Codigo");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Direccion");
-        modelo.addColumn("Coord X");
-        modelo.addColumn("Coord Y");
-        modelo.addColumn("Telefono");
-        modelo.addColumn("Correo");
+        //dni, nombre_ape, grupo_sanguineo, fecha_nac, celular, codBrigada, activo 
+        modelo.addColumn("dni");
+        modelo.addColumn("nombre_ape");
+        modelo.addColumn("grupo_sanguineo");
+        modelo.addColumn("fecha_nac");
+        modelo.addColumn("celular");
+        modelo.addColumn("codBrigada");
         modelo.addColumn("Activo");
 
         jTable1.setModel(modelo);
     }
 
-    public void llenarTabla(ArrayList<Bombero> cuarteles) {
+    public void llenarTabla(java.util.ArrayList<Bombero> cuarteles) {
         modelo.setRowCount(0);
-/*
+
         for (Bombero XBombero : bomberos) {
             Object[] rowData = {
                 XBombero.getCod_bombero(),
                 XBombero.getNombre(),
                 XBombero.getDni(),
                 XBombero.getGrupo_sanguineo(),
-                XBombero.getFecha_nac(),
+                XBombero.getFechaNac(),
                 XBombero.getCelular(),
                 XBombero.isActivo()
             };
             modelo.addRow(rowData);
         }
-  */
+  
     }
 }
