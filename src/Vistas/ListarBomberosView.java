@@ -5,7 +5,6 @@ import Entidades.Bombero;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
  * @author Enzo
  */
 public class ListarBomberosView extends javax.swing.JInternalFrame {
@@ -15,16 +14,16 @@ public class ListarBomberosView extends javax.swing.JInternalFrame {
     private ArrayList<Bombero> bomberos = new ArrayList<>();
 
     public ListarBomberosView() {
- /*      bomberos = bdata.listBomberosPorBrigada();
+  //      bomberos = bdata.listarBomberos();
         initComponents();
         this.setTitle("Listar Cuarteles");
         armarCabecera();
         llenarTabla(bomberos);
     }
 
-    public ListarBomberosView() {
-        initComponents();
-    */}
+   
+       
+  
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -87,9 +86,9 @@ public class ListarBomberosView extends javax.swing.JInternalFrame {
         jTable1.setModel(modelo);
     }
 
-    /*public void llenarTabla(ArrayList<Bombero> cuarteles) {
+    public void llenarTabla(ArrayList<Bombero> cuarteles) {
         modelo.setRowCount(0);
-
+/*
         for (Bombero XBombero : bomberos) {
             Object[] rowData = {
                 XBombero.getCod_bombero(),
@@ -102,6 +101,6 @@ public class ListarBomberosView extends javax.swing.JInternalFrame {
             };
             modelo.addRow(rowData);
         }
-
-    }*/
+  */
+    }
 }

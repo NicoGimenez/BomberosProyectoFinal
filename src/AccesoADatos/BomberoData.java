@@ -124,6 +124,9 @@ public class BomberoData {
         return bomberos;
     }
 
+    
+   
+    
     public void actualizarBombero(Bombero bombero) {
         try {
             String sql = "UPDATE bombero SET dni = ?, nombre_ape = ?, grupo_sanguineo = ?, "
@@ -195,4 +198,34 @@ public class BomberoData {
         }
         return bomberos;
     }
+    
+    public ArrayList<Bombero> listarBomberos() {
+
+        ArrayList<Bombero> bomberos = new ArrayList<>();
+        String sql= "SELECT `idBombero`, `dni`, `nombre_ape`, `grupo_sanguineo`, `fecha_nac`, `celular`, `codBrigada`,  FROM `bombero` WHERE activo=true";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Bombero bombero = new Bombero();
+                bombero.setCod_bombero(rs.getInt("idBombero"));
+                bombero.setDni(rs.getString("dni"));
+                bombero.setNombre(rs.getString("nombre_ape"));
+                bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));   
+                bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());               
+                bombero.setCelular(rs.getString("celular"));
+                bombero.setCodigoDeBrigada(rs.getInt("codBrigada"));               
+                bomberos.add(bombero);
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al listar bomberos");
+        }
+
+        return bomberos;
+    }
+    
+    
 }
