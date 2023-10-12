@@ -359,6 +359,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
 
         Cuartel cuartel = new Cuartel();
 
+        try{
         cuartel.setNombreDeCuartel(jTNombreCuartel.getText());
         cuartel.setDireccion(jTDireccionCuartel.getText());
         cuartel.setCoordenadaEnX((Integer.parseInt(jTCoordEnX.getText())));
@@ -366,7 +367,9 @@ public class CuartelView extends javax.swing.JInternalFrame {
         cuartel.setTelefono(jTTelefonoCuartel.getText());
         cuartel.setCorreo(jTCorreoCuartel.getText());
         cuartel.setActivo(jRBActivo.isSelected());
-
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Verificar los campos ingresados en Coordenadas");
+        }
         return cuartel;
     }
 
