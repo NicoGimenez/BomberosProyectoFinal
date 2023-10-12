@@ -290,6 +290,11 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         java.util.Date fechaSiniestroComoDate = java.util.Date.from(fechaS.atStartOfDay(ZoneId.systemDefault()).toInstant());
         jDateChooser1.setDate(fechaSiniestroComoDate);
         LocalDate fechaR = sin.getFecha_resol();
+        jTCoordx.setText(sin.getCoord_x()+"");
+        jTCoordy.setText(sin.getCoord_Y()+"");
+        jTDescrip.setText(sin.getDetalles());
+        jSPuntuacion.setValue(sin.getPuntuacion());
+        jLBrigada.setText("Brigada: ");
         try{
         java.util.Date fechaResolucionComoDate = java.util.Date.from(fechaR.atStartOfDay(ZoneId.systemDefault()).toInstant());
         jDFechaResol.setDate(fechaResolucionComoDate);}catch(Exception e){
