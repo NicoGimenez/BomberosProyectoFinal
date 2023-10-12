@@ -60,7 +60,7 @@ public class BomberoData {
         }
     }
 
-    //ok
+    //FUNCIONA SSEEEEEEEEEEEEEEEEEE
     public Bombero buscarBomberoPorCodigo(int cod_bombero) {
 
         Bombero bombero = null;
@@ -89,9 +89,6 @@ public class BomberoData {
                 bombero.setActivo(rs.getBoolean("activo"));
 
             } 
-
-
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "\"Error al intentar buscar bombero por id\"");
         }
@@ -146,6 +143,9 @@ public class BomberoData {
         }
     }
 
+    
+    
+    
     public void darDeBajaBombero(int cod_bombero) {
         try {
             String sql = "UPDATE bombero set activo = 0 WHERE idBombero= ?";
@@ -155,7 +155,7 @@ public class BomberoData {
 
             if (exito == 1) {
 
-                JOptionPane.showMessageDialog(null, "Bomero eliminado.");
+                JOptionPane.showMessageDialog(null, "Bombero dado de baja exitosamente.");
 
             }
 
