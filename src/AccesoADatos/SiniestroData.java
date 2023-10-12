@@ -1,5 +1,7 @@
 package AccesoADatos;
 
+import Entidades.Brigada;
+import Entidades.Cuartel;
 import Entidades.Especialidad;
 import Entidades.Siniestro;
 import java.sql.Connection;
@@ -18,6 +20,8 @@ import javax.swing.JOptionPane;
 public class SiniestroData {
 
     private Connection con = null;
+    private CuartelData cd = new CuartelData();
+    private BrigadaData bd = new BrigadaData();
 
     public SiniestroData() {
 
@@ -336,4 +340,47 @@ public class SiniestroData {
         }
         return siniestros;
     }
+//    public Brigada asignarBrigada(Siniestro siniestro){
+//        Brigada brigada = new Brigada();
+//       ArrayList<Cuartel> cuarteles = cd.listarCuarteles();
+//       double distanciaMenor=Double.MAX_VALUE;
+//       double distancia;
+//       Cuartel cuart= new Cuartel();
+//       for(Cuartel cuartel: cuarteles){
+//           distancia= cuartel.distanciaAlSiniestro(siniestro);
+//             if(distancia <distanciaMenor){
+//                 distanciaMenor=distancia;
+//              cuart = cuartel;   
+//           }
+//       }    
+//        ArrayList<Brigada> bri =cd.obtenerBrigadasDelCuartel(cuart.getCodigoCuartel());
+//        
+//      return brigada; 
+//    }
+//    public Cuartel encontrarCuartelAdecuado(Siniestro siniestro, String especialidadRequerida) {
+//    List<Cuartel> cuartelesAdecuados = new ArrayList<>();
+//    ArrayList<Cuartel> cuarteles = cd.listarCuarteles();
+//
+//    for (Cuartel cuartel : uarteles) {
+//        double distancia = cuartel.distanciaAlSiniestro(siniestro);
+//
+//        // Verifica si la brigada tiene la especialidad requerida y está libre
+//        if (cuartel.getBrigada() != null &&
+//            cuartel.getBrigada().getEspecialidad().equals(especialidadRequerida) &&
+//            cuartel.getBrigada().isLibre()) {
+//            cuartelesAdecuados.add(cuartel);
+//        }
+//    }
+//
+//    // Ordena la lista de cuarteles adecuados por distancia
+//    cuartelesAdecuados.sort(Comparator.comparingDouble(c -> c.distanciaAlSiniestro(siniestro)));
+//
+//    // Devuelve el cuartel más cercano con brigada adecuada y libre
+//    if (!cuartelesAdecuados.isEmpty()) {
+//        return cuartelesAdecuados.get(0);
+//    }
+//
+//    // Si no se encuentra un cuartel adecuado, puedes manejarlo de acuerdo a tus necesidades, por ejemplo, devolver null.
+//    return null;
+//}
 }
