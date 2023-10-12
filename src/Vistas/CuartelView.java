@@ -53,6 +53,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
         jBBuscar1 = new javax.swing.JButton();
         jBlimpiarCampo = new javax.swing.JButton();
         jBModificar1 = new javax.swing.JButton();
+        jBElimniar = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -133,6 +134,14 @@ public class CuartelView extends javax.swing.JInternalFrame {
             }
         });
 
+        jBElimniar.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
+        jBElimniar.setText("ELIMINAR");
+        jBElimniar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBElimniarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,10 +152,6 @@ public class CuartelView extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(216, 216, 216)
-                                .addComponent(jRBActivo))
-                            .addComponent(jLabel2)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,9 +181,19 @@ public class CuartelView extends javax.swing.JInternalFrame {
                                                     .addComponent(jTCorreoCuartel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addComponent(jTCoordEnX, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(41, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(216, 216, 216)
+                                .addComponent(jRBActivo))
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBlimpiarCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(31, 31, 31))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jBElimniar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
                         .addComponent(jBagregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBModificar1)
@@ -224,19 +239,20 @@ public class CuartelView extends javax.swing.JInternalFrame {
                     .addComponent(jTCorreoCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBlimpiarCampo)
                     .addComponent(jLabel2)
                     .addComponent(jRBActivo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBagregar)
-                    .addComponent(jBModificar1)
-                    .addComponent(jBlimpiarCampo))
-                .addContainerGap(9, Short.MAX_VALUE))
+                    .addComponent(jBElimniar)
+                    .addComponent(jBModificar1))
+                .addGap(24, 24, 24))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(107, 107, 107)
                     .addComponent(jBBuscar1)
-                    .addContainerGap(333, Short.MAX_VALUE)))
+                    .addContainerGap(397, Short.MAX_VALUE)))
         );
 
         pack();
@@ -255,8 +271,8 @@ public class CuartelView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTCoordEnXActionPerformed
 
     private void jBagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBagregarActionPerformed
-      Cuartel cuartel=  cdata.agregarCuartel(crearCuartel());
-      jTCodigo.setText(cuartel.getCodigoCuartel()+"");
+        Cuartel cuartel = cdata.agregarCuartel(crearCuartel());
+        jTCodigo.setText(cuartel.getCodigoCuartel() + "");
     }//GEN-LAST:event_jBagregarActionPerformed
 
     private void jBlimpiarCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlimpiarCampoActionPerformed
@@ -266,36 +282,57 @@ public class CuartelView extends javax.swing.JInternalFrame {
     private void jBModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar1ActionPerformed
 
         Cuartel cuartel = crearCuartel();
-        cuartel.setCodigoCuartel(Integer.parseInt(jTCodigo.getText()));
+        try {
+            cuartel.setCodigoCuartel(Integer.parseInt(jTCodigo.getText()));
 
-        if (cuartel != null) {
-            cdata.modificarCuartelporCodigo(cuartel);
-        }else{
-                JOptionPane.showMessageDialog(null,"no existe cuartel con ese codigo");
+            if (cuartel != null) {
+                cdata.modificarCuartelporCodigo(cuartel);
+            } else {
+                JOptionPane.showMessageDialog(null, "no existe cuartel con ese codigo");
             }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Verificar los campos ingresados");
+        }
+
     }//GEN-LAST:event_jBModificar1ActionPerformed
 
     private void jBBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscar1ActionPerformed
         if (!jTCodigo.equals("")) {
+            try {
+                Cuartel cuartel = cdata.buscarCuartelPorCodigo(Integer.parseInt(jTCodigo.getText()));
+                jTCodigo.setText(cuartel.getCodigoCuartel() + "");
+                jTNombreCuartel.setText(cuartel.getNombreDeCuartel());
+                jTDireccionCuartel.setText(cuartel.getDireccion());
+                jTCoordEnX.setText(cuartel.getCoordenadaEnX() + "");
+                jTCoordEnY.setText(cuartel.getCoordenadaEnY() + "");
+                jTTelefonoCuartel.setText(cuartel.getTelefono());
+                jTCorreoCuartel.setText(cuartel.getCorreo());
+                jRBActivo.setSelected(cuartel.isActivo());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Verificar los campos ingresados");
 
-            Cuartel cuartel = cdata.buscarCuartelPorCodigo(Integer.parseInt(jTCodigo.getText()));
-            jTCodigo.setText(cuartel.getCodigoCuartel() + "");
-            jTNombreCuartel.setText(cuartel.getNombreDeCuartel());
-            jTDireccionCuartel.setText(cuartel.getDireccion());
-            jTCoordEnX.setText(cuartel.getCoordenadaEnX() + "");
-            jTCoordEnY.setText(cuartel.getCoordenadaEnY() + "");
-            jTTelefonoCuartel.setText(cuartel.getTelefono());
-            jTCorreoCuartel.setText(cuartel.getCorreo());
-            jRBActivo.setSelected(cuartel.isActivo());
+            }
+
         } else {
             JOptionPane.showMessageDialog(null, "Debe llenar los campos.");
         }
 
     }//GEN-LAST:event_jBBuscar1ActionPerformed
 
+    private void jBElimniarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBElimniarActionPerformed
+
+        try {
+            cdata.eliminarCuartelPorCodigo(Integer.parseInt(jTCodigo.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El código debe ser un número entero.");
+            limpiarCampos();
+        }
+    }//GEN-LAST:event_jBElimniarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar1;
+    private javax.swing.JButton jBElimniar;
     private javax.swing.JButton jBModificar1;
     private javax.swing.JButton jBagregar;
     private javax.swing.JButton jBlimpiarCampo;
