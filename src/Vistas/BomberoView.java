@@ -2,9 +2,12 @@ package Vistas;
 
 import AccesoADatos.BomberoData;
 import Entidades.Bombero;
+import java.awt.Container;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  * @author Enzo
@@ -433,13 +436,16 @@ public class BomberoView extends javax.swing.JInternalFrame {
 
     private void jBListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBListaActionPerformed
         // listita de bomberos che
-        
-        this.dispose();
-        ListarBomberosView listita = new ListarBomberosView();
-        listita.setVisible(true);
-        
-        //JDEscritorio desktopPane = (JDesktopPane) internalFrame.getDesktopPane();
-        //desktopPane.add(listita);
+    
+        Container parent = this.getParent();
+        if (parent instanceof JDesktopPane) {
+            JDesktopPane desktopPane = (JDesktopPane) parent;
+
+            // Luego, puedes agregar tu segundo JInternalFrame al JDesktopPane
+            ListarBomberosView listita = new ListarBomberosView();
+            desktopPane.add(listita);
+            listita.setVisible(true);
+        }
     }//GEN-LAST:event_jBListaActionPerformed
 
 
