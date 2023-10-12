@@ -18,11 +18,13 @@ public class MainTest {
         //se Agrega el bombero a la base de datos.
        //bData.agregarBombero(bombero);
         //JOptionPane.showMessageDialog(null, bombero.toString());
+        
+        
         //2++++++++++++++++++++++++++++++Buscar Bombero por ID (Funciona)
         /*
         Bombero bombero2= new Bombero();
         
-        bombero2= bData.obtenerBomberoPorCodigo(1);
+        bombero2= bData.buscarBomberoPorCodigo(2);
         JOptionPane.showMessageDialog(null, bombero2.toString());
          */
  /*

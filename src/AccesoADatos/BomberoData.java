@@ -34,7 +34,10 @@ public class BomberoData {
             ps.setString(1, bombero.getDni());
             ps.setString(2, bombero.getNombre());
             ps.setString(3, bombero.getGrupo_sanguineo());
+            
             ps.setDate(4, Date.valueOf(bombero.getFechaNac()));
+            
+            
             ps.setString(5, bombero.getCelular());
             ps.setInt(6, bombero.getCodigoDeBrigada());
             ps.setBoolean(7, bombero.isActivo());
@@ -60,8 +63,8 @@ public class BomberoData {
     //ok
     public Bombero buscarBomberoPorCodigo(int cod_bombero) {
 
-        Bombero bombero = new Bombero();
-        String sql = "SELECT nombre_ape, dni, grupo_sanguineo, fecha_nac, celular, codBrigada, activo FROM bombero WHERE idBombero = ?";
+        Bombero bombero = null;
+        String sql = "SELECT nombre_ape, idBombero, dni, grupo_sanguineo, fecha_nac, celular, codBrigada, activo FROM bombero WHERE idBombero = ?";
 
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -70,12 +73,17 @@ public class BomberoData {
             ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
-                // bombero = new Bombero();
-                bombero.setCod_bombero(rs.getInt(cod_bombero));
+                bombero=new Bombero();
                 bombero.setNombre(rs.getString("nombre_ape"));
+                bombero.setCod_bombero(rs.getInt("idBombero"));
                 bombero.setDni(rs.getString("dni"));
                 bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
-                bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
+
+                Date fechaNacimiento = rs.getDate("fecha_nac");
+                if (fechaNacimiento != null) {
+                    bombero.setFechaNac(fechaNacimiento.toLocalDate());
+                }
+
                 bombero.setCelular(rs.getString("celular"));
                 bombero.setCodigoDeBrigada(rs.getInt("codBrigada"));
                 bombero.setActivo(rs.getBoolean("activo"));
