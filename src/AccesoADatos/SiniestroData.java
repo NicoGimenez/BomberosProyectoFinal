@@ -194,6 +194,10 @@ public class SiniestroData {
 
                 siniestro = new Siniestro();
                 siniestro.setCodigo(id);
+                String tipoSiniestroStr = rs.getString("tipo");
+                System.out.println(tipoSiniestroStr);
+//                Especialidad tipoSiniestro = obtenerEspecialidadDesdeString(tipoSiniestroStr);
+//                 siniestro.setTipo(tipoSiniestro);
                 siniestro.setFecha_siniestro(rs.getDate("fecha_siniestro").toLocalDate());
                 siniestro.setCoord_x(rs.getInt("coord_X"));
                 siniestro.setCoord_Y(rs.getInt("coord_Y"));

@@ -224,7 +224,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -279,13 +279,6 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     private void buscarSiniestroPorId(int id) {
         Siniestro sin = new Siniestro();
         sin = sd.BuscarSiniestroPorId(id);
-//         int a = Integer.parseInt(jTDocumento.getText());
-//                al = aData.buscarAlumnoPorDni(a);
-//
-//                jTApellido.setText(al.getApellido());
-//                jTNombre.setText(al.getNombre());
-//                jRBActivo.setSelected(al.isEstado());
-
         LocalDate fechaS = sin.getFecha_siniestro();
         java.util.Date fechaSiniestroComoDate = java.util.Date.from(fechaS.atStartOfDay(ZoneId.systemDefault()).toInstant());
         jDateChooser1.setDate(fechaSiniestroComoDate);
