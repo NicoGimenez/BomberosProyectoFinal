@@ -174,6 +174,9 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField3FocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField3FocusLost(evt);
+            }
         });
 
         jBBorrar.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
@@ -265,6 +268,9 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
 
     private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
         vaciarTextField(jTextField3);
+        limpiarCampos();
+        desHabilitarCampos();
+        deshabilitarBotones();
     }//GEN-LAST:event_jTextField3FocusGained
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
@@ -283,6 +289,12 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
           desHabilitarCampos();
           limpiarCampos();
     }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+        if(jTextField3.getText()==""){
+            jTextField3.setText("Buscar por id");
+        }
+    }//GEN-LAST:event_jTextField3FocusLost
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -316,6 +328,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     }
 
     private void buscarSiniestroPorId(int id) {
+        try{
         Siniestro sin = new Siniestro();
         sin = sd.BuscarSiniestroPorId(id);
         LocalDate fechaS = sin.getFecha_siniestro();
@@ -332,7 +345,10 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             jDFechaResol.setDate(fechaResolucionComoDate);
         } catch (Exception e) {
             jDFechaResol.setDate(null);
+        }}catch(NullPointerException ex){
+            
         }
+        
     }
 
     private void limpiarCampos() {
