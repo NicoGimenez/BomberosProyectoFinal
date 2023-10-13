@@ -179,6 +179,7 @@ public class SiniestroData {
             }
         }
         throw new IllegalArgumentException("Especialidad no encontrada para: " + especialidadStr);
+       
     }
 
     public Siniestro BuscarSiniestroPorId(int id) {
@@ -195,17 +196,20 @@ public class SiniestroData {
                 siniestro = new Siniestro();
                 siniestro.setCodigo(id);
                 String tipoSiniestroStr = rs.getString("tipo");
-                System.out.println(tipoSiniestroStr);
-//                Especialidad tipoSiniestro = obtenerEspecialidadDesdeString(tipoSiniestroStr);
-//                 siniestro.setTipo(tipoSiniestro);
+                Especialidad tipoSiniestro = obtenerEspecialidadDesdeString(tipoSiniestroStr); 
+                siniestro.setTipo(tipoSiniestro);
                 siniestro.setFecha_siniestro(rs.getDate("fecha_siniestro").toLocalDate());
                 siniestro.setCoord_x(rs.getInt("coord_X"));
                 siniestro.setCoord_Y(rs.getInt("coord_Y"));
                 siniestro.setDetalles(rs.getString("detalle"));
+                try{
                 siniestro.setFecha_resol(rs.getDate("fecha_resol").toLocalDate());
-                siniestro.setPuntuacion(rs.getInt("puntuacion"));
-                siniestro.setCodBrigada(rs.getInt("codBrigada"));
-
+                }catch( Exception ex){          
+                }
+                try{
+                 siniestro.setPuntuacion(rs.getInt("puntuacion"));
+                }catch( Exception ex){          
+                }           
             } else {
 
                 JOptionPane.showMessageDialog(null, "No existe siniestro con ese ID ");
@@ -216,7 +220,7 @@ public class SiniestroData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de consulta");
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, " Numero mal siniestro.");
+            JOptionPane.showMessageDialog(null, " Numero mal siniestro."+ex.getMessage());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, " No se encontró el siniestro.");
         }

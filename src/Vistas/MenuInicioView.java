@@ -44,14 +44,14 @@ public class MenuInicioView extends javax.swing.JFrame {
             .addGroup(jDEscritorioLayout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(jBSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(619, Short.MAX_VALUE))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
         jDEscritorioLayout.setVerticalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDEscritorioLayout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(jBSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(633, Short.MAX_VALUE))
+                .addContainerGap(416, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Administracion");
