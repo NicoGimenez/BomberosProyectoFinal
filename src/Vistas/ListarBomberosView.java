@@ -17,7 +17,7 @@ public class ListarBomberosView extends javax.swing.JInternalFrame {
     public ListarBomberosView() {
         bomberos = bdata.listarBomberos();
         initComponents();
-        this.setTitle("Listar Cuarteles");
+        this.setTitle("LISTA DE BOMBEROS");
         armarCabecera();
         llenarTabla(bomberos);
     }
@@ -35,6 +35,7 @@ public class ListarBomberosView extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
+        jTable1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -53,16 +54,16 @@ public class ListarBomberosView extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(127, 127, 127))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -76,15 +77,26 @@ public class ListarBomberosView extends javax.swing.JInternalFrame {
 
     public void armarCabecera() {
         //dni, nombre_ape, grupo_sanguineo, fecha_nac, celular, codBrigada, activo 
-        modelo.addColumn("dni");
-        modelo.addColumn("nombre_ape");
-        modelo.addColumn("grupo_sanguineo");
-        modelo.addColumn("fecha_nac");
-        modelo.addColumn("celular");
-        modelo.addColumn("codBrigada");
-        modelo.addColumn("Activo");
-
+        modelo.addColumn("#");
+        modelo.addColumn("NOMBRE Y APELLIDO");
+        modelo.addColumn("DNI");
+        modelo.addColumn("GRUPO SANGUÍNEO");               
+        modelo.addColumn("FECHA DE NACIMIENTO");
+        modelo.addColumn("TELÉFONO");
+        modelo.addColumn("BRIGADA");
+        modelo.addColumn("ACTIVO");
+        
+        
+        
         jTable1.setModel(modelo);
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(20); // CÓDIGO
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(115); // NOMBRE Y APELLIDO
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(70); // DNI
+        jTable1.getColumnModel().getColumn(3).setPreferredWidth(110); // GRUPO SANGUÍNEO
+        jTable1.getColumnModel().getColumn(4).setPreferredWidth(120); // FECHA DE NACIMIENTO
+        jTable1.getColumnModel().getColumn(5).setPreferredWidth(80); // TELÉFONO
+        jTable1.getColumnModel().getColumn(6).setPreferredWidth(50); // BRIGADA
+        jTable1.getColumnModel().getColumn(7).setPreferredWidth(50); // ACTIVO
     }
 
     public void llenarTabla(java.util.ArrayList<Bombero> cuarteles) {
@@ -98,6 +110,7 @@ public class ListarBomberosView extends javax.swing.JInternalFrame {
                 XBombero.getGrupo_sanguineo(),
                 XBombero.getFechaNac(),
                 XBombero.getCelular(),
+                XBombero.getCodigoDeBrigada(),
                 XBombero.isActivo()
             };
             modelo.addRow(rowData);
