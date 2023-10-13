@@ -13,7 +13,9 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     private SiniestroData sd = new SiniestroData();
 
     public ModificarSiniestroView() {
+        desHabilitarCampos();
         initComponents();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -243,7 +245,9 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField3FocusGained
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        limpiarCampos();
         buscarSiniestroPorId(Integer.parseInt(jTextField3.getText()));
+        habilitarCampos();
     }//GEN-LAST:event_jBBuscarActionPerformed
 
 
@@ -293,5 +297,32 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         jDFechaResol.setDate(fechaResolucionComoDate);}catch(Exception e){
            jDFechaResol.setDate(null);
         }
+    }
+    private void limpiarCampos(){
+        jDateChooser1.setDate(null);
+        jTCoordx.setText("Coordenadas x");
+        jTCoordy.setText("Coordenadas Y");
+        jTDescrip.setText("Describa el siniestro..");
+        jSPuntuacion.setValue(0);
+        jDFechaResol.setDate(null);
+        jLBrigada.setText("Brigada");
+    }
+    private void habilitarCampos(){
+        jDateChooser1.enable(true);
+        jTCoordx.enable(true);
+        jTCoordy.enable(true);
+        jTDescrip.enable(true);
+        jSPuntuacion.enable(true);
+        jDFechaResol.enable(true);
+        jLBrigada.enable(true);
+    }
+    private void desHabilitarCampos(){
+        jDateChooser1.enable(false);
+        jTCoordx.enable(false);
+        jTCoordy.enable(false);
+        jTDescrip.enable(false);
+        jSPuntuacion.enable(false);
+        jDFechaResol.enable(false);
+        jLBrigada.enable(false);
     }
 }
