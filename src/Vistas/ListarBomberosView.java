@@ -17,7 +17,7 @@ public class ListarBomberosView extends javax.swing.JInternalFrame {
     public ListarBomberosView() {
         bomberos = bdata.listarBomberos();
         initComponents();
-        this.setTitle("Listar Cuarteles");
+        this.setTitle("LISTA DE BOMBEROS");
         armarCabecera();
         llenarTabla(bomberos);
     }
