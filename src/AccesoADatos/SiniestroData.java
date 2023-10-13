@@ -220,7 +220,7 @@ public class SiniestroData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de consulta");
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, " Numero mal siniestro."+ex.getMessage());
+            JOptionPane.showMessageDialog(null, " Ingrese un número de id válido."+ex.getMessage());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, " No se encontró el siniestro.");
         }

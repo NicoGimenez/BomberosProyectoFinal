@@ -5,6 +5,7 @@ import Entidades.Especialidad;
 import Entidades.Siniestro;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -13,9 +14,9 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     private SiniestroData sd = new SiniestroData();
 
     public ModificarSiniestroView() {
-        desHabilitarCampos();
+
         initComponents();
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -40,6 +41,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         jLBrigada = new java.awt.Label();
         jTextField3 = new javax.swing.JTextField();
         jBBorrar = new javax.swing.JButton();
+        jBGuardar = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -68,15 +70,18 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         jLabel2.setText("Fecha");
 
+        jDateChooser1.setEnabled(false);
         jDateChooser1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
 
         jTCoordx.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
         jTCoordx.setText("Coordenadas x");
         jTCoordx.setToolTipText("Coordenadas x");
+        jTCoordx.setEnabled(false);
 
         jTCoordy.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
         jTCoordy.setText("Coordenadas Y");
         jTCoordy.setToolTipText("Coordenadas Y");
+        jTCoordy.setEnabled(false);
         jTCoordy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTCoordyActionPerformed(evt);
@@ -86,6 +91,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         jTDescrip.setColumns(20);
         jTDescrip.setRows(5);
         jTDescrip.setText("Describa el siniestro..");
+        jTDescrip.setEnabled(false);
         jScrollPane1.setViewportView(jTDescrip);
 
         jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
@@ -95,7 +101,9 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         jLabel3.setText("Fecha resolución");
 
         jSPuntuacion.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
+        jSPuntuacion.setEnabled(false);
 
+        jDFechaResol.setEnabled(false);
         jDFechaResol.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
 
         jLBrigada.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
@@ -131,7 +139,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
                                 .addGap(37, 37, 37)
                                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(32, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +164,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
                     .addComponent(jDFechaResol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addComponent(jLBrigada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jTextField3.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
@@ -172,12 +180,22 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         jBBorrar.setText("Borrar");
         jBBorrar.setEnabled(false);
 
+        jBGuardar.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
+        jBGuardar.setText("Guardar");
+        jBGuardar.setEnabled(false);
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
+
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBBuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBEditar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBBorrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jBGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -185,8 +203,9 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,20 +232,24 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
                     .addComponent(jBBorrar))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,7 +260,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTCoordyActionPerformed
 
     private void jBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarActionPerformed
-        // TODO add your handling code here:
+       habilitarCampos();
     }//GEN-LAST:event_jBEditarActionPerformed
 
     private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
@@ -245,16 +268,28 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField3FocusGained
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        limpiarCampos();
-        buscarSiniestroPorId(Integer.parseInt(jTextField3.getText()));
-        habilitarCampos();
+        try {
+            int numero = Integer.parseInt(jTextField3.getText());
+            limpiarCampos();
+            buscarSiniestroPorId(Integer.parseInt(jTextField3.getText()));
+            habilitarBotones();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Ingrese un id válido.", "Error de selección", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+          deshabilitarBotones();
+          desHabilitarCampos();
+          limpiarCampos();
+    }//GEN-LAST:event_jBGuardarActionPerformed
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBorrar;
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBEditar;
+    private javax.swing.JButton jBGuardar;
     private com.toedter.calendar.JDateChooser jDFechaResol;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -287,18 +322,20 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         java.util.Date fechaSiniestroComoDate = java.util.Date.from(fechaS.atStartOfDay(ZoneId.systemDefault()).toInstant());
         jDateChooser1.setDate(fechaSiniestroComoDate);
         LocalDate fechaR = sin.getFecha_resol();
-        jTCoordx.setText(sin.getCoord_x()+"");
-        jTCoordy.setText(sin.getCoord_Y()+"");
+        jTCoordx.setText(sin.getCoord_x() + "");
+        jTCoordy.setText(sin.getCoord_Y() + "");
         jTDescrip.setText(sin.getDetalles());
         jSPuntuacion.setValue(sin.getPuntuacion());
         jLBrigada.setText("Brigada: ");
-        try{
-        java.util.Date fechaResolucionComoDate = java.util.Date.from(fechaR.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        jDFechaResol.setDate(fechaResolucionComoDate);}catch(Exception e){
-           jDFechaResol.setDate(null);
+        try {
+            java.util.Date fechaResolucionComoDate = java.util.Date.from(fechaR.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            jDFechaResol.setDate(fechaResolucionComoDate);
+        } catch (Exception e) {
+            jDFechaResol.setDate(null);
         }
     }
-    private void limpiarCampos(){
+
+    private void limpiarCampos() {
         jDateChooser1.setDate(null);
         jTCoordx.setText("Coordenadas x");
         jTCoordy.setText("Coordenadas Y");
@@ -307,22 +344,34 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         jDFechaResol.setDate(null);
         jLBrigada.setText("Brigada");
     }
-    private void habilitarCampos(){
-        jDateChooser1.enable(true);
-        jTCoordx.enable(true);
-        jTCoordy.enable(true);
-        jTDescrip.enable(true);
-        jSPuntuacion.enable(true);
-        jDFechaResol.enable(true);
-        jLBrigada.enable(true);
+
+    private void habilitarCampos() {
+        jDateChooser1.setEnabled(true);
+    jTCoordx.setEnabled(true);
+    jTCoordy.setEnabled(true);
+    jTDescrip.setEnabled(true);
+    jSPuntuacion.setEnabled(true);
+    jDFechaResol.setEnabled(true);
+    jLBrigada.setEnabled(true);
+    jBGuardar.setEnabled(true);
     }
-    private void desHabilitarCampos(){
-        jDateChooser1.enable(false);
-        jTCoordx.enable(false);
-        jTCoordy.enable(false);
-        jTDescrip.enable(false);
-        jSPuntuacion.enable(false);
-        jDFechaResol.enable(false);
-        jLBrigada.enable(false);
+
+    private void desHabilitarCampos() {
+        jDateChooser1.setEnabled(false);
+        jTCoordx.setEnabled(false);
+        jTCoordy.setEnabled(false);
+        jTDescrip.setEnabled(false);
+        jSPuntuacion.setEnabled(false);
+        jDFechaResol.setEnabled(false);
+        jLBrigada.setEnabled(false);
+        jBGuardar.setEnabled(false);
+    }
+    private void habilitarBotones(){
+        jBBorrar.setEnabled(true);
+        jBEditar.setEnabled(true);
+    }
+    private void deshabilitarBotones(){
+        jBBorrar.setEnabled(false);
+        jBEditar.setEnabled(false);
     }
 }
