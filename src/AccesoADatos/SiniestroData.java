@@ -102,6 +102,7 @@ public class SiniestroData {
             ps.setDate(6, Date.valueOf(siniestro.getFecha_resol()));
             ps.setInt(7, siniestro.getPuntuacion());
             ps.setInt(8, siniestro.getCodBrigada());
+            ps.setInt(9, siniestro.getCodigo());
 
             int exito = ps.executeUpdate();
 

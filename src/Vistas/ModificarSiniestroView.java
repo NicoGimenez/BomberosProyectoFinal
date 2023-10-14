@@ -202,6 +202,11 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         jBBorrar.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         jBBorrar.setText("Borrar");
         jBBorrar.setEnabled(false);
+        jBBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBorrarActionPerformed(evt);
+            }
+        });
 
         jBGuardar.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
         jBGuardar.setText("Guardar");
@@ -325,6 +330,19 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         cargarEspecialidadesComboBox();
     }//GEN-LAST:event_JCSiniestroFocusGained
 
+    private void jBBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBorrarActionPerformed
+        jTextField3.setEnabled(false);
+        int id=Integer.parseInt(jTextField3.getText());
+        int respuesta = JOptionPane.showConfirmDialog(null, "Estas a punto de borrar el siniestro: id "+id+". \n ¿Desea contunuar?", "Confirmación", JOptionPane.YES_NO_OPTION);
+        if (respuesta == JOptionPane.YES_OPTION) {
+            borrarSiniestro(id);
+            limpiarCampos();
+            jTextField3.setEnabled(true);
+        }else{
+            jTextField3.setEnabled(true);
+        }
+    }//GEN-LAST:event_jBBorrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> JCSiniestro;
@@ -360,31 +378,30 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
 
     private void buscarSiniestroPorId(int id) {
         try {
-            Siniestro sin = new Siniestro();
-            sin = sd.BuscarSiniestroPorId(id);
-            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>();
-            model.setSelectedItem(sin.getTipo());
+            Siniestro sin = sd.BuscarSiniestroPorId(id);
+            String descripcionTipoSiniestro = sin.getTipo().getDescripcion();
+            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+            model.addElement(descripcionTipoSiniestro);
             JCSiniestro.setModel(model);
 
             LocalDate fechaS = sin.getFecha_siniestro();
             java.util.Date fechaSiniestroComoDate = java.util.Date.from(fechaS.atStartOfDay(ZoneId.systemDefault()).toInstant());
             jDateChooser1.setDate(fechaSiniestroComoDate);
-            LocalDate fechaR = sin.getFecha_resol();
             jTCoordx.setText(sin.getCoord_x() + "");
             jTCoordy.setText(sin.getCoord_Y() + "");
             jTDescrip.setText(sin.getDetalles());
             jSPuntuacion.setValue(sin.getPuntuacion());
             jLBrigada.setText("Brigada: ");
             try {
+                LocalDate fechaR = sin.getFecha_resol();
                 java.util.Date fechaResolucionComoDate = java.util.Date.from(fechaR.atStartOfDay(ZoneId.systemDefault()).toInstant());
                 jDFechaResol.setDate(fechaResolucionComoDate);
             } catch (Exception e) {
                 jDFechaResol.setDate(null);
             }
         } catch (NullPointerException ex) {
-
+            // Manejo de errores, si es necesario
         }
-
     }
 
     private void limpiarCampos() {
@@ -434,39 +451,51 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     }
 
     private void cargarEspecialidadesComboBox() {
-
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
         for (Especialidad especialidad : Especialidad.values()) {
-            model.addElement(especialidad.toString());
+            // Cambia esto para agregar la descripción de la especialidad como un String
+            model.addElement(especialidad.getDescripcion());
         }
         JCSiniestro.setModel(model);
-
     }
 
-   private void editarSiniestro(int id) {
-    Siniestro siniestro = new Siniestro();
-    siniestro.setCodigo(id);
-    Especialidad descripcionSeleccionada = (Especialidad) JCSiniestro.getSelectedItem();
+    private void editarSiniestro(int id) {
+        Siniestro siniestro = new Siniestro();
+        siniestro.setCodigo(id);
 
-    Especialidad tipo = null;
-    Especialidad[] especialidadesArray = Especialidad.values();
-    for (Especialidad especialidad : especialidadesArray) {
-        if (descripcionSeleccionada == especialidad) {
-            tipo = especialidad;
-            break;
+        // Obtiene la descripción seleccionada como un String
+        String descripcionSeleccionada = (String) JCSiniestro.getSelectedItem();
+
+        Especialidad tipo = null;
+
+        for (Especialidad especialidad : Especialidad.values()) {
+            if (descripcionSeleccionada.equals(especialidad.getDescripcion())) {
+                tipo = especialidad;
+                break;
+            }
         }
-    }
-    siniestro.setTipo(tipo);
-    LocalDate fecha_siniestro = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    siniestro.setFecha_siniestro(fecha_siniestro);
-    siniestro.setCoord_x(Integer.parseInt(jTCoordx.getText()));
-    siniestro.setCoord_Y(Integer.parseInt(jTCoordy.getText()));
-    siniestro.setDetalles(jTDescrip.getText());
-    siniestro.setPuntuacion((int) jSPuntuacion.getValue());
-    LocalDate fecha_res = jDFechaResol.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    siniestro.setFecha_resol(fecha_res);
-    siniestro.setCodBrigada(1);
-    sd.modificarSiniestro(siniestro);
-}
 
+        if (tipo != null) {
+            // Aquí puedes continuar con la lógica para editar el siniestro
+            siniestro.setTipo(tipo);
+        } else {
+            // Manejo del caso en que no se selecciona una especialidad válida
+            JOptionPane.showMessageDialog(this, "Seleccione una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
+        }
+
+        LocalDate fecha_siniestro = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        siniestro.setFecha_siniestro(fecha_siniestro);
+        siniestro.setCoord_x(Integer.parseInt(jTCoordx.getText()));
+        siniestro.setCoord_Y(Integer.parseInt(jTCoordy.getText()));
+        siniestro.setDetalles(jTDescrip.getText());
+        siniestro.setPuntuacion((int) jSPuntuacion.getValue());
+        LocalDate fecha_res = jDFechaResol.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        siniestro.setFecha_resol(fecha_res);
+        siniestro.setCodBrigada(1);
+        sd.modificarSiniestro(siniestro);
+    }
+
+    private void borrarSiniestro(int id) {
+        sd.eliminarSiniestro(id);
+    }
 }
