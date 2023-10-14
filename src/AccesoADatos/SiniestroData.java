@@ -348,6 +348,7 @@ public class SiniestroData {
         }
         return siniestros;
     }
+    
 //    public Brigada asignarBrigada(Siniestro siniestro) {
 //    Brigada brigada = null; // Inicialmente, no asignamos ninguna brigada.
 //    
