@@ -31,7 +31,7 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
         this.setTitle("LISTAR BRIGADAS");
         armarCabecera();
         llenarTabla(brigadas);
-        
+
         
     }
 
@@ -69,11 +69,6 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
         jRBespecialidad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jRBespecialidadMouseClicked(evt);
-            }
-        });
-        jRBespecialidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRBespecialidadActionPerformed(evt);
             }
         });
 
@@ -144,38 +139,35 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRBespecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBespecialidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRBespecialidadActionPerformed
-
     private void jRBLibresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBLibresMouseClicked
 
         List<Brigada> brigadas = bData.listarBrigadasLibres();
         modelo.setRowCount(0);
         for (Brigada brigada : brigadas) {
-            modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getCodCuartel(), brigada.getEspecialidad()});
+            modelo.addRow(new Object[]{brigada.getCodBrigada(),brigada.getNombre_br(), brigada.getEspecialidad()});
 
         }
     }//GEN-LAST:event_jRBLibresMouseClicked
 
     private void jRBespecialidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBespecialidadMouseClicked
-       List<Brigada> brigadas = bData.listarBrigadasLibresPorEspecialidad(Especialidad.INCENDIOS);
+        List<Brigada> brigadas = bData.listarBrigadasLibresPorEspecialidad(Especialidad.INCENDIOS);
         modelo.setRowCount(0);
         for (Brigada brigada : brigadas) {
-            modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getCodCuartel(), brigada.getEspecialidad()});
+            modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getNombre_br(), brigada.getEspecialidad()});
+            
     }//GEN-LAST:event_jRBespecialidadMouseClicked
-    
+
     }
-    
+
     private void jRBcuartelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBcuartelMouseClicked
         List<Brigada> brigadas = bData.listBrigadasPorCuartel(PROPERTIES);
         modelo.setRowCount(0);
         for (Brigada brigada : brigadas) {
-            modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getCodCuartel(), brigada.getEspecialidad()});
-    }                                            
+            modelo.addRow(new Object[]{brigada.getCodBrigada(),brigada.getNombre_br(), brigada.getEspecialidad()});
+        }
     }//GEN-LAST:event_jRBcuartelMouseClicked
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -193,15 +185,15 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
 
     public void armarCabecera() {
         //cuartel , especialidad, BRIGADA
-        modelo.addColumn("CUARTEL");
-        modelo.addColumn("BRIGADA");
+        modelo.addColumn("COD BRIGADA");
         modelo.addColumn("ESPECILIDAD");
-
+        modelo.addColumn("BRIGADA");
+        
         jTable1.setModel(modelo);
 
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(20); // CUARTEL
-        jTable1.getColumnModel().getColumn(1).setPreferredWidth(115); // BRIGADA
-        jTable1.getColumnModel().getColumn(2).setPreferredWidth(70); // ESPECIALIDAD
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(5); // COD BRIGADA
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(5); // ESPECIALIDAD
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(20); // BRIGADA
     }
 
     public void llenarTabla(java.util.ArrayList<Brigada> brigadast) {
@@ -209,9 +201,9 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
 
         for (Brigada brigada : brigadas) {
             Object[] rowData = {
-                brigada.getCodCuartel(),
+                brigada.getCodBrigada(),
                 brigada.getEspecialidad(),
-                brigada.getNombre_br(),};
+                brigada.getNombre_br()};
             modelo.addRow(rowData);
         }
 
