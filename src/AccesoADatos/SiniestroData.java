@@ -28,16 +28,16 @@ public class SiniestroData {
         con = Conexion.getConexion();
 
     }
-    public void altaSiniestro(Siniestro siniestro){
+
+    public void altaSiniestro(Siniestro siniestro) {
         String sql = "INSERT INTO siniestro(tipo, fecha_siniestro, coord_X, coord_Y, detalle)"
                 + "VALUES (?, ?, ?, ?, ?)";
-         try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, siniestro.getTipo().getDescripcion());
             ps.setDate(2, Date.valueOf(siniestro.getFecha_siniestro()));
             ps.setInt(3, siniestro.getCoord_x());
             ps.setInt(4, siniestro.getCoord_Y());
             ps.setString(5, siniestro.getDetalles());
-           
 
             int exito = ps.executeUpdate();
 
@@ -54,7 +54,7 @@ public class SiniestroData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al intentar guardar siniestro: " + ex.getMessage());
         } catch (NullPointerException ex) {
-             JOptionPane.showMessageDialog(null, "Error! las coordenadas deben ser números: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error! las coordenadas deben ser números: " + ex.getMessage());
         }
 
     }
@@ -136,41 +136,36 @@ public class SiniestroData {
     }
 
     public List<Siniestro> listarSiniestros() {
-
         ArrayList<Siniestro> siniestros = new ArrayList<>();
 
         try {
             String sql = "SELECT  * FROM siniestro";
             PreparedStatement ps = con.prepareStatement(sql);
-
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
                 Siniestro siniestro = new Siniestro();
                 siniestro.setCodigo(rs.getInt("codigo"));
                 String tipoSiniestroStr = rs.getString("tipo");
                 Especialidad tipoSiniestro = obtenerEspecialidadDesdeString(tipoSiniestroStr);
                 siniestro.setTipo(tipoSiniestro);
-                siniestro.setFecha_siniestro(rs.getDate("fecha_siniestro").toLocalDate());
+                siniestro.setFecha_siniestro(rs.getDate("fecha_siniestro") != null ? rs.getDate("fecha_siniestro").toLocalDate() : null);
                 siniestro.setCoord_x(rs.getInt("coord_X"));
-                siniestro.setCoord_Y(rs.getInt("coord_y"));
+                siniestro.setCoord_Y(rs.getInt("coord_Y"));
                 siniestro.setDetalles(rs.getString("Detalle"));
-                siniestro.setFecha_resol(rs.getDate("fecha_resol").toLocalDate());
+                siniestro.setFecha_resol(rs.getDate("fecha_resol") != null ? rs.getDate("fecha_resol").toLocalDate() : null);
                 siniestro.setPuntuacion(rs.getInt("puntuacion"));
                 siniestro.setCodBrigada(rs.getInt("codBrigada"));
 
                 siniestros.add(siniestro);
-
             }
 
             ps.close();
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. " + ex.getMessage());
         }
-        return siniestros;
 
+        return siniestros;
     }
 
     public Especialidad obtenerEspecialidadDesdeString(String especialidadStr) {
@@ -180,7 +175,7 @@ public class SiniestroData {
             }
         }
         throw new IllegalArgumentException("Especialidad no encontrada para: " + especialidadStr);
-       
+
     }
 
     public Siniestro BuscarSiniestroPorId(int id) {
@@ -197,20 +192,20 @@ public class SiniestroData {
                 siniestro = new Siniestro();
                 siniestro.setCodigo(id);
                 String tipoSiniestroStr = rs.getString("tipo");
-                Especialidad tipoSiniestro = obtenerEspecialidadDesdeString(tipoSiniestroStr); 
+                Especialidad tipoSiniestro = obtenerEspecialidadDesdeString(tipoSiniestroStr);
                 siniestro.setTipo(tipoSiniestro);
                 siniestro.setFecha_siniestro(rs.getDate("fecha_siniestro").toLocalDate());
                 siniestro.setCoord_x(rs.getInt("coord_X"));
                 siniestro.setCoord_Y(rs.getInt("coord_Y"));
                 siniestro.setDetalles(rs.getString("detalle"));
-                try{
-                siniestro.setFecha_resol(rs.getDate("fecha_resol").toLocalDate());
-                }catch( Exception ex){          
+                try {
+                    siniestro.setFecha_resol(rs.getDate("fecha_resol").toLocalDate());
+                } catch (Exception ex) {
                 }
-                try{
-                 siniestro.setPuntuacion(rs.getInt("puntuacion"));
-                }catch( Exception ex){          
-                }           
+                try {
+                    siniestro.setPuntuacion(rs.getInt("puntuacion"));
+                } catch (Exception ex) {
+                }
             } else {
 
                 JOptionPane.showMessageDialog(null, "No existe siniestro con ese ID ");
@@ -221,7 +216,7 @@ public class SiniestroData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error de consulta");
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, " Ingrese un número de id válido."+ex.getMessage());
+            JOptionPane.showMessageDialog(null, " Ingrese un número de id válido." + ex.getMessage());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, " No se encontró el siniestro.");
         }
@@ -235,8 +230,8 @@ public class SiniestroData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1, Date.valueOf(fechaInicio));
-        ps.setDate(2, Date.valueOf(fechaFin));
-            
+            ps.setDate(2, Date.valueOf(fechaFin));
+
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
@@ -267,15 +262,15 @@ public class SiniestroData {
         }
         return siniestro;
     }
-    
-    public List<Siniestro> ListarSiniestrosNoResueltos(){
-         ArrayList<Siniestro> siniestros = new ArrayList<>();
-         
+
+    public List<Siniestro> ListarSiniestrosNoResueltos() {
+        ArrayList<Siniestro> siniestros = new ArrayList<>();
+
         String sql = "SELECT * FROM siniestro WHERE fecha_resol IS NULL";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-          
+
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -304,19 +299,19 @@ public class SiniestroData {
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, " No se encontró el siniestro.");
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, " Error!"+ex.getMessage());
+            JOptionPane.showMessageDialog(null, " Error!" + ex.getMessage());
         }
         return siniestros;
-    }//SELECT * FROM siniestro WHERE fecha_resol IS NOT NULL
+    }
 
-    public List<Siniestro> ListarSiniestrosResueltos(){
-         ArrayList<Siniestro> siniestros = new ArrayList<>();
-         
+    public List<Siniestro> ListarSiniestrosResueltos() {
+        ArrayList<Siniestro> siniestros = new ArrayList<>();
+
         String sql = "SELECT * FROM siniestro WHERE fecha_resol IS NOT NULL";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-          
+
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -349,7 +344,7 @@ public class SiniestroData {
         }
         return siniestros;
     }
-    
+
 //    public Brigada asignarBrigada(Siniestro siniestro) {
 //    Brigada brigada = null; // Inicialmente, no asignamos ninguna brigada.
 //    
