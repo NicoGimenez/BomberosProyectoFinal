@@ -163,7 +163,7 @@ public class MenuInicioView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMListarCuartelesActionPerformed
 
     private void jMBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBrigadaActionPerformed
-       BrigadasView1 listarbrigadas = new BrigadasView1();
+        BrigadasView1 listarbrigadas = new BrigadasView1();
         mostrarVentanaNueva(listarbrigadas);
     }//GEN-LAST:event_jMBrigadaActionPerformed
     
