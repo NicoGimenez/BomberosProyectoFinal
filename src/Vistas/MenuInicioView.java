@@ -13,7 +13,6 @@ public class MenuInicioView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jDEscritorio = new javax.swing.JDesktopPane();
         jBSiniestro = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -24,12 +23,8 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMModificacionDeSiniestro = new javax.swing.JMenuItem();
         JMConsultaSiniestro = new javax.swing.JMenuItem();
-        jMNuevoSiniestro = new javax.swing.JCheckBoxMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMListarCuarteles = new javax.swing.JMenuItem();
-
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,16 +42,16 @@ public class MenuInicioView extends javax.swing.JFrame {
         jDEscritorioLayout.setHorizontalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDEscritorioLayout.createSequentialGroup()
-                .addGap(270, 270, 270)
+                .addGap(64, 64, 64)
                 .addComponent(jBSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(321, Short.MAX_VALUE))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
         jDEscritorioLayout.setVerticalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDEscritorioLayout.createSequentialGroup()
-                .addGap(115, 115, 115)
+                .addGap(58, 58, 58)
                 .addComponent(jBSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(607, Short.MAX_VALUE))
+                .addContainerGap(416, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Administracion");
@@ -70,6 +65,11 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenu1.add(jMBombero);
 
         jMBrigada.setText("Brigada");
+        jMBrigada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMBrigadaActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMBrigada);
 
         jMCuartel.setText("Cuartel");
@@ -100,15 +100,6 @@ public class MenuInicioView extends javax.swing.JFrame {
         });
         jMenu2.add(JMConsultaSiniestro);
 
-        jMNuevoSiniestro.setSelected(true);
-        jMNuevoSiniestro.setText("Nuevo Siniestro");
-        jMNuevoSiniestro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMNuevoSiniestroActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMNuevoSiniestro);
-
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("cuartel");
@@ -129,15 +120,11 @@ public class MenuInicioView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jDEscritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jDEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -175,10 +162,10 @@ public class MenuInicioView extends javax.swing.JFrame {
         mostrarVentanaNueva(listarCuarteles);
     }//GEN-LAST:event_jMListarCuartelesActionPerformed
 
-    private void jMNuevoSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMNuevoSiniestroActionPerformed
-        NuevoSiniestro ns = new NuevoSiniestro();
-        mostrarVentanaNueva(ns);
-    }//GEN-LAST:event_jMNuevoSiniestroActionPerformed
+    private void jMBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBrigadaActionPerformed
+       BrigadasView1 listarbrigadas = new BrigadasView1();
+        mostrarVentanaNueva(listarbrigadas);
+    }//GEN-LAST:event_jMBrigadaActionPerformed
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -215,14 +202,12 @@ public class MenuInicioView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem JMConsultaSiniestro;
     private javax.swing.JButton jBSiniestro;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JDesktopPane jDEscritorio;
     private javax.swing.JMenuItem jMBombero;
     private javax.swing.JMenuItem jMBrigada;
     private javax.swing.JMenuItem jMCuartel;
     private javax.swing.JMenuItem jMListarCuarteles;
     private javax.swing.JMenuItem jMModificacionDeSiniestro;
-    private javax.swing.JCheckBoxMenuItem jMNuevoSiniestro;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
