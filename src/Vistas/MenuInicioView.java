@@ -65,6 +65,11 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenu1.add(jMBombero);
 
         jMBrigada.setText("Brigada");
+        jMBrigada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMBrigadaActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMBrigada);
 
         jMCuartel.setText("Cuartel");
@@ -156,6 +161,11 @@ public class MenuInicioView extends javax.swing.JFrame {
         ListarCuartelesView listarCuarteles = new ListarCuartelesView();
         mostrarVentanaNueva(listarCuarteles);
     }//GEN-LAST:event_jMListarCuartelesActionPerformed
+
+    private void jMBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBrigadaActionPerformed
+       BrigadasView1 listarbrigadas = new BrigadasView1();
+        mostrarVentanaNueva(listarbrigadas);
+    }//GEN-LAST:event_jMBrigadaActionPerformed
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
