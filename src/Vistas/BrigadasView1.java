@@ -164,6 +164,8 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
       // en la linea siguiente hay que pasrle por parametro el nro de cuartel y aca no esta
         List<Brigada> brigadas = bData.listBrigadasPorCuartel(PROPERTIES);
         modelo.setRowCount(0);
+        
+        //inverti el orden para que quede acorde a la tabla
         for (Brigada brigada : brigadas) {
             modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getEspecialidad(),brigada.getNombre_br()});
         }
