@@ -45,6 +45,9 @@ public class BrigadaData {
                 Brigada brigada = new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
                 brigada.setEspecialidad(rs.getString("especialidad"));
+                brigada.setNombre_br(rs.getNString("nombre_br"));
+                brigada.setLibre(rs.getBoolean("libre"));
+                brigada.setCodCuartel(rs.getInt("nro_cuartel"));
                 brigadas.add(brigada);
             }
             ps.close();

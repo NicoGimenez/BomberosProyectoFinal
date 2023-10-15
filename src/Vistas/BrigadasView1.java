@@ -150,6 +150,7 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRBLibresMouseClicked
 
     private void jRBespecialidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBespecialidadMouseClicked
+      //hay que ver para que sea variale y no pases una sola especialidad
         List<Brigada> brigadas = bData.listarBrigadasLibresPorEspecialidad(Especialidad.INCENDIOS);
         modelo.setRowCount(0);
         for (Brigada brigada : brigadas) {
@@ -160,10 +161,13 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
     }
 
     private void jRBcuartelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBcuartelMouseClicked
+      // en la linea siguiente hay que pasrle por parametro el nro de cuartel y aca no esta
         List<Brigada> brigadas = bData.listBrigadasPorCuartel(PROPERTIES);
         modelo.setRowCount(0);
+        
+        //inverti el orden para que quede acorde a la tabla
         for (Brigada brigada : brigadas) {
-            modelo.addRow(new Object[]{brigada.getCodBrigada(),brigada.getNombre_br(), brigada.getEspecialidad()});
+            modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getEspecialidad(),brigada.getNombre_br()});
         }
     }//GEN-LAST:event_jRBcuartelMouseClicked
 
