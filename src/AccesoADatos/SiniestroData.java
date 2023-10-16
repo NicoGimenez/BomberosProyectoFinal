@@ -26,7 +26,6 @@ public class SiniestroData {
     private Connection con = null;
     private CuartelData cd = new CuartelData();
     private BrigadaData bd = new BrigadaData();
-    
 
     public SiniestroData() {
 
@@ -366,9 +365,9 @@ public class SiniestroData {
 //
 //        return brigada;
 //    }
-     public ArrayList<Cuartel> ordenarCuartlesPorCercania(Siniestro siniestro, ArrayList<Cuartel> cuarteles) {
+    public ArrayList<Cuartel> ordenarCuartlesPorCercania(Siniestro siniestro, ArrayList<Cuartel> cuarteles) {
         if (siniestro == null || cuarteles == null || cuarteles.isEmpty()) {
-            return cuarteles; 
+            return cuarteles;
         }
 
         Collections.sort(cuarteles, new Comparator<Cuartel>() {
@@ -382,13 +381,26 @@ public class SiniestroData {
 
         return cuarteles;
     }
-     public Brigada asignarBrigada(Siniestro siniestro, Especialidad esp) {
-     Brigada brigada = new Brigada();
-      ArrayList<Cuartel> cuarteles = ordenarCuartlesPorCercania(siniestro, cd.listarCuarteles());
-         for (Cuartel cuartele : cuarteles) {
-             cd.obtenerBrigadasDelCuartel(cuartele.getCodigoCuartel());
-         }
-       return brigada; 
-     }
-}
 
+    public Brigada buscarBrigadaParaAsignarSiniestro(Siniestro siniestro, Especialidad esp) {
+        Brigada brigada = null;
+        ArrayList<Brigada> brigadas = new ArrayList<>();
+        ArrayList<Cuartel> cuarteles = ordenarCuartlesPorCercania(siniestro, cd.listarCuarteles());
+
+        for (Cuartel cuartel : cuarteles) {
+            brigadas = cd.obtenerBrigadasDelCuartel(cuartel.getCodigoCuartel());
+            for (Brigada brig : brigadas) {
+                if (brig.getEspecialidad() == esp.toString() && brig.isLibre()) {
+                    brigada = brig;
+                    break;
+                }
+            }
+            if (brigada != null) {
+                break;
+            }
+        }
+
+        return brigada;
+    }
+
+}
