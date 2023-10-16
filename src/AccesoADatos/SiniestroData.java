@@ -16,12 +16,17 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Comparator;
 
 public class SiniestroData {
 
     private Connection con = null;
     private CuartelData cd = new CuartelData();
     private BrigadaData bd = new BrigadaData();
+    
 
     public SiniestroData() {
 
@@ -155,7 +160,7 @@ public class SiniestroData {
                 siniestro.setDetalles(rs.getString("Detalle"));
                 siniestro.setFecha_resol(rs.getDate("fecha_resol") != null ? rs.getDate("fecha_resol").toLocalDate() : null);
 //                siniestro.setPuntuacion(rs.getObject("puntuacion") != null ? rs.getInt("puntuacion") : null);
-             //   siniestro.setCodBrigada(rs.getObject("codBrigada") != null ? rs.getInt("codBrigada") : null);
+                //   siniestro.setCodBrigada(rs.getObject("codBrigada") != null ? rs.getInt("codBrigada") : null);
 
                 siniestros.add(siniestro);
             }
@@ -344,4 +349,46 @@ public class SiniestroData {
         }
         return siniestros;
     }
+
+//    public Brigada asignarBrigada(Siniestro siniestro, Especialidad esp) {
+//        Brigada brigada = new Brigada();
+//        ArrayList<Cuartel> cuarteles = cd.listarCuarteles();
+//        double distanciaMenor = Double.MAX_VALUE;
+//        double distancia;
+//        Cuartel cuart = new Cuartel();
+//        for (Cuartel cuartel : cuarteles) {
+//            distancia = cuartel.distanciaAlSiniestro(siniestro);
+//            if (distancia < distanciaMenor) {
+//                distanciaMenor = distancia;
+//                cuart = cuartel;
+//            }
+//        }
+//
+//        return brigada;
+//    }
+     public ArrayList<Cuartel> ordenarCuartlesPorCercania(Siniestro siniestro, ArrayList<Cuartel> cuarteles) {
+        if (siniestro == null || cuarteles == null || cuarteles.isEmpty()) {
+            return cuarteles; 
+        }
+
+        Collections.sort(cuarteles, new Comparator<Cuartel>() {
+            @Override
+            public int compare(Cuartel cuartel1, Cuartel cuartel2) {
+                double distancia1 = cuartel1.distanciaAlSiniestro(siniestro);
+                double distancia2 = cuartel2.distanciaAlSiniestro(siniestro);
+                return Double.compare(distancia1, distancia2);
+            }
+        });
+
+        return cuarteles;
+    }
+     public Brigada asignarBrigada(Siniestro siniestro, Especialidad esp) {
+     Brigada brigada = new Brigada();
+      ArrayList<Cuartel> cuarteles = ordenarCuartlesPorCercania(siniestro, cd.listarCuarteles());
+         for (Cuartel cuartele : cuarteles) {
+             cd.obtenerBrigadasDelCuartel(cuartele.getCodigoCuartel());
+         }
+       return brigada; 
+     }
 }
+
