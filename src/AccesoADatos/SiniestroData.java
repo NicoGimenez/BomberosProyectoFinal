@@ -154,8 +154,8 @@ public class SiniestroData {
                 siniestro.setCoord_Y(rs.getInt("coord_Y"));
                 siniestro.setDetalles(rs.getString("Detalle"));
                 siniestro.setFecha_resol(rs.getDate("fecha_resol") != null ? rs.getDate("fecha_resol").toLocalDate() : null);
-                siniestro.setPuntuacion(rs.getInt("puntuacion"));
-                siniestro.setCodBrigada(rs.getInt("codBrigada"));
+//                siniestro.setPuntuacion(rs.getObject("puntuacion") != null ? rs.getInt("puntuacion") : null);
+             //   siniestro.setCodBrigada(rs.getObject("codBrigada") != null ? rs.getInt("codBrigada") : null);
 
                 siniestros.add(siniestro);
             }
@@ -344,117 +344,4 @@ public class SiniestroData {
         }
         return siniestros;
     }
-
-//    public Brigada asignarBrigada(Siniestro siniestro) {
-//    Brigada brigada = null; // Inicialmente, no asignamos ninguna brigada.
-//    
-//    ArrayList<Cuartel> cuarteles = cd.listarCuarteles();
-//    double distanciaMenor = Double.MAX_VALUE;
-//    Cuartel cuartelMasCercano = null;
-//    
-//    for (Cuartel cuartel : cuarteles) {
-//        double distancia = cuartel.distanciaAlSiniestro(siniestro);
-//        if (distancia < distanciaMenor) {
-//            distanciaMenor = distancia;
-//            cuartelMasCercano = cuartel;
-//        }
-//    }
-//    
-//    if (cuartelMasCercano != null) {
-//     
-//        }
-//    }
-//    
-//    return brigada;
-//}
-//    public Brigada asignarBrigada(Siniestro siniestro){
-//        Brigada brigada = new Brigada();
-//       ArrayList<Cuartel> cuarteles = cd.listarCuarteles();
-//       double distanciaMenor=Double.MAX_VALUE;
-//       double distancia;
-//       Cuartel cuart= new Cuartel();
-//       for(Cuartel cuartel: cuarteles){
-//           distancia= cuartel.distanciaAlSiniestro(siniestro);
-//             if(distancia <distanciaMenor){
-//                 distanciaMenor=distancia;
-//              cuart = cuartel;   
-//           }
-//       }    
-//        if (cuart != null) {
-//        ArrayList<Brigada> brigadas = cd.obtenerBrigadasDelCuartel(cuart.getCodigoCuartel());
-//        
-//        if (!brigadas.isEmpty()) {
-//            double distanciaMinima = Double.MAX_VALUE;
-//            
-//            for (Brigada posibleBrigada : brigadas) {
-//                double distanciaBrigada = posibleBrigada
-//                if (distanciaBrigada < distanciaMinima) {
-//                    distanciaMinima = distanciaBrigada;
-//                    brigada = posibleBrigada;
-//                }
-//            }
-//        }
-//    }
-//        
-//      return brigada; 
-//    }
-//    public Brigada asignarBrigada1(Siniestro siniestro) {
-//    Brigada brigada = null; // Inicialmente, no asignamos ninguna brigada.
-//    
-//    ArrayList<Cuartel> cuarteles = cd.listarCuarteles();
-//    double distanciaMenor = Double.MAX_VALUE;
-//    Cuartel cuartelMasCercano = null;
-//    
-//    for (Cuartel cuartel : cuarteles) {
-//        double distancia = cuartel.distanciaAlSiniestro(siniestro);
-//        if (distancia < distanciaMenor) {
-//            distanciaMenor = distancia;
-//            cuartelMasCercano = cuartel;
-//        }
-//    }
-//    
-//    if (cuartelMasCercano != null) {
-//        ArrayList<Brigada> brigadas = cd.obtenerBrigadasDelCuartel(cuartelMasCercano.getCodigoCuartel());
-//        
-//        if (!brigadas.isEmpty()) {
-//            // Inicializamos la distancia mínima con un valor alto.
-//            double distanciaMinima = Double.MAX_VALUE;
-//            
-//            for (Brigada posibleBrigada : brigadas) {
-//                double distanciaBrigada = posibleBrigada.distanciaAlSiniestro(siniestro);
-//                if (distanciaBrigada < distanciaMinima) {
-//                    distanciaMinima = distanciaBrigada;
-//                    brigada = posibleBrigada;
-//                }
-//            }
-//        }
-//    }
-//    
-//    return brigada;
 }
-//    public Cuartel encontrarCuartelAdecuado(Siniestro siniestro, String especialidadRequerida) {
-//    List<Cuartel> cuartelesAdecuados = new ArrayList<>();
-//    ArrayList<Cuartel> cuarteles = cd.listarCuarteles();
-//
-//    for (Cuartel cuartel : uarteles) {
-//        double distancia = cuartel.distanciaAlSiniestro(siniestro);
-//
-//        // Verifica si la brigada tiene la especialidad requerida y está libre
-//        if (cuartel.getBrigada() != null &&
-//            cuartel.getBrigada().getEspecialidad().equals(especialidadRequerida) &&
-//            cuartel.getBrigada().isLibre()) {
-//            cuartelesAdecuados.add(cuartel);
-//        }
-//    }
-//
-//    // Ordena la lista de cuarteles adecuados por distancia
-//    cuartelesAdecuados.sort(Comparator.comparingDouble(c -> c.distanciaAlSiniestro(siniestro)));
-//
-//    // Devuelve el cuartel más cercano con brigada adecuada y libre
-//    if (!cuartelesAdecuados.isEmpty()) {
-//        return cuartelesAdecuados.get(0);
-//    }
-//
-//    // Si no se encuentra un cuartel adecuado, puedes manejarlo de acuerdo a tus necesidades, por ejemplo, devolver null.
-//    return null;
-//}

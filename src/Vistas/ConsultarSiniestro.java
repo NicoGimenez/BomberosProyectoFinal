@@ -206,7 +206,7 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         ArrayList<Siniestro> listaDeSiniestros = (ArrayList) sd.listarSiniestros();
 
         for (Siniestro sin : listaDeSiniestros) {
-            Object[] rowData = {sin.getCodigo(), sin.getTipo(), sin.getFecha_siniestro(), sin.getCoord_x(),sin.getCoord_Y(),sin.getDetalles(), sin.getFecha_resol()};
+            Object[] rowData = {sin.getCodigo(), sin.getTipo(), sin.getFecha_siniestro(), sin.getCoord_x(),sin.getCoord_Y(),sin.getDetalles(), sin.getFecha_resol(), sin.getPuntuacion()};
             modelo.addRow(rowData);
         }
     }
