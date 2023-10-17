@@ -58,7 +58,7 @@ public class ListarCuartelesView extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
-        jLabel1.setText("Busqueda Cuarteles");
+        jLabel1.setText("Lista de Cuarteles");
 
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -122,6 +122,16 @@ public class ListarCuartelesView extends javax.swing.JInternalFrame {
         modelo.addColumn("Activo");
 
         jTable1.setModel(modelo);
+        
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(1); // CÓDIGO
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(12); // NOMBRE
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(70); // DIRECCION
+        jTable1.getColumnModel().getColumn(3).setPreferredWidth(12); // COORD x
+        jTable1.getColumnModel().getColumn(4).setPreferredWidth(12); // COORD Y
+        jTable1.getColumnModel().getColumn(5).setPreferredWidth(15); // TELÉFONO
+        jTable1.getColumnModel().getColumn(6).setPreferredWidth(25); // CORREO
+        jTable1.getColumnModel().getColumn(7).setPreferredWidth(4); // ACTIVO
+
     }
 
     public void llenarTabla(ArrayList<Cuartel> cuarteles) {

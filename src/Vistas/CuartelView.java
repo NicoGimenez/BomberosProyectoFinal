@@ -242,7 +242,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
                     .addComponent(jBlimpiarCampo)
                     .addComponent(jLabel2)
                     .addComponent(jRBActivo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBagregar)
                     .addComponent(jBElimniar)
@@ -252,7 +252,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(107, 107, 107)
                     .addComponent(jBBuscar1)
-                    .addContainerGap(397, Short.MAX_VALUE)))
+                    .addContainerGap(366, Short.MAX_VALUE)))
         );
 
         pack();
