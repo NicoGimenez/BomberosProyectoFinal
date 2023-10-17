@@ -338,7 +338,21 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBorrarActionPerformed
-        // TODO add your handling code here:
+        int cod = Integer.parseInt(jTextField3.getText());
+        int opcion = JOptionPane.showConfirmDialog(
+                null,
+                "¿Estás seguro de que deseas borrar el siniestro con ID " + cod + "?",
+                "Confirmar Borrado",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (opcion == JOptionPane.YES_OPTION) {
+
+            borrarSiniestro(cod);
+            limpiarCampos();
+        } else {
+
+        }
     }//GEN-LAST:event_jBBorrarActionPerformed
 
 
@@ -390,11 +404,11 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             jTDescrip.setText(sin.getDetalles());
             jSPuntuacion.setValue(sin.getPuntuacion());
             int a = sin.getCodBrigada();
-            if(a <1||a ==0){
+            if (a < 1 || a == 0) {
                 sd.asignarBrigada(sin, sin.getTipo());
-                
+
             }
-            jLBrigada.setText("Brigada: "+sin.getCodBrigada());
+            jLBrigada.setText("Brigada: " + sin.getCodBrigada());
             try {
                 LocalDate fechaR = sin.getFecha_resol();
                 java.util.Date fechaResolucionComoDate = java.util.Date.from(fechaR.atStartOfDay(ZoneId.systemDefault()).toInstant());

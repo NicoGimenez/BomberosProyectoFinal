@@ -13,6 +13,7 @@ public class MenuInicioView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jDEscritorio = new javax.swing.JDesktopPane();
         jBSiniestro = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -23,8 +24,12 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMModificacionDeSiniestro = new javax.swing.JMenuItem();
         JMConsultaSiniestro = new javax.swing.JMenuItem();
+        jMNuevoSiniestro = new javax.swing.JCheckBoxMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMListarCuarteles = new javax.swing.JMenuItem();
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,16 +47,16 @@ public class MenuInicioView extends javax.swing.JFrame {
         jDEscritorioLayout.setHorizontalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDEscritorioLayout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(270, 270, 270)
                 .addComponent(jBSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(342, Short.MAX_VALUE))
+                .addContainerGap(382, Short.MAX_VALUE))
         );
         jDEscritorioLayout.setVerticalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDEscritorioLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(115, 115, 115)
                 .addComponent(jBSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(416, Short.MAX_VALUE))
+                .addContainerGap(607, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Administracion");
@@ -100,6 +105,15 @@ public class MenuInicioView extends javax.swing.JFrame {
         });
         jMenu2.add(JMConsultaSiniestro);
 
+        jMNuevoSiniestro.setSelected(true);
+        jMNuevoSiniestro.setText("Nuevo Siniestro");
+        jMNuevoSiniestro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMNuevoSiniestroActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMNuevoSiniestro);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("cuartel");
@@ -124,7 +138,9 @@ public class MenuInicioView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -202,12 +218,14 @@ public class MenuInicioView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem JMConsultaSiniestro;
     private javax.swing.JButton jBSiniestro;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JDesktopPane jDEscritorio;
     private javax.swing.JMenuItem jMBombero;
     private javax.swing.JMenuItem jMBrigada;
     private javax.swing.JMenuItem jMCuartel;
     private javax.swing.JMenuItem jMListarCuarteles;
     private javax.swing.JMenuItem jMModificacionDeSiniestro;
+    private javax.swing.JCheckBoxMenuItem jMNuevoSiniestro;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
