@@ -5,17 +5,18 @@
  */
 package AccesoADatos;
 
+
 import Entidades.Brigada;
 import Entidades.Especialidad;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -218,5 +219,23 @@ public class BrigadaData {
         return  brigada;
         
         
+    }
+    public void actualizarBombero(Brigada brigada) {
+        try {
+            String sql = 
+            " UPDATE brigada SET codBrigada=?,nombre_br=?,especialidad=?,libre=?,nro_cuartel=?,activo=? WHERE 1";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, brigada.getCodBrigada());
+            ps.setString(2, brigada.getNombre_br());
+            ps.setString(3, brigada.getEspecialidad());
+            ps.setBoolean(4,brigada.isLibre());
+            ps.setInt(5, brigada.getCodCuartel());
+            ps.setBoolean(6, brigada.isActivo());
+            ps.executeUpdate();
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos");
+        }
     }
 }

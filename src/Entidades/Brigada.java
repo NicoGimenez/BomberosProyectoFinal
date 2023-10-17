@@ -20,6 +20,7 @@ public class Brigada {
     private List <Bombero> bomberos;
     private boolean libre;
     private int codCuartel;
+    private boolean activo;
     
     public Brigada() {
     }
@@ -32,13 +33,22 @@ public class Brigada {
         this.codCuartel = codCuartel;
     }
 
-    public Brigada(String nombre_br, int codBrigada, String especialidad, List<Bombero> bomberos, boolean libre, int codCuartel) {
+    public Brigada(String nombre_br, int codBrigada, String especialidad, List<Bombero> bomberos, boolean libre, int codCuartel,boolean activo) {
         this.nombre_br = nombre_br;
         this.codBrigada = codBrigada;
         this.especialidad = especialidad;
         this.bomberos = bomberos;
         this.libre = libre;
         this.codCuartel = codCuartel;
+        this.activo=activo;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public String getNombre_br() {
