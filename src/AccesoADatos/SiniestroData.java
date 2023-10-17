@@ -34,6 +34,7 @@ public class SiniestroData {
     }
 
     public void altaSiniestro(Siniestro siniestro) {
+       
         String sql = "INSERT INTO siniestro(tipo, fecha_siniestro, coord_X, coord_Y, detalle)"
                 + "VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -60,7 +61,7 @@ public class SiniestroData {
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Error! las coordenadas deben ser números: " + ex.getMessage());
         }
-
+        
     }
 
     public void guardarSiniestro(Siniestro siniestro) {
@@ -202,6 +203,7 @@ public class SiniestroData {
                 siniestro.setCoord_x(rs.getInt("coord_X"));
                 siniestro.setCoord_Y(rs.getInt("coord_Y"));
                 siniestro.setDetalles(rs.getString("detalle"));
+                siniestro.setCodBrigada(rs.getInt("codBrigada"));
                 try {
                     siniestro.setFecha_resol(rs.getDate("fecha_resol").toLocalDate());
                 } catch (Exception ex) {
@@ -349,22 +351,6 @@ public class SiniestroData {
         return siniestros;
     }
 
-//    public Brigada asignarBrigada(Siniestro siniestro, Especialidad esp) {
-//        Brigada brigada = new Brigada();
-//        ArrayList<Cuartel> cuarteles = cd.listarCuarteles();
-//        double distanciaMenor = Double.MAX_VALUE;
-//        double distancia;
-//        Cuartel cuart = new Cuartel();
-//        for (Cuartel cuartel : cuarteles) {
-//            distancia = cuartel.distanciaAlSiniestro(siniestro);
-//            if (distancia < distanciaMenor) {
-//                distanciaMenor = distancia;
-//                cuart = cuartel;
-//            }
-//        }
-//
-//        return brigada;
-//    }
     public ArrayList<Cuartel> ordenarCuartlesPorCercania(Siniestro siniestro, ArrayList<Cuartel> cuarteles) {
         if (siniestro == null || cuarteles == null || cuarteles.isEmpty()) {
             return cuarteles;
@@ -402,5 +388,12 @@ public class SiniestroData {
 
         return brigada;
     }
+
+    public void asignarBrigada(Siniestro sin, Especialidad esp) {
+        int codBrig = buscarBrigadaParaAsignarSiniestro(sin, esp).getCodBrigada();
+        sin.setCodBrigada(codBrig);
+        modificarSiniestro(sin);
+    }
+    
 
 }

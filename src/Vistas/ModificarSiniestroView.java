@@ -389,7 +389,12 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             jTCoordy.setText(sin.getCoord_Y() + "");
             jTDescrip.setText(sin.getDetalles());
             jSPuntuacion.setValue(sin.getPuntuacion());
-            jLBrigada.setText("Brigada: ");
+            int a = sin.getCodBrigada();
+            if(a <1||a ==0){
+                sd.asignarBrigada(sin, sin.getTipo());
+                
+            }
+            jLBrigada.setText("Brigada: "+sin.getCodBrigada());
             try {
                 LocalDate fechaR = sin.getFecha_resol();
                 java.util.Date fechaResolucionComoDate = java.util.Date.from(fechaR.atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -398,7 +403,6 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
                 jDFechaResol.setDate(null);
             }
         } catch (NullPointerException ex) {
-            // Manejo de errores, si es necesario
         }
     }
 
@@ -451,7 +455,6 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     private void cargarEspecialidadesComboBox() {
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
         for (Especialidad especialidad : Especialidad.values()) {
-            // Cambia esto para agregar la descripción de la especialidad como un String
             model.addElement(especialidad.getDescripcion());
         }
         JCSiniestro.setModel(model);
@@ -460,8 +463,6 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     private void editarSiniestro(int id) {
         Siniestro siniestro = new Siniestro();
         siniestro.setCodigo(id);
-
-        // Obtiene la descripción seleccionada como un String
         String descripcionSeleccionada = (String) JCSiniestro.getSelectedItem();
 
         Especialidad tipo = null;
@@ -474,10 +475,8 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         }
 
         if (tipo != null) {
-            // Aquí puedes continuar con la lógica para editar el siniestro
             siniestro.setTipo(tipo);
         } else {
-            // Manejo del caso en que no se selecciona una especialidad válida
             JOptionPane.showMessageDialog(this, "Seleccione una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
         }
 
