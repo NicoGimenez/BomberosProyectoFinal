@@ -122,15 +122,22 @@ public class ListarCuartelesView extends javax.swing.JInternalFrame {
         modelo.addColumn("Activo");
 
         jTable1.setModel(modelo);
-        
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(1); // CÓDIGO
-        jTable1.getColumnModel().getColumn(1).setPreferredWidth(12); // NOMBRE
-        jTable1.getColumnModel().getColumn(2).setPreferredWidth(70); // DIRECCION
-        jTable1.getColumnModel().getColumn(3).setPreferredWidth(12); // COORD x
-        jTable1.getColumnModel().getColumn(4).setPreferredWidth(12); // COORD Y
-        jTable1.getColumnModel().getColumn(5).setPreferredWidth(15); // TELÉFONO
-        jTable1.getColumnModel().getColumn(6).setPreferredWidth(25); // CORREO
-        jTable1.getColumnModel().getColumn(7).setPreferredWidth(4); // ACTIVO
+
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(50); // CÓDIGO
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(100); // NOMBRE
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(150); // DIRECCION
+        jTable1.getColumnModel().getColumn(3).setPreferredWidth(50); // COORD x
+        jTable1.getColumnModel().getColumn(4).setPreferredWidth(50); // COORD Y
+        jTable1.getColumnModel().getColumn(5).setPreferredWidth(80); // TELÉFONO
+        jTable1.getColumnModel().getColumn(6).setPreferredWidth(150); // CORREO
+        jTable1.getColumnModel().getColumn(7).setPreferredWidth(50); // ACTIVO
+
+        // Hacer la tabla no editable
+        for (int i = 0; i < jTable1.getColumnCount(); i++) {
+            Class<?> columnClass = jTable1.getColumnClass(i);
+            jTable1.setDefaultEditor(columnClass, null);
+
+        }
 
     }
 
