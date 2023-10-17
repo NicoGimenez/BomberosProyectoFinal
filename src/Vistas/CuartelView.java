@@ -271,6 +271,9 @@ public class CuartelView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTCoordEnXActionPerformed
 
     private void jBagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBagregarActionPerformed
+        if(!jTCodigo.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "El codigo ingresado no se tiene en cuenta para crear Cuartel");
+        }
         Cuartel cuartel = cdata.agregarCuartel(crearCuartel());
         jTCodigo.setText(cuartel.getCodigoCuartel() + "");
     }//GEN-LAST:event_jBagregarActionPerformed
