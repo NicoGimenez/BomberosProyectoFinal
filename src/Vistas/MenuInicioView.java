@@ -24,7 +24,6 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMModificacionDeSiniestro = new javax.swing.JMenuItem();
         JMConsultaSiniestro = new javax.swing.JMenuItem();
-        jMNuevoSiniestro = new javax.swing.JCheckBoxMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMListarCuarteles = new javax.swing.JMenuItem();
 
@@ -104,15 +103,6 @@ public class MenuInicioView extends javax.swing.JFrame {
             }
         });
         jMenu2.add(JMConsultaSiniestro);
-
-        jMNuevoSiniestro.setSelected(true);
-        jMNuevoSiniestro.setText("Nuevo Siniestro");
-        jMNuevoSiniestro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMNuevoSiniestroActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMNuevoSiniestro);
 
         jMenuBar1.add(jMenu2);
 
@@ -225,7 +215,6 @@ public class MenuInicioView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMCuartel;
     private javax.swing.JMenuItem jMListarCuarteles;
     private javax.swing.JMenuItem jMModificacionDeSiniestro;
-    private javax.swing.JCheckBoxMenuItem jMNuevoSiniestro;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
