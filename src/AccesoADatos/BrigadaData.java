@@ -223,7 +223,7 @@ public class BrigadaData {
         
         
     }
-    public void actualizarBombero(Brigada brigada) {
+    public void actualizarBrigada(Brigada brigada) {
         try {
             String sql = 
             " UPDATE brigada SET codBrigada=?,nombre_br=?,especialidad=?,libre=?,nro_cuartel=?,activo=? WHERE 1";
