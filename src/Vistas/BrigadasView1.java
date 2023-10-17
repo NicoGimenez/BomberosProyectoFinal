@@ -195,9 +195,9 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
         
         jTable1.setModel(modelo);
 
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(5); // COD BRIGADA
-        jTable1.getColumnModel().getColumn(1).setPreferredWidth(5); // ESPECIALIDAD
-        jTable1.getColumnModel().getColumn(2).setPreferredWidth(20); // BRIGADA
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(10); // COD BRIGADA
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(50); // ESPECIALIDAD
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(50); // BRIGADA
     }
 
     public void llenarTabla(java.util.ArrayList<Brigada> brigadast) {
