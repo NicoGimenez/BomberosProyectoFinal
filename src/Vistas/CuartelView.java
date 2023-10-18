@@ -90,9 +90,6 @@ public class CuartelView extends javax.swing.JInternalFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTCodigoFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTCodigoFocusLost(evt);
-            }
         });
         jTCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +123,14 @@ public class CuartelView extends javax.swing.JInternalFrame {
         });
 
         jTCorreoCuartel.setText("ej. nullText@ULP.com");
+        jTCorreoCuartel.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTCorreoCuartelFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTCorreoCuartelFocusLost(evt);
+            }
+        });
 
         jTNombreCuartel.setText("ej.  Lucas Sayago");
         jTNombreCuartel.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -147,7 +152,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
             }
         });
 
-        jTCoordEnX.setText("ej. 1 ");
+        jTCoordEnX.setText("ej. 7");
         jTCoordEnX.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTCoordEnXFocusGained(evt);
@@ -247,9 +252,9 @@ public class CuartelView extends javax.swing.JInternalFrame {
                                         .addComponent(jTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
                                             .addGap(2, 2, 2)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jTTelefonoCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jTCorreoCuartel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jTTelefonoCuartel, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                                                .addComponent(jTCorreoCuartel)))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addComponent(jTCoordEnX, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -403,44 +408,59 @@ public class CuartelView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTNombreCuartelFocusLost
 
     private void jTCodigoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCodigoFocusGained
-        // TODO add your handling code here:
+        limpiarJTField(jTCodigo);
     }//GEN-LAST:event_jTCodigoFocusGained
 
-    private void jTCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCodigoFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTCodigoFocusLost
-
     private void jTDireccionCuartelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTDireccionCuartelFocusGained
-        // TODO add your handling code here:
+        limpiarJTField(jTDireccionCuartel);
     }//GEN-LAST:event_jTDireccionCuartelFocusGained
 
     private void jTDireccionCuartelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTDireccionCuartelFocusLost
-        // TODO add your handling code here:
+      if("".equals(jTDireccionCuartel.getText())){
+          jTDireccionCuartel.setText("ej Saavedra 777");
+      }
     }//GEN-LAST:event_jTDireccionCuartelFocusLost
 
     private void jTCoordEnXFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCoordEnXFocusGained
-        // TODO add your handling code here:
+        limpiarJTField(jTCoordEnX);
     }//GEN-LAST:event_jTCoordEnXFocusGained
 
     private void jTCoordEnXFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCoordEnXFocusLost
-        // TODO add your handling code here:
+      if("".equals(jTCoordEnX.getText())){
+          jTCoordEnX.setText("ej. 7");
+      }
     }//GEN-LAST:event_jTCoordEnXFocusLost
 
     private void jTCoordEnYFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCoordEnYFocusGained
-        // TODO add your handling code here:
+        limpiarJTField(jTCoordEnY);
     }//GEN-LAST:event_jTCoordEnYFocusGained
 
     private void jTCoordEnYFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCoordEnYFocusLost
-        // TODO add your handling code here:
+        if("".equals(jTCoordEnY.getText())){
+          jTCoordEnY.setText("ej. 7");
+      }
     }//GEN-LAST:event_jTCoordEnYFocusLost
 
     private void jTTelefonoCuartelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTTelefonoCuartelFocusGained
-        // TODO add your handling code here:
+        limpiarJTField(jTTelefonoCuartel);
     }//GEN-LAST:event_jTTelefonoCuartelFocusGained
 
     private void jTTelefonoCuartelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTTelefonoCuartelFocusLost
-        // TODO add your handling code here:
+       if("".equals(jTTelefonoCuartel.getText())){
+          jTTelefonoCuartel.setText("ej. 777 7777 7777");
+      }
     }//GEN-LAST:event_jTTelefonoCuartelFocusLost
+
+    private void jTCorreoCuartelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCorreoCuartelFocusGained
+        limpiarJTField(jTCorreoCuartel);
+    }//GEN-LAST:event_jTCorreoCuartelFocusGained
+
+    private void jTCorreoCuartelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCorreoCuartelFocusLost
+    //ej. nullText@ULP.com
+     if("".equals(jTCorreoCuartel.getText())){
+          jTCorreoCuartel.setText("nullText@ULP.com");
+      }
+    }//GEN-LAST:event_jTCorreoCuartelFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

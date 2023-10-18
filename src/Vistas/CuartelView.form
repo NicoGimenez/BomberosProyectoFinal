@@ -70,9 +70,9 @@
                                       <Component id="jTCodigo" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jTTelefonoCuartel" min="-2" pref="315" max="-2" attributes="0"/>
-                                              <Component id="jTCorreoCuartel" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jTTelefonoCuartel" pref="315" max="32767" attributes="0"/>
+                                              <Component id="jTCorreoCuartel" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
@@ -242,7 +242,6 @@
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTCodigoFocusGained"/>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTCodigoFocusLost"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCodigoActionPerformed"/>
       </Events>
     </Component>
@@ -269,6 +268,10 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="ej. nullText@ULP.com"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTCorreoCuartelFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTCorreoCuartelFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTNombreCuartel">
       <Properties>
@@ -290,7 +293,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTCoordEnX">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ej. 1 "/>
+        <Property name="text" type="java.lang.String" value="ej. 7"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTCoordEnXFocusGained"/>
