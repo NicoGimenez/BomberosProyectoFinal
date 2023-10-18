@@ -542,34 +542,41 @@ public class CuartelView extends javax.swing.JInternalFrame {
             int coordX = Integer.parseInt(jTCoordEnX.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "La coordenada en X debe ser un número entero.");
-            return false;
+              jTCoordEnX.setText("");
+              return false;
+          
         }
 
         try {
             int coordY = Integer.parseInt(jTCoordEnY.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "La coordenada en Y debe ser un número entero.");
+            jTCoordEnY.setText("");
             return false;
         }
 
         if (jTCorreoCuartel.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo de correo no puede estar vacío.");
+            jTCorreoCuartel.setText("");
             return false;
         }
 
         if (jTDireccionCuartel.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo de dirección no puede estar vacío.");
+            jTDireccionCuartel.setText("");
             return false;
         }
 
         if (jTNombreCuartel.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo de nombre no puede estar vacío.");
+            jTNombreCuartel.setText("");
             return false;
         }
 
         String telefono = jTTelefonoCuartel.getText();
         if (!telefono.matches("[0-9 -]+")) {
             JOptionPane.showMessageDialog(this, "El campo de teléfono debe contener solo números, espacios en blanco o guiones.");
+            jTTelefonoCuartel.setText("");
             return false;
         }
 
