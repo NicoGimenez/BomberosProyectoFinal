@@ -85,8 +85,18 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
         });
 
         jBEliminar.setText("ELIMINAR");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jBModificar.setText("MODIFICAR");
+        jBModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificarActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("ADMINISTRACION DE BRIGADAS");
 
@@ -196,9 +206,12 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
       
-        
-        
-        
+        if(!jTCodigo.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "El campo de codigo no hace falta agregar ya que no se tiene en cuenta");
+        }
+        Brigada brigada = bdata.agregarBrigada(CrearBrigada());
+        jTCodigo.setText(brigada.getCodBrigada() + "");
+                                                   
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jRBLibreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBLibreActionPerformed
@@ -229,6 +242,30 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
     private void jTCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTCodigoActionPerformed
+
+    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+        Brigada brigada = CrearBrigada();
+        try {
+            brigada.setCodBrigada(Integer.parseInt(jTCodigo.getText()));
+            
+            if (brigada!=null) {
+                bdata.actualizarBrigada(brigada);
+            }else{
+                JOptionPane.showMessageDialog(null,"no existe brigada con ese codigo ingrese uno valido");
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this,"Revisar los campos ingresados" + ex);
+        }
+    }//GEN-LAST:event_jBModificarActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        try {
+            bdata.eliminarBrigada(Integer.parseInt(jTCodigo.getText()));
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "El código debe ser un número entero."+ex);
+            limpiarCampos();
+        }
+    }//GEN-LAST:event_jBEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -261,8 +298,19 @@ public Brigada CrearBrigada(){
     brigada.setLibre(jRBLibre.isSelected());
     brigada.setNombre_br(jTNombreBrigada.getText());
 
-    return null;
+    return brigada;
 }
+     public void limpiarCampos() {
+
+        jTCodigo.setText("");
+        jRBActivo.setSelected(false);
+        jTNumeroDeCuartel.setText("");
+        jTEspecialidad.setText("");
+        jRBLibre.setSelected(false);
+        jTNombreBrigada.setText("");
+        
+    }
+
 
 
 

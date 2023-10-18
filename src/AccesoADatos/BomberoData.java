@@ -130,7 +130,7 @@ public class BomberoData {
     public void actualizarBombero(Bombero bombero) {
         try {
             String sql = "UPDATE bombero SET dni = ?, nombre_ape = ?, grupo_sanguineo = ?, "
-                    + "fecha_nac = ?, celular = ? WHERE idBombero = ?";
+                    + "fecha_nac = ?, celular = ?, activo = ? WHERE idBombero = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, bombero.getDni());
             st.setString(2, bombero.getNombre());
@@ -138,6 +138,7 @@ public class BomberoData {
             st.setDate(4, Date.valueOf(bombero.getFechaNac()));
             st.setString(5, bombero.getCelular());
             st.setInt(6, bombero.getCod_bombero());
+            st.setBoolean(7, bombero.isActivo());
             st.executeUpdate();
             st.close();
 

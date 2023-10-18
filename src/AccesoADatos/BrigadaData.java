@@ -83,7 +83,7 @@ public class BrigadaData {
         return brigadas;
     }
 
-    public void agregarBrigada(Brigada brigada) {
+    public Brigada agregarBrigada(Brigada brigada) {
         try {
             /*
            // Agregué una restricción para que especialidad y nro_cuartel en la base de datos sean únicos -> UC_especialidad_nro_cuartel
@@ -132,7 +132,7 @@ public class BrigadaData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 brigada.setCodBrigada(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Brigada guardado.");
+                JOptionPane.showMessageDialog(null, "Brigada guardada.");
             }
             ps.close();
 
@@ -141,8 +141,9 @@ public class BrigadaData {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-
+        return brigada;
     }
+    
 
     public List<Brigada> listBrigadasPorCuartel(int nroCuartel) {
         ArrayList<Brigada> brigadas = new ArrayList<>();
