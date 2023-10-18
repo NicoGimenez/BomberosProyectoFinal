@@ -338,8 +338,12 @@ public class CuartelView extends javax.swing.JInternalFrame {
         if (!jTCodigo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El codigo ingresado no se tiene en cuenta para crear Cuartel");
         }
-        Cuartel cuartel = cdata.agregarCuartel(crearCuartel());
-        jTCodigo.setText(cuartel.getCodigoCuartel() + "");
+        if (validarCampos()) {
+            Cuartel cuartel = cdata.agregarCuartel(crearCuartel());
+            jTCodigo.setText(cuartel.getCodigoCuartel() + "");
+        }else{
+            limpiarCampos();
+        }
     }//GEN-LAST:event_jBagregarActionPerformed
 
     private void jBlimpiarCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlimpiarCampoActionPerformed
@@ -404,7 +408,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
         if ("".equals(jTNombreCuartel.getText())) {
             jTNombreCuartel.setText("ej.  Lucas Sayago");
         }
-        
+
     }//GEN-LAST:event_jTNombreCuartelFocusLost
 
     private void jTCodigoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCodigoFocusGained
@@ -416,9 +420,9 @@ public class CuartelView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTDireccionCuartelFocusGained
 
     private void jTDireccionCuartelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTDireccionCuartelFocusLost
-      if("".equals(jTDireccionCuartel.getText())){
-          jTDireccionCuartel.setText("ej Saavedra 777");
-      }
+        if ("".equals(jTDireccionCuartel.getText())) {
+            jTDireccionCuartel.setText("ej Saavedra 777");
+        }
     }//GEN-LAST:event_jTDireccionCuartelFocusLost
 
     private void jTCoordEnXFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCoordEnXFocusGained
@@ -426,9 +430,9 @@ public class CuartelView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTCoordEnXFocusGained
 
     private void jTCoordEnXFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCoordEnXFocusLost
-      if("".equals(jTCoordEnX.getText())){
-          jTCoordEnX.setText("ej. 7");
-      }
+        if ("".equals(jTCoordEnX.getText())) {
+            jTCoordEnX.setText("ej. 7");
+        }
     }//GEN-LAST:event_jTCoordEnXFocusLost
 
     private void jTCoordEnYFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCoordEnYFocusGained
@@ -436,9 +440,9 @@ public class CuartelView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTCoordEnYFocusGained
 
     private void jTCoordEnYFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCoordEnYFocusLost
-        if("".equals(jTCoordEnY.getText())){
-          jTCoordEnY.setText("ej. 7");
-      }
+        if ("".equals(jTCoordEnY.getText())) {
+            jTCoordEnY.setText("ej. 7");
+        }
     }//GEN-LAST:event_jTCoordEnYFocusLost
 
     private void jTTelefonoCuartelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTTelefonoCuartelFocusGained
@@ -446,9 +450,9 @@ public class CuartelView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTTelefonoCuartelFocusGained
 
     private void jTTelefonoCuartelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTTelefonoCuartelFocusLost
-       if("".equals(jTTelefonoCuartel.getText())){
-          jTTelefonoCuartel.setText("ej. 777 7777 7777");
-      }
+        if ("".equals(jTTelefonoCuartel.getText())) {
+            jTTelefonoCuartel.setText("ej. 777 7777 7777");
+        }
     }//GEN-LAST:event_jTTelefonoCuartelFocusLost
 
     private void jTCorreoCuartelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCorreoCuartelFocusGained
@@ -456,10 +460,10 @@ public class CuartelView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTCorreoCuartelFocusGained
 
     private void jTCorreoCuartelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCorreoCuartelFocusLost
-    //ej. nullText@ULP.com
-     if("".equals(jTCorreoCuartel.getText())){
-          jTCorreoCuartel.setText("nullText@ULP.com");
-      }
+        //ej. nullText@ULP.com
+        if ("".equals(jTCorreoCuartel.getText())) {
+            jTCorreoCuartel.setText("nullText@ULP.com");
+        }
     }//GEN-LAST:event_jTCorreoCuartelFocusLost
 
 
@@ -525,14 +529,14 @@ public class CuartelView extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Debe seleccionar 'Activo' para el cuartel.");
             return false;
         }
-         */
+         
         try {
             int codigo = Integer.parseInt(jTCodigo.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El código debe ser un número entero.");
             return false;
         }
-
+*/
         try {
             int coordX = Integer.parseInt(jTCoordEnX.getText());
         } catch (NumberFormatException e) {
