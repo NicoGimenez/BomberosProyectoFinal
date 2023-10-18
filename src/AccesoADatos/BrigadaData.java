@@ -174,29 +174,29 @@ public class BrigadaData {
     public void eliminarBrigada(int codBrigada) {
 
         try {
-            String sql = "UPDATE cuartel SET activo=0 WHERE codCuartel=?";
+            String sql = "UPDATE brigada SET activo=0 WHERE codBrigada=?";
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setInt(1, codBrigada);
-
+            
             int exito = ps.executeUpdate();
 
             if (exito > 0) {
                 JOptionPane.showMessageDialog(null, "Brigada eliminado");
-
+                
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo eliminar la briagada");
             }
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al intentar eliminar cuartel" + ex);
+            JOptionPane.showMessageDialog(null, "Error al intentar eliminar brigada" + ex);
         }
     }
 
     public Brigada buscarBrigadaPorCodigo(int codBrigada) {
         Brigada brigada = new Brigada();
-        String sql = "SELECT codBrigada, nombre_br, especialidad, libre, nro_cuartel FROM brigada WHERE codBrigada=?";
+        String sql = "SELECT codBrigada, nombre_br, especialidad, libre, nro_cuartel, activo FROM brigada WHERE codBrigada=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -210,36 +210,63 @@ public class BrigadaData {
                 brigada.setEspecialidad(rs.getString("especialidad"));
                 brigada.setLibre(rs.getBoolean("libre"));
                 brigada.setCodCuartel(rs.getInt("nro_cuartel"));
-
+                brigada.setActivo(rs.getBoolean("activo"));
+                return brigada;
             }else{
-                
+                 
                  JOptionPane.showMessageDialog(null, "No existe brigada con ese codigo");
-                
+                 brigada = null;
             }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al buscar brigada por codigo: " + ex.getMessage());
         }
-        return  brigada;
+        return brigada;
         
         
     }
     public void actualizarBrigada(Brigada brigada) {
         try {
-            String sql = 
-            " UPDATE brigada SET codBrigada=?,nombre_br=?,especialidad=?,libre=?,nro_cuartel=?,activo=? WHERE 1";
+            String sql = " UPDATE brigada SET nombre_br=?,especialidad=?,libre=?,nro_cuartel=?,activo=? WHERE codBrigada=?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, brigada.getCodBrigada());
-            ps.setString(2, brigada.getNombre_br());
-            ps.setString(3, brigada.getEspecialidad());
-            ps.setBoolean(4,brigada.isLibre());
-            ps.setInt(5, brigada.getCodCuartel());
-            ps.setBoolean(6, brigada.isActivo());
-            ps.executeUpdate();
+            ps.setString(1, brigada.getNombre_br());
+            ps.setString(2, brigada.getEspecialidad());
+            ps.setBoolean(3,brigada.isLibre());
+            ps.setInt(4, brigada.getCodCuartel());
+            ps.setBoolean(5, brigada.isActivo());
+            ps.setInt(6,brigada.getCodBrigada());
+            int exito = ps.executeUpdate();
+            if (exito>0){
+                JOptionPane.showMessageDialog(null,"brigada actualizada con exito");
+            }else{
+                JOptionPane.showMessageDialog(null,"no se pudo actualizar brigada");
+            }
             ps.close();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos");
+        }/*
+         String sql = "UPDATE brigada SET nombre_br=?, especialidad=?, libre=?, nro_cuartel=?, activo=? WHERE codBrigada=?";
+    try (PreparedStatement ps = con.prepareStatement(sql)) { // Utilizando try-with-resources
+       
+        ps.setString(1, brigada.getNombre_br());
+        ps.setString(2, brigada.getEspecialidad());
+        ps.setBoolean(3, brigada.isLibre());
+        ps.setInt(4, brigada.getCodCuartel());
+        ps.setBoolean(5, brigada.isActivo());
+        ps.setInt(6, brigada.getCodBrigada());
+        
+        int exito = ps.executeUpdate();
+        if (exito > 0) { // Corrigiendo el condicional de éxito
+            JOptionPane.showMessageDialog(null, "Brigada actualizada con éxito");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar brigada");
         }
+        ps.close();
+    } catch (SQLException ex) {
+        // Mostrando un mensaje de error más detallado
+        JOptionPane.showMessageDialog(null, "Error al actualizar brigada: " + ex.getMessage());
+    }
+*/
     }
 }
