@@ -341,7 +341,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
         if (validarCampos()) {
             Cuartel cuartel = cdata.agregarCuartel(crearCuartel());
             jTCodigo.setText(cuartel.getCodigoCuartel() + "");
-        }else{
+        } else {
             limpiarCampos();
         }
     }//GEN-LAST:event_jBagregarActionPerformed
@@ -355,11 +355,12 @@ public class CuartelView extends javax.swing.JInternalFrame {
         Cuartel cuartel = crearCuartel();
         try {
             cuartel.setCodigoCuartel(Integer.parseInt(jTCodigo.getText()));
-
-            if (cuartel != null) {
-                cdata.modificarCuartelporCodigo(cuartel);
-            } else {
-                JOptionPane.showMessageDialog(null, "no existe cuartel con ese codigo");
+            if (validarCampos()) {
+                if (cuartel != null) {
+                    cdata.modificarCuartelporCodigo(cuartel);
+                } else {
+                    JOptionPane.showMessageDialog(null, "no existe cuartel con ese codigo");
+                }
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Verificar los campos ingresados");
@@ -536,7 +537,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "El código debe ser un número entero.");
             return false;
         }
-*/
+         */
         try {
             int coordX = Integer.parseInt(jTCoordEnX.getText());
         } catch (NumberFormatException e) {
@@ -567,8 +568,8 @@ public class CuartelView extends javax.swing.JInternalFrame {
         }
 
         String telefono = jTTelefonoCuartel.getText();
-        if (!telefono.matches("\\d+")) {
-            JOptionPane.showMessageDialog(this, "El campo de teléfono debe contener solo números.");
+        if (!telefono.matches("[0-9 -]+")) {
+            JOptionPane.showMessageDialog(this, "El campo de teléfono debe contener solo números, espacios en blanco o guiones.");
             return false;
         }
 
