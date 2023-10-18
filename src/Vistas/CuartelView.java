@@ -396,7 +396,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTNombreCuartelFocusGained
 
     private void jTNombreCuartelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTNombreCuartelFocusLost
-        if ("".equals(jTNombreCuartel)) {
+        if ("".equals(jTNombreCuartel.getText())) {
             jTNombreCuartel.setText("ej.  Lucas Sayago");
         }
         
