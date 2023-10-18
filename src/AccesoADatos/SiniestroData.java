@@ -229,7 +229,8 @@ public class SiniestroData {
         return siniestro;
     }
 
-    public Siniestro BuscarSiniestroEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+    public ArrayList<Siniestro> buscarSiniestroEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+        ArrayList<Siniestro>siniestros=new ArrayList<>();
         String sql = "SELECT * FROM siniestro WHERE fecha_siniestro BETWEEN ? AND ?";
 
         Siniestro siniestro = null;
@@ -240,7 +241,7 @@ public class SiniestroData {
 
             ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {
+             while (rs.next()) {
 
                 siniestro = new Siniestro();
                 siniestro.setCodigo(rs.getInt("codigo"));
@@ -251,22 +252,15 @@ public class SiniestroData {
                 siniestro.setFecha_resol(rs.getDate("fecha_resol").toLocalDate());
                 siniestro.setPuntuacion(rs.getInt("puntuacion"));
                 siniestro.setCodBrigada(rs.getInt("codBrigada"));
+                 siniestros.add(siniestro);
 
-            } else {
-
-                JOptionPane.showMessageDialog(null, "No existe siniestro con ese ID ");
             }
-
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error de consulta");
-        } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, " No se encontró el siniestro.");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, " No se encontró el siniestro.");
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. " + ex.getMessage());
         }
-        return siniestro;
+        return siniestros;
     }
 
     public List<Siniestro> ListarSiniestrosNoResueltos() {

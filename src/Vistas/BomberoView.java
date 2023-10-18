@@ -1,8 +1,13 @@
 package Vistas;
 
 import AccesoADatos.BomberoData;
+import AccesoADatos.Conexion;
 import Entidades.Bombero;
 import java.awt.Container;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import javax.swing.JDesktopPane;
@@ -310,7 +315,7 @@ public class BomberoView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -321,7 +326,7 @@ public class BomberoView extends javax.swing.JInternalFrame {
                     .addComponent(jBModif, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBElim, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBLista, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();
@@ -355,44 +360,47 @@ public class BomberoView extends javax.swing.JInternalFrame {
         bdata.agregarBombero(crearBombero());
     }//GEN-LAST:event_jBNuevoActionPerformed
 
-    // NO ANDA
-    
+    // ANDA PERFECTO PAA
+
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
 
-        String idText = jTid.getText();
+        try {
+            String idText = jTid.getText();
 
-        if (!idText.isEmpty()) {
-            int bomberoId = Integer.parseInt(idText);
-            Bombero bo = bdata.buscarBomberoPorCodigo(bomberoId);
+            if (!idText.isEmpty()) {
+                int bomberoId = Integer.parseInt(idText);
+                Bombero bo = bdata.buscarBomberoPorCodigo(bomberoId);
 
-            if (bo != null) {
-                jTnom.setText(bo.getNombre());
-                jTdni.setText(bo.getDni());
-                jTsanguineo.setText(bo.getGrupo_sanguineo());
+                if (bo != null) {
+                    jTnom.setText(bo.getNombre());
+                    jTdni.setText(bo.getDni());
+                    jTsanguineo.setText(bo.getGrupo_sanguineo());
 
-                LocalDate fechaNacimiento = bo.getFechaNac();
-                if (fechaNacimiento != null) {
-                    java.util.Date fechaNacimientoAsDate = java.util.Date.from(fechaNacimiento.atStartOfDay(ZoneId.systemDefault()).toInstant());
-                    jDateChooser1.setDate(fechaNacimientoAsDate);
+                    LocalDate fechaNacimiento = bo.getFechaNac();
+                    if (fechaNacimiento != null) {
+                        java.util.Date fechaNacimientoAsDate = java.util.Date.from(fechaNacimiento.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                        jDateChooser1.setDate(fechaNacimientoAsDate);
+                    } else {
+                        jDateChooser1.setDate(null); // Establecer la fecha a null en el JDateChooser
+                    }
+
+                    jTcodBrigada.setText(bo.getCodigoDeBrigada() + "");
+                    jTtelefono.setText(bo.getCelular());
+                    jRBActivo.setSelected(bo.isActivo());
                 } else {
-                    jDateChooser1.setDate(null); // Establecer la fecha a null en el JDateChooser
+                    JOptionPane.showMessageDialog(null, "No se encontró un bombero con ese ID.");
                 }
-
-                jTcodBrigada.setText(bo.getCodigoDeBrigada() + "");
-                jTtelefono.setText(bo.getCelular());
-                jRBActivo.setSelected(bo.isActivo());
             } else {
-                JOptionPane.showMessageDialog(null, "No se encontró un bombero con ese ID.");
+                JOptionPane.showMessageDialog(null, "El campo ID está vacío. Por favor, ingrese un ID válido.");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "El campo ID está vacío. Por favor, ingrese un ID válido.");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número en ID. Verificar los campos.");
+            jTid.setText("");
         }
+
+
     }//GEN-LAST:event_jBBuscarActionPerformed
 
-    
-    
-    
-    
     // FUNCIONA PERFECTAMENTE
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
         limpiarCampos();
@@ -400,14 +408,16 @@ public class BomberoView extends javax.swing.JInternalFrame {
 
     private void jBModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModifActionPerformed
         // BUENO ES MOMENTO DE MODIFICAR BOMBEROS
-        Bombero bombero = crearBombero();
-        bombero.setCod_bombero(Integer.parseInt(jTid.getText()));
+        if (verificarCampos()) {
+            Bombero bombero = crearBombero();
+            bombero.setCod_bombero(Integer.parseInt(jTid.getText()));
 
-        if (bombero != null) {
-            bdata.actualizarBombero(bombero);
-            JOptionPane.showMessageDialog(this,"Se modificó el bombero exitosamente.");
-        } else {
-            JOptionPane.showMessageDialog(null, "No fue posible modificar el bombero.");
+            if (bombero != null) {
+                bdata.actualizarBombero(bombero);
+                JOptionPane.showMessageDialog(this, "Se modificó el bombero exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "No fue posible modificar el bombero.");
+            }
         }
 
 
@@ -415,8 +425,7 @@ public class BomberoView extends javax.swing.JInternalFrame {
 
     private void jBElimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBElimActionPerformed
         // borrar bomberos
-        
-        
+
         try {
             jBBuscarActionPerformed(evt);
             int dni = Integer.parseInt(jTid.getText());
@@ -436,7 +445,7 @@ public class BomberoView extends javax.swing.JInternalFrame {
 
     private void jBListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBListaActionPerformed
         // listita de bomberos che
-    
+
         Container parent = this.getParent();
         if (parent instanceof JDesktopPane) {
             JDesktopPane desktopPane = (JDesktopPane) parent;
@@ -511,5 +520,116 @@ public class BomberoView extends javax.swing.JInternalFrame {
 
     }
 
+    private boolean dniRepetidoEnBD(String dni) {
+        Connection con = Conexion.getConexion(); // Reemplaza 'Conexion' con el nombre de tu clase de conexión
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        boolean dniRepetido = false;
+
+        try {
+            String consulta = "SELECT COUNT(*) FROM bombero WHERE dni = ?";
+            preparedStatement = con.prepareStatement(consulta);
+            preparedStatement.setString(1, dni);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next() && resultSet.getInt(1) > 0) {
+                dniRepetido = true;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Algo anda mal.");
+        }
+
+        return dniRepetido;
+    }
+
+    public boolean verificarCampos() {
+
+        //VARIABLES PARA CADA CAMPO
+        String nombre = jTnom.getText();
+        String dni = jTdni.getText();
+        String sanguineo = jTsanguineo.getText();
+        String telefono = jTtelefono.getText();
+        String codBrigada = jTcodBrigada.getText();
+
+        //VERIFICAR NOMBRE
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo de nombre no puede estar vacío.");
+            return false;
+        }
+
+        if (nombre.matches(".*\\d.*")) {
+            JOptionPane.showMessageDialog(this, "El campo de nombre debe contener solo letras.");
+            jTnom.setText("");
+            return false;
+        }
+
+        //VERIFICAR DNI
+        if (dni.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo de DNI no puede estar vacío.");
+            return false;
+        }
+
+        if (!dni.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El campo de DNI debe contener solo números.");
+            jTdni.setText("");
+            return false;
+        }
+
+        if (dni.length() > 8) {
+            JOptionPane.showMessageDialog(this, "El campo de DNI debe tener máximo 8 dígitos.");
+            jTdni.setText("");
+            return false;
+        }
+
+        if (dniRepetidoEnBD(dni)) {
+            JOptionPane.showMessageDialog(this, "El DNI ya existe en la base de datos.");
+            jTdni.setText("");
+            return false;
+        }
+
+        //VERIFICAR GRUPO SANGUÍNEO
+        if (sanguineo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo de grupo sanguíneo no puede estar vacío.");
+            return false;
+        }
+
+        if (sanguineo.length() > 3) {
+            JOptionPane.showMessageDialog(this, "El campo de grupo sanguíneo no puede tener más de 3 caracteres.");
+            jTsanguineo.setText("");
+            return false;
+        }
+
+        if (sanguineo.matches(".*\\d.*")) {
+            JOptionPane.showMessageDialog(this, "El campo de grupo sanguíneo no puede contener números.");
+            jTsanguineo.setText("");
+            return false;
+        }
+
+        //VERIFICAR NÚMERO DE TELÉFONO
+        if (telefono.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo de teléfono no puede estar vacío.");
+            return false;
+        }
+
+        if (!telefono.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El campo de teléfono debe contener solo números.");
+            jTtelefono.setText("");
+            return false;
+        }
+
+        //VERIFICAR NÚMERO DE BRIGADA
+        if (codBrigada.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo de código de brigada no puede estar vacío.");
+            return false;
+        }
+
+        if (!codBrigada.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El campo de código de brigada debe contener solo números.");
+            jTcodBrigada.setText("");
+            return false;
+        }
+
+        return true;
+    }
 
 }

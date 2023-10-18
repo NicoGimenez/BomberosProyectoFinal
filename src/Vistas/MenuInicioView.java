@@ -58,7 +58,7 @@ public class MenuInicioView extends javax.swing.JFrame {
             .addGroup(jDEscritorioLayout.createSequentialGroup()
                 .addGap(115, 115, 115)
                 .addComponent(jBSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(607, Short.MAX_VALUE))
+                .addContainerGap(693, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Administracion");
@@ -151,9 +151,7 @@ public class MenuInicioView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jDEscritorio)
         );
 
         pack();
