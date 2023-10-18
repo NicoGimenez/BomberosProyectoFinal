@@ -71,13 +71,7 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
 
         jLabel6.setText("ACTIVO");
 
-        jRBActivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRBActivoActionPerformed(evt);
-            }
-        });
-
-        jBGuardar.setText("GUARDAR");
+        jBGuardar.setText("AGREGAR");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
@@ -182,17 +176,17 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3)
                     .addComponent(jTEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jRBLibre))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRBLibre)
+                    .addComponent(jLabel4))
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTNumeroDeCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jRBActivo))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRBActivo)
+                    .addComponent(jLabel6))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBGuardar)
@@ -218,10 +212,6 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRBLibreActionPerformed
 
-    private void jRBActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBActivoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRBActivoActionPerformed
-
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
         try {
             int codBrigada = Integer.parseInt(jTCodigo.getText());
@@ -244,10 +234,11 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTCodigoActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-        Brigada brigada = CrearBrigada();
+        
         try {
+            Brigada brigada = CrearBrigada();
             brigada.setCodBrigada(Integer.parseInt(jTCodigo.getText()));
-            
+            System.out.println(brigada.toString());
             if (brigada!=null) {
                 bdata.actualizarBrigada(brigada);
             }else{
