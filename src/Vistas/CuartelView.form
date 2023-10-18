@@ -260,6 +260,10 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="ej. 777 7777 7777"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTTelefonoCuartelFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTTelefonoCuartelFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTCorreoCuartel">
       <Properties>

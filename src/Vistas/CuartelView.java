@@ -116,6 +116,14 @@ public class CuartelView extends javax.swing.JInternalFrame {
         });
 
         jTTelefonoCuartel.setText("ej. 777 7777 7777");
+        jTTelefonoCuartel.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTTelefonoCuartelFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTTelefonoCuartelFocusLost(evt);
+            }
+        });
 
         jTCorreoCuartel.setText("ej. nullText@ULP.com");
 
@@ -425,6 +433,14 @@ public class CuartelView extends javax.swing.JInternalFrame {
     private void jTCoordEnYFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCoordEnYFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_jTCoordEnYFocusLost
+
+    private void jTTelefonoCuartelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTTelefonoCuartelFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTTelefonoCuartelFocusGained
+
+    private void jTTelefonoCuartelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTTelefonoCuartelFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTTelefonoCuartelFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
