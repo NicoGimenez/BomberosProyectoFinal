@@ -528,7 +528,8 @@ public class BomberoView extends javax.swing.JInternalFrame {
         String dni = jTdni.getText();
         String sanguineo = jTsanguineo.getText();
         String telefono = jTtelefono.getText();
-        
+        String codBrigada = jTcodBrigada.getText();
+
         
         //VERIFICAR NOMBRE
         if (nombre.isEmpty()) {
@@ -573,10 +574,29 @@ public class BomberoView extends javax.swing.JInternalFrame {
             return false;
         }
         
-        
         //VERIFICAR NÚMERO DE TELÉFONO
+        if (telefono.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo de teléfono no puede estar vacío.");
+            return false;
+        }
+
+        if (!telefono.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El campo de teléfono debe contener solo números.");
+            jTtelefono.setText("");
+            return false;
+        }
         
-      
+                //VERIFICAR NÚMERO DE BRIGADA
+        if (codBrigada.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo de código de brigada no puede estar vacío.");
+            return false;
+        }
+
+        if (!codBrigada.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El campo de código de brigada debe contener solo números.");
+            jTcodBrigada.setText("");
+            return false;
+        }
 
         return true;
     }
