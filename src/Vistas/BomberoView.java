@@ -360,7 +360,7 @@ public class BomberoView extends javax.swing.JInternalFrame {
         bdata.agregarBombero(crearBombero());
     }//GEN-LAST:event_jBNuevoActionPerformed
 
-    // NO ANDA
+    // ANDA PERFECTO PAA
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
 
