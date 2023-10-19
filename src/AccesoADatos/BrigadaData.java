@@ -162,6 +162,7 @@ public class BrigadaData {
             while (rs.next()) {
                 Brigada brigada = new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
+                brigada.setNombre_br(rs.getString("nombre brigada"));
                 brigada.setEspecialidad(rs.getString("especialidad"));
                 brigadas.add(brigada);
             }
