@@ -101,8 +101,10 @@ public class Brigada {
 
     @Override
     public String toString() {
-        return "Brigada{" + "nombre_br=" + nombre_br + ", codBrigada=" + codBrigada + ", especialidad=" + especialidad + ", bomberos=" + bomberos + ", libre=" + libre + ", codCuartel=" + codCuartel + '}';
+        return "Brigada{" + "nombre_br=" + nombre_br + ", codBrigada=" + codBrigada + ", especialidad=" + especialidad + ", bomberos=" + bomberos + ", libre=" + libre + ", codCuartel=" + codCuartel + ", activo=" + activo + '}';
     }
+
+    
     
     
 
