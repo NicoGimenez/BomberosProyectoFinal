@@ -8,6 +8,7 @@ import java.time.ZoneId;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class ConsultarSiniestro extends javax.swing.JInternalFrame {
 
@@ -110,9 +111,9 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jDFechaResol, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jBBuscar)
-                .addGap(22, 22, 22))
+                .addContainerGap())
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,10 +125,8 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                         .addComponent(jDFechaResol, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3))
                     .addComponent(jLabel2)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jBBuscar)))
-                .addContainerGap())
+                    .addComponent(jBBuscar))
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -197,8 +196,8 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -230,9 +229,24 @@ mostrarSiniestrosNoResueltos();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-          LocalDate fecha1 = jDFechaResol.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-          LocalDate fecha2 = jDFechaSiniestro.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        mostrarSiniestrosEntreFechas(fecha2, fecha1);
+        LocalDate fecha1 = null;
+    LocalDate fecha2 = null;
+    if (jDFechaResol.getDate() != null) {
+        fecha1 = jDFechaResol.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    } else {
+        JOptionPane.showMessageDialog(this, "Ingrese una fecha válida en jDFechaResol");
+        return;  // Salir de la función, ya que la fecha no es válida
+    }
+    if (jDFechaSiniestro.getDate() != null) {
+        fecha2 = jDFechaSiniestro.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    } else {
+       
+        JOptionPane.showMessageDialog(this, "Ingrese una fecha válida en jDFechaSiniestro");
+        return;  
+    }
+
+   
+    mostrarSiniestrosEntreFechas(fecha2, fecha1);
     }//GEN-LAST:event_jBBuscarActionPerformed
 
 
