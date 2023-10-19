@@ -240,6 +240,9 @@ public class SiniestroData {
                 while (rs.next()) {
                     Siniestro siniestro = new Siniestro();
                     siniestro.setCodigo(rs.getInt("codigo"));
+                    String tipoSiniestroStr = rs.getString("tipo");
+                    Especialidad tipoSiniestro = obtenerEspecialidadDesdeString(tipoSiniestroStr);
+                    siniestro.setTipo(tipoSiniestro);
                     siniestro.setFecha_siniestro(rs.getDate("fecha_siniestro").toLocalDate());
                     siniestro.setCoord_x(rs.getInt("coord_X"));
                     siniestro.setCoord_Y(rs.getInt("coord_Y"));
@@ -254,7 +257,7 @@ public class SiniestroData {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. " + ex.getMessage());
             ex.printStackTrace();
         }
-        System.out.println(siniestros);
+      
         return siniestros;
     }
 
