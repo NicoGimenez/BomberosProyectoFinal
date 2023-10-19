@@ -177,9 +177,9 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
 
     List<Brigada> brigadas = bData.obtenerBrigadasAsignadas(); 
     modelo.setRowCount(0);
-    for (Brigada brigada : brigadas) {
-    modelo.addRow(new Object[]{brigada.isActivo(), brigada.getNombre_br(), brigada.getEspecialidad(), brigada.isLibre()});
-    }
+   // for (Brigada brigada : brigadas) {
+    //modelo.addRow(new Object[]{brigada.isActivo(), brigada.getNombre_br(), brigada.getEspecialidad(), brigada.isLibre()});
+        llenarTabla((ArrayList<Brigada>) brigadas);
     }//GEN-LAST:event_jRBBrigadasAsignadasMouseClicked
 
     private void jBAdmBrigadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdmBrigadasActionPerformed
@@ -230,11 +230,12 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
         for (Brigada brigada : brigadast) {
             Object[] rowData = {
                 brigada.isActivo(),
-                brigada.getNombre_br()};
-                brigada.getEspecialidad();
-                brigada.isLibre();
+                brigada.getNombre_br(),
+                brigada.getEspecialidad(),
+                brigada.isLibre()
+        };
             modelo.addRow(rowData);
         }
-
-    }
+}
+    
 }
