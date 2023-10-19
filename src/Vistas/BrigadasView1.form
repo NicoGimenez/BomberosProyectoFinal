@@ -40,11 +40,11 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                      <Component id="jRBLibres" min="-2" max="-2" attributes="0"/>
+                      <Component id="jRBTodasLasBrigadas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
                       <Component id="jRBespecialidad" min="-2" pref="135" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jRBcuartel" min="-2" max="-2" attributes="0"/>
+                      <Component id="jRBBrigadasAsignadas" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -58,9 +58,9 @@
               <Component id="jLabel1" min="-2" pref="51" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jRBLibres" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRBTodasLasBrigadas" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jRBespecialidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRBcuartel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRBBrigadasAsignadas" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="139" max="-2" attributes="0"/>
@@ -81,12 +81,12 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRBLibres">
+    <Component class="javax.swing.JRadioButton" name="jRBTodasLasBrigadas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Todas Las Brigadas"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jRBLibresMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jRBTodasLasBrigadasMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRBespecialidad">
@@ -97,12 +97,12 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jRBespecialidadMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRBcuartel">
+    <Component class="javax.swing.JRadioButton" name="jRBBrigadasAsignadas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Brigadas Asignadas"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jRBcuartelMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jRBBrigadasAsignadasMouseClicked"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

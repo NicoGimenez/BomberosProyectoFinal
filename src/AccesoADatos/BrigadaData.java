@@ -273,4 +273,36 @@ public class BrigadaData {
     }
 */
     }
+    
+    public ArrayList <Brigada>obtenerBrigadasAsignadas() {
+        
+        
+       ArrayList<Brigada> brigadas = new ArrayList<>();
+       
+       try {
+      
+            String sql= "SELECT * FROM brigada WHERE activo = 1 AND libre = 0";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Brigada brigada = new Brigada();
+                
+                brigada= buscarBrigadaPorCodigo(rs.getInt("codBrigada"));
+                brigada.setActivo(rs.getBoolean("activo"));
+                brigada.setEspecialidad(rs.getString("especialidad"));
+                brigada.setLibre(rs.getBoolean("libre"));
+                brigada.setNombre_br(rs.getString("nombre_br"));
+                brigadas.add(brigada);
+
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al intentar obtener brigadas asignadas " + ex.getMessage());
+        }
+        return brigadas;
+     
+    }
+    
 }
