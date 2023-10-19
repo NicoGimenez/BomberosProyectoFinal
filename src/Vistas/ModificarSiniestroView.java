@@ -275,7 +275,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBBuscar)
@@ -294,7 +294,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
         );
 
         pack();
@@ -365,23 +365,23 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
          int siniestroId = Integer.parseInt(jTextField3.getText());
     Especialidad especialidadSeleccionada = getEspecialidadSeleccionada();
 
-    if (especialidadSeleccionada == null) {
-        JOptionPane.showMessageDialog(this, "Selecciona una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+//    if (especialidadSeleccionada == null) {
+//        JOptionPane.showMessageDialog(this, "Selecciona una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
+//        return;
+//    }
 
     Siniestro siniestro = sd.BuscarSiniestroPorId(siniestroId);
     Brigada brigada = sd.buscarBrigadaParaAsignarSiniestro(siniestro, especialidadSeleccionada);
-
-    if (brigada != null) {
-        // Asignar la brigada al siniestro
-        siniestro.setCodBrigada(brigada.getCodBrigada());
-        sd.modificarSiniestro(siniestro);
-
-        JOptionPane.showMessageDialog(this, "Siniestro asignado a la brigada: " + brigada.getCodBrigada(), "Asignación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-    } else {
-        JOptionPane.showMessageDialog(this, "No se encontró una brigada disponible con la especialidad requerida.", "Asignación Fallida", JOptionPane.ERROR_MESSAGE);
-    }
+        //System.out.println(siniestro);
+        System.out.println("\n"+brigada);
+//    if (brigada != null) {
+//        siniestro.setCodBrigada(brigada.getCodBrigada());
+//        sd.modificarSiniestro(siniestro);
+//
+//        JOptionPane.showMessageDialog(this, "Siniestro asignado a la brigada: " + brigada.getCodBrigada(), "Asignación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+//    } else {
+//        JOptionPane.showMessageDialog(this, "No se encontró una brigada disponible con la especialidad requerida.", "Asignación Fallida", JOptionPane.ERROR_MESSAGE);
+//    }
 
     }//GEN-LAST:event_jBAsignarBrigadaActionPerformed
 
