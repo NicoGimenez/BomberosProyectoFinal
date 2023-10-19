@@ -34,7 +34,7 @@ public class SiniestroData {
     }
 
     public void altaSiniestro(Siniestro siniestro) {
-       
+
         String sql = "INSERT INTO siniestro(tipo, fecha_siniestro, coord_X, coord_Y, detalle)"
                 + "VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -61,7 +61,7 @@ public class SiniestroData {
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Error! las coordenadas deben ser números: " + ex.getMessage());
         }
-        
+
     }
 
     public void guardarSiniestro(Siniestro siniestro) {
@@ -230,36 +230,31 @@ public class SiniestroData {
     }
 
     public ArrayList<Siniestro> buscarSiniestroEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) {
-        ArrayList<Siniestro>siniestros=new ArrayList<>();
-        String sql = "SELECT * FROM siniestro WHERE fecha_siniestro BETWEEN ? AND ?";
+        ArrayList<Siniestro> siniestros = new ArrayList<>();
+        String sql = "SELECT * FROM siniestro WHERE fecha_siniestro BETWEEN ? AND ?;";
 
-        Siniestro siniestro = null;
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setDate(1, Date.valueOf(fechaInicio));
             ps.setDate(2, Date.valueOf(fechaFin));
-
-            ResultSet rs = ps.executeQuery();
-
-             while (rs.next()) {
-
-                siniestro = new Siniestro();
-                siniestro.setCodigo(rs.getInt("codigo"));
-                siniestro.setFecha_siniestro(rs.getDate("fecha_siniestro").toLocalDate());
-                siniestro.setCoord_x(rs.getInt("coord_X"));
-                siniestro.setCoord_Y(rs.getInt("coord_Y"));
-                siniestro.setDetalles(rs.getString("detalle"));
-                siniestro.setFecha_resol(rs.getDate("fecha_resol").toLocalDate());
-                siniestro.setPuntuacion(rs.getInt("puntuacion"));
-                siniestro.setCodBrigada(rs.getInt("codBrigada"));
-                 siniestros.add(siniestro);
-
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Siniestro siniestro = new Siniestro();
+                    siniestro.setCodigo(rs.getInt("codigo"));
+                    siniestro.setFecha_siniestro(rs.getDate("fecha_siniestro").toLocalDate());
+                    siniestro.setCoord_x(rs.getInt("coord_X"));
+                    siniestro.setCoord_Y(rs.getInt("coord_Y"));
+                    siniestro.setDetalles(rs.getString("detalle"));
+                    siniestro.setFecha_resol(rs.getDate("fecha_resol") != null ? rs.getDate("fecha_resol").toLocalDate() : null);
+                    siniestro.setPuntuacion(rs.getInt("puntuacion"));
+                    siniestro.setCodBrigada(rs.getInt("codBrigada"));
+                    siniestros.add(siniestro);
+                }
             }
-            ps.close();
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. " + ex.getMessage());
+            ex.printStackTrace();
         }
+        System.out.println(siniestros);
         return siniestros;
     }
 
@@ -273,7 +268,7 @@ public class SiniestroData {
 
             ResultSet rs = ps.executeQuery();
 
-             while (rs.next()) {
+            while (rs.next()) {
                 Siniestro siniestro = new Siniestro();
                 siniestro.setCodigo(rs.getInt("codigo"));
                 String tipoSiniestroStr = rs.getString("tipo");
@@ -296,7 +291,7 @@ public class SiniestroData {
         }
 
         return siniestros;
-    
+
     }
 
     public List<Siniestro> ListarSiniestrosResueltos() {
@@ -365,7 +360,7 @@ public class SiniestroData {
         for (Cuartel cuartel : cuarteles) {
             brigadas = cd.obtenerBrigadasDelCuartel(cuartel.getCodigoCuartel());
             for (Brigada brig : brigadas) {
-               if (brig.getEspecialidad().equals(esp.toString()) && brig.isLibre()) {
+                if (brig.getEspecialidad().equals(esp.toString()) && brig.isLibre()) {
 
                     brigada = brig;
                     break;
