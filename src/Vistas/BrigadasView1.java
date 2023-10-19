@@ -32,7 +32,7 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
         initComponents();
         this.setTitle("LISTAR BRIGADAS");
         armarCabecera();
-        llenarTabla(brigadas);
+        
 
     }
 
