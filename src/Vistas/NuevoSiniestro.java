@@ -114,6 +114,11 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
         JCSiniestro.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         JCSiniestro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         JCSiniestro.setToolTipText("Seleccione tipo de siniestro");
+        JCSiniestro.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                JCSiniestroFocusGained(evt);
+            }
+        });
         JCSiniestro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JCSiniestroActionPerformed(evt);
@@ -351,12 +356,16 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void JCSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCSiniestroActionPerformed
-        // TODO add your handling code here:
+      cargarEspecialidadesComboBox();
     }//GEN-LAST:event_JCSiniestroActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void JCSiniestroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_JCSiniestroFocusGained
+        cargarEspecialidadesComboBox();
+    }//GEN-LAST:event_JCSiniestroFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
