@@ -5,7 +5,11 @@
  */
 package Vistas;
 
+import AccesoADatos.BrigadaData;
+import AccesoADatos.CuartelData;
+import Entidades.Brigada;
 import Entidades.Cuartel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,11 +17,18 @@ import Entidades.Cuartel;
  */
 public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ListarBrigadasPorCuartel
-     */
+    private final DefaultTableModel modelo = new DefaultTableModel();
+    private final CuartelData cData = new CuartelData();
+    private final BrigadaData bdata = new BrigadaData();
+    private java.util.ArrayList<Cuartel> cuarteles = new java.util.ArrayList<>();
+    private final java.util.ArrayList<Brigada> brigadas = new java.util.ArrayList<>();
+
     public ListarBrigadasPorCuartel() {
+
         initComponents();
+
+        armarCabecera();
+        llenarCombo();
     }
 
     /**
@@ -29,23 +40,67 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCCuarteles = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jRBLibre = new javax.swing.JRadioButton();
+        jRBAsignadas = new javax.swing.JRadioButton();
+        jRBTodasLasBrigadas = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setClosable(true);
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
         jLabel1.setText("Seleccionar Cuartel");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jRBLibre.setText("Libres");
+
+        jRBAsignadas.setText("Asignadas");
+
+        jRBTodasLasBrigadas.setText("Todas ");
+
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
+        jLabel2.setText("Brigadas:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(36, 36, 36)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jRBTodasLasBrigadas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRBLibre)
+                        .addGap(64, 64, 64)
+                        .addComponent(jRBAsignadas))
+                    .addComponent(jCCuarteles, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(72, 72, 72))
         );
         layout.setVerticalGroup(
@@ -53,9 +108,17 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCCuarteles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRBLibre)
+                    .addComponent(jRBAsignadas)
+                    .addComponent(jRBTodasLasBrigadas)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -63,7 +126,35 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Cuartel> jComboBox1;
+    private javax.swing.JComboBox<Cuartel> jCCuarteles;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JRadioButton jRBAsignadas;
+    private javax.swing.JRadioButton jRBLibre;
+    private javax.swing.JRadioButton jRBTodasLasBrigadas;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public void armarCabecera() {
+        //cuartel , especialidad, BRIGADA
+        // modelo.addColumn("COD BRIGADA");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("ESPECILIDAD");
+        modelo.addColumn("ACTIVA");
+
+        jTable1.setModel(modelo);
+
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(10); // COD BRIGADA
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(50); // BRIGADA
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(50); // ESPECIALIDAD
+    }
+
+    public void llenarCombo() {
+        cuarteles = cData.listarCuarteles();
+
+        for (Cuartel cuartel : cuarteles) {
+            jCCuarteles.addItem(cuartel);
+        }
+    }
 }
