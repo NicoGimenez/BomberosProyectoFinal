@@ -72,6 +72,11 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
         jRBAsignadas.setText("Asignadas");
 
         jRBTodasLasBrigadas.setText("Todas ");
+        jRBTodasLasBrigadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBTodasLasBrigadasActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
         jLabel2.setText("Brigadas:");
@@ -123,6 +128,10 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jRBTodasLasBrigadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBTodasLasBrigadasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRBTodasLasBrigadasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

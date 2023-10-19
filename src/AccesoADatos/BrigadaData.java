@@ -146,16 +146,15 @@ public class BrigadaData {
         return brigada;
     }
     
-
-    public List<Brigada> listBrigadasPorCuartel(int nroCuartel) {
+    public List<Brigada> listBrigadasPorCuartel() {
         ArrayList<Brigada> brigadas = new ArrayList<>();
 
         try {
             //String sql = "SELECT * FROM brigada WHERE nro_cuartel=?";
-            String sql ="SELECT codBrigada,especialidad,nro_cuartel,libre FROM `brigada` WHERE libre=1";
+            String sql ="SELECT codBrigada,especialidad,nro_cuartel, FROM `brigada` WHERE libre=1 and ";
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setInt(1, nroCuartel);
+           // ps.setInt(1, nroCuartel);
 
             ResultSet rs = ps.executeQuery();
 
@@ -229,6 +228,7 @@ public class BrigadaData {
         
         
     }
+    
     public void actualizarBrigada(Brigada brigada) {
         try {
             String sql = " UPDATE brigada SET nombre_br=?,especialidad=?,libre=?,nro_cuartel=?,activo=? WHERE codBrigada=?";

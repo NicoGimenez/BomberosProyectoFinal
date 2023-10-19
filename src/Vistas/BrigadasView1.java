@@ -59,21 +59,21 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
         jLabel1.setText("Listar Brigadas");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jRBLibres.setText("Brigadas Libres");
+        jRBLibres.setText("Todas Las Brigadas");
         jRBLibres.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jRBLibresMouseClicked(evt);
             }
         });
 
-        jRBespecialidad.setText("Brigadas libres por especeialidad ");
+        jRBespecialidad.setText("Brigadas libres");
         jRBespecialidad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jRBespecialidadMouseClicked(evt);
             }
         });
 
-        jRBcuartel.setText("Brigadas libres por cuartel");
+        jRBcuartel.setText("Brigadas Asignadas");
         jRBcuartel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jRBcuartelMouseClicked(evt);
@@ -108,22 +108,23 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jBAdmBrigadas, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jRBLibres, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jRBespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jRBcuartel)
-                .addGap(39, 39, 39))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(241, 257, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(255, 255, 255))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jBAdmBrigadas, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jRBLibres)
+                        .addGap(22, 22, 22)
+                        .addComponent(jRBespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRBcuartel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +174,7 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
     jRBLibres.setSelected(false);
     jRBespecialidad.setSelected(false);
 
-    List<Brigada> brigadas = bData.listBrigadasPorCuartel(PROPERTIES); // Deberías reemplazar PROPERTIES por el nro de cuartel o la variable correcta
+    List<Brigada> brigadas = bData.listBrigadasPorCuartel(); // Deberías reemplazar PROPERTIES por el nro de cuartel o la variable correcta
     modelo.setRowCount(0);
     for (Brigada brigada : brigadas) {
         modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getEspecialidad(), brigada.getNombre_br()});
