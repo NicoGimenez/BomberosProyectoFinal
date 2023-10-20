@@ -366,18 +366,15 @@ public class SiniestroData {
             for (Brigada brig : brigadas) {
               System.out.println(brig.getEspecialidad());
                 if (!brig.getEspecialidad().equals(esp.getDescripcion()) ) {
-                   System.out.println("al fin puto");
                     brigada = brig;
                     break;
                 }else{System.out.println(brig.getEspecialidad()+"\n "+esp.getDescripcion());}
-
             }
             if (brigada != null) {
                 
                 break;
             }
         }
-
         return brigada;
     }
 
