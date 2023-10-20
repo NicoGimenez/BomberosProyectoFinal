@@ -42,7 +42,7 @@
                       <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                       <Component id="jRBTodasLasBrigadas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
-                      <Component id="jRBespecialidad" min="-2" pref="135" max="-2" attributes="0"/>
+                      <Component id="jRBlibres" min="-2" pref="135" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jRBBrigadasAsignadas" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -59,7 +59,7 @@
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jRBTodasLasBrigadas" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRBespecialidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRBlibres" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jRBBrigadasAsignadas" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
@@ -89,12 +89,12 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jRBTodasLasBrigadasMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRBespecialidad">
+    <Component class="javax.swing.JRadioButton" name="jRBlibres">
       <Properties>
         <Property name="text" type="java.lang.String" value="Brigadas libres"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jRBespecialidadMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jRBlibresMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRBBrigadasAsignadas">

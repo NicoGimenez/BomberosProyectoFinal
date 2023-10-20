@@ -37,7 +37,7 @@ public class BrigadaData {
         ArrayList<Brigada> brigadas = new ArrayList<>();
 
         try {
-            String sql = "SELECT  * FROM brigada WHERE  libre=1";
+            String sql = "SELECT  * FROM brigada ";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
@@ -49,6 +49,7 @@ public class BrigadaData {
                 brigada.setNombre_br(rs.getNString("nombre_br"));
                 brigada.setLibre(rs.getBoolean("libre"));
                 brigada.setCodCuartel(rs.getInt("nro_cuartel"));
+                brigada.setActivo(rs.getBoolean("activo"));
                 brigadas.add(brigada);
             }
             ps.close();
@@ -151,7 +152,7 @@ public class BrigadaData {
 
         try {
             //String sql = "SELECT * FROM brigada WHERE nro_cuartel=?";
-            String sql ="SELECT codBrigada,especialidad,nro_cuartel, FROM `brigada` WHERE libre=1 and ";
+            String sql ="SELECT * FROM brigada WHERE libre=1 and activo =1 ";
             PreparedStatement ps = con.prepareStatement(sql);
 
            // ps.setInt(1, nroCuartel);
@@ -161,7 +162,7 @@ public class BrigadaData {
             while (rs.next()) {
                 Brigada brigada = new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
-                brigada.setNombre_br(rs.getString("nombre brigada"));
+                brigada.setNombre_br(rs.getString("nombre_br"));
                 brigada.setEspecialidad(rs.getString("especialidad"));
                 brigadas.add(brigada);
             }
