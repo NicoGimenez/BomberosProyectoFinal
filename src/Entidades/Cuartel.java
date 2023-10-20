@@ -114,7 +114,7 @@ public class Cuartel {
 
     @Override
     public String toString() {
-        return "Cuartel" + "codigoCuartel=" + codigoCuartel + ", nombreDeCuartel=" + nombreDeCuartel + '}';
+        return " Nombre: " + nombreDeCuartel ;
     }
 
 }

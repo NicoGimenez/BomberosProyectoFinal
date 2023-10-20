@@ -33,6 +33,7 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
         this.setTitle("LISTAR BRIGADAS");
         armarCabecera();
         
+        
 
     }
 
@@ -46,9 +47,9 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jRBLibres = new javax.swing.JRadioButton();
+        jRBTodasLasBrigadas = new javax.swing.JRadioButton();
         jRBespecialidad = new javax.swing.JRadioButton();
-        jRBcuartel = new javax.swing.JRadioButton();
+        jRBBrigadasAsignadas = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jBAdmBrigadas = new javax.swing.JButton();
@@ -59,24 +60,24 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
         jLabel1.setText("Listar Brigadas");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jRBLibres.setText("Brigadas Libres");
-        jRBLibres.addMouseListener(new java.awt.event.MouseAdapter() {
+        jRBTodasLasBrigadas.setText("Todas Las Brigadas");
+        jRBTodasLasBrigadas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRBLibresMouseClicked(evt);
+                jRBTodasLasBrigadasMouseClicked(evt);
             }
         });
 
-        jRBespecialidad.setText("Brigadas libres por especeialidad ");
+        jRBespecialidad.setText("Brigadas libres");
         jRBespecialidad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jRBespecialidadMouseClicked(evt);
             }
         });
 
-        jRBcuartel.setText("Brigadas libres por cuartel");
-        jRBcuartel.addMouseListener(new java.awt.event.MouseAdapter() {
+        jRBBrigadasAsignadas.setText("Brigadas Asignadas");
+        jRBBrigadasAsignadas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRBcuartelMouseClicked(evt);
+                jRBBrigadasAsignadasMouseClicked(evt);
             }
         });
 
@@ -108,22 +109,23 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jBAdmBrigadas, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jRBLibres, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jRBespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jRBcuartel)
-                .addGap(39, 39, 39))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(241, 257, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(255, 255, 255))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jBAdmBrigadas, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jRBTodasLasBrigadas)
+                        .addGap(22, 22, 22)
+                        .addComponent(jRBespecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRBBrigadasAsignadas)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,9 +134,9 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRBLibres)
+                    .addComponent(jRBTodasLasBrigadas)
                     .addComponent(jRBespecialidad)
-                    .addComponent(jRBcuartel))
+                    .addComponent(jRBBrigadasAsignadas))
                 .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
@@ -145,22 +147,22 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRBLibresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBLibresMouseClicked
+    private void jRBTodasLasBrigadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBTodasLasBrigadasMouseClicked
 // Deseleccionar los otros dos radio buttons
     jRBespecialidad.setSelected(false);
-    jRBcuartel.setSelected(false);
+    jRBBrigadasAsignadas.setSelected(false);
 
     List<Brigada> brigadas = bData.listarBrigadasLibres();
     modelo.setRowCount(0);
     for (Brigada brigada : brigadas) {
         modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getNombre_br(), brigada.getEspecialidad()});
     }
-    }//GEN-LAST:event_jRBLibresMouseClicked
+    }//GEN-LAST:event_jRBTodasLasBrigadasMouseClicked
 
     private void jRBespecialidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBespecialidadMouseClicked
     // Deseleccionar los otros dos radio buttons
-    jRBLibres.setSelected(false);
-    jRBcuartel.setSelected(false);
+    jRBTodasLasBrigadas.setSelected(false);
+    jRBBrigadasAsignadas.setSelected(false);
 
     List<Brigada> brigadas = bData.listarBrigadasLibresPorEspecialidad(Especialidad.INCENDIOS);
     modelo.setRowCount(0);
@@ -168,17 +170,17 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
         modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getNombre_br(), brigada.getEspecialidad()});                               
     }//GEN-LAST:event_jRBespecialidadMouseClicked
     }
-    private void jRBcuartelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBcuartelMouseClicked
+    private void jRBBrigadasAsignadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBBrigadasAsignadasMouseClicked
     // Deseleccionar los otros dos radio buttons
-    jRBLibres.setSelected(false);
+    jRBTodasLasBrigadas.setSelected(false);
     jRBespecialidad.setSelected(false);
 
-    List<Brigada> brigadas = bData.listBrigadasPorCuartel(PROPERTIES); // Deberías reemplazar PROPERTIES por el nro de cuartel o la variable correcta
+    List<Brigada> brigadas = bData.obtenerBrigadasAsignadas(); 
     modelo.setRowCount(0);
-    for (Brigada brigada : brigadas) {
-        modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getEspecialidad(), brigada.getNombre_br()});
-    }
-    }//GEN-LAST:event_jRBcuartelMouseClicked
+   // for (Brigada brigada : brigadas) {
+    //modelo.addRow(new Object[]{brigada.isActivo(), brigada.getNombre_br(), brigada.getEspecialidad(), brigada.isLibre()});
+        llenarTabla((ArrayList<Brigada>) brigadas);
+    }//GEN-LAST:event_jRBBrigadasAsignadasMouseClicked
 
     private void jBAdmBrigadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdmBrigadasActionPerformed
         Container parent = this.getParent();
@@ -195,41 +197,45 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAdmBrigadas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRBLibres;
-    private javax.swing.JRadioButton jRBcuartel;
+    private javax.swing.JRadioButton jRBBrigadasAsignadas;
+    private javax.swing.JRadioButton jRBTodasLasBrigadas;
     private javax.swing.JRadioButton jRBespecialidad;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     private void limpiarTabla() {
-
+        
         modelo.setRowCount(0);
     }
 
     public void armarCabecera() {
         //cuartel , especialidad, BRIGADA
-        modelo.addColumn("COD BRIGADA");
+        modelo.addColumn("ESTADO");
         modelo.addColumn("BRIGADA");
         modelo.addColumn("ESPECILIDAD");
+        modelo.addColumn("LIBRE");
 
         jTable1.setModel(modelo);
 
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(10); // COD BRIGADA
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(10); // ESTADO
         jTable1.getColumnModel().getColumn(1).setPreferredWidth(50); // BRIGADA
         jTable1.getColumnModel().getColumn(2).setPreferredWidth(50); // ESPECIALIDAD
+        jTable1.getColumnModel().getColumn(3).setPreferredWidth(50); // LIBRE
     }
 
-    public void llenarTabla(java.util.ArrayList<Brigada> brigadast) {
+    public void llenarTabla(ArrayList<Brigada> brigadast) {
         modelo.setRowCount(0);
 
-        for (Brigada brigada : brigadas) {
+        for (Brigada brigada : brigadast) {
             Object[] rowData = {
-                brigada.getCodBrigada(),
-                brigada.getNombre_br()};
-                brigada.getEspecialidad();
+                brigada.isActivo(),
+                brigada.getNombre_br(),
+                brigada.getEspecialidad(),
+                brigada.isLibre()
+        };
             modelo.addRow(rowData);
         }
-
-    }
+}
+    
 }

@@ -5,7 +5,9 @@
  */
 package Vistas;
 
+import AccesoADatos.BrigadaData;
 import AccesoADatos.CuartelData;
+import Entidades.Brigada;
 import Entidades.Cuartel;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +20,9 @@ public class ListarCuartelesView extends javax.swing.JInternalFrame {
 
     private final DefaultTableModel modelo = new DefaultTableModel();
     private final CuartelData cData = new CuartelData();
+    private final BrigadaData bdata = new BrigadaData();
     private ArrayList<Cuartel> cuarteles = new ArrayList<>();
+    private ArrayList<Brigada> brigadas = new ArrayList<>();
 
     public ListarCuartelesView() {
         cuarteles = cData.listarCuarteles();
@@ -157,6 +161,6 @@ public class ListarCuartelesView extends javax.swing.JInternalFrame {
             };
             modelo.addRow(rowData);
         }
-
     }
+
 }

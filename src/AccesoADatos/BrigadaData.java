@@ -146,22 +146,22 @@ public class BrigadaData {
         return brigada;
     }
     
-
-    public List<Brigada> listBrigadasPorCuartel(int nroCuartel) {
+    public List<Brigada> listBrigadasPorCuartel() {
         ArrayList<Brigada> brigadas = new ArrayList<>();
 
         try {
             //String sql = "SELECT * FROM brigada WHERE nro_cuartel=?";
-            String sql ="SELECT codBrigada,especialidad,nro_cuartel,libre FROM `brigada` WHERE libre=1";
+            String sql ="SELECT codBrigada,especialidad,nro_cuartel, FROM `brigada` WHERE libre=1 and ";
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setInt(1, nroCuartel);
+           // ps.setInt(1, nroCuartel);
 
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 Brigada brigada = new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
+                brigada.setNombre_br(rs.getString("nombre brigada"));
                 brigada.setEspecialidad(rs.getString("especialidad"));
                 brigadas.add(brigada);
             }
@@ -228,6 +228,7 @@ public class BrigadaData {
         
         
     }
+    
     public void actualizarBrigada(Brigada brigada) {
         try {
             String sql = " UPDATE brigada SET nombre_br=?,especialidad=?,libre=?,nro_cuartel=?,activo=? WHERE codBrigada=?";
@@ -272,4 +273,36 @@ public class BrigadaData {
     }
 */
     }
+    
+    public ArrayList <Brigada>obtenerBrigadasAsignadas() {
+        
+        
+       ArrayList<Brigada> brigadas = new ArrayList<>();
+       
+       try {
+      
+            String sql= "SELECT * FROM brigada WHERE activo = 1 AND libre = 0";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Brigada brigada = new Brigada();
+                
+                brigada= buscarBrigadaPorCodigo(rs.getInt("codBrigada"));
+                brigada.setActivo(rs.getBoolean("activo"));
+                brigada.setEspecialidad(rs.getString("especialidad"));
+                brigada.setLibre(rs.getBoolean("libre"));
+                brigada.setNombre_br(rs.getString("nombre_br"));
+                brigadas.add(brigada);
+
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al intentar obtener brigadas asignadas " + ex.getMessage());
+        }
+        return brigadas;
+     
+    }
+    
 }

@@ -22,6 +22,7 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMBrigada1 = new javax.swing.JMenuItem();
         jMListarBrigadas = new javax.swing.JMenuItem();
+        jMListarBrigadasPorCuartel = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMCuartel1 = new javax.swing.JMenuItem();
         jMListarCuartele1 = new javax.swing.JMenuItem();
@@ -88,6 +89,14 @@ public class MenuInicioView extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMListarBrigadas);
+
+        jMListarBrigadasPorCuartel.setText("Listar Por Cuartel");
+        jMListarBrigadasPorCuartel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMListarBrigadasPorCuartelActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMListarBrigadasPorCuartel);
 
         jMenu1.add(jMenu3);
 
@@ -204,6 +213,11 @@ public class MenuInicioView extends javax.swing.JFrame {
           BrigadasView1 brigada = new BrigadasView1();
         mostrarVentanaNueva(brigada);
     }//GEN-LAST:event_jMListarBrigadasActionPerformed
+
+    private void jMListarBrigadasPorCuartelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMListarBrigadasPorCuartelActionPerformed
+        ListarBrigadasPorCuartel listita = new ListarBrigadasPorCuartel();
+        mostrarVentanaNueva(listita);
+    }//GEN-LAST:event_jMListarBrigadasPorCuartelActionPerformed
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -246,6 +260,7 @@ public class MenuInicioView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMBrigada1;
     private javax.swing.JMenuItem jMCuartel1;
     private javax.swing.JMenuItem jMListarBrigadas;
+    private javax.swing.JMenuItem jMListarBrigadasPorCuartel;
     private javax.swing.JMenuItem jMListarCuartele1;
     private javax.swing.JMenuItem jMModificacionDeSiniestro;
     private javax.swing.JMenuItem jMNuevoSiniestro;
