@@ -365,23 +365,23 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
          int siniestroId = Integer.parseInt(jTextField3.getText());
     Especialidad especialidadSeleccionada = getEspecialidadSeleccionada();
 
-//    if (especialidadSeleccionada == null) {
-//        JOptionPane.showMessageDialog(this, "Selecciona una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
-//        return;
-//    }
+    if (especialidadSeleccionada == null) {
+        JOptionPane.showMessageDialog(this, "Selecciona una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
     Siniestro siniestro = sd.BuscarSiniestroPorId(siniestroId);
     Brigada brigada = sd.buscarBrigadaParaAsignarSiniestro(siniestro, especialidadSeleccionada);
         //System.out.println(siniestro);
         System.out.println("\n"+brigada);
-//    if (brigada != null) {
-//        siniestro.setCodBrigada(brigada.getCodBrigada());
-//        sd.modificarSiniestro(siniestro);
-//
-//        JOptionPane.showMessageDialog(this, "Siniestro asignado a la brigada: " + brigada.getCodBrigada(), "Asignación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-//    } else {
-//        JOptionPane.showMessageDialog(this, "No se encontró una brigada disponible con la especialidad requerida.", "Asignación Fallida", JOptionPane.ERROR_MESSAGE);
-//    }
+    if (brigada != null) {
+        siniestro.setCodBrigada(brigada.getCodBrigada());
+        sd.modificarSiniestro(siniestro);
+
+        JOptionPane.showMessageDialog(this, "Siniestro asignado a la brigada: " + brigada.getCodBrigada(), "Asignación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(this, "No se encontró una brigada disponible con la especialidad requerida.", "Asignación Fallida", JOptionPane.ERROR_MESSAGE);
+    }
 
     }//GEN-LAST:event_jBAsignarBrigadaActionPerformed
 
@@ -543,11 +543,11 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         sd.eliminarSiniestro(id);
     }
     private Especialidad getEspecialidadSeleccionada() {
-    String especialidadSeleccionadaStr = (String) JCSiniestro.getSelectedItem();
+    String especialidadSeleccionadaString = (String) JCSiniestro.getSelectedItem();
     Especialidad especialidad = null;
     
     for (Especialidad esp : Especialidad.values()) {
-        if (esp.getDescripcion().equals(especialidadSeleccionadaStr)) {
+        if (esp.getDescripcion().equals(especialidadSeleccionadaString)) {
             especialidad = esp;
             break;
         }

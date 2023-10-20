@@ -27,4 +27,5 @@ public enum Especialidad {
     public String getDescripcion() {
         return descripcion;
     }
+    
 }

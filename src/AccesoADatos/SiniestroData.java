@@ -364,12 +364,13 @@ public class SiniestroData {
         for (Cuartel cuartel : cuarteles) {
             brigadas = cd.obtenerBrigadasDelCuartel(cuartel.getCodigoCuartel());
             for (Brigada brig : brigadas) {
-                System.out.println(brig.getEspecialidad());
-                if (brig.getEspecialidad().equals(esp) && brig.isLibre()) {
-                    System.out.println("al fin puto");
+              System.out.println(brig.getEspecialidad());
+                if (!brig.getEspecialidad().equals(esp.getDescripcion()) ) {
+                   System.out.println("al fin puto");
                     brigada = brig;
                     break;
-                }
+                }else{System.out.println(brig.getEspecialidad()+"\n "+esp.getDescripcion());}
+
             }
             if (brigada != null) {
                 
