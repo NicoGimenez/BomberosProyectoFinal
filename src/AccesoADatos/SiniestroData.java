@@ -359,16 +359,14 @@ public class SiniestroData {
         Brigada brigada = null;
         ArrayList<Brigada> brigadas = new ArrayList<>();
         ArrayList<Cuartel> cuarteles = ordenarCuartlesPorCercania(siniestro, cd.listarCuarteles());
-        //System.out.println(cuarteles);
-
+       
         for (Cuartel cuartel : cuarteles) {
             brigadas = cd.obtenerBrigadasDelCuartel(cuartel.getCodigoCuartel());
             for (Brigada brig : brigadas) {
-              System.out.println(brig.getEspecialidad());
                 if (!brig.getEspecialidad().equals(esp.getDescripcion()) ) {
                     brigada = brig;
                     break;
-                }else{System.out.println(brig.getEspecialidad()+"\n "+esp.getDescripcion());}
+                }
             }
             if (brigada != null) {
                 

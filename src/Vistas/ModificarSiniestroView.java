@@ -336,7 +336,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         try {
             int numero = Integer.parseInt(jTextField3.getText());
             limpiarCampos();
-            buscarSiniestroPorId(Integer.parseInt(jTextField3.getText()));
+            buscarSiniestroPorId(numero);
             habilitarBotones();
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Ingrese un id válido.", "Error de selección", JOptionPane.ERROR_MESSAGE);
@@ -372,7 +372,6 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
 
     Siniestro siniestro = sd.BuscarSiniestroPorId(siniestroId);
     Brigada brigada = sd.buscarBrigadaParaAsignarSiniestro(siniestro, especialidadSeleccionada);
-        //System.out.println(siniestro);
         System.out.println("\n"+brigada);
     if (brigada != null) {
         siniestro.setCodBrigada(brigada.getCodBrigada());
@@ -437,7 +436,6 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             int a = sin.getCodBrigada();
             if (a < 1 || a == 0) {
                 sd.asignarBrigada(sin, sin.getTipo());
-
             }
             jLBrigada.setText("Brigada: " + sin.getCodBrigada());
             try {
@@ -520,7 +518,6 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
                 break;
             }
         }
-
         if (tipo != null) {
             siniestro.setTipo(tipo);
         } else {
