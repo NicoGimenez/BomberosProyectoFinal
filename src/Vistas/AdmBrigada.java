@@ -22,6 +22,7 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
      */
     public AdmBrigada() {
         initComponents();
+        this.setTitle("ADMINISTRAR BRIGADAS");
     }
 
     /**

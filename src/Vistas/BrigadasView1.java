@@ -32,9 +32,6 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
         initComponents();
         this.setTitle("LISTAR BRIGADAS");
         armarCabecera();
-        
-        
-
     }
 
     /**
@@ -109,30 +106,28 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(241, 257, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(255, 255, 255))
             .addGroup(layout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(jBAdmBrigadas, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(134, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jBAdmBrigadas, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(jRBTodasLasBrigadas)
-                        .addGap(22, 22, 22)
-                        .addComponent(jRBlibres, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRBBrigadasAsignadas)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jRBTodasLasBrigadas, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRBlibres, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRBBrigadasAsignadas)
+                .addGap(113, 113, 113))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRBTodasLasBrigadas)
                     .addComponent(jRBlibres)
@@ -149,38 +144,38 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
 
     private void jRBTodasLasBrigadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBTodasLasBrigadasMouseClicked
 // Deseleccionar los otros dos radio buttons
-    jRBlibres.setSelected(false);
-    jRBBrigadasAsignadas.setSelected(false);
+        jRBlibres.setSelected(false);
+        jRBBrigadasAsignadas.setSelected(false);
 
-    List<Brigada> brigadas = bData.listarBrigadasLibres();
-    modelo.setRowCount(0);
-    //for (Brigada brigada : brigadas) {
-    // modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getNombre_br(), brigada.getEspecialidad()});
-    llenarTabla((ArrayList<Brigada>) brigadas);
+        List<Brigada> brigadas = bData.listarBrigadasLibres();
+        modelo.setRowCount(0);
+        //for (Brigada brigada : brigadas) {
+        // modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getNombre_br(), brigada.getEspecialidad()});
+        llenarTabla((ArrayList<Brigada>) brigadas);
     }//GEN-LAST:event_jRBTodasLasBrigadasMouseClicked
 
     private void jRBlibresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBlibresMouseClicked
-    // Deseleccionar los otros dos radio buttons
-    jRBTodasLasBrigadas.setSelected(false);
-    jRBBrigadasAsignadas.setSelected(false);
+        // Deseleccionar los otros dos radio buttons
+        jRBTodasLasBrigadas.setSelected(false);
+        jRBBrigadasAsignadas.setSelected(false);
 
-    List<Brigada> brigadas = bData.listarBrigadasLibresPorEspecialidad(Especialidad.INCENDIOS);
-    modelo.setRowCount(0);
-    //for (Brigada brigada : brigadas) {
-    //  modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getNombre_br(), brigada.getEspecialidad()});
-      llenarTabla((ArrayList<Brigada>) brigadas);
+        List<Brigada> brigadas = bData.listarBrigadasLibresPorEspecialidad(Especialidad.INCENDIOS);
+        modelo.setRowCount(0);
+        //for (Brigada brigada : brigadas) {
+        //  modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getNombre_br(), brigada.getEspecialidad()});
+        llenarTabla((ArrayList<Brigada>) brigadas);
     }//GEN-LAST:event_jRBlibresMouseClicked
-    
-    private void jRBBrigadasAsignadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBBrigadasAsignadasMouseClicked
-    // Deseleccionar los otros dos radio buttons
-    jRBTodasLasBrigadas.setSelected(false);
-    jRBlibres.setSelected(false);
 
-    List<Brigada> brigadas = bData.obtenerBrigadasAsignadas(); 
-    modelo.setRowCount(0);
-   // for (Brigada brigada : brigadas) {
-    //modelo.addRow(new Object[]{brigada.isActivo(), brigada.getNombre_br(), brigada.getEspecialidad(), brigada.isLibre()});
-        llenarTabla((ArrayList<Brigada>) brigadas); 
+    private void jRBBrigadasAsignadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRBBrigadasAsignadasMouseClicked
+        // Deseleccionar los otros dos radio buttons
+        jRBTodasLasBrigadas.setSelected(false);
+        jRBlibres.setSelected(false);
+
+        List<Brigada> brigadas = bData.obtenerBrigadasAsignadas();
+        modelo.setRowCount(0);
+        // for (Brigada brigada : brigadas) {
+        //modelo.addRow(new Object[]{brigada.isActivo(), brigada.getNombre_br(), brigada.getEspecialidad(), brigada.isLibre()});
+        llenarTabla((ArrayList<Brigada>) brigadas);
     }//GEN-LAST:event_jRBBrigadasAsignadasMouseClicked
 
     private void jBAdmBrigadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdmBrigadasActionPerformed
@@ -206,7 +201,7 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void limpiarTabla() {
-        
+
         modelo.setRowCount(0);
     }
 
@@ -238,18 +233,18 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
             modelo.addRow(rowData);
         }
 }
-   */
+     */
     public void llenarTabla(ArrayList<Brigada> brigadast) {
-    modelo.setRowCount(0);
+        modelo.setRowCount(0);
 
-    for (Brigada brigada : brigadast) {
-        Object[] rowData = {
-            brigada.isActivo() ? "Activo" : "Inactivo",      // Si es true, agrega "Activo". Si es false, agrega "Inactivo".
-            brigada.getNombre_br(),
-            brigada.getEspecialidad(),
-            brigada.isLibre() ? "Si" : "No"                 // Si es true, agrega "Si". Si es false, agrega "No".
-        };
-        modelo.addRow(rowData);
+        for (Brigada brigada : brigadast) {
+            Object[] rowData = {
+                brigada.isActivo() ? "Activo" : "Inactivo", // Si es true, agrega "Activo". Si es false, agrega "Inactivo".
+                brigada.getNombre_br(),
+                brigada.getEspecialidad(),
+                brigada.isLibre() ? "Si" : "No" // Si es true, agrega "Si". Si es false, agrega "No".
+            };
+            modelo.addRow(rowData);
+        }
     }
-}
 }
