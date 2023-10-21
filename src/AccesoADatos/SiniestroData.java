@@ -283,7 +283,7 @@ public class SiniestroData {
                 siniestro.setDetalles(rs.getString("Detalle"));
                 siniestro.setFecha_resol(rs.getDate("fecha_resol") != null ? rs.getDate("fecha_resol").toLocalDate() : null);
 //                siniestro.setPuntuacion(rs.getObject("puntuacion") != null ? rs.getInt("puntuacion") : null);
-                //   siniestro.setCodBrigada(rs.getObject("codBrigada") != null ? rs.getInt("codBrigada") : null);
+                   siniestro.setCodBrigada(rs.getObject("codBrigada") != null ? rs.getInt("codBrigada") : null);
 
                 siniestros.add(siniestro);
             }

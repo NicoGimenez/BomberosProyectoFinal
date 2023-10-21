@@ -520,8 +520,12 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         siniestro.setCoord_Y(Integer.parseInt(jTCoordy.getText()));
         siniestro.setDetalles(jTDescrip.getText());
         siniestro.setPuntuacion((int) jSPuntuacion.getValue());
+        try{
         LocalDate fecha_res = jDFechaResol.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         siniestro.setFecha_resol(fecha_res);
+        }catch(Exception ex){
+            siniestro.setFecha_resol(null);
+        }
         siniestro.setCodBrigada(1);
         sd.modificarSiniestro(siniestro);
     }
@@ -545,7 +549,6 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     private void asignarBrigada(int siniestroId, Especialidad especialidadSeleccionada){
         Siniestro siniestro = sd.BuscarSiniestroPorId(siniestroId);
     Brigada brigada = sd.buscarBrigadaParaAsignarSiniestro(siniestro, especialidadSeleccionada);
-        System.out.println("\n"+brigada);
     if (brigada != null) {
         siniestro.setCodBrigada(brigada.getCodBrigada());
         sd.modificarSiniestro(siniestro);
@@ -555,8 +558,6 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, "No se encontró una brigada disponible con la especialidad requerida.", "Asignación Fallida", JOptionPane.ERROR_MESSAGE);
     }
     }
-
-
 }
 
 
