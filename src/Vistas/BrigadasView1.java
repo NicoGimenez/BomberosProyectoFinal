@@ -167,7 +167,7 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
     List<Brigada> brigadas = bData.listarBrigadasLibresPorEspecialidad(Especialidad.INCENDIOS);
     modelo.setRowCount(0);
     //for (Brigada brigada : brigadas) {
-      //  modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getNombre_br(), brigada.getEspecialidad()});
+    //  modelo.addRow(new Object[]{brigada.getCodBrigada(), brigada.getNombre_br(), brigada.getEspecialidad()});
       llenarTabla((ArrayList<Brigada>) brigadas);
     }//GEN-LAST:event_jRBlibresMouseClicked
     
