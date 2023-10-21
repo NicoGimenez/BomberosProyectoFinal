@@ -38,16 +38,16 @@ public class CuartelData {
             ps.setString(6, cuartel.getCorreo());
             ps.setBoolean(7, cuartel.isActivo());
 
-            int exito=ps.executeUpdate();
-            
-            if(exito>0){
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                cuartel.setCodigoCuartel(rs.getInt(1));
+            int exito = ps.executeUpdate();
 
-                JOptionPane.showMessageDialog(null, "Cuartel generado con exito.");
-            }
-            }else{
+            if (exito > 0) {
+                ResultSet rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    cuartel.setCodigoCuartel(rs.getInt(1));
+
+                    JOptionPane.showMessageDialog(null, "Cuartel generado con exito.");
+                }
+            } else {
                 JOptionPane.showMessageDialog(null, "Error al agregar Cuartel ");
             }
             ps.close();
@@ -55,7 +55,7 @@ public class CuartelData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al agregar Cuartel " + ex.getMessage());
         }
-return cuartel;
+        return cuartel;
     }
 
     public void eliminarCuartelPorCodigo(int codigoCuartel) {
@@ -126,6 +126,72 @@ return cuartel;
                 brigada.setEspecialidad(rs.getString("especialidad"));
                 brigada.setNombre_br(rs.getString("nombre_br"));
                 brigada.setLibre(rs.getBoolean("libre"));
+                brigada.setActivo(rs.getBoolean("activo"));
+
+                //Lo agregamos al arreglo 
+                brigadas.add(brigada);
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse con la tabla Brigada");
+        }
+
+        return brigadas;
+
+    }
+
+    public ArrayList<Brigada> obtenerBrigadasLisbreDelCuartel(int nro_cuartel) {
+
+        ArrayList<Brigada> brigadas = new ArrayList<>();
+
+        String sql = "SELECT * FROM brigada WHERE nro_cuartel=? AND libre=1 AND activo=1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, nro_cuartel);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                //Creamos objetos Brigada
+                Brigada brigada = new Brigada();
+                brigada.setCodBrigada(rs.getInt("codBrigada"));
+                brigada.setCodCuartel(nro_cuartel);
+                brigada.setEspecialidad(rs.getString("especialidad"));
+                brigada.setNombre_br(rs.getString("nombre_br"));
+                brigada.setLibre(rs.getBoolean("libre"));
+                brigada.setActivo(rs.getBoolean("activo"));
+
+                //Lo agregamos al arreglo 
+                brigadas.add(brigada);
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse con la tabla Brigada");
+        }
+
+        return brigadas;
+    }
+
+    public ArrayList<Brigada> obtenerBrigadasAsignadasDelCuartel(int nro_cuartel) {
+
+        ArrayList<Brigada> brigadas = new ArrayList<>();
+
+        String sql = "SELECT * FROM brigada WHERE nro_cuartel=? AND libre=0 AND activo=1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, nro_cuartel);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                //Creamos objetos Brigada
+                Brigada brigada = new Brigada();
+                brigada.setCodBrigada(rs.getInt("codBrigada"));
+                brigada.setCodCuartel(nro_cuartel);
+                brigada.setEspecialidad(rs.getString("especialidad"));
+                brigada.setNombre_br(rs.getString("nombre_br"));
+                brigada.setLibre(rs.getBoolean("libre"));
+                brigada.setActivo(rs.getBoolean("activo"));
 
                 //Lo agregamos al arreglo 
                 brigadas.add(brigada);
@@ -143,8 +209,8 @@ return cuartel;
 
         ArrayList<Cuartel> cuarteles = new ArrayList<>();
 
-    //    String sql = "SELECT * FROM cuartel WHERE 1";
-        String sql= "SELECT codCuartel, nombre_cuartel, direccion, coord_X, coord_Y, telefono, correo, activo FROM cuartel";
+        //    String sql = "SELECT * FROM cuartel WHERE 1";
+        String sql = "SELECT codCuartel, nombre_cuartel, direccion, coord_X, coord_Y, telefono, correo, activo FROM cuartel";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -175,7 +241,7 @@ return cuartel;
 
     public Cuartel buscarCuartelPorCodigo(int codigo) {
 
-          Cuartel cuartel = new Cuartel();
+        Cuartel cuartel = new Cuartel();
         String sql = "SELECT nombre_cuartel, direccion ,coord_X, coord_Y, telefono, correo,  activo FROM cuartel WHERE codCuartel = ?";
 
         try {

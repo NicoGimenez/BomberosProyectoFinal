@@ -21,12 +21,11 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
     private final CuartelData cData = new CuartelData();
     private final BrigadaData bdata = new BrigadaData();
     private java.util.ArrayList<Cuartel> cuarteles = new java.util.ArrayList<>();
-    private final java.util.ArrayList<Brigada> brigadas = new java.util.ArrayList<>();
+    private java.util.ArrayList<Brigada> brigadas = new java.util.ArrayList<>();
 
     public ListarBrigadasPorCuartel() {
 
         initComponents();
-
         armarCabecera();
         llenarCombo();
     }
@@ -43,18 +42,29 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
         jCCuarteles = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTBrigadasdeCuartel = new javax.swing.JTable();
         jRBLibre = new javax.swing.JRadioButton();
         jRBAsignadas = new javax.swing.JRadioButton();
         jRBTodasLasBrigadas = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLTelefono = new javax.swing.JLabel();
+        jLSelecciontelefono = new javax.swing.JLabel();
+        jLEmail = new javax.swing.JLabel();
+        jLSeleccionEmail = new javax.swing.JLabel();
 
         setClosable(true);
+
+        jCCuarteles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCCuartelesActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
         jLabel1.setText("Seleccionar Cuartel");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTBrigadasdeCuartel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -65,11 +75,21 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTBrigadasdeCuartel);
 
         jRBLibre.setText("Libres");
+        jRBLibre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBLibreActionPerformed(evt);
+            }
+        });
 
         jRBAsignadas.setText("Asignadas");
+        jRBAsignadas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBAsignadasActionPerformed(evt);
+            }
+        });
 
         jRBTodasLasBrigadas.setText("Todas ");
         jRBTodasLasBrigadas.addActionListener(new java.awt.event.ActionListener() {
@@ -81,31 +101,75 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
         jLabel2.setText("Brigadas:");
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLTelefono.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
+        jLTelefono.setText("TELEFONO:");
+
+        jLSelecciontelefono.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
+
+        jLEmail.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
+        jLEmail.setText("EMAIL:");
+
+        jLSeleccionEmail.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLTelefono)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLEmail)
+                        .addGap(170, 170, 170))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLSelecciontelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLSeleccionEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLTelefono)
+                    .addComponent(jLEmail))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLSeleccionEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLSelecciontelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(36, 36, 36)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRBTodasLasBrigadas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRBLibre)
-                        .addGap(64, 64, 64)
-                        .addComponent(jRBAsignadas))
-                    .addComponent(jCCuarteles, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(36, 36, 36)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jRBTodasLasBrigadas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jRBLibre)
+                                .addGap(64, 64, 64)
+                                .addComponent(jRBAsignadas))
+                            .addComponent(jCCuarteles, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(72, 72, 72))
         );
         layout.setVerticalGroup(
@@ -115,49 +179,71 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCCuarteles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRBLibre)
                     .addComponent(jRBAsignadas)
                     .addComponent(jRBTodasLasBrigadas)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(195, 195, 195))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRBTodasLasBrigadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBTodasLasBrigadasActionPerformed
-        // TODO add your handling code here:
+        jRBAsignadas.setSelected(false);
+        jRBLibre.setSelected(false);
+        Cuartel cuartel = (Cuartel) jCCuarteles.getSelectedItem();
+        brigadas = cData.obtenerBrigadasDelCuartel(cuartel.getCodigoCuartel());
+        llenarTabla();
     }//GEN-LAST:event_jRBTodasLasBrigadasActionPerformed
+
+    private void jRBLibreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBLibreActionPerformed
+        jRBTodasLasBrigadas.setSelected(false);
+        jRBAsignadas.setSelected(false);
+        Cuartel cuartel = (Cuartel) jCCuarteles.getSelectedItem();
+        brigadas = cData.obtenerBrigadasLisbreDelCuartel(cuartel.getCodigoCuartel());
+        llenarTabla();
+    }//GEN-LAST:event_jRBLibreActionPerformed
+
+    private void jRBAsignadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBAsignadasActionPerformed
+        jRBLibre.setSelected(false);
+        jRBTodasLasBrigadas.setSelected(false);
+        Cuartel cuartel = (Cuartel) jCCuarteles.getSelectedItem();
+        brigadas = cData.obtenerBrigadasAsignadasDelCuartel(cuartel.getCodigoCuartel());
+        llenarTabla();
+    }//GEN-LAST:event_jRBAsignadasActionPerformed
+
+    private void jCCuartelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCCuartelesActionPerformed
+        Cuartel cuartel = (Cuartel) jCCuarteles.getSelectedItem();
+        setearEtiquetas(cuartel);
+        modelo.setRowCount(0);
+        jRBLibre.setSelected(false);
+        jRBAsignadas.setSelected(false);
+        jRBTodasLasBrigadas.setSelected(false);
+    }//GEN-LAST:event_jCCuartelesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Cuartel> jCCuarteles;
+    private javax.swing.JLabel jLEmail;
+    private javax.swing.JLabel jLSeleccionEmail;
+    private javax.swing.JLabel jLSelecciontelefono;
+    private javax.swing.JLabel jLTelefono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRBAsignadas;
     private javax.swing.JRadioButton jRBLibre;
     private javax.swing.JRadioButton jRBTodasLasBrigadas;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTBrigadasdeCuartel;
     // End of variables declaration//GEN-END:variables
-
-    public void armarCabecera() {
-        //cuartel , especialidad, BRIGADA
-        // modelo.addColumn("COD BRIGADA");
-        modelo.addColumn("NOMBRE");
-        modelo.addColumn("ESPECILIDAD");
-        modelo.addColumn("ACTIVA");
-
-        jTable1.setModel(modelo);
-
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(10); // COD BRIGADA
-        jTable1.getColumnModel().getColumn(1).setPreferredWidth(50); // BRIGADA
-        jTable1.getColumnModel().getColumn(2).setPreferredWidth(50); // ESPECIALIDAD
-    }
 
     public void llenarCombo() {
         cuarteles = cData.listarCuarteles();
@@ -165,5 +251,47 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
         for (Cuartel cuartel : cuarteles) {
             jCCuarteles.addItem(cuartel);
         }
+    }
+
+    public void armarCabecera() {
+        //cuartel , especialidad, BRIGADA
+        // modelo.addColumn("COD BRIGADA");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("ESPECILIDAD");
+        modelo.addColumn("ESTADO");
+        modelo.addColumn("LIBRE");
+
+        jTBrigadasdeCuartel.setModel(modelo);
+
+        jTBrigadasdeCuartel.getColumnModel().getColumn(0).setPreferredWidth(10); // BRIGADA
+        jTBrigadasdeCuartel.getColumnModel().getColumn(1).setPreferredWidth(50); // ESPECIALIDAD
+        jTBrigadasdeCuartel.getColumnModel().getColumn(2).setPreferredWidth(50); // ACTIVA
+        jTBrigadasdeCuartel.getColumnModel().getColumn(3).setPreferredWidth(50); //LIBRE
+
+        // Hacer la tabla no editable
+        for (int i = 0; i < jTBrigadasdeCuartel.getColumnCount(); i++) {
+            Class<?> columnClass = jTBrigadasdeCuartel.getColumnClass(i);
+            jTBrigadasdeCuartel.setDefaultEditor(columnClass, null);
+        }
+    }
+
+    public void llenarTabla() {
+
+        modelo.setRowCount(0);
+
+        for (Brigada brigada : brigadas) {
+            Object[] rowData = {
+                brigada.getNombre_br(),
+                brigada.getEspecialidad(),
+                brigada.isActivo() ? "Activo" : "Inactivo", // Si es true, agrega "Activo". Si es false, agrega "Inactivo".
+                brigada.isLibre() ? "Si" : "No" // Si es true, agrega "Si". Si es false, agrega "No".
+            };
+            modelo.addRow(rowData);
+        }
+    }
+
+    public void setearEtiquetas(Cuartel cuartel) {
+        jLSelecciontelefono.setText(cuartel.getTelefono());
+        jLSeleccionEmail.setText(cuartel.getCorreo());
     }
 }
