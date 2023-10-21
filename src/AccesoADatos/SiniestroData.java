@@ -160,7 +160,7 @@ public class SiniestroData {
                 siniestro.setDetalles(rs.getString("Detalle"));
                 siniestro.setFecha_resol(rs.getDate("fecha_resol") != null ? rs.getDate("fecha_resol").toLocalDate() : null);
 //                siniestro.setPuntuacion(rs.getObject("puntuacion") != null ? rs.getInt("puntuacion") : null);
-                //   siniestro.setCodBrigada(rs.getObject("codBrigada") != null ? rs.getInt("codBrigada") : null);
+//                siniestro.setCodBrigada(rs.getObject("codBrigada") != null ? rs.getInt("codBrigada") : null);
 
                 siniestros.add(siniestro);
             }
@@ -257,7 +257,7 @@ public class SiniestroData {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos. " + ex.getMessage());
             ex.printStackTrace();
         }
-      
+
         return siniestros;
     }
 
@@ -283,7 +283,7 @@ public class SiniestroData {
                 siniestro.setDetalles(rs.getString("Detalle"));
                 siniestro.setFecha_resol(rs.getDate("fecha_resol") != null ? rs.getDate("fecha_resol").toLocalDate() : null);
 //                siniestro.setPuntuacion(rs.getObject("puntuacion") != null ? rs.getInt("puntuacion") : null);
-                   siniestro.setCodBrigada(rs.getObject("codBrigada") != null ? rs.getInt("codBrigada") : null);
+                siniestro.setCodBrigada(rs.getObject("codBrigada") != null ? rs.getInt("codBrigada") : null);
 
                 siniestros.add(siniestro);
             }
@@ -359,17 +359,17 @@ public class SiniestroData {
         Brigada brigada = null;
         ArrayList<Brigada> brigadas = new ArrayList<>();
         ArrayList<Cuartel> cuarteles = ordenarCuartlesPorCercania(siniestro, cd.listarCuarteles());
-       
+
         for (Cuartel cuartel : cuarteles) {
             brigadas = cd.obtenerBrigadasDelCuartel(cuartel.getCodigoCuartel());
             for (Brigada brig : brigadas) {
-                if (!brig.getEspecialidad().equals(esp.getDescripcion()) ) {
+                if (!brig.getEspecialidad().equals(esp.getDescripcion())) {
                     brigada = brig;
                     break;
                 }
             }
             if (brigada != null) {
-                
+
                 break;
             }
         }

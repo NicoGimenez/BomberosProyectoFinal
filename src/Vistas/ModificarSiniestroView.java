@@ -20,7 +20,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         initComponents();
 
     }
-
+int b = 0;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -370,7 +370,10 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         return;
     }
         asignarBrigada(siniestroId, especialidadSeleccionada);
-    
+     limpiarCampos();
+     buscarSiniestroPorId(siniestroId);
+      deshabilitarBotones();
+        desHabilitarCampos();
 
     }//GEN-LAST:event_jBAsignarBrigadaActionPerformed
 
@@ -427,7 +430,8 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             if (a < 1 || a == 0) {
                 sd.asignarBrigada(sin, sin.getTipo());
             }
-            jLBrigada.setText("Brigada: " + sin.getCodBrigada());
+            b=sin.getCodBrigada();
+            jLBrigada.setText("Brigada: " + b);
             try {
                 LocalDate fechaR = sin.getFecha_resol();
                 java.util.Date fechaResolucionComoDate = java.util.Date.from(fechaR.atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -449,6 +453,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         jLBrigada.setText("Brigada");
         DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) JCSiniestro.getModel();
         model.removeAllElements();
+        b=0;
     }
 
     private void habilitarCampos() {
@@ -526,7 +531,8 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         }catch(Exception ex){
             siniestro.setFecha_resol(null);
         }
-        siniestro.setCodBrigada(1);
+        
+        siniestro.setCodBrigada(siniestro.getCodBrigada());
         sd.modificarSiniestro(siniestro);
     }
 
