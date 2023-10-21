@@ -369,18 +369,8 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, "Selecciona una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
         return;
     }
-
-    Siniestro siniestro = sd.BuscarSiniestroPorId(siniestroId);
-    Brigada brigada = sd.buscarBrigadaParaAsignarSiniestro(siniestro, especialidadSeleccionada);
-        System.out.println("\n"+brigada);
-    if (brigada != null) {
-        siniestro.setCodBrigada(brigada.getCodBrigada());
-        sd.modificarSiniestro(siniestro);
-
-        JOptionPane.showMessageDialog(this, "Siniestro asignado a la brigada: " + brigada.getCodBrigada(), "Asignación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-    } else {
-        JOptionPane.showMessageDialog(this, "No se encontró una brigada disponible con la especialidad requerida.", "Asignación Fallida", JOptionPane.ERROR_MESSAGE);
-    }
+        asignarBrigada(siniestroId, especialidadSeleccionada);
+    
 
     }//GEN-LAST:event_jBAsignarBrigadaActionPerformed
 
@@ -552,6 +542,24 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     
     return especialidad;
 }
+    private void asignarBrigada(int siniestroId, Especialidad especialidadSeleccionada){
+        Siniestro siniestro = sd.BuscarSiniestroPorId(siniestroId);
+    Brigada brigada = sd.buscarBrigadaParaAsignarSiniestro(siniestro, especialidadSeleccionada);
+        System.out.println("\n"+brigada);
+    if (brigada != null) {
+        siniestro.setCodBrigada(brigada.getCodBrigada());
+        sd.modificarSiniestro(siniestro);
+
+        JOptionPane.showMessageDialog(this, "Siniestro asignado a la brigada: " + brigada.getCodBrigada(), "Asignación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(this, "No se encontró una brigada disponible con la especialidad requerida.", "Asignación Fallida", JOptionPane.ERROR_MESSAGE);
+    }
+    }
 
 
 }
+
+
+
+
+
