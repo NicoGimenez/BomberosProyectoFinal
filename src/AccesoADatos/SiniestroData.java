@@ -370,7 +370,9 @@ public class SiniestroData {
         for (Cuartel cuartel : cuarteles) {
             brigadas = cd.obtenerBrigadasDelCuartel(cuartel.getCodigoCuartel());
             for (Brigada brig : brigadas) {
-                if (!brig.getEspecialidad().equals(esp.getDescripcion())) {
+                System.out.println(brig.getEspecialidad());
+                 System.out.println(esp.getDescripcion());
+                if (brig.getEspecialidad().equals(esp.getDescripcion())) {
                     brigada = brig;
                     break;
                 }
