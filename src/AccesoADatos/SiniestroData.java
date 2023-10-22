@@ -141,11 +141,13 @@ public class SiniestroData {
     }
 
     public List<Siniestro> listarSiniestros() {
-        ArrayList<Siniestro> siniestros = new ArrayList<>();
+         ArrayList<Siniestro> siniestros = new ArrayList<>();
+
+        String sql = "SELECT * FROM siniestro";
 
         try {
-            String sql = "SELECT  * FROM siniestro";
             PreparedStatement ps = con.prepareStatement(sql);
+
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -158,9 +160,11 @@ public class SiniestroData {
                 siniestro.setCoord_x(rs.getInt("coord_X"));
                 siniestro.setCoord_Y(rs.getInt("coord_Y"));
                 siniestro.setDetalles(rs.getString("Detalle"));
-                siniestro.setFecha_resol(rs.getDate("fecha_resol") != null ? rs.getDate("fecha_resol").toLocalDate() : null);
-//                siniestro.setPuntuacion(rs.getObject("puntuacion") != null ? rs.getInt("puntuacion") : null);
-//                siniestro.setCodBrigada(rs.getObject("codBrigada") != null ? rs.getInt("codBrigada") : null);
+                Date fechaResolucion = rs.getDate("fecha_resol");
+                LocalDate fechaResolucionLocalDate = fechaResolucion != null ? fechaResolucion.toLocalDate() : null;
+                siniestro.setFecha_resol(fechaResolucionLocalDate);
+               siniestro.setPuntuacion(rs.getObject("puntuacion") != null ? rs.getInt("puntuacion") : null);
+                siniestro.setCodBrigada(rs.getObject("codBrigada") != null ? rs.getInt("codBrigada") : null);
 
                 siniestros.add(siniestro);
             }
@@ -171,6 +175,7 @@ public class SiniestroData {
         }
 
         return siniestros;
+
     }
 
     public Especialidad obtenerEspecialidadDesdeString(String especialidadStr) {
@@ -281,8 +286,10 @@ public class SiniestroData {
                 siniestro.setCoord_x(rs.getInt("coord_X"));
                 siniestro.setCoord_Y(rs.getInt("coord_Y"));
                 siniestro.setDetalles(rs.getString("Detalle"));
-                siniestro.setFecha_resol(rs.getDate("fecha_resol") != null ? rs.getDate("fecha_resol").toLocalDate() : null);
-//                siniestro.setPuntuacion(rs.getObject("puntuacion") != null ? rs.getInt("puntuacion") : null);
+                Date fechaResolucion = rs.getDate("fecha_resol");
+                LocalDate fechaResolucionLocalDate = fechaResolucion != null ? fechaResolucion.toLocalDate() : null;
+                siniestro.setFecha_resol(fechaResolucionLocalDate);
+               siniestro.setPuntuacion(rs.getObject("puntuacion") != null ? rs.getInt("puntuacion") : null);
                 siniestro.setCodBrigada(rs.getObject("codBrigada") != null ? rs.getInt("codBrigada") : null);
 
                 siniestros.add(siniestro);
@@ -316,7 +323,7 @@ public class SiniestroData {
                 siniestro.setTipo(tipoSiniestro);
                 siniestro.setFecha_siniestro(rs.getDate("fecha_siniestro").toLocalDate());
                 siniestro.setCoord_x(rs.getInt("coord_X"));
-                siniestro.setCoord_Y(rs.getInt("coord_y"));
+                siniestro.setCoord_Y(rs.getInt("coord_Y"));
                 siniestro.setDetalles(rs.getString("Detalle"));
                 siniestro.setFecha_resol(rs.getDate("fecha_resol").toLocalDate());
                 siniestro.setPuntuacion(rs.getInt("puntuacion"));
