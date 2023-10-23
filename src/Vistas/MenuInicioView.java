@@ -18,11 +18,11 @@ public class MenuInicioView extends javax.swing.JFrame {
         jBSiniestro = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMListadoCompleto = new javax.swing.JMenuItem();
         jMBombero = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMBrigada1 = new javax.swing.JMenuItem();
         jMListarBrigadas = new javax.swing.JMenuItem();
-        jMListarBrigadasPorCuartel = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMCuartel1 = new javax.swing.JMenuItem();
         jMListarCuartele1 = new javax.swing.JMenuItem();
@@ -64,6 +64,14 @@ public class MenuInicioView extends javax.swing.JFrame {
 
         jMenu1.setText("Administracion");
 
+        jMListadoCompleto.setText("Listado Completo");
+        jMListadoCompleto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMListadoCompletoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMListadoCompleto);
+
         jMBombero.setText("Bombero");
         jMBombero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,14 +97,6 @@ public class MenuInicioView extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMListarBrigadas);
-
-        jMListarBrigadasPorCuartel.setText("Listar Por Cuartel");
-        jMListarBrigadasPorCuartel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMListarBrigadasPorCuartelActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMListarBrigadasPorCuartel);
 
         jMenu1.add(jMenu3);
 
@@ -169,7 +169,7 @@ public class MenuInicioView extends javax.swing.JFrame {
 
     private void jMBomberoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBomberoActionPerformed
         BomberoView bombero = new BomberoView();
-        
+
         mostrarVentanaNueva(bombero);
     }//GEN-LAST:event_jMBomberoActionPerformed
 
@@ -189,36 +189,36 @@ public class MenuInicioView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMModificacionDeSiniestroActionPerformed
 
     private void jMNuevoSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMNuevoSiniestroActionPerformed
-      NuevoSiniestro ns = new NuevoSiniestro();
+        NuevoSiniestro ns = new NuevoSiniestro();
         mostrarVentanaNueva(ns);
     }//GEN-LAST:event_jMNuevoSiniestroActionPerformed
 
     private void jMListarCuartele1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMListarCuartele1ActionPerformed
-    ListarCuartelesView listarCuarteles = new ListarCuartelesView();
+        ListarCuartelesView listarCuarteles = new ListarCuartelesView();
         mostrarVentanaNueva(listarCuarteles);
     }//GEN-LAST:event_jMListarCuartele1ActionPerformed
 
     private void jMCuartel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCuartel1ActionPerformed
-       CuartelView cuartel = new CuartelView();
+        CuartelView cuartel = new CuartelView();
         mostrarVentanaNueva(cuartel);
     }//GEN-LAST:event_jMCuartel1ActionPerformed
 
     private void jMBrigada1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBrigada1ActionPerformed
-     
-         AdmBrigada administrarBri= new AdmBrigada();
+
+        AdmBrigada administrarBri = new AdmBrigada();
         mostrarVentanaNueva(administrarBri);
     }//GEN-LAST:event_jMBrigada1ActionPerformed
 
     private void jMListarBrigadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMListarBrigadasActionPerformed
-          BrigadasView1 brigada = new BrigadasView1();
+        BrigadasView1 brigada = new BrigadasView1();
         mostrarVentanaNueva(brigada);
     }//GEN-LAST:event_jMListarBrigadasActionPerformed
 
-    private void jMListarBrigadasPorCuartelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMListarBrigadasPorCuartelActionPerformed
-        ListarBrigadasPorCuartel listita = new ListarBrigadasPorCuartel();
+    private void jMListadoCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMListadoCompletoActionPerformed
+        ListadoCompletoView listita = new ListadoCompletoView();
         mostrarVentanaNueva(listita);
-    }//GEN-LAST:event_jMListarBrigadasPorCuartelActionPerformed
-    
+    }//GEN-LAST:event_jMListadoCompletoActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -259,8 +259,8 @@ public class MenuInicioView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMBombero;
     private javax.swing.JMenuItem jMBrigada1;
     private javax.swing.JMenuItem jMCuartel1;
+    private javax.swing.JMenuItem jMListadoCompleto;
     private javax.swing.JMenuItem jMListarBrigadas;
-    private javax.swing.JMenuItem jMListarBrigadasPorCuartel;
     private javax.swing.JMenuItem jMListarCuartele1;
     private javax.swing.JMenuItem jMModificacionDeSiniestro;
     private javax.swing.JMenuItem jMNuevoSiniestro;
@@ -272,13 +272,13 @@ public class MenuInicioView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void mostrarVentanaNueva(JInternalFrame ventana) {
-        
+
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
         ventana.setVisible(true);
         jDEscritorio.add(ventana);
         jDEscritorio.moveToFront(ventana);
-        
+
     }
-    
+
 }

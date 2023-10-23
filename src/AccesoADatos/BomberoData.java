@@ -189,6 +189,7 @@ public class BomberoData {
                 bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
                 bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
                 bombero.setCelular(rs.getString("celular"));
+                bombero.setActivo(rs.getBoolean("activo"));
                 bomberos.add(bombero);
             }
 
