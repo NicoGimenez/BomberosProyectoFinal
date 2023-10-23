@@ -15,6 +15,14 @@
             <Property name="text" type="java.lang.String" value="Administracion"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMListadoCompleto">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listado Completo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMListadoCompletoActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMBombero">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Bombero"/>
@@ -42,14 +50,6 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMListarBrigadasActionPerformed"/>
-                  </Events>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMListarBrigadasPorCuartel">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Listar Por Cuartel"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMListarBrigadasPorCuartelActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>

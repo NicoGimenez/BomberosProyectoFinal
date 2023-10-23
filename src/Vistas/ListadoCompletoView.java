@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Lucas E. Sayago
  */
-public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
+public class ListadoCompletoView extends javax.swing.JInternalFrame {
 
     private final DefaultTableModel modeloBrigada = new DefaultTableModel();
     private final DefaultTableModel modeloBombero = new DefaultTableModel();
@@ -31,7 +31,7 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
     private java.util.ArrayList<Brigada> brigadas = new java.util.ArrayList<>();
     private java.util.ArrayList<Bombero> bomberos = new java.util.ArrayList<>();
 
-    public ListarBrigadasPorCuartel() {
+    public ListadoCompletoView() {
 
         initComponents();
         this.setTitle("LISTADO COMPLETO");
@@ -58,13 +58,13 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
         jLSelecciontelefono = new javax.swing.JLabel();
         jLEmail = new javax.swing.JLabel();
         jLSeleccionEmail = new javax.swing.JLabel();
-        jLBomberosSelecTabla = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablaBombero = new javax.swing.JTable();
 
         setClosable(true);
 
+        jCCuarteles.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
         jCCuarteles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCCuartelesActionPerformed(evt);
@@ -72,7 +72,7 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
-        jLabel1.setText("Seleccionar Cuartel");
+        jLabel1.setText("SELECCIONAR CUARTEL:");
 
         jTBrigadasdeCuartel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,7 +114,7 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
-        jLabel2.setText("Brigadas:");
+        jLabel2.setText("BRIGADAS:");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -160,8 +160,6 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jLBomberosSelecTabla.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
-
         jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
         jLabel4.setText("BOMBEROS:");
 
@@ -189,30 +187,23 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(36, 36, 36)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRBTodasLasBrigadas)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jRBLibre)
-                                        .addGap(64, 64, 64)
-                                        .addComponent(jRBAsignadas))
-                                    .addComponent(jCCuarteles, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(36, 36, 36)
+                                .addComponent(jRBTodasLasBrigadas)
+                                .addGap(71, 71, 71)
+                                .addComponent(jRBLibre)
+                                .addGap(64, 64, 64)
+                                .addComponent(jRBAsignadas))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCCuarteles, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLBomberosSelecTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(72, 72, 72))
         );
         layout.setVerticalGroup(
@@ -231,14 +222,12 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
                     .addComponent(jRBTodasLasBrigadas)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLBomberosSelecTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -298,7 +287,6 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Cuartel> jCCuarteles;
-    private javax.swing.JLabel jLBomberosSelecTabla;
     private javax.swing.JLabel jLEmail;
     private javax.swing.JLabel jLSeleccionEmail;
     private javax.swing.JLabel jLSelecciontelefono;
