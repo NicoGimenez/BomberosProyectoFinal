@@ -237,7 +237,7 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
         try {
             Brigada brigada = CrearBrigada();
             brigada.setCodBrigada(Integer.parseInt(jTCodigo.getText()));
-            System.out.println(brigada.toString());
+            //System.out.println(brigada.toString());
             if (brigada != null) {
                 bdata.actualizarBrigada(brigada);
             } else {
