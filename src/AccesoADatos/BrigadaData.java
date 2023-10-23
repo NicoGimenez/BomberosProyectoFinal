@@ -267,7 +267,8 @@ public class BrigadaData {
         } catch (SQLException ex) {
 
             JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos");
-        }/*
+        }
+        /*
          String sql = "UPDATE brigada SET nombre_br=?, especialidad=?, libre=?, nro_cuartel=?, activo=? WHERE codBrigada=?";
     try (PreparedStatement ps = con.prepareStatement(sql)) { // Utilizando try-with-resources
        

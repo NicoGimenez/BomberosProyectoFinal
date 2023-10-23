@@ -51,6 +51,18 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
 
         jLabel6.setText("ACTIVO");
 
+        jTNombreBrigada.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTNombreBrigadaFocusGained(evt);
+            }
+        });
+
+        jTNumeroDeCuartel.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTNumeroDeCuartelFocusGained(evt);
+            }
+        });
+
         jBGuardar.setText("AGREGAR");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +106,12 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
         });
 
         jLabel8.setText("CODIGO BRIGADA");
+
+        jTCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTCodigoFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -268,6 +286,21 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
         cargarEspecialidadesComboBox();
     }//GEN-LAST:event_jCEspecialidadFocusGained
 
+    private void jTCodigoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCodigoFocusGained
+        if (jTCodigo.getText() == "") {
+            jTCodigo.setText("");
+    }//GEN-LAST:event_jTCodigoFocusGained
+    }
+    private void jTNombreBrigadaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTNombreBrigadaFocusGained
+        if (jTNombreBrigada.getText() == "") {
+            jTNombreBrigada.setText("Buscar por id");
+    }//GEN-LAST:event_jTNombreBrigadaFocusGained
+    }
+    private void jTNumeroDeCuartelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTNumeroDeCuartelFocusGained
+        if (jTNumeroDeCuartel.getText() == "") {
+            jTNumeroDeCuartel.setText("Buscar por id");
+    }//GEN-LAST:event_jTNumeroDeCuartelFocusGained
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEliminar;
