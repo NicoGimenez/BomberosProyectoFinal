@@ -208,16 +208,22 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
     public void armarCabecera() {
         //cuartel , especialidad, BRIGADA
         modelo.addColumn("ESTADO");
-        modelo.addColumn("BRIGADA");
+        modelo.addColumn("NOMBRE DE BRIGADA");
         modelo.addColumn("ESPECILIDAD");
         modelo.addColumn("LIBRE");
 
         jTable1.setModel(modelo);
 
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(10); // ESTADO
-        jTable1.getColumnModel().getColumn(1).setPreferredWidth(50); // BRIGADA
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(50); // NOMBRE DE BRIGADA
         jTable1.getColumnModel().getColumn(2).setPreferredWidth(50); // ESPECIALIDAD
         jTable1.getColumnModel().getColumn(3).setPreferredWidth(50); // LIBRE
+        
+        // Hacer la tabla no editable
+        for (int i = 0; i < jTable1.getColumnCount(); i++) {
+            Class<?> columnClass = jTable1.getColumnClass(i);
+            jTable1.setDefaultEditor(columnClass, null);
+        }
     }
 
     /*public void llenarTabla(ArrayList<Brigada> brigadast) {
