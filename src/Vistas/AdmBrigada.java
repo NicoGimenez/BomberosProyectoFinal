@@ -287,18 +287,18 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCEspecialidadFocusGained
 
     private void jTCodigoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCodigoFocusGained
-        if (jTCodigo.getText() == "") {
+        if (jTCodigo.getText() != "") {
             jTCodigo.setText("");
     }//GEN-LAST:event_jTCodigoFocusGained
     }
     private void jTNombreBrigadaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTNombreBrigadaFocusGained
-        if (jTNombreBrigada.getText() == "") {
-            jTNombreBrigada.setText("Buscar por id");
+        if (jTNombreBrigada.getText() != "") {
+            jTNombreBrigada.setText("");
     }//GEN-LAST:event_jTNombreBrigadaFocusGained
     }
     private void jTNumeroDeCuartelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTNumeroDeCuartelFocusGained
-        if (jTNumeroDeCuartel.getText() == "") {
-            jTNumeroDeCuartel.setText("Buscar por id");
+        if (jTNumeroDeCuartel.getText() != "") {
+            jTNumeroDeCuartel.setText("");
     }//GEN-LAST:event_jTNumeroDeCuartelFocusGained
     }
 
