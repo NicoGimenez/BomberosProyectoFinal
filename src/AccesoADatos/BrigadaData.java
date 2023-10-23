@@ -370,4 +370,26 @@ public class BrigadaData {
     return brigada;
 }
     
+    
+    public int buscarCodigoPorNombre(String nombreBrigada) {
+    String sql = "SELECT codBrigada FROM brigada WHERE nombre_br=?";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, nombreBrigada);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            return rs.getInt("codBrigada");
+        } else {
+            JOptionPane.showMessageDialog(null, "No existe brigada con ese nombre");
+            return -1; // Retorno un valor que indique que no se encontró
+        }
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al buscar brigada por nombre: " + ex.getMessage());
+        return -1; // Retorno un valor que indique un error
+    }
+}
+
 }

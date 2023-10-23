@@ -3,6 +3,7 @@ package Vistas;
 import AccesoADatos.BrigadaData;
 import Entidades.Brigada;
 import Entidades.Especialidad;
+import java.awt.AWTException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -248,12 +249,19 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-       /* try {
-            bdata.eliminarBrigada(Integer.parseInt(jTCodigo.getText()));
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "El código debe ser un número entero." + ex);
-            limpiarCampos();
-        }*/
+      try {
+        int codigoBrigada = bdata.buscarCodigoPorNombre(jTNombreBrigada.getText());
+
+        if (codigoBrigada != -1) {
+            bdata.eliminarBrigada(codigoBrigada);
+        } else {
+            JOptionPane.showMessageDialog(this, "Imposible encontrar brigada con ese nombre.");
+        }
+
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Imposible eliminar brigada." + ex);
+        limpiarCampos();
+    }
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jCEspecialidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jCEspecialidadFocusGained
