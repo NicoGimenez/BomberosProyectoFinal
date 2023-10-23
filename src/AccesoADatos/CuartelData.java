@@ -195,7 +195,7 @@ public class CuartelData {
                 Brigada brigada = new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
                 brigada.setCodCuartel(nro_cuartel);
-                 String tipoStr = rs.getString("especialidad");
+                String tipoStr = rs.getString("especialidad");
                 Especialidad tipoEsp = obtenerEspecialidadDesdeString(tipoStr);
                 brigada.setTipo(tipoEsp);
                 //brigada.setEspecialidad(rs.getString("especialidad"));
@@ -273,6 +273,36 @@ public class CuartelData {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al intentar buscar bombero por id");
+        }
+
+        return cuartel;
+    }
+
+    public Cuartel buscarCuartelPorNombre(String nombreCuartel) {
+
+        Cuartel cuartel = new Cuartel();
+        String sql = "SELECT nombre_cuartel, codCuartel , direccion ,coord_X, coord_Y, telefono, correo,  activo "
+                + "FROM cuartel WHERE nombre_cuartel LIKE '?' ";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombreCuartel);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                cuartel.setCodigoCuartel(rs.getInt("codCuartel"));
+                cuartel.setNombreDeCuartel(rs.getString("nombre_cuartel"));
+                cuartel.setDireccion(rs.getString("direccion"));
+                cuartel.setCoordenadaEnX(rs.getInt("coord_X"));
+                cuartel.setCoordenadaEnY(rs.getInt("coord_Y"));
+                cuartel.setTelefono(rs.getString("telefono"));
+                cuartel.setCorreo(rs.getString("correo"));
+                cuartel.setActivo(rs.getBoolean("activo"));
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al intentar buscar bombero por nombre");
         }
 
         return cuartel;
