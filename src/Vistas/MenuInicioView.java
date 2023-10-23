@@ -59,11 +59,13 @@ public class MenuInicioView extends javax.swing.JFrame {
             .addGroup(jDEscritorioLayout.createSequentialGroup()
                 .addGap(115, 115, 115)
                 .addComponent(jBSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(693, Short.MAX_VALUE))
+                .addContainerGap(669, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Administracion");
+        jMenu1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 36)); // NOI18N
 
+        jMListadoCompleto.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         jMListadoCompleto.setText("Listado Completo");
         jMListadoCompleto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +74,7 @@ public class MenuInicioView extends javax.swing.JFrame {
         });
         jMenu1.add(jMListadoCompleto);
 
+        jMBombero.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         jMBombero.setText("Bombero");
         jMBombero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +84,9 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenu1.add(jMBombero);
 
         jMenu3.setText("Brigada");
+        jMenu3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
 
+        jMBrigada1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         jMBrigada1.setText("Brigada Adm.");
         jMBrigada1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +95,7 @@ public class MenuInicioView extends javax.swing.JFrame {
         });
         jMenu3.add(jMBrigada1);
 
+        jMListarBrigadas.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         jMListarBrigadas.setText("Listar Brigadas");
         jMListarBrigadas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +107,9 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenu1.add(jMenu3);
 
         jMenu4.setText("Cuartel");
+        jMenu4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
 
+        jMCuartel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         jMCuartel1.setText("Cuartel Adm.");
         jMCuartel1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +118,7 @@ public class MenuInicioView extends javax.swing.JFrame {
         });
         jMenu4.add(jMCuartel1);
 
+        jMListarCuartele1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
         jMListarCuartele1.setText("Listar Cuarteles");
         jMListarCuartele1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +132,9 @@ public class MenuInicioView extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Siniestro");
+        jMenu2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 36)); // NOI18N
 
+        jMModificacionDeSiniestro.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jMModificacionDeSiniestro.setText("Modificar Siniestro");
         jMModificacionDeSiniestro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +143,7 @@ public class MenuInicioView extends javax.swing.JFrame {
         });
         jMenu2.add(jMModificacionDeSiniestro);
 
+        JMConsultaSiniestro.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         JMConsultaSiniestro.setText("Consulta Siniestro");
         JMConsultaSiniestro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +152,7 @@ public class MenuInicioView extends javax.swing.JFrame {
         });
         jMenu2.add(JMConsultaSiniestro);
 
+        jMNuevoSiniestro.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jMNuevoSiniestro.setText("Nuevo Siniestro");
         jMNuevoSiniestro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

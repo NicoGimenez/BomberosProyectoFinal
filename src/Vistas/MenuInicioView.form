@@ -13,10 +13,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Administracion"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Franklin Gothic Medium" size="36" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMListadoCompleto">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Franklin Gothic Medium" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Listado Completo"/>
               </Properties>
               <Events>
@@ -25,6 +31,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMBombero">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Franklin Gothic Medium" size="18" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Bombero"/>
               </Properties>
               <Events>
@@ -34,10 +43,16 @@
             <Menu class="javax.swing.JMenu" name="jMenu3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Brigada"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Franklin Gothic Medium" size="18" style="0"/>
+                </Property>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jMBrigada1">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Franklin Gothic Medium" size="18" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Brigada Adm."/>
                   </Properties>
                   <Events>
@@ -46,6 +61,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMListarBrigadas">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Franklin Gothic Medium" size="18" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Listar Brigadas"/>
                   </Properties>
                   <Events>
@@ -57,10 +75,16 @@
             <Menu class="javax.swing.JMenu" name="jMenu4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cuartel"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Franklin Gothic Medium" size="18" style="0"/>
+                </Property>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jMCuartel1">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Franklin Gothic Medium" size="18" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Cuartel Adm."/>
                   </Properties>
                   <Events>
@@ -69,6 +93,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMListarCuartele1">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Franklin Gothic Medium" size="18" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Listar Cuarteles"/>
                   </Properties>
                   <Events>
@@ -82,10 +109,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Siniestro"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Franklin Gothic Medium" size="36" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMModificacionDeSiniestro">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Franklin Gothic Medium" size="18" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Modificar Siniestro"/>
               </Properties>
               <Events>
@@ -94,6 +127,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JMConsultaSiniestro">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Franklin Gothic Medium" size="18" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Consulta Siniestro"/>
               </Properties>
               <Events>
@@ -102,6 +138,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMNuevoSiniestro">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Franklin Gothic Medium" size="18" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nuevo Siniestro"/>
               </Properties>
               <Events>
@@ -163,7 +202,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
                   <Component id="jBSiniestro" min="-2" pref="99" max="-2" attributes="0"/>
-                  <EmptySpace pref="693" max="32767" attributes="0"/>
+                  <EmptySpace pref="669" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
