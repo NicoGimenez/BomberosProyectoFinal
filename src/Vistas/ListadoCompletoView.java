@@ -260,6 +260,7 @@ public class ListadoCompletoView extends javax.swing.JInternalFrame {
         Cuartel cuartel = (Cuartel) jCCuarteles.getSelectedItem();
         setearEtiquetas(cuartel);
         modeloBrigada.setRowCount(0);
+        modeloBombero.setRowCount(0);
         jRBLibre.setSelected(false);
         jRBAsignadas.setSelected(false);
         jRBTodasLasBrigadas.setSelected(false);
