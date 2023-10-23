@@ -282,7 +282,7 @@ public class ListarBrigadasPorCuartel extends javax.swing.JInternalFrame {
         for (Brigada brigada : brigadas) {
             Object[] rowData = {
                 brigada.getNombre_br(),
-                brigada.getEspecialidad(),
+                brigada.getTipo(),
                 brigada.isActivo() ? "Activo" : "Inactivo", // Si es true, agrega "Activo". Si es false, agrega "Inactivo".
                 brigada.isLibre() ? "Si" : "No" // Si es true, agrega "Si". Si es false, agrega "No".
             };

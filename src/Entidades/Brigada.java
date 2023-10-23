@@ -16,7 +16,7 @@ public class Brigada {
     
     private String nombre_br;
     private int codBrigada;
-    private String especialidad;
+    private Especialidad tipo;
     private List <Bombero> bomberos;
     private boolean libre;
     private int codCuartel;
@@ -25,18 +25,18 @@ public class Brigada {
     public Brigada() {
     }
 
-    public Brigada(String nombre_br, String especialidad, List<Bombero> bomberos, boolean libre, int codCuartel) {
+    public Brigada(String nombre_br, Especialidad tipo, List<Bombero> bomberos, boolean libre, int codCuartel) {
         this.nombre_br = nombre_br;
-        this.especialidad = especialidad;
+        this.tipo = tipo;
         this.bomberos = bomberos;
         this.libre = libre;
         this.codCuartel = codCuartel;
     }
 
-    public Brigada(String nombre_br, int codBrigada, String especialidad, List<Bombero> bomberos, boolean libre, int codCuartel,boolean activo) {
+    public Brigada(String nombre_br, int codBrigada, Especialidad tipo, List<Bombero> bomberos, boolean libre, int codCuartel,boolean activo) {
         this.nombre_br = nombre_br;
         this.codBrigada = codBrigada;
-        this.especialidad = especialidad;
+        this.tipo = tipo;
         this.bomberos = bomberos;
         this.libre = libre;
         this.codCuartel = codCuartel;
@@ -67,13 +67,6 @@ public class Brigada {
         this.codBrigada = codBrigada;
     }
 
-    public String getEspecialidad() {
-        return especialidad;
-    }
-
-    public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
-    }
 
     public List<Bombero> getBomberos() {
         return bomberos;
@@ -99,13 +92,19 @@ public class Brigada {
         this.codCuartel = codCuartel;
     }
 
-    @Override
-    public String toString() {
-        return "Brigada{" + "nombre_br=" + nombre_br + ", codBrigada=" + codBrigada + ", especialidad=" + especialidad + ", bomberos=" + bomberos + ", libre=" + libre + ", codCuartel=" + codCuartel + ", activo=" + activo + '}';
+  
+
+    public Especialidad getTipo() {
+        return tipo;
     }
 
-    
-    
-    
+    public void setTipo(Especialidad tipo) {
+        this.tipo = tipo;
+    }
+  @Override
+    public String toString() {
+        return "Brigada{" + "nombre_br=" + nombre_br + ", codBrigada=" + codBrigada + ", especialidad=" + tipo + ", bomberos=" + bomberos + ", libre=" + libre + ", codCuartel=" + codCuartel + ", activo=" + activo + '}';
+    }
+   
 
 }

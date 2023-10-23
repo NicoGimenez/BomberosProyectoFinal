@@ -241,7 +241,7 @@ public class BrigadasView1 extends javax.swing.JInternalFrame {
             Object[] rowData = {
                 brigada.isActivo() ? "Activo" : "Inactivo", // Si es true, agrega "Activo". Si es false, agrega "Inactivo".
                 brigada.getNombre_br(),
-                brigada.getEspecialidad(),
+                brigada.getTipo(),
                 brigada.isLibre() ? "Si" : "No" // Si es true, agrega "Si". Si es false, agrega "No".
             };
             modelo.addRow(rowData);

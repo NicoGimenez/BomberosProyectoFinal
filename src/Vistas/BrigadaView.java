@@ -124,7 +124,7 @@ public class BrigadaView extends javax.swing.JInternalFrame {
         limpiarTabla();
 
         for (Brigada xbrig : brig) {
-            Object[] rowData = {xbrig.getCodBrigada(), xbrig.getEspecialidad(), xbrig.getNombre_br()};
+            Object[] rowData = {xbrig.getCodBrigada(), xbrig.getTipo(), xbrig.getNombre_br()};
             modelo.addRow(rowData);
 
         }

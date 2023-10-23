@@ -64,36 +64,36 @@ public class SiniestroData {
 
     }
 
-    public void guardarSiniestro(Siniestro siniestro) {
-        String sql = "INSERT INTO siniestro(tipo, fecha_siniestro, coord_X, coord_Y, detalle, fecha_resol, puntuacion, codBrigada)"
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-        try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, siniestro.getTipo().getDescripcion());
-            ps.setDate(2, Date.valueOf(siniestro.getFecha_siniestro()));
-            ps.setInt(3, siniestro.getCoord_x());
-            ps.setInt(4, siniestro.getCoord_Y());
-            ps.setString(5, siniestro.getDetalles());
-            ps.setDate(6, Date.valueOf(siniestro.getFecha_resol()));
-            ps.setInt(7, siniestro.getPuntuacion());
-            ps.setInt(8, siniestro.getCodBrigada());
-
-            int exito = ps.executeUpdate();
-
-            if (exito > 0) {
-                ResultSet rs = ps.getGeneratedKeys();
-                if (rs.next()) {
-                    siniestro.setCodigo(rs.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Siniestro ingresado");
-                }
-                rs.close();
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo ingresar el siniestro");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al intentar guardar siniestro: " + ex.getMessage());
-        }
-    }
+//    public void guardarSiniestro(Siniestro siniestro) {
+//        String sql = "INSERT INTO siniestro(tipo, fecha_siniestro, coord_X, coord_Y, detalle, fecha_resol, puntuacion, codBrigada)"
+//                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+//
+//        try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+//            ps.setString(1, siniestro.getTipo().getDescripcion());
+//            ps.setDate(2, Date.valueOf(siniestro.getFecha_siniestro()));
+//            ps.setInt(3, siniestro.getCoord_x());
+//            ps.setInt(4, siniestro.getCoord_Y());
+//            ps.setString(5, siniestro.getDetalles());
+//            ps.setDate(6, Date.valueOf(siniestro.getFecha_resol()));
+//            ps.setInt(7, siniestro.getPuntuacion());
+//            ps.setInt(8, siniestro.getCodBrigada());
+//
+//            int exito = ps.executeUpdate();
+//
+//            if (exito > 0) {
+//                ResultSet rs = ps.getGeneratedKeys();
+//                if (rs.next()) {
+//                    siniestro.setCodigo(rs.getInt(1));
+//                    JOptionPane.showMessageDialog(null, "Siniestro ingresado");
+//                }
+//                rs.close();
+//            } else {
+//                JOptionPane.showMessageDialog(null, "No se pudo ingresar el siniestro");
+//            }
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al intentar guardar siniestro: " + ex.getMessage());
+//        }
+//    }
 
     public void modificarSiniestro(Siniestro siniestro) {
         String sql = "UPDATE siniestro SET tipo=?, fecha_siniestro=?, coord_X=?, coord_Y=?, detalle=?, fecha_resol=?, puntuacion=?, codBrigada=? WHERE codigo=?";
@@ -370,9 +370,8 @@ public class SiniestroData {
         for (Cuartel cuartel : cuarteles) {
             brigadas = cd.obtenerBrigadasDelCuartel(cuartel.getCodigoCuartel());
             for (Brigada brig : brigadas) {
-                System.out.println(brig.getEspecialidad());
-                 System.out.println(esp.getDescripcion());
-                if (brig.getEspecialidad().equals(esp.getDescripcion())) {
+             
+                if (brig.getTipo().equals(esp)&& brig.isActivo()==true && brig.isLibre()== true) {
                     brigada = brig;
                     break;
                 }
@@ -386,8 +385,29 @@ public class SiniestroData {
     }
 
     public void asignarBrigada(Siniestro sin, Especialidad esp) {
+        
         int codBrig = buscarBrigadaParaAsignarSiniestro(sin, esp).getCodBrigada();
         sin.setCodBrigada(codBrig);
         modificarSiniestro(sin);
+        
+    }
+    public void ocuparBrigada(Brigada brigada){
+        System.out.println(brigada);
+        try {
+            String sql = " UPDATE brigada SET libre= 0 WHERE codBrigada=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+           
+            ps.setInt(1,brigada.getCodBrigada());
+            int exito = ps.executeUpdate();
+            if (exito>0){
+                JOptionPane.showMessageDialog(null,"brigada actualizada con exito");
+            }else{
+                JOptionPane.showMessageDialog(null,"no se pudo actualizar brigada");
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos");
+        }
     }
 }

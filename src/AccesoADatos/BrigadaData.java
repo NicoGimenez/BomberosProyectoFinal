@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AccesoADatos;
-
 
 import Entidades.Brigada;
 import Entidades.Especialidad;
@@ -19,10 +13,6 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author niqog
- */
 public class BrigadaData {
 
     private Connection con = null;
@@ -45,7 +35,9 @@ public class BrigadaData {
 
                 Brigada brigada = new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
-                brigada.setEspecialidad(rs.getString("especialidad"));
+                String tipoStr = rs.getString("especialidad");
+                Especialidad tipo = obtenerEspecialidadDesdeString(tipoStr);
+                brigada.setTipo(tipo);
                 brigada.setNombre_br(rs.getNString("nombre_br"));
                 brigada.setLibre(rs.getBoolean("libre"));
                 brigada.setCodCuartel(rs.getInt("nro_cuartel"));
@@ -86,66 +78,90 @@ public class BrigadaData {
         return brigadas;
     }
 
-    public Brigada agregarBrigada(Brigada brigada) {
-        try {
-            /*
-           // Agregué una restricción para que especialidad y nro_cuartel en la base de datos sean únicos -> UC_especialidad_nro_cuartel
-            String sqlEspecialidad = "SELECT COUNT(*) AS count from brigada WHERE especialidad = ? AND nro_cuartel = ?"; 
-            PreparedStatement psEspecialidad = con.prepareStatement(sqlEspecialidad);
-            
-            psEspecialidad.setString(1, brigada.getEspecialidad());
-            psEspecialidad.setInt(2, brigada.getCodCuartel());
-            
-            ResultSet rsEspecialidad = psEspecialidad.executeQuery();
-            rsEspecialidad.last();
-            
-            if(rsEspecialidad.getInt("count") > 0) {
-               rsEspecialidad.close();
-               psEspecialidad.close();
-               throw new Exception("especialidad and nro_cuartel must be unique");
-            }
-            
-           
-            // Agregué una restricción para que nombre en la base de datos sea único -> UC_nombre_br
-            String sqlNombre = "SELECT COUNT(*) AS count from brigada WHERE nombre_br = ?"; 
-            PreparedStatement psNombre = con.prepareStatement(sqlNombre);
-           
-            psNombre.setString(1, brigada.getNombre_br());
-            
-            ResultSet rsNombre = psNombre.executeQuery();
-            rsNombre.last();
-            
-            if(rsNombre.getInt("count") > 0) {
-               rsNombre.close();
-               psNombre.close();
-               throw new Exception("nombre must be unique");
-            }
-             */
+//    public Brigada agregarBrigada(Brigada brigada) {
+//        try {
+//            /*
+//           // Agregué una restricción para que especialidad y nro_cuartel en la base de datos sean únicos -> UC_especialidad_nro_cuartel
+//            String sqlEspecialidad = "SELECT COUNT(*) AS count from brigada WHERE especialidad = ? AND nro_cuartel = ?"; 
+//            PreparedStatement psEspecialidad = con.prepareStatement(sqlEspecialidad);
+//            
+//            psEspecialidad.setString(1, brigada.getEspecialidad());
+//            psEspecialidad.setInt(2, brigada.getCodCuartel());
+//            
+//            ResultSet rsEspecialidad = psEspecialidad.executeQuery();
+//            rsEspecialidad.last();
+//            
+//            if(rsEspecialidad.getInt("count") > 0) {
+//               rsEspecialidad.close();
+//               psEspecialidad.close();
+//               throw new Exception("especialidad and nro_cuartel must be unique");
+//            }
+//            
+//           
+//            // Agregué una restricción para que nombre en la base de datos sea único -> UC_nombre_br
+//            String sqlNombre = "SELECT COUNT(*) AS count from brigada WHERE nombre_br = ?"; 
+//            PreparedStatement psNombre = con.prepareStatement(sqlNombre);
+//           
+//            psNombre.setString(1, brigada.getNombre_br());
+//            
+//            ResultSet rsNombre = psNombre.executeQuery();
+//            rsNombre.last();
+//            
+//            if(rsNombre.getInt("count") > 0) {
+//               rsNombre.close();
+//               psNombre.close();
+//               throw new Exception("nombre must be unique");
+//            }
+//             */
+//
+//            String sql = "INSERT INTO brigada (nombre_br, especialidad, libre, nro_cuartel ) "
+//                    + "VALUES (?, ?, ?, ?)";
+//
+//            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//            ps.setString(1, brigada.getNombre_br());
+//            ps.setString(2, brigada.getTipo().getDescripcion());
+//            ps.setBoolean(3, brigada.isLibre());
+//            ps.setInt(4, brigada.getCodCuartel());
+//            ps.executeUpdate();
+//
+//            ResultSet rs = ps.getGeneratedKeys();
+//            if (rs.next()) {
+//                brigada.setCodBrigada(rs.getInt(1));
+//                JOptionPane.showMessageDialog(null, "Brigada guardada.");
+//            }
+//            ps.close();
+//
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al agregar una brigada." + ex.getMessage());
+//        } catch (Exception ex) {
+//            JOptionPane.showMessageDialog(null, ex.getMessage());
+//        }
+//        return brigada;
+//    }
+    public void agregarBrigada(Brigada brigada) {
+    try {
+        System.out.println(brigada);
+        String sql = "INSERT INTO brigada (nombre_br, especialidad, libre, nro_cuartel, activo) "
+                + "VALUES (?, ?, ?, ?, 1)"; // Establece activo en 1 para que la brigada esté activa
 
-            String sql = "INSERT INTO brigada (nombre_br, especialidad, libre, nro_cuartel ) "
-                    + "VALUES (?, ?, ?, ?)";
+        PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ps.setString(1, brigada.getNombre_br());
+        ps.setString(2, brigada.getTipo().getDescripcion());
+        ps.setBoolean(3, brigada.isLibre());
+        ps.setInt(4, brigada.getCodCuartel());
+        ps.executeUpdate();
 
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, brigada.getNombre_br());
-            ps.setString(2, brigada.getEspecialidad());
-            ps.setBoolean(3, brigada.isLibre());
-            ps.setInt(4, brigada.getCodCuartel());
-            ps.executeUpdate();
-
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                brigada.setCodBrigada(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Brigada guardada.");
-            }
-            ps.close();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al agregar una brigada." + ex.getMessage());
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            brigada.setCodBrigada(rs.getInt(1));
+            JOptionPane.showMessageDialog(null, "Brigada guardada.");
         }
-        return brigada;
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al agregar una brigada: " + ex.getMessage());
     }
+}
+
     
     public List<Brigada> listBrigadasPorCuartel() {
         ArrayList<Brigada> brigadas = new ArrayList<>();
@@ -163,7 +179,7 @@ public class BrigadaData {
                 Brigada brigada = new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
                 brigada.setNombre_br(rs.getString("nombre_br"));
-                brigada.setEspecialidad(rs.getString("especialidad"));
+            //    brigada.setEspecialidad(rs.getString("especialidad"));
                 brigadas.add(brigada);
             }
 
@@ -211,7 +227,10 @@ public class BrigadaData {
 
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
                 brigada.setNombre_br(rs.getString("nombre_br"));
-                brigada.setEspecialidad(rs.getString("especialidad"));
+                 String tipoEspStr = rs.getString("especialidad");
+                Especialidad tipoEsp = obtenerEspecialidadDesdeString(tipoEspStr);
+                brigada.setTipo(tipoEsp);
+                //brigada.setEspecialidad(rs.getString("especialidad"));
                 brigada.setLibre(rs.getBoolean("libre"));
                 brigada.setCodCuartel(rs.getInt("nro_cuartel"));
                 brigada.setActivo(rs.getBoolean("activo"));
@@ -235,7 +254,7 @@ public class BrigadaData {
             String sql = " UPDATE brigada SET nombre_br=?,especialidad=?,libre=?,nro_cuartel=?,activo=? WHERE codBrigada=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, brigada.getNombre_br());
-            ps.setString(2, brigada.getEspecialidad());
+            ps.setString(2, brigada.getTipo().getDescripcion());
             ps.setBoolean(3,brigada.isLibre());
             ps.setInt(4, brigada.getCodCuartel());
             ps.setBoolean(5, brigada.isActivo());
@@ -249,6 +268,7 @@ public class BrigadaData {
             ps.close();
 
         } catch (SQLException ex) {
+            
             JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos");
         }/*
          String sql = "UPDATE brigada SET nombre_br=?, especialidad=?, libre=?, nro_cuartel=?, activo=? WHERE codBrigada=?";
@@ -291,8 +311,10 @@ public class BrigadaData {
                 Brigada brigada = new Brigada();
                 
                 brigada= buscarBrigadaPorCodigo(rs.getInt("codBrigada"));
-                brigada.setActivo(rs.getBoolean("activo"));
-                brigada.setEspecialidad(rs.getString("especialidad"));
+                brigada.setActivo(rs.getBoolean("activo"));  
+                String tipoEspStr = rs.getString("especialidad");
+                Especialidad tipoEsp = obtenerEspecialidadDesdeString(tipoEspStr);
+                brigada.setTipo(tipoEsp);
                 brigada.setLibre(rs.getBoolean("libre"));
                 brigada.setNombre_br(rs.getString("nombre_br"));
                 brigadas.add(brigada);
@@ -305,5 +327,15 @@ public class BrigadaData {
         return brigadas;
      
     }
+    public Especialidad obtenerEspecialidadDesdeString(String especialidadStr) {
+        for (Especialidad especialidad : Especialidad.values()) {
+            if (especialidad.getDescripcion().equalsIgnoreCase(especialidadStr)) {
+                return especialidad;
+            }
+        }
+        throw new IllegalArgumentException("Especialidad no encontrada para: " + especialidadStr);
+
+    }
+
     
 }

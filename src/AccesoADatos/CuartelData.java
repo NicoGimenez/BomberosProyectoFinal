@@ -2,6 +2,7 @@ package AccesoADatos;
 
 import Entidades.Brigada;
 import Entidades.Cuartel;
+import Entidades.Especialidad;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -123,7 +124,10 @@ public class CuartelData {
                 Brigada brigada = new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
                 brigada.setCodCuartel(nro_cuartel);
-                brigada.setEspecialidad(rs.getString("especialidad"));
+                // brigada.setTipo(rs.("especialidad"));
+                String tipoStr = rs.getString("especialidad");
+                Especialidad tipoEsp = obtenerEspecialidadDesdeString(tipoStr);
+                brigada.setTipo(tipoEsp);
                 brigada.setNombre_br(rs.getString("nombre_br"));
                 brigada.setLibre(rs.getBoolean("libre"));
                 brigada.setActivo(rs.getBoolean("activo"));
@@ -156,7 +160,10 @@ public class CuartelData {
                 Brigada brigada = new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
                 brigada.setCodCuartel(nro_cuartel);
-                brigada.setEspecialidad(rs.getString("especialidad"));
+                String tipoStr = rs.getString("especialidad");
+                Especialidad tipoEsp = obtenerEspecialidadDesdeString(tipoStr);
+                brigada.setTipo(tipoEsp);
+                //brigada.setEspecialidad(rs.getString("especialidad"));
                 brigada.setNombre_br(rs.getString("nombre_br"));
                 brigada.setLibre(rs.getBoolean("libre"));
                 brigada.setActivo(rs.getBoolean("activo"));
@@ -188,7 +195,10 @@ public class CuartelData {
                 Brigada brigada = new Brigada();
                 brigada.setCodBrigada(rs.getInt("codBrigada"));
                 brigada.setCodCuartel(nro_cuartel);
-                brigada.setEspecialidad(rs.getString("especialidad"));
+                 String tipoStr = rs.getString("especialidad");
+                Especialidad tipoEsp = obtenerEspecialidadDesdeString(tipoStr);
+                brigada.setTipo(tipoEsp);
+                //brigada.setEspecialidad(rs.getString("especialidad"));
                 brigada.setNombre_br(rs.getString("nombre_br"));
                 brigada.setLibre(rs.getBoolean("libre"));
                 brigada.setActivo(rs.getBoolean("activo"));
@@ -266,6 +276,16 @@ public class CuartelData {
         }
 
         return cuartel;
+    }
+
+    public Especialidad obtenerEspecialidadDesdeString(String especialidadStr) {
+        for (Especialidad especialidad : Especialidad.values()) {
+            if (especialidad.getDescripcion().equalsIgnoreCase(especialidadStr)) {
+                return especialidad;
+            }
+        }
+        throw new IllegalArgumentException("Especialidad no encontrada para: " + especialidadStr);
+
     }
 
 }

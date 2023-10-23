@@ -88,8 +88,6 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
             }
         });
 
-        panel2.setBackground(new java.awt.Color(240, 240, 240));
-
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setText("Describa el siniestro..");
@@ -334,29 +332,29 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         String descripcionSeleccionada = (String) JCSiniestro.getSelectedItem();
-        if ("".equals(descripcionSeleccionada)||JCSiniestro.getSelectedIndex()<1) {
+        if ("".equals(descripcionSeleccionada) || JCSiniestro.getSelectedIndex() < 1) {
             JOptionPane.showMessageDialog(this, "Por favor, seleccione una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
             return;
         } else if (jDateChooser1.getDate() == null) {
-           JOptionPane.showMessageDialog(this, "Por favor, seleccione una fecha válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione una fecha válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
             return;
-        }else if("".equals(jTextField1.getText()) || "".equals(jTextField2.getText())||"Coordenadas x".equals(jTextField1.getText()) || "Coordenadas Y".equals(jTextField2.getText())){
-             JOptionPane.showMessageDialog(this, "Por favor, ingrese coordenadas válidas.", "Error de selección", JOptionPane.ERROR_MESSAGE);
+        } else if ("".equals(jTextField1.getText()) || "".equals(jTextField2.getText()) || "Coordenadas x".equals(jTextField1.getText()) || "Coordenadas Y".equals(jTextField2.getText())) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese coordenadas válidas.", "Error de selección", JOptionPane.ERROR_MESSAGE);
             return;
-        }else if("".equals(jTextArea1.getText())||"Describa el siniestro..".equals(jTextArea1.getText())){
+        } else if ("".equals(jTextArea1.getText()) || "Describa el siniestro..".equals(jTextArea1.getText())) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese una descripción.", "Error de selección", JOptionPane.ERROR_MESSAGE);
             return;
-        }else{
-            try{
-             guardarSiniestro();
-            }catch (Exception ex){
+        } else {
+            try {
+                guardarSiniestro();
+            } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Por favor, ingrese coordenadas válidas.", "Error de selección", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void JCSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCSiniestroActionPerformed
-      cargarEspecialidadesComboBox();
+        cargarEspecialidadesComboBox();
     }//GEN-LAST:event_JCSiniestroActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -406,7 +404,7 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
 
     private void guardarSiniestro() {
         String descripcionSeleccionada = (String) JCSiniestro.getSelectedItem();
- 
+
         Especialidad tipo = null;
         Especialidad[] especialidadesArray = Especialidad.values();
         for (Especialidad especialidad : especialidadesArray) {
@@ -416,25 +414,24 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
             }
         }
         LocalDate fecha_siniestro = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        int coord_x= 0;
-        int coord_Y=0;
-        
-            coord_x = Integer.parseInt(jTextField1.getText());
-         coord_Y = Integer.parseInt(jTextField2.getText());
-       
-        String detalles = jTextArea1.getText();
+        int coord_x = 0;
+        int coord_Y = 0;
 
+        coord_x = Integer.parseInt(jTextField1.getText());
+        coord_Y = Integer.parseInt(jTextField2.getText());
+
+        String detalles = jTextArea1.getText();
         Siniestro siniestro = new Siniestro(tipo, fecha_siniestro, coord_x, coord_Y, detalles);
         sd.altaSiniestro(siniestro);
         reiniciarObjetos();
-
     }
-    private void reiniciarObjetos(){
+
+    private void reiniciarObjetos() {
         JCSiniestro.setSelectedIndex(0);
         jDateChooser1.setDate(null);
         jTextField1.setText("Coordenadas x");
         jTextField2.setText("Coordenadas Y");
         jTextArea1.setText("Describa el siniestro..");
-   }
-    
+    }
+
 }
