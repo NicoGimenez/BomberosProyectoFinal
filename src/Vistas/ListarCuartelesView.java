@@ -157,7 +157,7 @@ public class ListarCuartelesView extends javax.swing.JInternalFrame {
                 XCuartel.getCoordenadaEnY(),
                 XCuartel.getTelefono(),
                 XCuartel.getCorreo(),
-                XCuartel.isActivo()
+                XCuartel.isActivo()? "SI" : "NO"
             };
             modelo.addRow(rowData);
         }
