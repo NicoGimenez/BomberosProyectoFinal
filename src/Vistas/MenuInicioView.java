@@ -2,6 +2,9 @@ package Vistas;
 
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.intellijthemes.FlatDraculaIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatNordIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatArcDarkIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatSolarizedDarkIJTheme;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import javax.swing.JInternalFrame;
@@ -271,7 +274,7 @@ public class MenuInicioView extends javax.swing.JFrame {
                   
                     // Esta es la linea donde traemos la libreria que nos cambia el aspecto de la ventana
                     
-                    UIManager.setLookAndFeel(new FlatMacDarkLaf());
+                    UIManager.setLookAndFeel(new FlatDraculaIJTheme());
                 
                 } catch (UnsupportedLookAndFeelException ex) {
                    JOptionPane.showMessageDialog(null, "Error en el look and feel");
