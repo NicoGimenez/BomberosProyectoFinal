@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.List;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -61,6 +62,7 @@ public class BomberoView extends javax.swing.JInternalFrame {
         jLabel14 = new javax.swing.JLabel();
         jRBActivo = new javax.swing.JRadioButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jBBuscar2 = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -203,6 +205,14 @@ public class BomberoView extends javax.swing.JInternalFrame {
         jRBActivo.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
         jRBActivo.setText("ACTIVO");
 
+        jBBuscar2.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        jBBuscar2.setText("BUSCAR");
+        jBBuscar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscar2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -249,7 +259,9 @@ public class BomberoView extends javax.swing.JInternalFrame {
                                                     .addComponent(jTid)
                                                     .addComponent(jTsanguineo, javax.swing.GroupLayout.Alignment.LEADING))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jBBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jTcodBrigada, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
@@ -280,10 +292,11 @@ public class BomberoView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
+                                .addGap(21, 21, 21)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTnom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTnom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jBBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(32, 32, 32)
@@ -458,9 +471,48 @@ public class BomberoView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBListaActionPerformed
 
+    private void jBBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscar2ActionPerformed
+        try {
+        String nombre = jTnom.getText(); // Assuming jTnombre is the JTextField for entering the name
+
+        if (!nombre.isEmpty()) {
+            List<Bombero> bomberosEncontrados = bdata.buscarBomberoPorNombre(nombre);
+
+            if (!bomberosEncontrados.isEmpty()) {
+                // Assuming you want to display the first result in the UI
+                Bombero bo = bomberosEncontrados.get(0);
+
+                jTid.setText(Integer.toString(bo.getCod_bombero()));
+                jTdni.setText(bo.getDni());
+                jTsanguineo.setText(bo.getGrupo_sanguineo());
+
+                LocalDate fechaNacimiento = bo.getFechaNac();
+                if (fechaNacimiento != null) {
+                    java.util.Date fechaNacimientoAsDate = java.util.Date.from(fechaNacimiento.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                    jDateChooser1.setDate(fechaNacimientoAsDate);
+                } else {
+                    jDateChooser1.setDate(null);
+                }
+
+                jTcodBrigada.setText(Integer.toString(bo.getCodigoDeBrigada()));
+                jTtelefono.setText(bo.getCelular());
+                jRBActivo.setSelected(bo.isActivo());
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontraron bomberos con ese nombre.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "El campo Nombre está vacío. Por favor, ingrese un nombre válido.");
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Ocurrió un error al buscar bomberos por nombre: " + ex.getMessage());
+        jTnom.setText("");
+    }
+    }//GEN-LAST:event_jBBuscar2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBBuscar2;
     private javax.swing.JButton jBElim;
     private javax.swing.JButton jBLimpiar;
     private javax.swing.JButton jBLista;

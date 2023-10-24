@@ -231,5 +231,36 @@ public class BomberoData {
         return bomberos;
     }
     
-    
+    public List<Bombero> buscarBomberoPorNombre(String nombre) {
+        List<Bombero> bomberosEncontrados = new ArrayList<>();
+        String sql = "SELECT idBombero, dni, nombre_ape, grupo_sanguineo, fecha_nac, celular, codBrigada, activo FROM bombero WHERE nombre_ape LIKE ?";
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + nombre + "%"); // Usamos % para buscar nombres que contengan la cadena proporcionada
+
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                Bombero bombero = new Bombero();
+                bombero.setCod_bombero(rs.getInt("idBombero"));
+                bombero.setDni(rs.getString("dni"));
+                bombero.setNombre(rs.getString("nombre_ape"));
+                bombero.setGrupo_sanguineo(rs.getString("grupo_sanguineo"));
+                bombero.setFechaNac(rs.getDate("fecha_nac").toLocalDate());
+                bombero.setCelular(rs.getString("celular"));
+                bombero.setCodigoDeBrigada(rs.getInt("codBrigada"));
+                bombero.setActivo(rs.getBoolean("activo"));
+                bomberosEncontrados.add(bombero);
+            }
+
+            st.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al intentar buscar bomberos por nombre: " + ex.getMessage());
+        }
+
+        return bomberosEncontrados;
+    }
+
+
 }
