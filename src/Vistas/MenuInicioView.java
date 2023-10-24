@@ -1,7 +1,12 @@
 package Vistas;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatLaf;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.InternalFrameAdapter;
 
 public class MenuInicioView extends javax.swing.JFrame {
@@ -259,9 +264,29 @@ public class MenuInicioView extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-                 
+            public void run() {   
+              
+                // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                try {
+                    UIManager.setLookAndFeel(new FlatLaf() {
+                        @Override
+                        public boolean isDark() {
+                            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                        }
+                        
+                        @Override
+                        public String getName() {
+                            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                        }
+                        
+                        @Override
+                        public String getDescription() {
+                            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                        }
+                    });
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(MenuInicioView.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 new MenuInicioView().setVisible(true);
             }
         });
