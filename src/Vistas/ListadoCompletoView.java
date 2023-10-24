@@ -352,9 +352,9 @@ public class ListadoCompletoView extends javax.swing.JInternalFrame {
         jTablaBombero.getColumnModel().getColumn(4).setPreferredWidth(50); // ACTIVO
 
         // Hacer la tabla no editable
-        for (int i = 0; i < jTBrigadasdeCuartel.getColumnCount(); i++) {
-            Class<?> columnClass = jTBrigadasdeCuartel.getColumnClass(i);
-            jTBrigadasdeCuartel.setDefaultEditor(columnClass, null);
+        for (int i = 0; i < jTablaBombero.getColumnCount(); i++) {
+            Class<?> columnClass = jTablaBombero.getColumnClass(i);
+            jTablaBombero.setDefaultEditor(columnClass, null);
         }
     }
 

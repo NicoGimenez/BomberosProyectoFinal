@@ -158,8 +158,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTNombreBrigada">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTNombreBrigadaFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTNumeroDeCuartel">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTNumeroDeCuartelFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRBActivo">
     </Component>
@@ -224,6 +230,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jTCodigo">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTCodigoFocusGained"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
