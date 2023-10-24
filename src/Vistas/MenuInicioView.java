@@ -1,8 +1,11 @@
 package Vistas;
 
 import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatSolarizedDarkIJTheme;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.InternalFrameAdapter;
 
 public class MenuInicioView extends javax.swing.JFrame {
@@ -260,7 +263,17 @@ public class MenuInicioView extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {                 
+            public void run() {       
+                
+                try {
+                  
+                    // Esta es la linea donde traemos la libreria que nos cambia el aspecto de la ventana
+                    
+                    UIManager.setLookAndFeel(new FlatSolarizedDarkIJTheme());
+                
+                } catch (UnsupportedLookAndFeelException ex) {
+                   JOptionPane.showMessageDialog(null, "Error en el look and feel");
+                }
                 new MenuInicioView().setVisible(true);
             }
         });
