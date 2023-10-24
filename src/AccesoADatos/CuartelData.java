@@ -167,8 +167,6 @@ public class CuartelData {
                 brigada.setNombre_br(rs.getString("nombre_br"));
                 brigada.setLibre(rs.getBoolean("libre"));
                 brigada.setActivo(rs.getBoolean("activo"));
-
-                //Lo agregamos al arreglo 
                 brigadas.add(brigada);
 
             }
