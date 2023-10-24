@@ -57,28 +57,30 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTcodBrigada" min="-2" pref="80" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTdni" min="-2" pref="190" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jTid" min="-2" pref="82" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="jBBuscar" min="-2" pref="111" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="jTnom" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="jTsanguineo" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="jTdni" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="jTnom" alignment="1" pref="235" max="32767" attributes="0"/>
+                                                  <Component id="jTid" max="32767" attributes="0"/>
+                                                  <Component id="jTsanguineo" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jBBuscar" min="-2" pref="111" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
-                                  <Component id="jDateChooser1" alignment="0" min="-2" pref="269" max="-2" attributes="0"/>
-                                  <Component id="jTtelefono" min="-2" pref="235" max="-2" attributes="0"/>
+                                  <Component id="jDateChooser1" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jTcodBrigada" alignment="0" pref="240" max="32767" attributes="0"/>
+                                      <Component id="jTtelefono" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
                           </Group>
