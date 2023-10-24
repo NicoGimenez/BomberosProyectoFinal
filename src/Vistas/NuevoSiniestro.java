@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -354,7 +355,7 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void JCSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCSiniestroActionPerformed
-        cargarEspecialidadesComboBox();
+        //cargarEspecialidadesComboBox();
     }//GEN-LAST:event_JCSiniestroActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -386,13 +387,16 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
     private java.awt.Panel panel5;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarEspecialidadesComboBox() {
+   private void cargarEspecialidadesComboBox() {
+    DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) JCSiniestro.getModel();
+    model.removeAllElements(); 
 
-        Especialidad[] especialidadesArray = Especialidad.values();
-        for (Especialidad especialidad : especialidadesArray) {
-            JCSiniestro.addItem(especialidad.getDescripcion());
-        }
+    Especialidad[] especialidadesArray = Especialidad.values();
+    for (Especialidad especialidad : especialidadesArray) {
+        JCSiniestro.addItem(especialidad.getDescripcion());
     }
+}
+
 
     private void vaciarTextField(JTextField textField) {
         textField.setText("");

@@ -470,7 +470,7 @@ int b = 0;
             jSPuntuacion.setValue(sin.getPuntuacion());
             int a = sin.getCodBrigada();
             if (a < 1 || a == 0) {
-                sd.asignarBrigada(sin, sin.getTipo());
+               // sd.asignarBrigada(sin, sin.getTipo());
             }
             b=sin.getCodBrigada();
             jLBrigada.setText("Brigada: " + b);
