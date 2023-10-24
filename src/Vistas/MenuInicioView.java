@@ -26,6 +26,7 @@ public class MenuInicioView extends javax.swing.JFrame {
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jDEscritorio = new javax.swing.JDesktopPane();
         jBSiniestro = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMListadoCompleto = new javax.swing.JMenuItem();
@@ -53,23 +54,33 @@ public class MenuInicioView extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ilustraciones/g56 mini.png"))); // NOI18N
+
         jDEscritorio.setLayer(jBSiniestro, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDEscritorio.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDEscritorioLayout = new javax.swing.GroupLayout(jDEscritorio);
         jDEscritorio.setLayout(jDEscritorioLayout);
         jDEscritorioLayout.setHorizontalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDEscritorioLayout.createSequentialGroup()
-                .addGap(380, 380, 380)
-                .addComponent(jBSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addGroup(jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDEscritorioLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel2))
+                    .addGroup(jDEscritorioLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jBSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(620, Short.MAX_VALUE))
         );
         jDEscritorioLayout.setVerticalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDEscritorioLayout.createSequentialGroup()
-                .addGap(142, 142, 142)
+                .addGap(84, 84, 84)
                 .addComponent(jBSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(581, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(123, 123, 123))
         );
 
         jMenu1.setText("Administracion");
@@ -289,6 +300,7 @@ public class MenuInicioView extends javax.swing.JFrame {
     private javax.swing.JButton jBSiniestro;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JDesktopPane jDEscritorio;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMBombero;
     private javax.swing.JMenuItem jMBrigada1;
     private javax.swing.JMenuItem jMCuartel1;
