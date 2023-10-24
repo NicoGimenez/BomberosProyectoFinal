@@ -285,6 +285,7 @@ mostrarSiniestrosNoResueltos();
         for (int i = 0; i < jTSiniestros.getColumnCount(); i++) {
             Class<?> columnClass = jTSiniestros.getColumnClass(i);
             jTSiniestros.setDefaultEditor(columnClass, null);
+            
 
     }
     }
