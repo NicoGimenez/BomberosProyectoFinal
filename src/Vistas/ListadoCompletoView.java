@@ -116,8 +116,6 @@ public class ListadoCompletoView extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
         jLabel2.setText("BRIGADAS:");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
         jLTelefono.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 24)); // NOI18N
         jLTelefono.setText("TELEFONO:");
 

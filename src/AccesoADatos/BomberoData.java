@@ -261,6 +261,24 @@ public class BomberoData {
 
         return bomberosEncontrados;
     }
+/*
+    public String obtenerNombresDeBomberosComoString() {
+        String nombres = "";
+        try {
+            String sql = "SELECT nombre_ape FROM bombero";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
 
+            while (rs.next()) {
+                nombres += rs.getString("nombre_ape") + ",";
+            }
+
+            st.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener los nombres de los bomberos: " + ex.getMessage());
+        }
+        return nombres;
+    */
 
 }
