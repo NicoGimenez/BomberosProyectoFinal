@@ -1,6 +1,7 @@
 package Vistas;
 
 import javax.swing.JInternalFrame;
+import javax.swing.UIManager;
 import javax.swing.event.InternalFrameAdapter;
 
 public class MenuInicioView extends javax.swing.JFrame {
@@ -259,6 +260,8 @@ public class MenuInicioView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
+                 
                 new MenuInicioView().setVisible(true);
             }
         });
