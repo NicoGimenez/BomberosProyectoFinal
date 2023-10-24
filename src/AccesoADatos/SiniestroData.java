@@ -29,6 +29,7 @@ public class SiniestroData {
 
     public SiniestroData() {
 
+        
         con = Conexion.getConexion();
 
     }
