@@ -59,7 +59,7 @@ public class MenuInicioView extends javax.swing.JFrame {
             .addGroup(jDEscritorioLayout.createSequentialGroup()
                 .addGap(270, 270, 270)
                 .addComponent(jBSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addContainerGap(565, Short.MAX_VALUE))
         );
         jDEscritorioLayout.setVerticalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
