@@ -427,7 +427,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
             model.addElement(descripcionTipoSiniestro);
             JCSiniestro.setModel(model);
-
+            jTextField3.setText(sin.getCodigo()+"");
             LocalDate fechaS = sin.getFecha_siniestro();
             java.util.Date fechaSiniestroComoDate = java.util.Date.from(fechaS.atStartOfDay(ZoneId.systemDefault()).toInstant());
             jDateChooser1.setDate(fechaSiniestroComoDate);
@@ -491,7 +491,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         jBAsignarBrigada.setEnabled(false);
     }
 
-    private void habilitarBotones() {
+    public void habilitarBotones() {
         jBBorrar.setEnabled(true);
         jBEditar.setEnabled(true);
     }

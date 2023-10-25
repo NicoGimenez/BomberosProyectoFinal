@@ -260,7 +260,7 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBModificarSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarSiniestroActionPerformed
-    //    int siniestroID;
+        //    int siniestroID;
         try {
             int selectedRow = jTSiniestros.getSelectedRow();
 
@@ -271,6 +271,7 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                 JDesktopPane desktopPane = getDesktopPane();
                 desktopPane.add(ms);
                 ms.buscarSiniestroPorId(id);
+                ms.habilitarBotones();
                 ms.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Selecciona una fila antes de modificar.", "Error", JOptionPane.ERROR_MESSAGE);

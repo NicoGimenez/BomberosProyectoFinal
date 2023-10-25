@@ -4,6 +4,7 @@ import Entidades.Brigada;
 import Entidades.Cuartel;
 import Entidades.Especialidad;
 import Entidades.Siniestro;
+import Vistas.ModificarSiniestroView;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -198,6 +199,7 @@ public class SiniestroData {
                     siniestro.setPuntuacion(rs.getInt("puntuacion"));
                 } catch (Exception ex) {
                 }
+                
             } else {
 
                 JOptionPane.showMessageDialog(null, "No existe siniestro con ese ID ");
@@ -212,6 +214,7 @@ public class SiniestroData {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, " No se encontró el siniestro.");
         }
+        
         return siniestro;
     }
 
