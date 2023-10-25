@@ -515,7 +515,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             siniestro.setTipo(tipo);
         } else {
             JOptionPane.showMessageDialog(this, "Seleccione una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
-            return; // Sale del método si no se selecciona una especialidad válida
+            return; 
         }
 
         LocalDate fecha_siniestro = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -524,10 +524,9 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         siniestro.setCoord_Y(Integer.parseInt(jTCoordy.getText()));
         siniestro.setDetalles(jTDescrip.getText());
 
-        // Comprueba si b es mayor que 0 para permitir la modificación de la fecha de resolución y el puntaje
         if (b <= 0) {
             JOptionPane.showMessageDialog(this, "Debe tener una brigada asignada para modificar la fecha de resolución y el puntaje.", "Error de brigada", JOptionPane.ERROR_MESSAGE);
-            return; // Sale del método si no hay brigada asignada
+            return; 
         }
 
         siniestro.setPuntuacion((int) jSPuntuacion.getValue());
@@ -547,17 +546,12 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     }
 
     private void borrarSiniestro(int id) {
-         // Primero, obtén el siniestro que vas a borrar
+        
     Siniestro siniestro = sd.BuscarSiniestroPorId(id);
-
-    // Luego, verifica si el siniestro tiene una brigada asignada
     int codBrigada = siniestro.getCodBrigada();
     if (codBrigada > 0) {
-        // Si tiene una brigada asignada, libérala
         liberarBrigada(codBrigada);
     }
-
-    // Finalmente, elimina el siniestro de la base de datos
     sd.eliminarSiniestro(id);
     }
 

@@ -6,6 +6,7 @@ import Entidades.Siniestro;
 import com.toedter.calendar.JDateChooser;
 import java.sql.Array;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -26,6 +27,16 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
     public NuevoSiniestro() {
         initComponents();
         cargarEspecialidadesComboBox();
+        JTextField jDateTextField = new JTextField();
+jDateTextField.setEditable(false);
+JDateChooser jDateChooser = new JDateChooser();
+jDateChooser.addPropertyChangeListener((evt) -> {
+    if ("date".equals(evt.getPropertyName())) {
+        jDateTextField.setText(new SimpleDateFormat("yyyy-MM-dd").format(jDateChooser.getDate()));
+    }
+});
+
+         System.out.println("puto");
     }
 
     @SuppressWarnings("unchecked")
