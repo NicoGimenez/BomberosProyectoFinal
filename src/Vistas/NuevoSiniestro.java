@@ -419,5 +419,5 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
         jTextField2.setText("Coordenadas Y");
         jTextArea1.setText("Describa el siniestro..");
     }
-
+//
 }
