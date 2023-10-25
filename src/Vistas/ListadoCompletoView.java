@@ -232,6 +232,7 @@ public class ListadoCompletoView extends javax.swing.JInternalFrame {
     private void jRBTodasLasBrigadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBTodasLasBrigadasActionPerformed
         jRBAsignadas.setSelected(false);
         jRBLibre.setSelected(false);
+        modeloBombero.setRowCount(0);
         Cuartel cuartel = (Cuartel) jCCuarteles.getSelectedItem();
         brigadas = cData.obtenerBrigadasDelCuartel(cuartel.getCodigoCuartel());
         llenarTablaBrigada();
@@ -240,6 +241,7 @@ public class ListadoCompletoView extends javax.swing.JInternalFrame {
     private void jRBLibreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBLibreActionPerformed
         jRBTodasLasBrigadas.setSelected(false);
         jRBAsignadas.setSelected(false);
+        modeloBombero.setRowCount(0);
         Cuartel cuartel = (Cuartel) jCCuarteles.getSelectedItem();
         brigadas = cData.obtenerBrigadasLisbreDelCuartel(cuartel.getCodigoCuartel());
         llenarTablaBrigada();
@@ -248,6 +250,7 @@ public class ListadoCompletoView extends javax.swing.JInternalFrame {
     private void jRBAsignadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBAsignadasActionPerformed
         jRBLibre.setSelected(false);
         jRBTodasLasBrigadas.setSelected(false);
+        modeloBombero.setRowCount(0);
         Cuartel cuartel = (Cuartel) jCCuarteles.getSelectedItem();
         brigadas = cData.obtenerBrigadasAsignadasDelCuartel(cuartel.getCodigoCuartel());
         llenarTablaBrigada();
