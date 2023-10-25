@@ -214,10 +214,11 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
                                 .addComponent(jRBActivo))))
                     .addComponent(jTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBGuardar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBEliminar)
-                    .addComponent(jBModificar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jBGuardar)
+                        .addComponent(jBModificar)))
                 .addGap(39, 39, 39))
         );
 
