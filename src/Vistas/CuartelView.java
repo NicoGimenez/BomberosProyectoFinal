@@ -305,10 +305,11 @@ public class CuartelView extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(jRBActivo))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBagregar)
-                    .addComponent(jBElimniar)
-                    .addComponent(jBModificar1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBModificar1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jBagregar)
+                        .addComponent(jBElimniar)))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
@@ -351,6 +352,7 @@ public class CuartelView extends javax.swing.JInternalFrame {
             if (validarCampos()) {
                 if (cuartel != null) {
                     cdata.modificarCuartelporCodigo(cuartel);
+                    limpiarCampos();
                 } else {
                     JOptionPane.showMessageDialog(null, "no existe cuartel con ese codigo");
                 }
