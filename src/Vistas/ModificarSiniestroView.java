@@ -360,6 +360,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBorrarActionPerformed
 
     private void jBAsignarBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAsignarBrigadaActionPerformed
+      try{
         int siniestroId = Integer.parseInt(jTextField3.getText());
         Especialidad especialidadSeleccionada = getEspecialidadSeleccionada();
 
@@ -373,7 +374,10 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             deshabilitarBotones();
             desHabilitarCampos();
         }
+      }catch(NumberFormatException e){
+          JOptionPane.showMessageDialog(this, "Ingrese un ID válido", "Error de selección", JOptionPane.ERROR_MESSAGE);
 
+      }
     }//GEN-LAST:event_jBAsignarBrigadaActionPerformed
 
 
@@ -426,7 +430,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             jSPuntuacion.setValue(sin.getPuntuacion());
             int a = sin.getCodBrigada();
             if (a < 1 || a == 0) {
-                // sd.asignarBrigada(sin, sin.getTipo());
+                
             }
             b = sin.getCodBrigada();
             jLBrigada.setText("Brigada: " + b);
