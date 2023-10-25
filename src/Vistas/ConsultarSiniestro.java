@@ -1,4 +1,3 @@
-
 package Vistas;
 
 import AccesoADatos.SiniestroData;
@@ -22,6 +21,7 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         armarCabecera();
         mostrarSiniestros();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -186,14 +186,14 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBModificarSiniestro)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,24 +202,24 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap()
                 .addComponent(jLabel4)
-                .addGap(38, 38, 38)
+                .addGap(22, 22, 22)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton1)
                     .addComponent(jBModificarSiniestro))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,7 +230,7 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-mostrarSiniestrosNoResueltos();
+        mostrarSiniestrosNoResueltos();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -238,36 +238,45 @@ mostrarSiniestrosNoResueltos();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       mostrarSiniestros();
+        mostrarSiniestros();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         LocalDate fecha1 = null;
-    LocalDate fecha2 = null;
-    if (jDFechaResol.getDate() != null) {
-        fecha1 = jDFechaResol.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    } else {
-        JOptionPane.showMessageDialog(this, "Ingrese una fecha válida en jDFechaResol");
-        return;  
-    }
-    if (jDFechaSiniestro.getDate() != null) {
-        fecha2 = jDFechaSiniestro.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    } else {       
-        JOptionPane.showMessageDialog(this, "Ingrese una fecha válida en jDFechaSiniestro");
-        return;  
-    }
-    mostrarSiniestrosEntreFechas(fecha2, fecha1);
+        LocalDate fecha2 = null;
+        if (jDFechaResol.getDate() != null) {
+            fecha1 = jDFechaResol.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese una fecha válida en jDFechaResol");
+            return;
+        }
+        if (jDFechaSiniestro.getDate() != null) {
+            fecha2 = jDFechaSiniestro.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese una fecha válida en jDFechaSiniestro");
+            return;
+        }
+        mostrarSiniestrosEntreFechas(fecha2, fecha1);
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBModificarSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarSiniestroActionPerformed
-       Container parent = this.getParent();
-        if (parent instanceof JDesktopPane) {
-            JDesktopPane desktopPane = (JDesktopPane) parent;
+    //    int siniestroID;
+        try {
+            int selectedRow = jTSiniestros.getSelectedRow();
 
-            // Luego, puedes agregar tu segundo JInternalFrame al JDesktopPane
-            ModificarSiniestroView ms = new ModificarSiniestroView();
-            desktopPane.add(ms);
-            ms.setVisible(true);
+            if (selectedRow != -1) {
+                int id = (int) jTSiniestros.getValueAt(selectedRow, 0);
+
+                ModificarSiniestroView ms = new ModificarSiniestroView();
+                JDesktopPane desktopPane = getDesktopPane();
+                desktopPane.add(ms);
+                ms.buscarSiniestroPorId(id);
+                ms.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Selecciona una fila antes de modificar.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Ingrese un ID de siniestro válido.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jBModificarSiniestroActionPerformed
 
@@ -304,14 +313,12 @@ mostrarSiniestrosNoResueltos();
         modelo.addColumn("Puntaje");
         modelo.addColumn("codBrigada");
         jTSiniestros.setModel(modelo);
-        
-          
+
         for (int i = 0; i < jTSiniestros.getColumnCount(); i++) {
             Class<?> columnClass = jTSiniestros.getColumnClass(i);
             jTSiniestros.setDefaultEditor(columnClass, null);
-            
 
-    }
+        }
     }
 
     private void mostrarSiniestros() {
@@ -320,39 +327,41 @@ mostrarSiniestrosNoResueltos();
         ArrayList<Siniestro> listaDeSiniestros = (ArrayList) sd.listarSiniestros();
 
         for (Siniestro sin : listaDeSiniestros) {
-            Object[] rowData = {sin.getCodigo(), sin.getTipo(), sin.getFecha_siniestro(), sin.getCoord_x(),sin.getCoord_Y(),sin.getDetalles(), sin.getFecha_resol(), sin.getPuntuacion(), sin.getCodBrigada()};
+            Object[] rowData = {sin.getCodigo(), sin.getTipo(), sin.getFecha_siniestro(), sin.getCoord_x(), sin.getCoord_Y(), sin.getDetalles(), sin.getFecha_resol(), sin.getPuntuacion(), sin.getCodBrigada()};
             modelo.addRow(rowData);
         }
     }
-     private void mostrarSiniestrosNoResueltos() {
+
+    private void mostrarSiniestrosNoResueltos() {
         modelo.setRowCount(0);
         Siniestro siniestro = new Siniestro();
         ArrayList<Siniestro> listaDeSiniestros = (ArrayList) sd.ListarSiniestrosNoResueltos();
 
         for (Siniestro sin : listaDeSiniestros) {
-            Object[] rowData = {sin.getCodigo(), sin.getTipo(), sin.getFecha_siniestro(), sin.getCoord_x(),sin.getCoord_Y(),sin.getDetalles(), sin.getFecha_resol(), sin.getPuntuacion(), sin.getCodBrigada()};
+            Object[] rowData = {sin.getCodigo(), sin.getTipo(), sin.getFecha_siniestro(), sin.getCoord_x(), sin.getCoord_Y(), sin.getDetalles(), sin.getFecha_resol(), sin.getPuntuacion(), sin.getCodBrigada()};
             modelo.addRow(rowData);
         }
     }
-     private void mostrarSiniestrosResueltos() {
+
+    private void mostrarSiniestrosResueltos() {
         modelo.setRowCount(0);
         Siniestro siniestro = new Siniestro();
         ArrayList<Siniestro> listaDeSiniestros = (ArrayList) sd.ListarSiniestrosResueltos();
 
         for (Siniestro sin : listaDeSiniestros) {
-            Object[] rowData = {sin.getCodigo(), sin.getTipo(), sin.getFecha_siniestro(), sin.getCoord_x(),sin.getCoord_Y(),sin.getDetalles(), sin.getFecha_resol(), sin.getPuntuacion(), sin.getCodBrigada()};
+            Object[] rowData = {sin.getCodigo(), sin.getTipo(), sin.getFecha_siniestro(), sin.getCoord_x(), sin.getCoord_Y(), sin.getDetalles(), sin.getFecha_resol(), sin.getPuntuacion(), sin.getCodBrigada()};
             modelo.addRow(rowData);
         }
     }
-    
-     private void mostrarSiniestrosEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) {
-         
+
+    private void mostrarSiniestrosEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+
         modelo.setRowCount(0);
         Siniestro siniestro = new Siniestro();
         ArrayList<Siniestro> listaDeSiniestros = (ArrayList) sd.buscarSiniestroEntreFechas(fechaInicio, fechaFin);
 
         for (Siniestro sin : listaDeSiniestros) {
-            Object[] rowData = {sin.getCodigo(), sin.getTipo(), sin.getFecha_siniestro(), sin.getCoord_x(),sin.getCoord_Y(),sin.getDetalles(), sin.getFecha_resol(), sin.getPuntuacion(), sin.getCodBrigada()};
+            Object[] rowData = {sin.getCodigo(), sin.getTipo(), sin.getFecha_siniestro(), sin.getCoord_x(), sin.getCoord_Y(), sin.getDetalles(), sin.getFecha_resol(), sin.getPuntuacion(), sin.getCodBrigada()};
             modelo.addRow(rowData);
         }
     }

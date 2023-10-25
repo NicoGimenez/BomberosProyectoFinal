@@ -76,7 +76,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
 
         jTextField3.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
         jTextField3.setText("Buscar por id");
-        jTextField3.setToolTipText("Coordenadas x");
+        jTextField3.setToolTipText("Buscar por id");
         jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField3FocusGained(evt);
@@ -95,6 +95,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             }
         });
 
+        jDateChooser1.setToolTipText("Fecha del siniestro");
         jDateChooser1.setEnabled(false);
         jDateChooser1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
 
@@ -132,6 +133,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         jTDescrip.setColumns(20);
         jTDescrip.setRows(5);
         jTDescrip.setText("Describa el siniestro..");
+        jTDescrip.setToolTipText("Describa el siniestro..");
         jTDescrip.setEnabled(false);
         jScrollPane1.setViewportView(jTDescrip);
 
@@ -146,6 +148,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
 
         jBAsignarBrigada.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         jBAsignarBrigada.setText("Asignar Brigada");
+        jBAsignarBrigada.setEnabled(false);
         jBAsignarBrigada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAsignarBrigadaActionPerformed(evt);
@@ -155,6 +158,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         jLBrigada.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
         jLBrigada.setText("Brigada");
 
+        jDFechaResol.setToolTipText("Fecha de Resolución");
         jDFechaResol.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 24)); // NOI18N
@@ -291,9 +295,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,7 +420,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         ta.setText("");
     }
 
-    private void buscarSiniestroPorId(int id) {
+    void buscarSiniestroPorId(int id) {
         try {
             Siniestro sin = sd.BuscarSiniestroPorId(id);
             String descripcionTipoSiniestro = sin.getTipo().getDescripcion();
