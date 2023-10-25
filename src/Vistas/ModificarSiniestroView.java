@@ -15,14 +15,15 @@ import javax.swing.JTextField;
 public class ModificarSiniestroView extends javax.swing.JInternalFrame {
 
     private SiniestroData sd = new SiniestroData();
-    private BrigadaData bd=new BrigadaData();
+    private BrigadaData bd = new BrigadaData();
 
     public ModificarSiniestroView() {
 
         initComponents();
 
     }
-int b = 0;
+    int b = 0;
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -359,18 +360,19 @@ int b = 0;
     }//GEN-LAST:event_jBBorrarActionPerformed
 
     private void jBAsignarBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAsignarBrigadaActionPerformed
-         int siniestroId = Integer.parseInt(jTextField3.getText());
-    Especialidad especialidadSeleccionada = getEspecialidadSeleccionada();
+        int siniestroId = Integer.parseInt(jTextField3.getText());
+        Especialidad especialidadSeleccionada = getEspecialidadSeleccionada();
 
-    if (especialidadSeleccionada == null) {
-        JOptionPane.showMessageDialog(this, "Selecciona una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
-        return;
-    }else{
-    asignarBrigada(siniestroId, especialidadSeleccionada);
-     limpiarCampos();
-     buscarSiniestroPorId(siniestroId);
-      deshabilitarBotones();
-        desHabilitarCampos();}
+        if (especialidadSeleccionada == null) {
+            JOptionPane.showMessageDialog(this, "Selecciona una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else {
+            asignarBrigada(siniestroId, especialidadSeleccionada);
+            limpiarCampos();
+            buscarSiniestroPorId(siniestroId);
+            deshabilitarBotones();
+            desHabilitarCampos();
+        }
 
     }//GEN-LAST:event_jBAsignarBrigadaActionPerformed
 
@@ -424,9 +426,9 @@ int b = 0;
             jSPuntuacion.setValue(sin.getPuntuacion());
             int a = sin.getCodBrigada();
             if (a < 1 || a == 0) {
-               // sd.asignarBrigada(sin, sin.getTipo());
+                // sd.asignarBrigada(sin, sin.getTipo());
             }
-            b=sin.getCodBrigada();
+            b = sin.getCodBrigada();
             jLBrigada.setText("Brigada: " + b);
             try {
                 LocalDate fechaR = sin.getFecha_resol();
@@ -449,7 +451,7 @@ int b = 0;
         jLBrigada.setText("Brigada");
         DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) JCSiniestro.getModel();
         model.removeAllElements();
-        b=0;
+        b = 0;
     }
 
     private void habilitarCampos() {
@@ -459,11 +461,11 @@ int b = 0;
         jTDescrip.setEnabled(true);
         jSPuntuacion.setEnabled(true);
         jDFechaResol.setEnabled(true);
-       
+
         jBGuardar.setEnabled(true);
         JCSiniestro.setEnabled(true);
         jBAsignarBrigada.setEnabled(true);
-    } 
+    }
 
     private void desHabilitarCampos() {
         jDateChooser1.setEnabled(false);
@@ -472,7 +474,7 @@ int b = 0;
         jTDescrip.setEnabled(false);
         jSPuntuacion.setEnabled(false);
         jDFechaResol.setEnabled(false);
-       
+
         jBGuardar.setEnabled(false);
         JCSiniestro.setEnabled(false);
         jBAsignarBrigada.setEnabled(false);
@@ -513,6 +515,7 @@ int b = 0;
             siniestro.setTipo(tipo);
         } else {
             JOptionPane.showMessageDialog(this, "Seleccione una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
+            return; // Sale del método si no se selecciona una especialidad válida
         }
 
         LocalDate fecha_siniestro = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -520,52 +523,79 @@ int b = 0;
         siniestro.setCoord_x(Integer.parseInt(jTCoordx.getText()));
         siniestro.setCoord_Y(Integer.parseInt(jTCoordy.getText()));
         siniestro.setDetalles(jTDescrip.getText());
+
+        // Comprueba si b es mayor que 0 para permitir la modificación de la fecha de resolución y el puntaje
+        if (b <= 0) {
+            JOptionPane.showMessageDialog(this, "Debe tener una brigada asignada para modificar la fecha de resolución y el puntaje.", "Error de brigada", JOptionPane.ERROR_MESSAGE);
+            return; // Sale del método si no hay brigada asignada
+        }
+
         siniestro.setPuntuacion((int) jSPuntuacion.getValue());
-        try{
-        LocalDate fecha_res = jDFechaResol.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        siniestro.setFecha_resol(fecha_res);
-        }catch(Exception ex){
+        try {
+            LocalDate fecha_res = jDFechaResol.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            siniestro.setFecha_resol(fecha_res);
+            if (fecha_res != null) {
+                siniestro.setFecha_resol(fecha_res);
+                liberarBrigada(b);
+            }
+        } catch (Exception ex) {
             siniestro.setFecha_resol(null);
         }
-        
-        siniestro.setCodBrigada(siniestro.getCodBrigada());
+
+        siniestro.setCodBrigada(b);
         sd.modificarSiniestro(siniestro);
     }
 
     private void borrarSiniestro(int id) {
-        sd.eliminarSiniestro(id);
+         // Primero, obtén el siniestro que vas a borrar
+    Siniestro siniestro = sd.BuscarSiniestroPorId(id);
+
+    // Luego, verifica si el siniestro tiene una brigada asignada
+    int codBrigada = siniestro.getCodBrigada();
+    if (codBrigada > 0) {
+        // Si tiene una brigada asignada, libérala
+        liberarBrigada(codBrigada);
     }
+
+    // Finalmente, elimina el siniestro de la base de datos
+    sd.eliminarSiniestro(id);
+    }
+
     private Especialidad getEspecialidadSeleccionada() {
-    String especialidadSeleccionadaString = (String) JCSiniestro.getSelectedItem();
-    Especialidad especialidad = null;
-    
-    for (Especialidad esp : Especialidad.values()) {
-        if (esp.getDescripcion().equals(especialidadSeleccionadaString)) {
-            especialidad = esp;
-            break;
+        String especialidadSeleccionadaString = (String) JCSiniestro.getSelectedItem();
+        Especialidad especialidad = null;
+
+        for (Especialidad esp : Especialidad.values()) {
+            if (esp.getDescripcion().equals(especialidadSeleccionadaString)) {
+                especialidad = esp;
+                break;
+            }
+        }
+
+        return especialidad;
+    }
+
+    private void asignarBrigada(int siniestroId, Especialidad especialidadSeleccionada) {
+        try{
+        Siniestro siniestro = sd.BuscarSiniestroPorId(siniestroId);
+        Brigada brigada = sd.buscarBrigadaParaAsignarSiniestro(siniestro, especialidadSeleccionada);
+        if (brigada != null) {
+            siniestro.setCodBrigada(brigada.getCodBrigada());
+            brigada.setLibre(false);
+            sd.modificarSiniestro(siniestro);
+            bd.actualizarBrigada(brigada);
+
+            JOptionPane.showMessageDialog(this, "Siniestro asignado a la brigada: " + brigada.getCodBrigada(), "Asignación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró una brigada disponible con la especialidad requerida.", "Asignación Fallida", JOptionPane.ERROR_MESSAGE);
+        }}catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un siniestro.", "Asignación Fallida", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    return especialidad;
-}
-    private void asignarBrigada(int siniestroId, Especialidad especialidadSeleccionada){
-        Siniestro siniestro = sd.BuscarSiniestroPorId(siniestroId);
-    Brigada brigada = sd.buscarBrigadaParaAsignarSiniestro(siniestro, especialidadSeleccionada);
-    if (brigada != null) {
-        siniestro.setCodBrigada(brigada.getCodBrigada());
-        brigada.setLibre(false);
-        sd.modificarSiniestro(siniestro);
+
+    private void liberarBrigada(int siniestro) {
+        Brigada brigada = bd.buscarBrigadaPorCodigo(siniestro);
+        brigada.setLibre(true);
         bd.actualizarBrigada(brigada);
-       
-
-        JOptionPane.showMessageDialog(this, "Siniestro asignado a la brigada: " + brigada.getCodBrigada(), "Asignación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-    } else {
-        JOptionPane.showMessageDialog(this, "No se encontró una brigada disponible con la especialidad requerida.", "Asignación Fallida", JOptionPane.ERROR_MESSAGE);
-    }
     }
 }
-
-
-
-
-

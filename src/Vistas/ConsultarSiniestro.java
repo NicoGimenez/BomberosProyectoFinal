@@ -275,13 +275,13 @@ mostrarSiniestrosNoResueltos();
         modelo.addColumn("Fecha");
         modelo.addColumn("X");
         modelo.addColumn("Y");
-        modelo.addColumn("Dettalles");
+        modelo.addColumn("Detalles");
         modelo.addColumn("Resolución");
         modelo.addColumn("Puntaje");
         modelo.addColumn("codBrigada");
         jTSiniestros.setModel(modelo);
         
-           // Hacer la tabla no editable
+          
         for (int i = 0; i < jTSiniestros.getColumnCount(); i++) {
             Class<?> columnClass = jTSiniestros.getColumnClass(i);
             jTSiniestros.setDefaultEditor(columnClass, null);
