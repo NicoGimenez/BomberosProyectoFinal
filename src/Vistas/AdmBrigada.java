@@ -224,30 +224,30 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
 
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
         try {
-        
-        Brigada brigada = bdata.buscarBrigadaPorNombre(jTNombreBrigada.getText());
 
-        if (brigada != null) {
-            jTNombreBrigada.setText(brigada.getNombre_br());
-            
-            String descripcionTipoSiniestro = "";
-            if (brigada.getTipo() != null) {
-                descripcionTipoSiniestro = brigada.getTipo().getDescripcion();
+            Brigada brigada = bdata.buscarBrigadaPorNombre(jTNombreBrigada.getText());
+
+            if (brigada != null) {
+                jTNombreBrigada.setText(brigada.getNombre_br());
+
+                String descripcionTipoSiniestro = "";
+                if (brigada.getTipo() != null) {
+                    descripcionTipoSiniestro = brigada.getTipo().getDescripcion();
+                }
+
+                DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+                model.addElement(descripcionTipoSiniestro);
+
+                jCEspecialidad.setModel(model);
+                jRBLibre.setSelected(brigada.isLibre());
+                jTNumeroDeCuartel.setText(brigada.getCodCuartel() + "");
+                jRBActivo.setSelected(brigada.isActivo());
+                jTCodigo.setText(brigada.getCodBrigada() + "");
             }
-            
-            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
-            model.addElement(descripcionTipoSiniestro);
-            
-            jCEspecialidad.setModel(model);
-            jRBLibre.setSelected(brigada.isLibre());
-            jTNumeroDeCuartel.setText(brigada.getCodCuartel() + "");
-            jRBActivo.setSelected(brigada.isActivo());
-            jTCodigo.setText(brigada.getCodBrigada()+"");
-        } 
 
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(null, "Por favor, introduzca un código válido.");
-    }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Por favor, introduzca un código válido.");
+        }
     }//GEN-LAST:event_jBuscarActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
@@ -267,19 +267,19 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-      try {
-        int codigoBrigada = bdata.buscarCodigoPorNombre(jTNombreBrigada.getText());
+        try {
+            int codigoBrigada = bdata.buscarCodigoPorNombre(jTNombreBrigada.getText());
 
-        if (codigoBrigada != -1) {
-            bdata.eliminarBrigada(codigoBrigada);
-        } else {
-            JOptionPane.showMessageDialog(this, "Imposible encontrar brigada con ese nombre.");
+            if (codigoBrigada != -1) {
+                bdata.eliminarBrigada(codigoBrigada);
+            } else {
+                JOptionPane.showMessageDialog(this, "Imposible encontrar brigada con ese nombre.");
+            }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Imposible eliminar brigada." + ex);
+            limpiarCampos();
         }
-
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(this, "Imposible eliminar brigada." + ex);
-        limpiarCampos();
-    }
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jCEspecialidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jCEspecialidadFocusGained
@@ -292,6 +292,7 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTCodigoFocusGained
     }
     private void jTNombreBrigadaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTNombreBrigadaFocusGained
+        limpiarCampos();
         if (jTNombreBrigada.getText() != "") {
             jTNombreBrigada.setText("");
     }//GEN-LAST:event_jTNombreBrigadaFocusGained
@@ -409,4 +410,14 @@ public class AdmBrigada extends javax.swing.JInternalFrame {
         return null;
     }
 
+    public void limpiarCamposCompletos() {
+
+        jTCodigo.setText("");
+        jTNombreBrigada.setText("");
+        jCEspecialidad.setSelectedIndex(0);
+        jRBLibre.setSelected(false);
+        jRBActivo.setSelected(false);
+        jTNumeroDeCuartel.setText("");
+
+    }
 }
