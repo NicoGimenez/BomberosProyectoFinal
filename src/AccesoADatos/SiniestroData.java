@@ -410,23 +410,5 @@ public class SiniestroData {
         modificarSiniestro(sin);
 
     }
-//    public void ocuparBrigada(Brigada brigada){
-//        System.out.println(brigada);
-//        try {
-//            String sql = " UPDATE brigada SET libre= 0 WHERE codBrigada=?";
-//            PreparedStatement ps = con.prepareStatement(sql);
-//           
-//            ps.setInt(1,brigada.getCodBrigada());
-//            int exito = ps.executeUpdate();
-//            if (exito>0){
-//                JOptionPane.showMessageDialog(null,"brigada actualizada con exito");
-//            }else{
-//                JOptionPane.showMessageDialog(null,"no se pudo actualizar brigada");
-//            }
-//            ps.close();
-//
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos");
-//        }
-//    }
+
 }
