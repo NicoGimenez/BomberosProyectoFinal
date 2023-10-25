@@ -313,7 +313,7 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         String descripcionSeleccionada = (String) JCSiniestro.getSelectedItem();
-        if ("".equals(descripcionSeleccionada) || JCSiniestro.getSelectedIndex() < 1) {
+        if ("".equals(descripcionSeleccionada) || JCSiniestro.getSelectedIndex() < 0) {
             JOptionPane.showMessageDialog(this, "Por favor, seleccione una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
             return;
         } else if (jDateChooser1.getDate() == null) {
@@ -404,7 +404,7 @@ public class NuevoSiniestro extends javax.swing.JInternalFrame {
         coord_Y = Integer.parseInt(jTextField2.getText());
 
         String detalles = jTextArea1.getText();
-        Siniestro siniestro = new Siniestro(tipo, fecha_siniestro, coord_x, coord_Y, detalles);
+        Siniestro siniestro = new Siniestro(tipo, fecha_siniestro,coord_Y ,  coord_x, detalles);
         sd.altaSiniestro(siniestro);
         reiniciarObjetos();
     }
