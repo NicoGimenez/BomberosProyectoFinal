@@ -642,13 +642,14 @@ public class BomberoView extends javax.swing.JInternalFrame {
             jTdni.setText("");
             return false;
         }
-
+        /*
         if (dniRepetidoEnBD(dni)) {
             JOptionPane.showMessageDialog(this, "El DNI ya existe en la base de datos.");
             jTdni.setText("");
             return false;
         }
-
+        */
+        
         //VERIFICAR GRUPO SANGUÍNEO
         if (sanguineo.isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo de grupo sanguíneo no puede estar vacío.");

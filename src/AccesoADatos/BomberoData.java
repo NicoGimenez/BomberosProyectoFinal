@@ -124,31 +124,39 @@ public class BomberoData {
         return bomberos;
     }
 
-    
-   
-    
-    public void actualizarBombero(Bombero bombero) {
+      public void actualizarBombero(Bombero bombero) {
         try {
-            String sql = "UPDATE bombero SET dni = ?, nombre_ape = ?, grupo_sanguineo = ?, "
-                    + "fecha_nac = ?, celular = ?, activo = ? WHERE idBombero = ?";
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, bombero.getDni());
-            st.setString(2, bombero.getNombre());
-            st.setString(3, bombero.getGrupo_sanguineo());
-            st.setDate(4, Date.valueOf(bombero.getFechaNac()));
-            st.setString(5, bombero.getCelular());
-            st.setInt(6, bombero.getCod_bombero());
-            st.setBoolean(7, bombero.isActivo());
-            st.executeUpdate();
-            st.close();
+            // Primero, verifica si el nuevo DNI ya existe en la base de datos, excluyendo al bombero que se está modificando
+            String checkDNIQuery = "SELECT idBombero FROM bombero WHERE dni = ? AND idBombero <> ?";
+            PreparedStatement checkSt = connection.prepareStatement(checkDNIQuery);
+            checkSt.setString(1, bombero.getDni());
+            checkSt.setInt(2, bombero.getCod_bombero());
+            ResultSet resultSet = checkSt.executeQuery();
+
+            if (!resultSet.next()) {
+                // Si no hay conflictos de DNI, procede con la actualización del nombre
+                String updateQuery = "UPDATE bombero SET nombre_ape = ?, grupo_sanguineo = ?, "
+                        + "fecha_nac = ?, celular = ?, activo = ? WHERE idBombero = ?";
+                PreparedStatement st = connection.prepareStatement(updateQuery);
+                st.setString(1, bombero.getNombre());
+                st.setString(2, bombero.getGrupo_sanguineo());
+                st.setDate(3, Date.valueOf(bombero.getFechaNac()));
+                st.setString(4, bombero.getCelular());
+                st.setBoolean(5, bombero.isActivo());
+                st.setInt(6, bombero.getCod_bombero());
+                st.executeUpdate();
+                st.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "El DNI ingresado ya está en uso por otro bombero.");
+            }
+
+            checkSt.close();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos");
         }
     }
 
-    
-    
     
     public void darDeBajaBombero(int cod_bombero) {
         try {
