@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 public class ConsultarSiniestro extends javax.swing.JInternalFrame {
 
@@ -303,11 +305,30 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         modelo.addColumn("Puntaje");
         modelo.addColumn("codBrigada");
         jTSiniestros.setModel(modelo);
+        TableColumnModel columnModel = jTSiniestros.getColumnModel();
+        int ancho0 = 30, ancho1 = 100, ancho2= 50, ancho3= 80;
+        TableColumn columna = columnModel.getColumn(0); 
+        columna.setPreferredWidth(ancho0);
+        columna = columnModel.getColumn(1); 
+        columna.setPreferredWidth(ancho1);
+        columna = columnModel.getColumn(2); 
+        columna.setPreferredWidth(ancho1);
+        columna = columnModel.getColumn(3); 
+        columna.setPreferredWidth(ancho2);
+        columna = columnModel.getColumn(4); 
+        columna.setPreferredWidth(ancho2);
+        columna = columnModel.getColumn(5); 
+        columna.setPreferredWidth(ancho1);
+        columna = columnModel.getColumn(6); 
+        columna.setPreferredWidth(ancho1);
+        columna = columnModel.getColumn(7); 
+        columna.setPreferredWidth(ancho0);
+        columna = columnModel.getColumn(0); 
+        columna.setPreferredWidth(ancho0);
 
         for (int i = 0; i < jTSiniestros.getColumnCount(); i++) {
             Class<?> columnClass = jTSiniestros.getColumnClass(i);
             jTSiniestros.setDefaultEditor(columnClass, null);
-
         }
     }
 
