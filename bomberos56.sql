@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-10-2023 a las 23:27:24
+-- Tiempo de generación: 27-10-2023 a las 23:35:45
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -213,12 +213,12 @@ INSERT INTO `brigada` (`codBrigada`, `nombre_br`, `especialidad`, `libre`, `nro_
 (1, 'Alpha', 'Incendios en viviendas e industrias', 1, 1, 1),
 (2, 'Beta', 'Salvamento en derrumbes', 1, 1, 1),
 (3, 'Gamma', 'Rescates en ámbito montaña', 1, 1, 1),
-(4, 'Delta', 'Rescate de personas atrapadas en accidentes de tráfico', 1, 1, 1),
+(4, 'Delta', 'Rescate de personas atrapadas en accidentes de tráfico', 0, 1, 1),
 (5, 'Epsilon', 'Socorrer inundaciones', 1, 1, 1),
 (6, 'Zeta', 'Operativos de prevención', 1, 1, 1),
 (7, 'Eta', 'Incendios en viviendas e industrias', 1, 2, 1),
 (8, 'Theta', 'Salvamento en derrumbes', 1, 2, 1),
-(9, 'Iota', 'Rescates en ámbito montaña', 1, 2, 1),
+(9, 'Iota', 'Rescates en ámbito montaña', 0, 2, 1),
 (10, 'Kappa', 'Rescate de personas atrapadas en accidentes de tráfico', 1, 2, 1),
 (11, 'Lambda', 'Socorrer inundaciones', 1, 2, 1),
 (12, 'Mu', 'Operativos de prevención', 1, 2, 1),
@@ -285,7 +285,10 @@ CREATE TABLE `siniestro` (
 --
 
 INSERT INTO `siniestro` (`codigo`, `tipo`, `fecha_siniestro`, `coord_X`, `coord_Y`, `detalle`, `fecha_resol`, `puntuacion`, `codBrigada`) VALUES
-(1, 'Incendios en viviendas e industrias', '2001-09-11', 99, 99, 'se incendio todo todito.....', NULL, 0, 1);
+(1, 'Incendios en viviendas e industrias', '2001-09-11', 99, 99, 'se incendio todo todito.....', NULL, 0, 1),
+(28, 'Salvamento en derrumbes', '2023-10-27', 100, 100, 'Se callo el codigo!!!!! ', '2023-10-27', 10, 2),
+(29, 'Rescates en ámbito montaña', '2023-10-28', -100, 100, 'Se  perdieron los abuelos de la nada.', NULL, 0, 9),
+(30, 'Rescate de personas atrapadas en accidentes de tráfico', '2023-10-07', -100, -90, 'Chano venia entre 60 y 80 kilometros por hora. ', NULL, 0, 4);
 
 --
 -- Índices para tablas volcadas
@@ -346,7 +349,7 @@ ALTER TABLE `cuartel`
 -- AUTO_INCREMENT de la tabla `siniestro`
 --
 ALTER TABLE `siniestro`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Restricciones para tablas volcadas
