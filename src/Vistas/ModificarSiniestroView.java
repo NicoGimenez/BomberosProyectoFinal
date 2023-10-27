@@ -11,6 +11,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 
 public class ModificarSiniestroView extends javax.swing.JInternalFrame {
 
@@ -20,7 +21,10 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     public ModificarSiniestroView() {
 
         initComponents();
-
+        SpinnerNumberModel model = new SpinnerNumberModel(); 
+        model.setMaximum(10);
+        model.setMinimum(0);
+        jSPuntuacion.setModel(model);
     }
     int b = 0;
 
@@ -238,11 +242,11 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
-                                        .addGap(22, 22, 22)))
+                                        .addGap(30, 30, 30)))
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDFechaResol, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(106, Short.MAX_VALUE))
+                                    .addComponent(jDFechaResol, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +268,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -281,10 +285,10 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDFechaResol, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86))
         );
@@ -301,7 +305,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -370,24 +374,24 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBorrarActionPerformed
 
     private void jBAsignarBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAsignarBrigadaActionPerformed
-      try{
-        int siniestroId = Integer.parseInt(jTextField3.getText());
-        Especialidad especialidadSeleccionada = getEspecialidadSeleccionada();
+        try {
+            int siniestroId = Integer.parseInt(jTextField3.getText());
+            Especialidad especialidadSeleccionada = getEspecialidadSeleccionada();
 
-        if (especialidadSeleccionada == null) {
-            JOptionPane.showMessageDialog(this, "Selecciona una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
-            return;
-        } else {
-            asignarBrigada(siniestroId, especialidadSeleccionada);
-            limpiarCampos();
-            buscarSiniestroPorId(siniestroId);
-            deshabilitarBotones();
-            desHabilitarCampos();
+            if (especialidadSeleccionada == null) {
+                JOptionPane.showMessageDialog(this, "Selecciona una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
+                return;
+            } else {
+                asignarBrigada(siniestroId, especialidadSeleccionada);
+                limpiarCampos();
+                buscarSiniestroPorId(siniestroId);
+                deshabilitarBotones();
+                desHabilitarCampos();
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un ID válido", "Error de selección", JOptionPane.ERROR_MESSAGE);
+
         }
-      }catch(NumberFormatException e){
-          JOptionPane.showMessageDialog(this, "Ingrese un ID válido", "Error de selección", JOptionPane.ERROR_MESSAGE);
-
-      }
     }//GEN-LAST:event_jBAsignarBrigadaActionPerformed
 
 
@@ -430,7 +434,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
             model.addElement(descripcionTipoSiniestro);
             JCSiniestro.setModel(model);
-            jTextField3.setText(sin.getCodigo()+"");
+            jTextField3.setText(sin.getCodigo() + "");
             LocalDate fechaS = sin.getFecha_siniestro();
             java.util.Date fechaSiniestroComoDate = java.util.Date.from(fechaS.atStartOfDay(ZoneId.systemDefault()).toInstant());
             jDateChooser1.setDate(fechaSiniestroComoDate);
@@ -440,7 +444,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             jSPuntuacion.setValue(sin.getPuntuacion());
             int a = sin.getCodBrigada();
             if (a < 1 || a == 0) {
-                
+
             }
             b = sin.getCodBrigada();
             jLBrigada.setText("Brigada: " + b);
@@ -529,7 +533,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
             siniestro.setTipo(tipo);
         } else {
             JOptionPane.showMessageDialog(this, "Seleccione una especialidad válida.", "Error de selección", JOptionPane.ERROR_MESSAGE);
-            return; 
+            return;
         }
 
         LocalDate fecha_siniestro = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -540,7 +544,7 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
 
         if (b <= 0) {
             JOptionPane.showMessageDialog(this, "Debe tener una brigada asignada para modificar la fecha de resolución y el puntaje.", "Error de brigada", JOptionPane.ERROR_MESSAGE);
-            return; 
+            return;
         }
 
         siniestro.setPuntuacion((int) jSPuntuacion.getValue());
@@ -560,13 +564,13 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     }
 
     private void borrarSiniestro(int id) {
-        
-    Siniestro siniestro = sd.BuscarSiniestroPorId(id);
-    int codBrigada = siniestro.getCodBrigada();
-    if (codBrigada > 0) {
-        liberarBrigada(codBrigada);
-    }
-    sd.eliminarSiniestro(id);
+
+        Siniestro siniestro = sd.BuscarSiniestroPorId(id);
+        int codBrigada = siniestro.getCodBrigada();
+        if (codBrigada > 0) {
+            liberarBrigada(codBrigada);
+        }
+        sd.eliminarSiniestro(id);
     }
 
     private Especialidad getEspecialidadSeleccionada() {
@@ -584,19 +588,20 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
     }
 
     private void asignarBrigada(int siniestroId, Especialidad especialidadSeleccionada) {
-        try{
-        Siniestro siniestro = sd.BuscarSiniestroPorId(siniestroId);
-        Brigada brigada = sd.buscarBrigadaParaAsignarSiniestro(siniestro, especialidadSeleccionada);
-        if (brigada != null) {
-            siniestro.setCodBrigada(brigada.getCodBrigada());
-            brigada.setLibre(false);
-            sd.modificarSiniestro(siniestro);
-            bd.actualizarBrigada(brigada);
+        try {
+            Siniestro siniestro = sd.BuscarSiniestroPorId(siniestroId);
+            Brigada brigada = sd.buscarBrigadaParaAsignarSiniestro(siniestro, especialidadSeleccionada);
+            if (brigada != null) {
+                siniestro.setCodBrigada(brigada.getCodBrigada());
+                brigada.setLibre(false);
+                sd.modificarSiniestro(siniestro);
+                bd.actualizarBrigada(brigada);
 
-            JOptionPane.showMessageDialog(this, "Siniestro asignado a la brigada: " + brigada.getCodBrigada(), "Asignación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró una brigada disponible con la especialidad requerida.", "Asignación Fallida", JOptionPane.ERROR_MESSAGE);
-        }}catch(NullPointerException e){
+                JOptionPane.showMessageDialog(this, "Siniestro asignado a la brigada: " + brigada.getCodBrigada(), "Asignación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró una brigada disponible con la especialidad requerida.", "Asignación Fallida", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un siniestro.", "Asignación Fallida", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -605,5 +610,13 @@ public class ModificarSiniestroView extends javax.swing.JInternalFrame {
         Brigada brigada = bd.buscarBrigadaPorCodigo(siniestro);
         brigada.setLibre(true);
         bd.actualizarBrigada(brigada);
+    }
+
+    private void setearSpinner() {
+      
+        SpinnerNumberModel model = new SpinnerNumberModel(); 
+        model.setMaximum(10);
+        model.setMinimum(1);
+        jSPuntuacion.setModel(model);
     }
 }

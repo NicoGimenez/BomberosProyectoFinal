@@ -306,7 +306,7 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         modelo.addColumn("codBrigada");
         jTSiniestros.setModel(modelo);
         TableColumnModel columnModel = jTSiniestros.getColumnModel();
-        int ancho0 = 30, ancho1 = 100, ancho2= 50, ancho3= 80;
+        int ancho0 = 30, ancho1 = 111, ancho2= 50, ancho3= 80, ancho4= 200;
         TableColumn columna = columnModel.getColumn(0); 
         columna.setPreferredWidth(ancho0);
         columna = columnModel.getColumn(1); 
@@ -318,7 +318,7 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         columna = columnModel.getColumn(4); 
         columna.setPreferredWidth(ancho2);
         columna = columnModel.getColumn(5); 
-        columna.setPreferredWidth(ancho1);
+        columna.setPreferredWidth(ancho4);
         columna = columnModel.getColumn(6); 
         columna.setPreferredWidth(ancho1);
         columna = columnModel.getColumn(7); 
